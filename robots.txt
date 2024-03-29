@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://rexmiao.github.io/sitemap.xml
