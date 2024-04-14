@@ -17,6 +17,7 @@ news: true # includes a list of news items
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
 ---
+
 I'm a 5-th year PhD student at the <a href="http://www.upenn.edu/">University of Pennsylvania</a>, advised by 
 <a href="https://scholar.google.com/citations?user=MIjWr_8AAAAJ&amp;hl=en">James C. Gee</a>. My research focuses on artificial intelligence, machine learning and computer vision, especially their applications in medical imaging and healthcare. 
 
