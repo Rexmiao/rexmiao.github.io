@@ -19,7 +19,7 @@ social: true # includes social icons at the bottom of the page
 ---
 
 I'm a 5-th year PhD student at the <a href="http://www.upenn.edu/">University of Pennsylvania</a>, advised by
-<a href="https://scholar.google.com/citations?user=MIjWr_8AAAAJ&amp;hl=en">James C. Gee</a>. My research focuses on artificial intelligence, machine learning and computer vision, especially their applications in medical imaging and healthcare. 
+<a href="https://scholar.google.com/citations?user=MIjWr_8AAAAJ&amp;hl=en">James C. Gee</a>. My research focuses on artificial intelligence, machine learning and computer vision, especially their applications in medical imaging and healthcare.
 
 Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](http://reddit.com). You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.
 
