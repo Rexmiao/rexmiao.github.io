@@ -135,6 +135,7 @@
     - '<a href="/publications/">View all publications, preprints, datasets, and conference presentations.</a>'
 
 - title: Peer Review and Editorial Service
+  id: peer-review
   type: time_table
   contents:
     - title: Peer Reviewer

@@ -30,6 +30,14 @@ My master's research studied volatility modeling with **Lévy processes and Orns
 
 My [Projects]({{ '/projects/' | relative_url }}) page includes **PCR Market Watch**, a put/call ratio analysis tool, and **Alpha Lab**, a local quantitative research prototype with an interactive **Alpha Training Lab** teaching demo. It also covers my work in digital pathology and financial mathematics.
 
+In the [Lévy Volatility Lab]({{ '/labs/levy-volatility/' | relative_url }}), I fit a jump-driven variance model to USD/JPY data and compare its forecasts with simple benchmarks.
+
+## Invited peer review
+
+I review manuscripts for the _IEEE Journal of Biomedical and Health Informatics_, _Smart Health_ (Elsevier), and _ACM Transactions on Computing for Healthcare_. I have also co-reviewed for _NeuroImage_ and joined the reviewer pool for _The Journal of Pathology: Clinical Research_.
+
+My [CV]({{ '/cv/' | relative_url }}#peer-review) lists the roles, review counts, and research areas.
+
 ## Research interests
 
 - Multimodal neuroimaging, diffusion MRI, and brain-network analysis

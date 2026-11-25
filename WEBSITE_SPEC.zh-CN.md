@@ -42,6 +42,10 @@
 
 首篇当前动态为 `_news/website-update.md`，发文日期按用户的 America/New_York 时区设为 2026-11-25。文章说明实际完成的 CV、学术成果及量化项目作品集更新，并链接到对应页面。继续排除模板公告，不得编造发文日期或研究里程碑。
 
+## 受邀同行评审
+
+首页概述 CV 中有记录的期刊同行评审服务，并链接到 `/cv/#peer-review`。分别说明直接审稿、为 _NeuroImage_ 合作审稿及加入 _The Journal of Pathology: Clinical Research_ 审稿人库。保留稿件内容的保密性。
+
 ## 项目作品集
 
 项目汇总页位于 `/projects/`，各项目拥有独立详情页及返回导航：
@@ -55,6 +59,8 @@
 | HistoQC                                        | `/projects/histoqc/`             | Research Software     |
 
 PCR Market Watch 提供通往公开介绍页、个人源码仓库、最新 Release、默认英文 README／用户指南及独立中文 README 的链接。Alpha Lab 是本机研究原型，并有独立公开的 Alpha Training Lab 教学指南；不得暗示其已公开源码或已投入生产交易。保留已经核实的项目链接与实际状态。
+
+波动率建模项目新增独立的 [Lévy 波动率实验室](labs/levy-volatility/)，并提供模型源码、数据说明和中英文复现指南。该网页以美联储 H.10 美元兑日元日度汇率为基础开展新的实证实验，与项目页面中的硕士研究是两项工作。五期波动率代理、训练区间、比较基准及模拟假设均见实验室说明。实验室位于 `labs/levy-volatility/`，随现有 GitHub Pages 工作流发布。
 
 只有标记为 `portfolio: runtian` 的项目条目才出现在 Projects 页面。不得将模板项目、示例论文及示例 CV 数据展示为 Runtian Miao 的成果。
 

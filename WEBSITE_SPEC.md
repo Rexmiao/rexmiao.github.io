@@ -74,6 +74,13 @@ quantitative project portfolio update, with links to the relevant pages. Keep
 template announcements excluded; do not invent publication dates or research
 milestones.
 
+## Invited peer review
+
+The About page summarizes the journal peer review roles documented in the CV
+and links to `/cv/#peer-review`. Retain the distinctions between direct review,
+collaborative review for _NeuroImage_, and membership in the reviewer pool for
+_The Journal of Pathology: Clinical Research_. Keep manuscript details private.
+
 ## Project portfolio
 
 Projects are listed at `/projects/`, with individual pages and return navigation:
@@ -91,6 +98,14 @@ latest release, English-default README/user guide, and separate Chinese README.
 Alpha Lab is a local research prototype with a separate public
 Alpha Training Lab teaching guide; do not imply a public source-code release or
 production trading operation. Preserve verified project links and factual status.
+
+The volatility modeling project links to the standalone [Lévy Volatility Lab](labs/levy-volatility/)
+with its model, documented data, and bilingual replication instructions. The
+lab is a new empirical experiment using daily Federal Reserve H.10 USD/JPY rates,
+separate from the master's research described on the portfolio page. Its rolling
+five-return proxy, fixed training split, benchmarks, and simulation assumptions
+are documented in the lab. The lab lives under `labs/levy-volatility/` and deploys
+with the existing GitHub Pages workflow.
 
 Only portfolio entries marked `portfolio: runtian` appear on the Projects page.
 Template projects, sample publications, and sample CV data must not appear as
