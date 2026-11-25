@@ -14,9 +14,10 @@
 - Ruby 环境使用 `3.2` 系列的最新补丁版本，使较新的 GitHub runner 镜像可以使用现有构建，而不依赖已停用的 `3.2.2` 二进制包。
 - 构建前安装 ImageMagick，并验证三张响应式头像 WebP 文件均非空。即使缺少 `convert` 可执行文件，图片插件也可能报告成功，因此仅凭构建显示成功不足以确认图片生成正常。
 - 编译后站点的链接检查工作流与部署使用相同的 Ruby `3.2` 系列、ImageMagick 前置依赖及响应式图片断言。重新构建前，必须检出触发该检查的部署所对应的准确源码 SHA。
-- 保持启用 Prettier 检查；发布前使用工作流指定版本的 Prettier 和 Liquid 插件格式化修改过的 YAML、Markdown 及 Liquid 源文件。
-- 源码链接检查排除 `_projects/3_project.md`，它是一个未发布的 al-folio Unsplash 跳转示例，Jekyll 已将其排除。继续检查真实作品集链接及其他源文件；不得全局放行 HTTP 401 响应。
-- 主导航：About、Publications、Projects、CV。
+- 保持启用 Prettier 检查。使用 Node.js `22`，通过 `npm ci --ignore-scripts` 安装已提交的 `package-lock.json` 中锁定的 Prettier `3.1.1` 和 `@shopify/prettier-plugin-liquid` `1.4.0`，不得在 CI 中升级格式化工具。发布前使用这些版本格式化修改过的 YAML、Markdown 及 Liquid 源文件。
+- 源码链接检查依据 Jekyll 配置的 `include`、`exclude` 和输出集合选择 Markdown 与 HTML 文件，排除依赖目录和未发布的模板内容。`_projects/3_project.md` 的 Unsplash 跳转示例也通过 Jekyll 配置排除，而非仅为这一个文件设置跳过规则。检查所选文件中的 HTTP、HTTPS 外部链接，不得全局放行 HTTP 401 响应。
+- 独立的编译后站点检查以 `_site/` 为明确的基准目录，离线验证生成后的内部路由。源码检查负责外部网址，编译后站点检查则在构建结果中解析本地链接。
+- 主导航：About、News、Publications、Projects、CV。
 
 保留现有网址、托管方式及主题。网站完成构建与验证后，才能声称改动已发布。每次源码更新后，同时核查部署结果和实际线上页面。
 
@@ -31,8 +32,15 @@
 - ORCID：`0000-0002-2754-2630`。
 - ResearchGate 个人资料设置：`Runtian_Miao2`。
 - GitHub：`Rexmiao`。
+- X：`@Rexy69492164`，<https://x.com/Rexy69492164>，由用户提供的截图确认。
 
 不得推断缺失的学位日期、毕业情况、稿件录用状态、个人科研资助归属或投资业绩。保留 2026 年 npj Dementia 稿件的审稿中状态，以及 ISFTD 2026 海报的已接受状态。Quick Annotator 的期刊文章与预印本应视为同一工作的不同版本。
+
+## 新闻与社交动态
+
+通过 `_pages/about.md` 及 `_config.yml` 的 announcements 设置启用首页 News 栏目。导航中的 News 打开 `/news/`，该页面列出已发布的新闻集合，并链接到已确认的 X 账号。
+
+首篇当前动态为 `_news/website-update.md`，发文日期按用户的 America/New_York 时区设为 2026-11-25。文章说明实际完成的 CV、学术成果及量化项目作品集更新，并链接到对应页面。继续排除模板公告，不得编造发文日期或研究里程碑。
 
 ## 项目作品集
 
@@ -60,10 +68,10 @@ PCR Market Watch 提供通往公开介绍页、个人源码仓库、最新 Relea
 
 ## CI 验收
 
-- 最终源码提交的 Prettier 和源码链接检查均成功完成。
+- 最终源码提交使用锁定版本的 Prettier 检查，以及按 Jekyll 配置选择文件的 HTTP／HTTPS 源码链接检查，均成功完成。
 - 该提交的部署构建成功完成，并生成三张头像 WebP 文件。
-- 部署触发的编译后站点链接检查成功重新构建同一提交，并检查本地生成的链接。
-- 线上首页和 PCR 项目页均可加载，且中英文 README 链接可用。
+- 部署触发的编译后站点链接检查检出该部署的准确源码 SHA，使用 Ruby `3.2` 和 ImageMagick 成功重新构建该提交，并以 `_site/` 为基准目录离线检查本地生成的链接。
+- 线上首页、News 页面和 PCR 项目页均可加载；五项主导航、首页新闻动态、已确认的 X 链接及中英文 README 链接均可用。
 - 较早失败运行的邮件通知仅代表历史状态；判断当前状态时，以最新提交的 Actions 结果为准。
 
 2026-11-25 的内容基线已通过生产 Jekyll 构建。部署结果保留在仓库的 Actions 历史中：<https://github.com/Rexmiao/rexmiao.github.io/actions/workflows/deploy.yml>。检查发布状态时，核对相应部署及实际线上站点。

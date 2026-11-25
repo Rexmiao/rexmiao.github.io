@@ -19,12 +19,21 @@ Updated: 2026-11-25.
 - The compiled-site link-check workflow uses the same Ruby `3.2` series,
   ImageMagick prerequisite, and responsive-image assertions as deployment. It
   checks out the triggering deployment's exact source SHA before rebuilding.
-- Prettier checks remain enabled; format changed YAML, Markdown, and Liquid source
-  with the workflow's Prettier and Liquid-plugin versions before publication.
-- Source link checking excludes `_projects/3_project.md`, an unpublished al-folio
-  Unsplash redirect already excluded by Jekyll. Keep checks on real portfolio
-  links and other source files; do not globally allow HTTP 401 responses.
-- Primary navigation: About, Publications, Projects, CV.
+- Prettier checks remain enabled. Use Node.js `22` and `npm ci --ignore-scripts`
+  with the committed `package-lock.json`, which pins Prettier `3.1.1` and
+  `@shopify/prettier-plugin-liquid` `1.4.0`. Do not upgrade the formatters in CI.
+  Format changed YAML, Markdown, and Liquid source with these versions before
+  publication.
+- Source link checking selects Markdown and HTML files using the Jekyll
+  configuration's `include`, `exclude`, and output collections, excluding
+  dependencies and unpublished template content. This also excludes the
+  `_projects/3_project.md` Unsplash redirect through Jekyll configuration rather
+  than treating it as the only file to skip. Check HTTP and HTTPS external links
+  in the selected files; do not globally allow HTTP 401 responses.
+- The separate compiled-site check validates generated internal routes offline,
+  using `_site/` as the explicit base directory. Source checks validate external
+  URLs; compiled-site checks resolve local links against the built website.
+- Primary navigation: About, News, Publications, Projects, CV.
 
 Retain the existing URL, hosting, and theme. Build and verify the website before
 claiming that changes are published. Verify both the deployment result and the
@@ -45,11 +54,25 @@ supplied the replacement portrait stored at `assets/img/runtian-miao.jpg`.
 - ORCID: `0000-0002-2754-2630`.
 - ResearchGate profile setting: `Runtian_Miao2`.
 - GitHub: `Rexmiao`.
+- X: `@Rexy69492164`, <https://x.com/Rexy69492164>, confirmed by the user's
+  supplied screenshot.
 
 Do not infer missing degree dates, graduation, manuscript acceptance, personal
 grant ownership, or investment performance. Preserve the 2026 npj Dementia
 manuscript's under-review status and the ISFTD 2026 poster's accepted status.
 Treat the Quick Annotator journal article and preprint as versions of one work.
+
+## News and social updates
+
+Enable the homepage News section through `_pages/about.md` and the announcements
+setting in `_config.yml`. The News navigation entry opens `/news/`, which lists
+the published news collection and links to the verified X account.
+
+The first current update is `_news/website-update.md`, dated 2026-11-25 in the
+user's America/New_York timezone. It reports the actual CV, publications, and
+quantitative project portfolio update, with links to the relevant pages. Keep
+template announcements excluded; do not invent publication dates or research
+milestones.
 
 ## Project portfolio
 
@@ -90,10 +113,15 @@ or deployment behavior changes. Keep matching source links and limitations.
 
 ## CI acceptance
 
-- For the final source commit, Prettier and source-link checks complete successfully.
+- For the final source commit, the locked-version Prettier check and the
+  Jekyll-selected HTTP/HTTPS source-link check complete successfully.
 - Its deployment build completes successfully and produces the three portrait WebP files.
-- The triggered compiled-site link check rebuilds the same commit successfully and checks local generated links.
-- The live homepage and PCR project page load, with working README links to both languages.
+- The triggered compiled-site link check checks out the deployment's exact source
+  SHA, rebuilds it successfully with Ruby `3.2` and ImageMagick, and checks local
+  generated links offline against the `_site/` base directory.
+- The live homepage, News page, and PCR project page load. The five navigation
+  entries, homepage news update, verified X link, and README links to both
+  languages work.
 - Earlier failed-run email notifications remain historical; use the latest commit's Actions results to assess the current state.
 
 The 2026-11-25 content baseline passed a production Jekyll build. Deployment

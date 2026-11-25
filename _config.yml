@@ -74,7 +74,7 @@ og_image: # The site-wide (default for all links) Open Graph preview image
 
 github_username: Rexmiao
 gitlab_username: # your GitLab user name
-x_username: # your X handle
+x_username: Rexy69492164
 mastodon_username: # your mastodon instance+username in the format instance.tld/@username
 linkedin_username: # your LinkedIn user name
 telegram_username: # your Telegram user name
@@ -180,7 +180,7 @@ collections:
     permalink: /projects/:path/
 
 announcements:
-  enabled: false
+  enabled: true
   scrollable: true # adds a vertical scroll bar if there are more than 3 news items
   limit: 5 # leave blank to include all the news in the `_news` folder
 
@@ -230,7 +230,9 @@ exclude:
   - _pages/repositories.md
   - _pages/teaching.md
   - _posts/
-  - _news/
+  - _news/announcement_1.md
+  - _news/announcement_2.md
+  - _news/announcement_3.md
   - _projects/1_project.md
   - _projects/2_project.md
   - _projects/3_project.md
@@ -245,6 +247,8 @@ exclude:
   - purgecss.config.js
   - README.md
   - WEBSITE_SPEC.md
+  - WEBSITE_SPEC.zh-CN.md
+  - AGENTS.md
   - readme_preview/
   - vendor
 keep_files:

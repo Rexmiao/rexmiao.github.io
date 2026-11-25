@@ -38,16 +38,54 @@ on:
       - "!.github/workflows/prettier.yml"
       - "!lighthouse_results/**"
 
+permissions:
+  contents: read
+
 jobs:
   link-checker:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.2"
+
+      - name: Select published source files
+        id: sources
+        shell: bash
+        run: |
+          ruby <<'RUBY'
+          require "yaml"
+          require "shellwords"
+
+          config = YAML.load_file("_config.yml")
+          excluded = ["node_modules"] + Array(config["exclude"]).map { |path| path.delete_suffix("/") }
+          included = Array(config["include"])
+          config.fetch("collections", {}).each do |name, options|
+            included << "_#{name}" if options.is_a?(Hash) && options["output"]
+          end
+
+          sources = Dir.glob("**/*.{md,html}").select do |path|
+            next false if excluded.any? do |entry|
+              path == entry || path.start_with?("#{entry}/") || File.fnmatch?(entry, path, File::FNM_PATHNAME)
+            end
+
+            path.split("/").none? { |part| part.start_with?(".", "_") } ||
+              included.any? { |entry| path == entry || path.start_with?("#{entry}/") }
+          end.sort
+          abort "No published Markdown or HTML sources found" if sources.empty?
+
+          puts sources
+          File.open(ENV.fetch("GITHUB_OUTPUT"), "a") do |output|
+            output.puts "args=#{sources.map { |path| Shellwords.escape(path) }.join(' ')}"
+          end
+          RUBY
+
       - name: Link Checker 🔗
         uses: lycheeverse/lychee-action@v1.9.0
         with:
           fail: true
-          # Exclude Liquid-only source cases and the unpublished Unsplash sample already excluded by Jekyll.
-          # Keep checks for the actual portfolio and all other links; do not globally accept HTTP 401.
-          args: --exclude-path README.md --exclude-path _pages/404.md --exclude-path _pages/blog.md --exclude-path _posts/2018-12-22-distill.md --exclude-path _projects/3_project.md --verbose --no-progress './**/*.md' './**/*.html'
+          # Rendered local links are checked by broken-links-site.yml.
+          args: --scheme http --scheme https --verbose --no-progress ${{ steps.sources.outputs.args }}
