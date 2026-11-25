@@ -20,7 +20,7 @@ My development work used Python, JavaScript, and SQL. The project connects image
 
 ### Publication and code
 
-Miao, R., Toth, R., Zhou, Y., Madabhushi, A., and Janowczyk, A. (2021). *Quick Annotator: An open-source digital pathology based rapid image annotation tool.* The Journal of Pathology: Clinical Research, 7(6), 542–547.
+Miao, R., Toth, R., Zhou, Y., Madabhushi, A., and Janowczyk, A. (2021). _Quick Annotator: An open-source digital pathology based rapid image annotation tool._ The Journal of Pathology: Clinical Research, 7(6), 542–547.
 
 [Journal article](https://doi.org/10.1002/cjp2.229) · [Preprint](https://arxiv.org/abs/2101.02183) · [Personal GitHub repository](https://github.com/Rexmiao/QuickAnnotator)
 

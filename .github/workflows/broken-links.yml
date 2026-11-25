@@ -48,5 +48,6 @@ jobs:
         uses: lycheeverse/lychee-action@v1.9.0
         with:
           fail: true
-          # removed md files that include liquid tags
-          args: --exclude-path README.md --exclude-path _pages/404.md --exclude-path _pages/blog.md --exclude-path _posts/2018-12-22-distill.md --verbose --no-progress './**/*.md' './**/*.html'
+          # Exclude Liquid-only source cases and the unpublished Unsplash sample already excluded by Jekyll.
+          # Keep checks for the actual portfolio and all other links; do not globally accept HTTP 401.
+          args: --exclude-path README.md --exclude-path _pages/404.md --exclude-path _pages/blog.md --exclude-path _posts/2018-12-22-distill.md --exclude-path _projects/3_project.md --verbose --no-progress './**/*.md' './**/*.html'

@@ -23,4 +23,6 @@ The project page includes interface demonstrations, data definitions, and instal
 
 [Project overview](https://rexmiao.github.io/pcr-market-watch/) · [Source code](https://github.com/Rexmiao/pcr-market-watch) · [Download the latest release](https://github.com/Rexmiao/pcr-market-watch/releases/latest)
 
+[README / User guide](https://github.com/Rexmiao/pcr-market-watch#readme) · [简体中文说明](https://github.com/Rexmiao/pcr-market-watch/blob/main/README.zh-CN.md)
+
 [All projects]({{ '/projects/' | relative_url }})

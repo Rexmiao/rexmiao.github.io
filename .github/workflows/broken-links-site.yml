@@ -14,10 +14,20 @@ jobs:
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
+      - name: Install ImageMagick
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y imagemagick
+          if ! command -v convert >/dev/null 2>&1; then
+            sudo ln -s "$(command -v magick)" /usr/local/bin/convert
+          fi
+          convert -version
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "3.2.2"
+          ruby-version: "3.2"
           bundler-cache: true
       - name: Update _config.yml ⚙️
         uses: fjogeleit/yaml-update-action@main
@@ -34,6 +44,9 @@ jobs:
           pip3 install --upgrade jupyter
           export JEKYLL_ENV=production
           bundle exec jekyll build --lsi
+          test -s _site/assets/img/runtian-miao-480.webp
+          test -s _site/assets/img/runtian-miao-800.webp
+          test -s _site/assets/img/runtian-miao-1400.webp
       - name: Purge unused CSS 🧹
         run: |
           npm install -g purgecss
