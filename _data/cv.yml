@@ -2,96 +2,195 @@
   type: map
   contents:
     - name: Full Name
-      value: Albert Einstein
-    - name: Date of Birth
-      value: 14th March 1879
-    - name: Languages
-      value: English, German
+      value: Runtian Miao
+    - name: Position
+      value: Ph.D. Candidate, Applied Mathematics and Computational Science
+    - name: Institution
+      value: University of Pennsylvania
+    - name: Location
+      value: Philadelphia, Pennsylvania, USA
+    - name: Email
+      value: '<a href="mailto:rexmiao@sas.upenn.edu">rexmiao@sas.upenn.edu</a>'
+    - name: Research Profiles
+      links:
+        - name: Google Scholar
+          link: https://scholar.google.com/citations?user=A5aYtioAAAAJ
+        - name: ORCID
+          link: https://orcid.org/0000-0002-2754-2630
+        - name: ResearchGate
+          link: https://www.researchgate.net/profile/Runtian_Miao2
+
+- title: Research Profile
+  type: list
+  contents:
+    - >-
+      Applied mathematics and computational science researcher working at the intersection of medical imaging, computational neuroscience, statistical modeling, and biomedical artificial intelligence. Current research develops multimodal and longitudinal methods for understanding brain disease progression and extends these approaches toward scalable multimodal AI, large language models, and foundation models for precision medicine.
+    - >-
+      Research experience spans longitudinal statistical modeling, multimodal data integration, numerical methods, and scientific software development. Master's research addressed volatility modeling using Lévy processes and Ornstein–Uhlenbeck models in the context of option pricing. Interested in applying rigorous empirical research and computational modeling to quantitative investment research.
 
 - title: Education
   type: time_table
   contents:
-    - title: PhD
-      institution: University of Zurich, Zurich, Switzerland
-      year: 1905
-      description:
-        - Description 1.
-        - Description 2.
-        - title: Description 3.
-          contents:
-            - Sub-description 1.
-            - Sub-description 2.
-    - title: Federal teaching diploma
-      institution: Eidgenössische Technische Hochschule, Zurich, Switzerland
-      year: 1900
-      description:
-        - Description 1.
-        - Description 2.
+    - title: Ph.D. Candidate, Applied Mathematics and Computational Science
+      institution: University of Pennsylvania
+      location: Philadelphia, PA
+      year: Aug 2021<br>– Present
+    - title: M.A., Applied Mathematics and Computational Science
+      institution: University of Pennsylvania, Philadelphia, PA
+    - title: M.S., Applied Mathematics
+      institution: Case Western Reserve University, Cleveland, OH
+    - title: B.S., Mathematics; B.S., Physics
+      institution: Case Western Reserve University, Cleveland, OH
 
-- title: Experience
+- title: Research and Professional Experience
   type: time_table
   contents:
-    - title: Professor of Theoretical Physics
-      institution: Institute for Advanced Study, Princeton University
-      year: 1933 - 1955
+    - title: Research Fellow and Pre-Doctoral Trainee
+      institution: University of Pennsylvania
+      year: Aug 2021<br>– Present
       description:
-        - Description 1.
-        - Description 2.
-        - title: Description 3.
-          contents:
-            - Sub-description 1.
-            - Sub-description 2.
-    - title: Visiting Professor
-      institution: California Institute of Technology, Pasadena, California, US
-      year: 1933
+        - Conduct doctoral research in applied mathematics, computational science, medical imaging, and computational neuroscience.
+        - >-
+          Develop statistical and computational methods integrating structural MRI, diffusion MRI, tractography, brain-network representations, and longitudinal mixed-effects modeling to characterize gray- and white-matter degeneration.
+        - Current thesis work also informs broader research directions in scalable multimodal AI and foundation-model approaches for precision medicine.
+    - title: Agentic AI Development
+      institution: Wharton Research Data Services (WRDS), University of Pennsylvania
+      year: Fall 2026<br>– Present
       description:
-        - Description 1.
-        - Description 2.
-
-    - title: Director
-      institution: Kaiser Wilhelm Institute for Physics, Berlin, Germany.
-      year: 1917-1933
-
-    - title: Professor of Theoretical Physics
-      institution: Karl-Ferdinand University, Prague, Czechoslovakia
-      year: 1911 - 1917
+        - Contribute to agentic AI coding and application prototyping within the WRDS engineering team.
+    - title: Research Assistant &amp; Software Developer, Digital Pathology
+      institution: Case Western Reserve University
+      year: Jun 2019<br>– 2021
       description:
+        - Conducted NIH-funded research with Prof. Anant Madabhushi in computational medical imaging and digital pathology.
+        - >-
+          Developed Quick Annotator, a deep-learning-assisted pathology annotation platform using U-Net-based models to rapidly bootstrap region-of-interest annotations, including lymphocytes, nuclei, tubules, and tumor cells, with a Python, JavaScript, and SQL technology stack.
+        - >-
+          Contributed to development and maintenance of HistoQC for automated whole-slide image quality control. Developed C++ plugins for Sedeen Viewer by translating Python/MATLAB algorithms and integrated HistoQC functionality into the viewer.
+    - title: Undergraduate Researcher, Image Processing
+      institution: Case Western Reserve University
+      year: May 2018<br>– Aug 2018
+      description:
+        - >-
+          Conducted NSF-funded research with Prof. Weihong Guo on segmentation of cardiovascular disease-related images, including coronary artery imaging, using geometric-flow and variational PDE methods such as active contours, Chan–Vese models, level sets, and total variation.
+        - Implemented and optimized MATLAB procedures with respect to neighborhood size, data sparsity, similarity measures, and numerical regularization.
+        - >-
+          Presented seminars on CT/MRI scanner systems and related applications and participated in seminars on image denoising, compression, deblurring, super-resolution, and compressive sensing.
+    - title: SURES Undergraduate Researcher, Materials Science
+      institution: Case Western Reserve University
+      year: Feb 2018<br>– Aug 2018
+      description:
+        - Supported by the Summer Undergraduate Research in Energy and Sustainability (SURES) scholarship.
+        - >-
+          Developed lead-free CsGeI3 perovskite materials for solar-cell applications using physical vapor deposition (e-beam evaporation). Fabricated and characterized photovoltaic materials and devices using X-ray diffraction, UV-Visible spectroscopy, optical transparency, stylus profilometry, and X-ray photoelectron spectroscopy.
+        - Hosted seminars in condensed-matter and solid-state physics and delivered poster and oral presentations at SURES CWRU in August 2018.
+    - title: Physics Lab Assistant
+      institution: Case Western Reserve University
+      year: Aug 2017<br>– May 2018
+      description:
+        - >-
+          Supported soft condensed-matter and semiconductor research by preparing materials, samples, and solutions for laboratory experiments, assisting with experimental procedures, and collaborating with faculty and graduate students in the Department of Physics on data analysis and modeling.
 
-    - title: Associate Professor of Theoretical Physics
-      institution: University of Zurich, Zurich, Switzerland
-      year: 1909 - 1911
-
-- title: Open Source Projects
+- title: Quantitative Research
   type: time_table
   contents:
-    - title: <a href="https://github.com/alshedivat/al-folio">al-folio</a>
-      year: 2015-now
-      description: A beautiful, simple, clean, and responsive Jekyll theme for academics.
+    - title: Volatility Modeling with Lévy and Ornstein–Uhlenbeck Processes
+      institution: Case Western Reserve University
+      maindescription: Master's research, advised by Prof. Wojbor A. Woyczynski.
+      description:
+        - Studied volatility modeling using Lévy processes and Ornstein–Uhlenbeck (OU) models as part of master's research on option pricing.
 
-- title: Honors and Awards
-  type: time_table
-  contents:
-    - year: 1921
-      items:
-        - Nobel Prize in Physics
-        - Matteucci Medal
-    - year: 2029
-      items:
-        - Max Planck Medal
-
-- title: Academic Interests
+- title: Technical Skills
   type: nested_list
   contents:
-    - title: Topic 1.
+    - title: Statistical and Mathematical Methods
       items:
-        - Description 1.
-        - Description 2.
-    - title: Topic 2.
+        - Longitudinal mixed-effects modeling; multimodal data integration; brain-network representations; variational PDEs, level sets, and total-variation methods.
+    - title: Financial Mathematics
       items:
-        - Description 1.
-        - Description 2.
+        - Volatility modeling; Lévy processes; Ornstein–Uhlenbeck models; master's research in option pricing.
+    - title: Programming and Applications
+      items:
+        - Python, MATLAB, C++, SQL, JavaScript.
+        - U-Net-based annotation; automated image quality control; agentic AI coding and application prototyping.
 
-- title: Other Interests
+- title: Research Interests
   type: list
   contents:
-    - <u>Hobbies:</u> Hobby 1, Hobby 2, etc.
+    - Medical Image Analysis; Multimodal Neuroimaging; Computational Neuroscience; Diffusion MRI; Longitudinal Modeling; Brain Network Analysis; Graph-Based Learning; Statistical Machine Learning; Multimodal AI; Foundation Models for Precision Medicine.
+
+- title: Selected Scholarly Outputs
+  type: list
+  contents:
+    - >-
+      <strong>Peer-reviewed journal article:</strong> Miao, R., Toth, R., Zhou, Y., Madabhushi, A., &amp; Janowczyk, A. (2021). Quick Annotator: An open-source digital pathology based rapid image annotation tool. <em>The Journal of Pathology: Clinical Research</em>, 7(6), 542–547. <a href="https://doi.org/10.1002/cjp2.229">doi:10.1002/cjp2.229</a>.
+    - >-
+      <strong>Manuscript under review:</strong> Miao, R., et al. (2026). Distinct Gray–White Matter Degeneration Trajectories in svPPA and naPPA: A Multimodal Longitudinal Analysis. Under review at <em>npj Dementia</em>.
+    - >-
+      <strong>Preprint:</strong> Shi, Y., &amp; Miao, R. (2025). Aethorix v1.0: AI-Driven Inverse Design of Inorganic Materials for Scalable Industrial Innovation. <a href="https://arxiv.org/abs/2506.16609">arXiv:2506.16609</a>.
+    - >-
+      <strong>Accepted poster:</strong> Divergent Multimodal Longitudinal GM–WM Relationships Reflect Distinct Disease Mechanisms in svPPA and naPPA. 15th International Conference on Frontotemporal Dementias (ISFTD 2026), Philadelphia, PA.
+    - >-
+      <strong>Research dataset:</strong> Gee, J. C., Miao, R., et al. (2026). Dataset for “Distinct Gray–White Matter Degeneration Trajectories in svPPA and naPPA: A Multimodal Longitudinal Analysis.” Figshare. <a href="https://doi.org/10.6084/m9.figshare.33000677">doi:10.6084/m9.figshare.33000677</a>.
+    - '<a href="/publications/">View all publications, preprints, datasets, and conference presentations.</a>'
+
+- title: Peer Review and Editorial Service
+  type: time_table
+  contents:
+    - title: Peer Reviewer
+      institution: IEEE Journal of Biomedical and Health Informatics
+      year: 2026<br>– Present
+      description:
+        - >-
+          Completed 31 peer reviews across 22 manuscripts, including revision rounds, in biomedical AI, medical imaging, graph learning, computational pathology, and foundation-model applications.
+    - title: Peer Reviewer
+      institution: Smart Health (Elsevier)
+      year: 2026<br>– Present
+      description:
+        - Completed 4 peer reviews across 2 manuscripts, including revision rounds, in digital health, biomedical AI, and medical data analytics.
+    - title: Peer Reviewer
+      institution: ACM Transactions on Computing for Healthcare
+      year: 2026<br>– Present
+      description:
+        - Completed 1 manuscript peer review.
+    - title: Co-reviewer
+      institution: NeuroImage
+      year: 2026
+      description:
+        - Contributed to 1 collaborative manuscript review with James C. Gee and Christopher Olm.
+    - title: Reviewer Pool
+      institution: 'The Journal of Pathology: Clinical Research'
+      year: 2026<br>– Present
+      description:
+        - Selected by the editorial office to serve as a peer reviewer in areas aligned with digital pathology, medical image analysis, and computational methods.
+
+- title: Leadership and University Service
+  type: time_table
+  contents:
+    - title: Vice President for Finance
+      institution: Graduate and Professional Student Assembly, University of Pennsylvania
+      year: Sep 2022<br>– Aug 2023
+      description:
+        - >-
+          Managed an approximately $3.5 million annual budget supporting graduate and professional student organizations, programs, and initiatives, and led an approximately 20-member team in financial planning, budgeting, and resource allocation.
+    - title: Director of International Student Affairs
+      institution: Graduate and Professional Student Assembly, University of Pennsylvania
+      year: Sep 2021<br>– Dec 2022
+      description:
+        - >-
+          Represented and advocated for approximately 6,500 international graduate and professional students; monitored institutional and government policies affecting international students and developed community-focused programs.
+    - title: Committee Service
+      institution: University Council, University of Pennsylvania
+      year: Sep 2021<br>– Aug 2023
+      description:
+        - Served on the Facilities and Campus Planning Committee, Open Expression Committee, and Honorary Degrees Committee, contributing to University-wide governance and institutional decision-making.
+        - >-
+          Advised on long-term facilities and campus planning initiatives, including the $6.6 billion Penn Connects 3.0 development plan, and contributed to discussions on campus infrastructure and facilities investment.
+        - >-
+          Reviewed matters related to open expression and University communication policies and participated in the nomination and evaluation of honorary degree candidates, with committee recommendations submitted to the University Trustees for consideration.
+
+- title: Selected Research Support Environment
+  type: list
+  contents:
+    - >-
+      Research conducted within University of Pennsylvania programs supported by NIH P01 AG066597, P30 AG072979, and R21 AG089706, as well as the DeCrane Family Fund and Samuel Newhouse Foundation.

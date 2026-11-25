@@ -2,19 +2,18 @@
 # Site settings
 # -----------------------------------------------------------------------------
 
-title: Rexy M # the website title (if blank, full name will be used instead)
-first_name: Rexy
-middle_name: R.
-last_name: M
+title: Runtian Miao
+first_name: Runtian
+middle_name:
+last_name: Miao
 email: rexmiao@sas.upenn.edu
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
-  A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
+  Runtian Miao is a Ph.D. candidate at the University of Pennsylvania working in applied mathematics, medical imaging, statistical modeling, biomedical AI, and quantitative research.
 footer_text: >
-  © Rexy. 
+  © Runtian Miao.
   Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
   Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
-  Photos from <a href="https://unsplash.com" target="_blank">Unsplash</a>.
-keywords: jekyll, jekyll-theme, academic-website, portfolio-website # add your own keywords or leave empty
+keywords: Runtian Miao, applied mathematics, medical imaging, computational neuroscience, quantitative research, biomedical AI
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
 icon: favicon.ico #  the emoji used as the favicon (alternatively, provide image name in /assets/img/)
 # icon: 😎 ⚛️ # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
@@ -46,7 +45,7 @@ repo_theme_dark: dark # https://github.com/anuraghazra/github-readme-stats/blob/
 # will use title and url fields
 # Take a look to https://github.com/jekyll/jekyll-feed for more customization
 
-rss_icon: true
+rss_icon: false
 
 # -----------------------------------------------------------------------------
 # Layout
@@ -73,22 +72,22 @@ og_image: # The site-wide (default for all links) Open Graph preview image
 # Social integration
 # -----------------------------------------------------------------------------
 
-github_username: # your GitHub user name
+github_username: Rexmiao
 gitlab_username: # your GitLab user name
 x_username: # your X handle
 mastodon_username: # your mastodon instance+username in the format instance.tld/@username
 linkedin_username: # your LinkedIn user name
 telegram_username: # your Telegram user name
-scholar_userid: qc6CJjYAAAAJ # your Google Scholar ID
+scholar_userid: A5aYtioAAAAJ
 semanticscholar_id: # your Semantic Scholar ID
 whatsapp_number: # your WhatsApp number (full phone number in international format. Omit any zeroes, brackets, or dashes when adding the phone number in international format.)
-orcid_id: # your ORCID ID
+orcid_id: 0000-0002-2754-2630
 medium_username: # your Medium username
 quora_username: # your Quora username
 publons_id: # your ID on Publons
 lattes_id: # your ID on Lattes (Brazilian Lattes CV)
 osf_id: # your OSF ID
-research_gate_profile: # your profile on ResearchGate
+research_gate_profile: Runtian_Miao2
 scopus_id: # your profile on Scopus
 flickr_id: # your flickr id
 blogger_url: # your blogger URL
@@ -111,7 +110,7 @@ zotero_username: # your zotero username
 wechat_qr: # filename of your wechat qr-code saved as an image (e.g., wechat-qr.png if saved to assets/img/wechat-qr.png)
 
 contact_note: >
-  You can even add a little note about which of these is the best way to reach you.
+  Contact me at rexmiao@sas.upenn.edu.
 
 # -----------------------------------------------------------------------------
 # Analytics and search engine verification
@@ -164,9 +163,7 @@ disqus_shortname: al-folio # put your disqus shortname
 # External sources.
 # If you have blog posts published on medium.com or other external sources,
 # you can display them in your blog by adding a link to the RSS feed.
-external_sources:
-  - name: medium.com
-    rss_url: https://medium.com/@al-folio/feed
+external_sources: []
 
 # -----------------------------------------------------------------------------
 # Collections
@@ -183,12 +180,12 @@ collections:
     permalink: /projects/:path/
 
 announcements:
-  enabled: true
+  enabled: false
   scrollable: true # adds a vertical scroll bar if there are more than 3 news items
   limit: 5 # leave blank to include all the news in the `_news` folder
 
 latest_posts:
-  enabled: true
+  enabled: false
   scrollable: true # adds a vertical scroll bar if there are more than 3 new posts items
   limit: 3 # leave blank to include all the blog posts
 
@@ -227,8 +224,27 @@ exclude:
   - package.json
   - package-lock.json
   - _pages/about_einstein.md
+  - _pages/blog.md
+  - _pages/dropdown.md
+  - _pages/profiles.md
+  - _pages/repositories.md
+  - _pages/teaching.md
+  - _posts/
+  - _news/
+  - _projects/1_project.md
+  - _projects/2_project.md
+  - _projects/3_project.md
+  - _projects/4_project.md
+  - _projects/5_project.md
+  - _projects/6_project.md
+  - _projects/7_project.md
+  - _projects/8_project.md
+  - _projects/9_project.md
+  - assets/json/resume.json
+  - assets/jupyter/
   - purgecss.config.js
   - README.md
+  - WEBSITE_SPEC.md
   - readme_preview/
   - vendor
 keep_files:
@@ -294,8 +310,8 @@ display_categories: ["blockquotes"] # these categories will be displayed on the 
 # -----------------------------------------------------------------------------
 
 scholar:
-  last_name: [Einstein]
-  first_name: [Albert, A.]
+  last_name: [Miao]
+  first_name: [Runtian, R.]
 
   style: apa
   locale: en
@@ -326,7 +342,7 @@ enable_publication_badges:
 
 # Filter out certain bibtex entry keywords used internally from the bib output
 filtered_bibtex_keywords:
-  [abbr, abstract, altmetric, arxiv, bibtex_show, blog, code, html, pdf, poster, preview, selected, slides, supp, video, website]
+  [abbr, abstract, altmetric, arxiv, bibtex_show, blog, category, code, html, pdf, poster, preview, selected, slides, supp, video, website]
 
 # Maximum number of authors to be shown for each publication (more authors are visible on click)
 max_author_limit: 3 # leave blank to always show all authors
@@ -469,9 +485,7 @@ vega-lite:
 # Get external JSON data
 # -----------------------------------------------------------------------------
 
-jekyll_get_json:
-  - data: resume
-    json: assets/json/resume.json # it can also be an url
+jekyll_get_json: []
 jsonresume:
   - basics
   - work

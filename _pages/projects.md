@@ -1,65 +1,28 @@
 ---
 layout: page
-title: projects
+title: Projects
 permalink: /projects/
-description: A growing collection of your cool projects.
+description: Selected work in quantitative research, interactive tools, and scientific software.
 nav: true
 nav_order: 3
-display_categories: [work, fun]
+display_categories: [Quantitative Research, Research Software]
 horizontal: false
 ---
 
-<!-- pages/projects.md -->
+Explore the research questions, methods, and available software behind each project.
+
+[Quantitative research](#quantitative-research) · [Research software](#research-software)
+
+{% assign portfolio_projects = site.projects | where: "portfolio", "runtian" %}
+
 <div class="projects">
-{% if site.enable_project_categories and page.display_categories %}
-  <!-- Display categorized projects -->
-  {% for category in page.display_categories %}
-  <a id="{{ category }}" href=".#{{ category }}">
-    <h2 class="category">{{ category }}</h2>
-  </a>
-  {% assign categorized_projects = site.projects | where: "category", category %}
-  {% assign sorted_projects = categorized_projects | sort: "importance" %}
-  <!-- Generate cards for each project -->
-  {% if page.horizontal %}
-  <div class="container">
-    <div class="row row-cols-2">
-    {% for project in sorted_projects %}
-      {% include projects_horizontal.liquid %}
-    {% endfor %}
-    </div>
-  </div>
-  {% else %}
+{% for category in page.display_categories %}
+  <h2 class="category" id="{{ category | slugify }}">{{ category }}</h2>
+  {% assign category_projects = portfolio_projects | where: "category", category | sort: "importance" %}
   <div class="grid">
-    {% for project in sorted_projects %}
+    {% for project in category_projects %}
       {% include projects.liquid %}
     {% endfor %}
   </div>
-  {% endif %}
-  {% endfor %}
-
-{% else %}
-
-<!-- Display projects without categories -->
-
-{% assign sorted_projects = site.projects | sort: "importance" %}
-
-  <!-- Generate cards for each project -->
-
-{% if page.horizontal %}
-
-  <div class="container">
-    <div class="row row-cols-2">
-    {% for project in sorted_projects %}
-      {% include projects_horizontal.liquid %}
-    {% endfor %}
-    </div>
-  </div>
-  {% else %}
-  <div class="grid">
-    {% for project in sorted_projects %}
-      {% include projects.liquid %}
-    {% endfor %}
-  </div>
-  {% endif %}
-{% endif %}
+{% endfor %}
 </div>
