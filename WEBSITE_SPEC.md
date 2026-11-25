@@ -11,6 +11,9 @@ Updated: 2026-11-25.
 - Deployment workflow: `.github/workflows/deploy.yml`.
 - Ruby setup follows the latest patch of the `3.2` series, so newer GitHub runner
   images can use an available build instead of the retired `3.2.2` binary.
+- Install ImageMagick before the build and verify that all three responsive
+  portrait WebP files are nonempty. The image plugin can report success even if
+  its `convert` executable is missing, so a green build alone is insufficient.
 - Primary navigation: About, Publications, Projects, CV.
 
 Retain the existing URL, hosting, and theme. Build and verify the website before

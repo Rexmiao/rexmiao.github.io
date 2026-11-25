@@ -61,6 +61,14 @@ jobs:
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v4
+      - name: Install ImageMagick
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y imagemagick
+          if ! command -v convert >/dev/null 2>&1; then
+            sudo ln -s "$(command -v magick)" /usr/local/bin/convert
+          fi
+          convert -version
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
@@ -78,6 +86,9 @@ jobs:
           pip3 install --upgrade jupyter
           export JEKYLL_ENV=production
           bundle exec jekyll build --lsi
+          test -s _site/assets/img/runtian-miao-480.webp
+          test -s _site/assets/img/runtian-miao-800.webp
+          test -s _site/assets/img/runtian-miao-1400.webp
       - name: Purge unused CSS 🧹
         run: |
           npm install -g purgecss
