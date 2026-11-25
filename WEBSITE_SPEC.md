@@ -9,6 +9,8 @@ Updated: 2026-11-25.
 - Framework/theme: existing al-folio/Jekyll.
 - Source branch: `master`; generated publication branch: `gh-pages`.
 - Deployment workflow: `.github/workflows/deploy.yml`.
+- Ruby setup follows the latest patch of the `3.2` series, so newer GitHub runner
+  images can use an available build instead of the retired `3.2.2` binary.
 - Primary navigation: About, Publications, Projects, CV.
 
 Retain the existing URL, hosting, and theme. Build and verify the website before
