@@ -534,6 +534,24 @@ canvas {
   border-top: 1px solid var(--rule);
   font-size: 0.87rem;
 }
+.fan-explainer {
+  display: grid;
+  gap: 0.55rem;
+}
+.fan-explainer h3 {
+  color: var(--ink);
+  font-size: 1rem;
+}
+.fan-explainer p {
+  max-width: 100ch;
+}
+.fan-reading,
+.equity-verdict {
+  color: var(--ink);
+  background: #f0f4ea;
+  border-left: 0.2rem solid #729e76;
+  padding: 0.65rem 0.85rem;
+}
 
 .evaluation-section {
   background: #ecf1e6;
@@ -661,6 +679,9 @@ canvas {
 .equity-table tbody tr:last-child {
   border-bottom: 1px solid var(--rule);
 }
+.equity-verdict {
+  margin-top: 1rem;
+}
 .equity-sample {
   padding: 0.85rem 1rem;
   border: 1px solid var(--rule);
@@ -728,6 +749,10 @@ canvas {
   display: grid;
   gap: 0.6rem;
   margin-top: 1rem;
+}
+.findings-notes h4 {
+  margin: 0 0 0.3rem;
+  font-size: 1rem;
 }
 #equity-evaluation + .method {
   border-top: 1px solid var(--rule);

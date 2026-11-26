@@ -36,8 +36,15 @@ const en = {
   observed: "Observed",
   initialVol: "Starting volatility",
   simulatedMedian: "Simulated median",
-  fanNote:
-    "A step advances one published rate. The point forecast is the square root of conditional expected variance. Paths with no jump share the same decline, so some quantiles can coincide. The bands omit parameter uncertainty.",
+  fanExplainTitle: "How to read the USD/JPY forecast",
+  fanDataSummary:
+    "The source is the Federal Reserve H.10 New York noon USD/JPY reference rate. The sample includes 2,720 valid fixes from 2016-01-04 through 2026-11-20. The model is fitted on the first 2,176 observations.",
+  fanTargetNote:
+    "At the origin, annualized variance is 252 times the mean of the latest five squared log rate changes. A step advances one published fix, skipping dates without quotes. At the fifth future fix, for example, the observed target uses the five changes ending at that fix.",
+  fanEstimateNote:
+    "The point forecast takes the square root of expected terminal variance. The simulated median is the 50th percentile of terminal volatility. Positive jumps can raise expected variance. All paths with no jumps decay to the same value, which can make quantiles coincide.",
+  fanBandNote:
+    "At each horizon, the central 50% and 90% bands span the 25th–75th and 5th–95th percentiles of the 20,000 simulated endpoints. These are per-horizon intervals for future shocks under fixed fitted parameters.",
   evaluationEyebrow: "Historical validation",
   evaluationTitle: "USD/JPY out-of-sample performance",
   evaluationIntro:
@@ -82,8 +89,11 @@ const en = {
   equityFindingsWindow: "Data and horizon",
   equityFindingsWins: "Lowest QLIKE counts across all models",
   equityFindingsGamma: "Tickers where Gamma–OU beat both HAR and EWMA",
+  equityFindingsReadingTitle: "How to read the all-model counts",
+  equityFindingsReading:
+    "Within each frequency and horizon, compare all available models for each ticker, including the fixed training mean. A model gets one count for the lowest QLIKE. Exact ties count for each tied model. For one-day forecasts with minute-derived data, HAR 4 means HAR had the lowest QLIKE for four of the seven tickers. The count shows how often a model led. Use the per-ticker results above to see the size of the differences.",
   equityGammaFindings:
-    "Gamma–OU had the lowest daily QLIKE for JPM at 5 days and for AMD and NBIS at 22 days. GARCH led JPM at 1 day. For AMD with minute-derived data, the fixed training mean had the lowest QLIKE at all three horizons.",
+    "The right column compares Gamma–OU with HAR and EWMA. For AMD with minute-derived data, Gamma–OU beat both at all three horizons, and the fixed training mean scored lower still. Gamma–OU led across all models on daily data for JPM at 5 days and for AMD and NBIS at 22 days. GARCH led on daily JPM at 1 day.",
   equityRmseFindings:
     "By volatility RMSE, Gamma–OU led on daily data for AVGO at 1 and 5 days, NBIS at 5 and 22 days, and AMD at 22 days. With minute-derived data, HAR led on 6 of 7 tickers at both 1 and 5 days and 5 of 7 at 22 days.",
   equityFindingsNote:
@@ -96,9 +106,14 @@ const en = {
     "J is a compound Poisson process with intensity λk and exponential jump sizes of mean θ. Between jumps, V decays at rate λ. The stationary distribution is Gamma with shape k and scale θ.",
   calibrationCopy:
     "The training sample estimates long-run variance m, persistence φ = exp(−λ), and the Gamma parameters by moments. At each evaluation origin, the latest known variance updates the state while all fitted parameters stay fixed.",
-  limitations: "Interpreting the results",
+  limitations: "Reading the USD/JPY results",
   limitationsCopy:
     "The target is the annualized five-change volatility proxy at the terminal observation. The conditional mean is the same as a mean-reverting AR(1) with the same parameters. Use interval coverage and the no-jump floor to assess what the jump distribution adds. The experiment does not estimate leverage, changing parameters, or trading performance.",
+  equityMethodTitle: "Reading the U.S. equity results",
+  equityMethodTarget:
+    "Daily data use squared adjusted close-to-close log returns. The minute-derived measure adds regular-session realized variance and the squared overnight return. A five-day target, for example, averages daily variance over the five sessions after the origin and annualizes it by multiplying by 252. The square root expresses the target as annualized volatility.",
+  equityMethodReading:
+    "A positive Gamma–OU jump is a rise in variance. Both stock gains and losses contribute to variance. Gamma–OU point forecasts average conditional expected variance over the future sessions. An AR(1) with the same long-run mean and persistence gives the same point forecast. Equity QLIKE and RMSE measure historical point forecast errors. Testing the jump mechanism calls for a separate check of interval or tail-quantile calibration.",
   calibrated: "Parameters fitted on training data",
   longRunVol: "Long-run variance as volatility √m",
   dailyPersistence: "One-step persistence φ",
@@ -154,8 +169,15 @@ const zh = {
   observed: "实测",
   initialVol: "起始波动率",
   simulatedMedian: "模拟中位数",
-  fanNote:
-    "每一步对应一个有效参考汇率。点预测取条件期望方差的平方根。无跳跃路径具有相同的衰减值，因此若干分位数可能重合。区间不包含参数估计的不确定性。",
+  fanExplainTitle: "怎样读这张外汇预测图",
+  fanDataSummary:
+    "数据来自美联储 H.10 的 USD/JPY 纽约中午参考报价。样本包括 2016-01-04 至 2026-11-20 的 2,720 个有效报价，模型用最早的 2,176 个观测拟合。",
+  fanTargetNote:
+    "起点用最近五次对数汇率变化的平方均值乘以 252 得出年化方差。每一步对应下一个有效报价，跳过缺报价的日期。以之后第 5 个有效报价为例，该期限的实测按截至目标报价的最近五次变化计算。",
+  fanEstimateNote:
+    "点预测先求终点方差的条件期望，再开平方。模拟中位数是终点波动率的第 50 百分位。正向跳跃可以抬高平均方差，无跳跃的路径都沿同一轨迹衰减，因此部分分位数会重合。",
+  fanBandNote:
+    "每个期限分别取 20,000 条路径模拟终点的第 25 至 75 百分位和第 5 至 95 百分位，得到中央 50% 和 90% 色带。色带反映已拟合模型下的未来冲击，拟合参数保持固定。",
   evaluationEyebrow: "历史验证",
   evaluationTitle: "USD/JPY 样本外表现",
   evaluationIntro: "按时间顺序固定训练与检验样本。三个预测窗口使用相同的检验目标日期，并在这些日期比较模型和两个基准。",
@@ -194,8 +216,11 @@ const zh = {
   equityFindingsWindow: "频率与期限",
   equityFindingsWins: "全模型 QLIKE 最低次数",
   equityFindingsGamma: "Gamma–OU 同时低于 HAR 与 EWMA 的标的",
+  equityFindingsReadingTitle: "怎样理解「全模型 QLIKE 最低次数」",
+  equityFindingsReading:
+    "对固定的数据口径和期限，先逐个标的比较该行全部可用模型，含固定训练均值。QLIKE 最低的模型得到一次计数，精确并列则各计一次。比如分钟线 1 日的 HAR 4，表示 7 个标的中有 4 个由 HAR 得到最低 QLIKE。计数反映领先覆盖了多少标的。误差差距可在上方的逐标的结果中查看。",
   equityGammaFindings:
-    "Gamma–OU 的日线 QLIKE 在 JPM（5 日）、AMD 和 NBIS（22 日）上全模型最低。JPM 日线 1 日的最低值来自 GARCH。AMD 分钟线在三个期限都由固定训练均值取得最低 QLIKE。",
+    "右栏只比较 Gamma–OU、HAR 和 EWMA。以 AMD 分钟线为例，Gamma–OU 在三个期限的 QLIKE 都低于 HAR 和 EWMA，同一组的固定训练均值更低。Gamma–OU 的全模型最低记录来自日线 JPM（5 日）及 AMD 和 NBIS（22 日）。 日线 JPM 的 1 日最低值来自 GARCH。",
   equityRmseFindings:
     "按波动率 RMSE 衡量，Gamma–OU 在日线 AVGO（1、5 日）、NBIS（5、22 日）和 AMD（22 日）上最低。HAR 在分钟线 1、5、22 日分别有 6/7、6/7、5/7 个标的的 RMSE 最低。",
   equityFindingsNote: "日线和分钟线使用各自的历史检验样本。NBIS 日线采用单独的较短样本。Gamma–OU 的点预测分数反映条件均值的误差。",
@@ -206,9 +231,14 @@ const zh = {
   modelCopy:
     "J 是强度为 λk 的复合 Poisson 过程。跳跃大小服从均值为 θ 的指数分布。在跳跃之间，V 以速率 λ 衰减。在平稳状态下，V 服从形状 k、尺度 θ 的 Gamma 分布。",
   calibrationCopy: "用训练样本和矩估计确定长期方差 m、持续性 φ = exp(−λ) 和 Gamma 参数。每个检验时点用当时已知的方差更新预测状态，模型参数保持固定。",
-  limitations: "如何解读",
+  limitations: "怎样解读外汇结果",
   limitationsCopy:
     "预测目标是窗口末端由最近五次汇率变化计算的年化波动率代理量。相同参数下，Gamma–OU 的条件均值与均值回归 AR(1) 一致。检验跳跃分布时，可重点看预测区间覆盖率和无跳跃下界。实验没有估计杠杆效应、参数变化或交易表现。",
+  equityMethodTitle: "怎样解读美股结果",
+  equityMethodTarget:
+    "日线用相邻交易日的复权收盘对数收益平方。分钟线用常规时段已实现方差加隔夜收益平方。以 5 日为例，目标是起点之后五个交易日的日度方差取平均，再乘以 252 年化。对应的年化波动率取这个目标的平方根。",
+  equityMethodReading:
+    "Gamma–OU 的正向跳跃指方差上升，股票上涨或下跌都可能贡献方差。Gamma–OU 的点预测对未来每一步的条件期望方差取平均，与长期均值和持续性相同的 AR(1) 给出相同的点预测。美股表的 QLIKE 和 RMSE 比较这些点预测的历史误差。要检验跳跃机制，需要另外比较预测区间或尾部分位数的校准。",
   calibrated: "训练样本拟合参数",
   longRunVol: "长期方差对应波动率 √m",
   dailyPersistence: "单日持续性 φ",
@@ -352,6 +382,24 @@ function updateForecastView() {
   text("fanMedian", percentage(item.q50));
   text("interval50", range(item.q25, item.q75));
   text("interval90", range(item.q05, item.q95));
+  const observedReading = forecastsAreHistorical
+    ? localText(
+        `The observed proxy on ${item.target_date} was ${percentage(targetObserved(item))}.`,
+        `${item.target_date} 的实测代理量为 ${percentage(targetObserved(item))}。`
+      )
+    : localText("The target lies beyond the stored sample, so the observed value is unavailable.", "目标报价在样本截止日之后，因此实测为空。");
+  text(
+    "fanReading",
+    localText(
+      `Starting from ${percentage(fan.initial_volatility)} on ${fan.as_of}, the forecast ${item.horizon} valid fixes ahead is ${percentage(
+        item.mean
+      )}. The simulated median is ${percentage(item.q50)} and the central 90% interval is ${range(item.q05, item.q95)}. ${observedReading}`,
+      `从 ${fan.as_of} 的 ${percentage(fan.initial_volatility)} 出发，之后第 ${item.horizon} 个有效报价对应的波动率点预测为 ${percentage(
+        item.mean
+      )}，模拟中位数为 ${percentage(item.q50)}，中央 90% 区间为 ${range(item.q05, item.q95)}。${observedReading}`
+    )
+  );
+  byId("fanReading").hidden = false;
   const label = localText(
     `Forecast distribution as of ${fan.as_of}. Horizon ${days}. The point forecast is ${percentage(
       item.mean
@@ -748,23 +796,28 @@ async function loadResults() {
   }
 }
 
-function equityScoreRows(scores) {
+function equityMetricLeaders(scores, metric) {
   const entries = Object.entries(scores);
-  const metrics = ["qlike", "rmse"];
-  const best = metrics.map((metric) => Math.min(...entries.map(([, score]) => score[metric])));
+  const value = Math.min(...entries.map(([, score]) => score[metric]));
+  return { value, models: entries.filter(([, score]) => score[metric] === value).map(([model]) => model) };
+}
 
-  return entries.map(([model, score]) => {
+function equityScoreText(metric, value) {
+  const score = fixed(value, metric === "qlike" ? 4 : 2);
+  return metric === "qlike" && value > 0 ? `+${score}` : score;
+}
+
+function equityScoreRows(scores, leaders) {
+  return Object.entries(scores).map(([model, score]) => {
     const row = document.createElement("tr");
     const name = document.createElement("th");
     name.scope = "row";
     name.textContent = equityModelName(model);
     row.append(name);
-    for (const [index, metric] of metrics.entries()) {
+    for (const [metric, leader] of Object.entries(leaders)) {
       const cell = document.createElement("td");
-      const precision = metric === "qlike" ? 4 : 2;
-      const scoreText = fixed(score[metric], precision);
-      cell.textContent = metric === "qlike" && score[metric] > 0 ? `+${scoreText}` : scoreText;
-      if (score[metric] === best[index]) {
+      cell.textContent = equityScoreText(metric, score[metric]);
+      if (score[metric] === leader.value) {
         cell.className = "best";
         cell.setAttribute("aria-label", `${cell.textContent}, ${translate("equityBest")}`);
       }
@@ -772,6 +825,29 @@ function equityScoreRows(scores) {
     }
     return row;
   });
+}
+
+function equityVerdict(selection, leaders) {
+  const { qlike, rmse } = leaders;
+  const names = new Intl.ListFormat(localText("en-US", "zh-CN"));
+  const qlikeNames = names.format(qlike.models.map(equityModelName));
+  const rmseNames = names.format(rmse.models.map(equityModelName));
+  const qlikeValue = equityScoreText("qlike", qlike.value);
+  const rmseValue = equityScoreText("rmse", rmse.value);
+  const reading =
+    qlikeNames === rmseNames
+      ? localText(
+          `In the ${selection} holdout, ${qlikeNames} had the lowest QLIKE difference (${qlikeValue}) and volatility RMSE (${rmseValue} pp).`,
+          `在 ${selection} 的样本外检验中，${qlikeNames} 的 QLIKE 差值（${qlikeValue}）和波动率 RMSE（${rmseValue} 个百分点）均最低。`
+        )
+      : localText(
+          `In the ${selection} holdout, ${qlikeNames} had the lowest QLIKE difference (${qlikeValue}), and ${rmseNames} had the lowest volatility RMSE (${rmseValue} pp).`,
+          `在 ${selection} 的样本外检验中，${qlikeNames} 的 QLIKE 差值最低（${qlikeValue}），${rmseNames} 的波动率 RMSE 最低（${rmseValue} 个百分点）。`
+        );
+  return `${reading} ${localText(
+    "Rankings can change with the ticker, data frequency, horizon, or holdout sample.",
+    "换标的、数据口径、期限或检验样本，排名可能改变。"
+  )}`;
 }
 
 function renderEquity() {
@@ -799,11 +875,14 @@ function renderEquity() {
   }
 
   const result = mode.horizons[equity.horizon];
-  status.textContent = `${selection} · ${translate(`h${equity.horizon}`)} · ${translate("equityOriginCount")} ${countText(mode.origins)}`;
+  const selectedHorizon = `${selection} · ${translate(`h${equity.horizon}`)}`;
+  status.textContent = `${selectedHorizon} · ${translate("equityOriginCount")} ${countText(mode.origins)}`;
   text("equityOrigins", countText(mode.origins));
   text("equityOriginRange", `${mode.first_origin} – ${mode.last_origin}`);
   text("equityTargetRange", `${result.target_start} – ${result.target_end}`);
-  byId("equityScores").replaceChildren(...equityScoreRows(result.scores));
+  const leaders = { qlike: equityMetricLeaders(result.scores, "qlike"), rmse: equityMetricLeaders(result.scores, "rmse") };
+  byId("equityScores").replaceChildren(...equityScoreRows(result.scores, leaders));
+  text("equityVerdict", equityVerdict(selectedHorizon, leaders));
 }
 
 function equityFindingsRows() {
@@ -815,10 +894,7 @@ function equityFindingsRows() {
       const gammaAhead = [];
       for (const [ticker, modes] of evaluated) {
         const { scores } = modes[frequency].horizons[horizon];
-        const minimum = Math.min(...Object.values(scores).map((score) => score.qlike));
-        for (const [model, score] of Object.entries(scores)) {
-          if (score.qlike === minimum) wins.set(model, (wins.get(model) ?? 0) + 1);
-        }
+        for (const model of equityMetricLeaders(scores, "qlike").models) wins.set(model, (wins.get(model) ?? 0) + 1);
         if (scores.gamma_ou.qlike < Math.min(scores.har_direct.qlike, scores.ewma.qlike)) gammaAhead.push(ticker);
       }
 

@@ -2,7 +2,7 @@
 
 [简体中文](WEBSITE_SPEC.zh-CN.md) | **English**
 
-Updated: 2026-11-25.
+Updated: 2026-11-26.
 
 ## Website and deployment
 
@@ -149,6 +149,14 @@ The cleaning timeline includes a 12-month overview for the selected year.
 It counts missing and excluded dates using the same status as the calendar.
 Selecting a covered month opens its date view. Outside-coverage months are
 marked distinctly from audited months with zero issues.
+
+The bilingual lab explains the selected equity model scores, how to interpret
+the lowest-QLIKE counts, and the equity forward-average variance target. The FX
+fan explanation gives the underlying reference fixes, terminal proxy, point
+forecast, simulated quantiles, and fixed-parameter interpretation. The data
+methodology explains why each source is cleaned and how SHA-256 identifies the
+saved file snapshot. Navigation labels distinguish the lab home from its
+equity comparison and findings anchors.
 
 Only portfolio entries marked `portfolio: runtian` appear on the Projects page.
 Template projects, sample publications, and sample CV data must not appear as

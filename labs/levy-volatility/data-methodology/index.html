@@ -18,8 +18,8 @@
           <span>Lévy<span class="wordmark-divider">/</span>Lab</span>
         </a>
         <div class="nav-links">
-          <a href="../"><span lang="zh-CN">返回实验室</span><span lang="en" hidden>Back to lab</span></a>
-          <a href="../#equity-evaluation"><span lang="zh-CN">美股对比</span><span lang="en" hidden>Equity comparison</span></a>
+          <a href="../"><span lang="zh-CN">实验室首页</span><span lang="en" hidden>Lab home</span></a>
+          <a href="../#equity-evaluation"><span lang="zh-CN">美股模型对比</span><span lang="en" hidden>Equity model comparison</span></a>
           <a href="../#equity-findings"><span lang="zh-CN">总体结果</span><span lang="en" hidden>Findings</span></a>
         </div>
         <button type="button" class="language" id="methodLanguage" aria-label="Switch to English">EN</button>
@@ -83,6 +83,11 @@
               </article>
             </div>
             <p class="methodology-note">
+              <strong>SHA-256 是什么？</strong> 它根据文件的全部字节生成一个 256
+              位的摘要，相当于文件指纹。下载后重新计算摘要，与归档预先记录的值核对，确认下载内容与快照一致。
+              <a class="text-link" href="https://csrc.nist.gov/glossary/term/sha_256">NIST 官方释义</a>
+            </p>
+            <p class="methodology-note">
               另存一份 Yahoo 近 60 天 5 分钟快照供独立核查，每个标的 4,680 根，实际覆盖 2026-09-02 至 2026-11-25。网页上的分钟线模型评分使用上面的
               Syncster 归档和 Yahoo 日线隔夜端点。
             </p>
@@ -128,6 +133,11 @@
               </article>
             </div>
             <p class="methodology-note">
+              <strong>What is SHA-256?</strong> It computes a 256-bit digest from all the bytes in a file, like a fingerprint. We recompute the digest
+              after downloading and compare it with the value recorded by the archive to confirm that the file matches the snapshot.
+              <a class="text-link" href="https://csrc.nist.gov/glossary/term/sha_256">NIST glossary</a>
+            </p>
+            <p class="methodology-note">
               A separate 60-day Yahoo five-minute request provided a cross-check snapshot with 4,680 bars per ticker from 2026-09-02 through
               2026-11-25. The published minute-derived model scores use the Syncster archive above and Yahoo daily overnight endpoints.
             </p>
@@ -137,6 +147,12 @@
         <section id="cleaning" class="methodology-section">
           <div lang="zh-CN">
             <h2>怎样清洗并构造方差</h2>
+            <h3>为什么在拟合前清洗</h3>
+            <p>
+              方差取决于收益的平方，错误报价会放大误差，重复记录和缺失值也会改变取样窗口。在外汇数据里，用前一笔报价填补
+              <code>ND</code> 会人为加入一次零变化。在美股日线里，跨过缺失的收盘价会把多日变化当成单日收益。分钟线按完整的 5
+              分钟区间计算盘中方差，再用隔夜端点和跨来源检查判断能否构造全日方差。这些规则统一了拟合和评估所用观测的口径。若行情缺失集中在高波动时段，保留的样本仍可能偏向数据较完整的交易日。
+            </p>
             <h3>外汇参考汇率</h3>
             <p>
               跳过原表的
@@ -148,6 +164,10 @@
             <p>
               核对标的、美元计价、纽约时区及日线频率。保持日期唯一有序，校验正价格、OHLC
               高低关系和非负整数成交量。空行情行跳过，拆股和分红事件保存在单独文件。用相邻交易所交易日的复权收盘价计算对数收益，并将其平方作为日度方差代理量。任何一个收盘端点缺失，该笔收益保持缺失。
+            </p>
+            <p class="methodology-note">
+              <strong>SNDK 日线实例。</strong> 2026-11-25 的日线报价有效，保留在数据中。前一个交易日 11 月 24 日的报价不完整，因此 11 月 25
+              日的复权收盘到收盘收益留空。
             </p>
             <h3>分钟线推算的全日方差</h3>
             <ol class="methodology-steps">
@@ -167,11 +187,19 @@
             </ol>
             <p class="methodology-note">
               <strong>AMD 清洗实例。</strong> 2,718 个交易日里，8 日因缺少 5 分钟区间而无法计算盘中方差。其余 2,710 日中，28 日触发 50 基点规则，1
-              日缺少复权日线端点，最终得到 2,681 个全日方差观测。
+              个预热日缺少上一交易日的复权收盘价，最终得到 2,681 个全日方差观测。
             </p>
           </div>
           <div lang="en" hidden>
             <h2>How the data was cleaned and turned into variance</h2>
+            <h3>Why clean the data before fitting?</h3>
+            <p>
+              Variance uses squared returns, so a bad quote can magnify errors. Duplicate or missing records can also change the sampling window.
+              Carrying an FX quote forward over an <code>ND</code> would add an artificial zero change. Skipping a missing equity close would treat a
+              multi-session change as one day's return. Complete five-minute bins support the intraday estimate, and overnight endpoints and
+              cross-source checks determine whether full-day variance is available. These rules keep the inputs consistent between fitting and
+              evaluation. If data gaps cluster in volatile periods, the retained sample can favor better-covered sessions.
+            </p>
             <h3>FX reference rates</h3>
             <p>
               The parser skips <code>ND</code> values, requires unique ordered dates, and validates finite positive rates. Gaps stay open. Log changes
@@ -185,6 +213,10 @@
               prices, OHLC ranges, and integer volume of zero or greater. Rows with null quotes are skipped. Split and dividend events go to a
               separate file. Squared log changes between adjusted closes of adjacent exchange sessions form the daily variance proxy. A missing close
               leaves the associated returns missing.
+            </p>
+            <p class="methodology-note">
+              <strong>SNDK daily example.</strong> The valid 2026-11-25 quote stays in the data. The prior session's quote on November 24 is
+              incomplete, so the November 25 adjusted close-to-close return stays missing.
             </p>
             <h3>Full-day variance from minute data</h3>
             <ol class="methodology-steps">
@@ -208,7 +240,7 @@
             </ol>
             <p class="methodology-note">
               <strong>AMD cleaning example.</strong> Of 2,718 exchange sessions, 8 had missing five-minute bins. Of the other 2,710, 28 exceeded the
-              50-basis-point threshold and 1 lacked an adjusted daily endpoint. That left 2,681 full-day variance values.
+              50-basis-point threshold and the first session lacked a prior adjusted close for warm-up. That left 2,681 full-day variance values.
             </p>
           </div>
         </section>
@@ -375,7 +407,8 @@
           <div lang="zh-CN">
             <h2>怎样核查和复现</h2>
             <p>
-              公开的外汇 CSV 和来源 JSON 保留建模观测、预热报价、快照日期和观测文件的 SHA-256。可以用公开脚本从保存的 H.10 原始表重建
+              公开的外汇 CSV 和来源 JSON 保留建模观测、预热报价、快照日期和观测文件的
+              <a class="text-link" href="https://csrc.nist.gov/glossary/term/sha_256">SHA-256</a> 校验值。可以用公开脚本从保存的 H.10 原始表重建
               CSV，也可以用现有 CSV 直接重算模型。美联储可能修订历史报价，重新下载后可对比校验值。
             </p>
             <p>
@@ -393,9 +426,10 @@
           <div lang="en" hidden>
             <h2>How to verify and reproduce the results</h2>
             <p>
-              The public FX CSV and provenance JSON provide the model observations, warm-up fixes, snapshot dates, and a SHA-256 checksum. Rebuild the
-              CSV with the public script and a saved H.10 source table or rerun the model from the included CSV. The Board can revise past rates, so
-              compare checksums after a new download.
+              The public FX CSV and provenance JSON provide the model observations, warm-up fixes, snapshot dates, and a
+              <a class="text-link" href="https://csrc.nist.gov/glossary/term/sha_256">SHA-256</a> checksum. Rebuild the CSV with the public script and
+              a saved H.10 source table or rerun the model from the included CSV. The Board can revise past rates, so compare checksums after a new
+              download.
             </p>
             <p>
               Equity snapshots and processing logs live in the local research project. Manifests record sources and checksums. Daily audits retain
