@@ -42,6 +42,7 @@ I have completed **36 peer reviews**, including revision rounds, and contributed
 - **IEEE Journal of Biomedical and Health Informatics** · JIF 7.7 · **31 reviews**
 - **Smart Health** (Elsevier) · JIF 3.4 · **4 reviews**
 - **ACM Transactions on Computing for Healthcare** · JIF 4.0 · **1 review**
+- **American Journal of Artificial Intelligence** · **Peer reviewer** · Three-year term from November 24, 2026 through November 24, 2029
 - **NeuroImage** · JIF 5.3 · **1 collaborative review**
 - **The Journal of Pathology: Clinical Research** · JIF 4.1 · **Reviewer pool member**
 
