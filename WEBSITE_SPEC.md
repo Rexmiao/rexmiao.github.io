@@ -101,11 +101,12 @@ appointment is listed on November 24, 2026, with a term through November 24,
 
 ## Invited peer review
 
-The About page links journal names to official journal or publisher pages and
-highlights available Journal Impact Factors (JIF) and review counts. It links
-to `/cv/#peer-review`. The homepage lists the American Journal of Artificial
-Intelligence peer reviewer role. The CV and News give its three-year term from
-November 24, 2026 through November 24, 2029. This entry carries no review count.
+The About and CV pages use the same official journal or publisher links in
+their peer review sections. About highlights available Journal Impact Factors
+(JIF) and review counts and links to `/cv/#peer-review`. The homepage lists the
+American Journal of Artificial Intelligence peer reviewer role. The CV shows
+its dates as November 24, 2026 to November 24, 2029. News describes the
+appointment term. This entry carries no review count.
 The 36 completed reviews include revision rounds. Manuscript counts belong in
 the CV.
 Keep the one _NeuroImage_ collaborative review and _The Journal of Pathology:

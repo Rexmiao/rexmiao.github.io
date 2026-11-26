@@ -53,7 +53,7 @@ News 于 2026 年 11 月 24 日记录 American Journal of Artificial Intelligenc
 
 首页突出显示各期刊名称、影响因子和 CV 记录的审稿次数，并链接到 `/cv/#peer-review`。36 次已完成审稿含修回轮次，稿件数量保留在 CV 中。另列为 _NeuroImage_ 完成的 1 次合作审稿及 _The Journal of Pathology: Clinical Research_ 审稿人库成员身份。保留稿件内容的保密性。所列影响因子为 2026 年发布的 Journal Citation Reports 的 2025 年数据，[公开表格](https://www.niic.nsc.ru/phocadownload/publications/2025/JCR_JournalImpactFactor_2026.pdf)按发布年份标注列名。
 
-首页的期刊名称均链接到期刊或出版商的官方页面。American Journal of Artificial Intelligence 的首页条目显示同行审稿人身份，三年任期在 CV 和 News 中列出，从 2026 年 11 月 24 日至 2029 年 11 月 24 日。该条目暂不列审稿次数。
+首页与 CV 的同行评审栏目使用相同的期刊或出版商官方链接。American Journal of Artificial Intelligence 的首页条目显示同行审稿人身份，CV 列出起止日期为 2026 年 11 月 24 日至 2029 年 11 月 24 日。News 动态记录任命期限。该条目暂不列审稿次数。
 
 ## 项目作品集
 

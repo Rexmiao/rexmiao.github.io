@@ -140,32 +140,38 @@
   contents:
     - title: Peer Reviewer
       institution: IEEE Journal of Biomedical and Health Informatics
+      institution_url: https://www.embs.org/jbhi/
       year: 2026<br>– Present
       description:
         - >-
           Completed 31 peer reviews across 22 manuscripts, including revision rounds, in biomedical AI, medical imaging, graph learning, computational pathology, and foundation-model applications.
     - title: Peer Reviewer
       institution: Smart Health (Elsevier)
+      institution_url: https://shop.elsevier.com/journals/smart-health/2352-6483
       year: 2026<br>– Present
       description:
         - Completed 4 peer reviews across 2 manuscripts, including revision rounds, in digital health, biomedical AI, and medical data analytics.
     - title: Peer Reviewer
       institution: ACM Transactions on Computing for Healthcare
+      institution_url: https://www.acm.org/binaries/content/assets/press-releases/2020/march/health-launches.pdf
       year: 2026<br>– Present
       description:
         - Completed 1 manuscript peer review.
     - title: Peer Reviewer
       institution: American Journal of Artificial Intelligence
+      institution_url: https://www.sciencepublishinggroup.com/journal/542/home
       year: 2026<br>– 2029
       description:
-        - Three-year term from November 24, 2026 through November 24, 2029.
+        - November 24, 2026 – November 24, 2029
     - title: Co-reviewer
       institution: NeuroImage
+      institution_url: https://shop.elsevier.com/journals/neuroimage/1053-8119
       year: 2026
       description:
         - Contributed to 1 collaborative manuscript review with James C. Gee and Christopher Olm.
     - title: Reviewer Pool
       institution: "The Journal of Pathology: Clinical Research"
+      institution_url: https://www.pathsoc.org/news/43/journal_of_pathology_clinical_research/
       year: 2026<br>– Present
       description:
         - Selected by the editorial office to serve as a peer reviewer in areas aligned with digital pathology, medical image analysis, and computational methods.

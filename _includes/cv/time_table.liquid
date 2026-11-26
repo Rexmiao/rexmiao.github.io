@@ -39,7 +39,13 @@
                     <td style="vertical-align: top; text-align: center" class="institution">
                       <i class="fa-solid fa-building-columns iconinstitution"></i>
                     </td>
-                    <td class="institution">{{ content.institution }}</td>
+                    <td class="institution">
+                      {% if content.institution_url %}
+                        <a href="{{ content.institution_url | escape }}">{{ content.institution | escape }}</a>
+                      {% else %}
+                        {{ content.institution }}
+                      {% endif %}
+                    </td>
                   </tr>
                 {% endif %}
                 {% if content.department %}
