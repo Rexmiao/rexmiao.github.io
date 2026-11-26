@@ -37,7 +37,7 @@
 - Hugging Face：`Rexymiao`，<https://huggingface.co/Rexymiao>，入口位于首页社交图标区。
 - X：`@Rexy69492164`，<https://x.com/Rexy69492164>，由用户提供的截图确认。
 
-首页简介提及校队田径和多次半程马拉松经历。粗体名称分别链接到[宾大 AMCS 项目](https://amcs.upenn.edu/)、Quick Annotator 和 HistoQC 项目详情、[Sedeen Viewer 产品页](https://www.pathcore.com/products/sedeen-viewer)以及 [WRDS 官网](https://wrds-www.wharton.upenn.edu/)。
+首页社交图标与邮箱放在副标题下方、个人简介上方。简介提及校队田径和多次半程马拉松经历。粗体名称分别链接到[宾大 AMCS 项目](https://amcs.upenn.edu/)、Quick Annotator 和 HistoQC 项目详情、[Sedeen Viewer 产品页](https://www.pathcore.com/products/sedeen-viewer)以及 [WRDS 官网](https://wrds-www.wharton.upenn.edu/)。
 
 不得推断缺失的学位日期、毕业情况、稿件录用状态、个人科研资助归属或投资业绩。保留 2026 年 npj Dementia 稿件的审稿中状态，以及 ISFTD 2026 海报的已接受状态。Quick Annotator 的期刊文章与预印本应视为同一工作的不同版本。
 
@@ -45,7 +45,7 @@
 
 通过 `_pages/about.md` 及 `_config.yml` 的 announcements 设置启用首页 News 栏目。导航中的 News 打开 `/news/`，该页面列出已发布的新闻集合，并链接到已确认的 X 账号。
 
-首篇当前动态为 `_news/website-update.md`，发文日期按用户的 America/New_York 时区设为 2026-11-25。文章说明实际完成的 CV、学术成果及量化项目作品集更新，并链接到对应页面。继续排除模板公告，不得编造发文日期或研究里程碑。后续在 `_news/` 添加有明确日期的真实动态。首页最多展示最近五条，`/news/` 列出全部动态。
+首篇网站更新动态为 `_news/website-update.md`，发文日期按用户的 America/New_York 时区设为 2026-11-25。文章说明实际完成的 CV、学术成果及量化项目作品集更新，并链接到对应页面。继续排除模板公告，不得编造发文日期或研究里程碑。后续在 `_news/` 添加有明确日期的真实动态。首页最多展示最近五条，`/news/` 列出全部动态。已补入 CV 中 2018 至 2026 年的七条会议和报告记录，包括 CWRU SURES、瑞士病理学会年会、三次宾大 Pendergrass 研讨会及两次 ISFTD。2026 年 ISFTD 海报按会议议程及接收状态表述。仅核实到月份的条目使用 `date_label`，排序按月份处理。
 
 ## 受邀同行评审
 

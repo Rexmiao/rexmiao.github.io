@@ -66,7 +66,8 @@ supplied the replacement portrait stored at `assets/img/runtian-miao.jpg`.
 - X: `@Rexy69492164`, <https://x.com/Rexy69492164>, confirmed by the user's
   supplied screenshot.
 
-The homepage bio mentions varsity track and multiple half marathons. The bold
+The homepage social icons and email links appear below the subtitle and above
+the biography. The homepage bio mentions varsity track and multiple half marathons. The bold
 program and software names link to the [Penn AMCS program](https://amcs.upenn.edu/),
 the Quick Annotator and HistoQC portfolio pages, the [Sedeen Viewer product page](https://www.pathcore.com/products/sedeen-viewer),
 and the [WRDS homepage](https://wrds-www.wharton.upenn.edu/).
@@ -87,7 +88,13 @@ user's America/New_York timezone. It reports the actual CV, publications, and
 quantitative project portfolio update, with links to the relevant pages. Keep
 template announcements excluded; do not invent publication dates or research
 milestones. Add new verified milestones as dated entries in `_news/`. The
-homepage shows up to five recent items and `/news/` lists all entries.
+homepage shows up to five recent items and `/news/` lists all entries. The
+archive covers the CV's seven conference and symposium records from 2018 to 2026,
+including the CWRU SURES presentations, Swiss Society of Pathology abstract,
+three Penn Pendergrass posters, and the 2024 and 2026 ISFTD posters. Label the
+accepted 2026 ISFTD poster by its program status. Use `date_label` for entries
+with only month-level precision. The date in their front matter sorts the
+entry by month.
 
 ## Invited peer review
 

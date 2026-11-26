@@ -16,7 +16,7 @@ profile:
 
 news: true
 selected_papers: true # includes a list of papers marked as "selected={true}"
-social: true # includes social icons at the bottom of the page
+social: true # includes social icons and contact links below the subtitle
 ---
 
 I am a Ph.D. candidate in **[Applied Mathematics and Computational Science](https://amcs.upenn.edu/)** at the [University of Pennsylvania](https://www.upenn.edu/). My research brings together medical imaging, computational neuroscience, statistical modeling, and biomedical artificial intelligence. Outside research, I have run varsity track and completed multiple half marathons.

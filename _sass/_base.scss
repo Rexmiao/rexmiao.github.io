@@ -376,7 +376,16 @@ ul.task-list input[type="checkbox"] {
   }
 }
 
-// Social (bottom)
+// Social and contact links
+
+.post-header .social {
+  margin-bottom: 1.5rem;
+  text-align: left;
+
+  .contact-icons {
+    font-size: clamp(1.75rem, 7vw, 3rem);
+  }
+}
 
 .social {
   text-align: center;
