@@ -113,7 +113,8 @@ labels columns by release year.
 
 Projects are listed at `/projects/`, with category jump links, responsive cards,
 and individual pages with return navigation. Display each card's original
-title casing and use the site theme colors for both light and dark modes.
+title casing. Use the primary theme text color for project descriptions in
+light and dark modes.
 
 | Project                                        | Detail page                      | Category              |
 | ---------------------------------------------- | -------------------------------- | --------------------- |

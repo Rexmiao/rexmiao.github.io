@@ -2,7 +2,7 @@
 layout: page
 title: Projects
 permalink: /projects/
-description: Selected work in quantitative research, interactive tools, and scientific software.
+description: Quantitative research, interactive experiments, and scientific software.
 nav: true
 nav_order: 3
 display_categories: [Quantitative Research, Research Software]
