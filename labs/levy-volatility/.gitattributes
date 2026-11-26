@@ -1,3 +1,4 @@
 data/observations.csv text eol=lf
 data/results.json text eol=lf
 data/equity-results.json text eol=lf
+data/equity-cleaning.json text eol=lf

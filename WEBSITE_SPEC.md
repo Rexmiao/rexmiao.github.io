@@ -131,6 +131,14 @@ regular-session and overnight construction, and the realized variance quality
 gates. It maps the published artifacts to their FX and U.S. equity input
 snapshots. Link to it from the lab and the volatility project page.
 
+The [equity cleaning audit](labs/levy-volatility/data-methodology/#cleaning-audit)
+provides bilingual ticker and frequency controls for all nine equities. Report
+input counts and accepted observations with their units. Show the dates and
+recorded reasons for missing daily bars or return endpoints, failed minute
+quality rules, and archived bars before the selected ticker regime. Record
+initialization and model evaluation as separate stages. Keep raw market data in
+the local research project.
+
 Only portfolio entries marked `portfolio: runtian` appear on the Projects page.
 Template projects, sample publications, and sample CV data must not appear as
 Runtian Miao's work.

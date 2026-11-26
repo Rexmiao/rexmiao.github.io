@@ -45,6 +45,16 @@ python scripts/export_equity_results.py "<path-to-equity-study>/results"
 
 原始评估文件和行情数据存于本地项目 `D:\Dropbox\量化反思总结\Levy波动率建模\equity-study`。
 
+## 美股逐标的清洗审计
+
+[交互审计](data-methodology/#cleaning-audit)逐标的展示原始数量、有效观测、剔除日期和原因。日线以交易日统计行情覆盖与有效收益。分钟线分别统计原始 K 线、常规时段 K 线、5 分钟区间和有效方差交易日。清洗记录和用于模型评估的连续窗口分别统计。
+
+准备好本地美股研究数据及其依赖后，可以在当前目录重新生成[审计数据](data/equity-cleaning.json)。
+
+```powershell
+python scripts/export_equity_cleaning.py "<path-to-equity-study>"
+```
+
 ## 参考
 
 - [美联储 H.10 日元历史汇率](https://www.federalreserve.gov/releases/h10/hist/dat00_ja.htm)

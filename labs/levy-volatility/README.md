@@ -45,6 +45,16 @@ python scripts/export_equity_results.py "<path-to-equity-study>/results"
 
 The benchmark files and raw market data are retained in the local project at `D:\Dropbox\量化反思总结\Levy波动率建模\equity-study`.
 
+## Equity cleaning audit
+
+The [interactive audit](data-methodology/#cleaning-audit) reports source counts, accepted observations, and dated exclusions for each equity. Daily coverage and return counts are measured in exchange sessions. Minute counts distinguish source bars, regular-session bars, five-minute bins, and days with usable variance. The audit tracks cleaning decisions separately from the contiguous windows used in model evaluation.
+
+With the local equity-study inputs and dependencies in place, regenerate the [audit data](data/equity-cleaning.json) from this directory:
+
+```powershell
+python scripts/export_equity_cleaning.py "<path-to-equity-study>"
+```
+
 ## References
 
 - Federal Reserve Board, H.10 historical USD/JPY rates. [Source series](https://www.federalreserve.gov/releases/h10/hist/dat00_ja.htm)

@@ -7,3 +7,4 @@ _posts/2015-10-20-math.md
 # Reproducible generated lab results.
 labs/levy-volatility/data/results.json
 labs/levy-volatility/data/equity-results.json
+labs/levy-volatility/data/equity-cleaning.json
