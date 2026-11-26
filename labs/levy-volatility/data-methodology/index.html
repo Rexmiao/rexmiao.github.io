@@ -6,8 +6,8 @@
     <meta name="description" content="Data acquisition, cleaning, evaluation samples, and reproducibility for the Lévy Volatility Lab." />
     <meta name="theme-color" content="#142b23" />
     <title>数据来源与清洗 · Lévy 波动率实验室</title>
-    <link rel="stylesheet" href="../assets/style.css" />
-    <script src="../assets/data-methodology.js" defer></script>
+    <link rel="stylesheet" href="../assets/style.css?v=year-overview" />
+    <script src="../assets/data-methodology.js?v=year-overview" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main"><span lang="zh-CN">跳到正文</span><span lang="en" hidden>Skip to content</span></a>
@@ -252,13 +252,19 @@
                 </p>
                 <p id="auditTimelineStatus" role="status" hidden></p>
                 <div id="auditTimelineBody" hidden>
+                  <section id="cleaning-year" class="audit-year-overview" aria-labelledby="auditYearTitle">
+                    <div class="audit-year-heading">
+                      <h4 id="auditYearTitle"><span lang="zh-CN">年度概览</span><span lang="en" hidden>Year overview</span></h4>
+                      <label class="select-label" for="auditTimelineYear">
+                        <span lang="zh-CN">年份</span><span lang="en" hidden>Year</span>
+                        <select id="auditTimelineYear"></select>
+                      </label>
+                    </div>
+                    <div id="auditYearMonths" class="audit-year-months" role="group" aria-labelledby="auditYearTitle"></div>
+                  </section>
                   <div class="audit-timeline-layout">
                     <div>
                       <div class="audit-month-controls">
-                        <label class="select-label" for="auditTimelineYear">
-                          <span lang="zh-CN">年份</span><span lang="en" hidden>Year</span>
-                          <select id="auditTimelineYear"></select>
-                        </label>
                         <label class="select-label" for="auditTimelineMonth">
                           <span lang="zh-CN">月份</span><span lang="en" hidden>Month</span>
                           <select id="auditTimelineMonth"></select>
