@@ -51,6 +51,8 @@ The [interactive audit](data-methodology/#cleaning-audit) reports source counts,
 
 The calendar timeline shares the audit's ticker and frequency selectors. Select a date to see which observations were usable and the recorded cause of any missing or excluded stage. The calendar uses exported exchange sessions. For minute-derived data, the audit export stores the usual session counts once and records the exact counts for each session that differs.
 
+The annual overview counts missing and excluded dates in each month for the selected year. Choose a month to open its calendar. Months outside the audited coverage have their own status.
+
 With the local equity-study inputs and dependencies in place, regenerate the [audit data](data/equity-cleaning.json) from this directory:
 
 ```powershell

@@ -246,6 +246,57 @@ function monthShift(month, amount) {
   return calendarMonth(calendarIso(date));
 }
 
+function auditMonthsInYear(year) {
+  return Array.from({ length: 12 }, (_, index) => `${year}-${String(index + 1).padStart(2, "0")}`);
+}
+
+function auditMonthTile(month) {
+  let inScope = false;
+  const counts = { missing: 0, excluded: 0 };
+  for (const date of auditDaysInMonth(month)) {
+    const { status } = auditDay(date);
+    if (status !== "outside") inScope = true;
+    if (Object.hasOwn(counts, status)) counts[status] += 1;
+  }
+
+  const button = document.createElement("button");
+  button.type = "button";
+  button.className = "audit-year-month";
+  button.dataset.month = month;
+  button.disabled = !inScope;
+  button.setAttribute("aria-controls", "auditCalendarDays");
+  const name = document.createElement("strong");
+  name.textContent = auditMonthName(`${month}-01`);
+  button.append(name);
+  if (!inScope) {
+    const scope = document.createElement("span");
+    scope.className = "audit-month-outside";
+    scope.textContent = auditCalendarLabel("outside");
+    button.append(scope);
+    return button;
+  }
+
+  for (const [status, count] of Object.entries(counts)) {
+    button.dataset[status] = String(count);
+    const value = document.createElement("span");
+    value.className = "audit-month-count";
+    if (count) value.dataset.status = status;
+    value.textContent = `${auditCalendarLabel(status)} ${auditNumber(count)}`;
+    button.append(value);
+  }
+  return button;
+}
+
+function renderAuditYear(year, activeMonth) {
+  const overview = auditId("auditYearMonths");
+  const view = `${auditCalendar.scope.key}/${year}/${currentLanguage}`;
+  if (overview.dataset.view !== view) {
+    overview.replaceChildren(...auditMonthsInYear(year).map(auditMonthTile));
+    overview.dataset.view = view;
+  }
+  for (const month of overview.children) month.setAttribute("aria-pressed", String(month.dataset.month === activeMonth && !month.disabled));
+}
+
 function renderAuditCalendar() {
   const { firstMonth, lastMonth } = auditCalendar.scope;
   const date = selectedAuditDate();
@@ -257,9 +308,8 @@ function renderAuditCalendar() {
   const yearSelect = auditId("auditTimelineYear");
   yearSelect.replaceChildren(...years.map((value) => new Option(value, value)));
   yearSelect.value = String(year);
-  const months = Array.from({ length: 12 }, (_, index) => `${year}-${String(index + 1).padStart(2, "0")}`).filter(
-    (value) => value >= firstMonth && value <= lastMonth
-  );
+  renderAuditYear(year, month);
+  const months = auditMonthsInYear(year).filter((value) => value >= firstMonth && value <= lastMonth);
   const monthSelect = auditId("auditTimelineMonth");
   monthSelect.replaceChildren(...months.map((value) => new Option(auditMonthName(`${value}-01`), String(Number(value.slice(5))))));
   monthSelect.value = String(Number(month.slice(5)));
@@ -315,13 +365,13 @@ function selectCalendarDate(date, focus = false) {
   if (focus) auditId("auditCalendarDays").querySelector(`[data-date="${date}"]`).focus();
 }
 
-function selectCalendarMonth(month) {
+function selectCalendarMonth(month, focus = false) {
   const { firstMonth, lastMonth } = auditCalendar.scope;
   const clamped = month < firstMonth ? firstMonth : month > lastMonth ? lastMonth : month;
   const days = auditDaysInMonth(clamped);
   const recentIssue = days.findLast((date) => ["missing", "excluded"].includes(auditDay(date).status));
   const recentSession = days.findLast((date) => ["available", "warmup"].includes(auditDay(date).status));
-  selectCalendarDate(recentIssue ?? recentSession ?? days[0]);
+  selectCalendarDate(recentIssue ?? recentSession ?? days[0], focus);
 }
 
 function setupAuditCalendar(mode) {
@@ -360,6 +410,10 @@ function connectAuditCalendar() {
   });
   auditId("auditTimelineMonth").addEventListener("change", (event) => {
     selectCalendarMonth(`${selectedAuditDate().slice(0, 4)}-${event.target.value.padStart(2, "0")}`);
+  });
+  auditId("auditYearMonths").addEventListener("click", (event) => {
+    const button = event.target.closest("button[data-month]");
+    if (button && !button.disabled) selectCalendarMonth(button.dataset.month, true);
   });
   auditId("auditTimelinePrevious").addEventListener("click", () => selectCalendarMonth(monthShift(calendarMonth(selectedAuditDate()), -1)));
   auditId("auditTimelineNext").addEventListener("click", () => selectCalendarMonth(monthShift(calendarMonth(selectedAuditDate()), 1)));
@@ -483,7 +537,8 @@ async function loadAudit() {
     renderAudit();
     connectAuditControls();
     connectAuditCalendar();
-    if (location.hash === "#cleaning-timeline") auditId("cleaning-timeline").scrollIntoView({ behavior: "instant" });
+    const anchor = location.hash.slice(1);
+    if (["cleaning-timeline", "cleaning-year"].includes(anchor)) auditId(anchor).scrollIntoView({ behavior: "instant" });
   } catch (error) {
     audit.data = null;
     audit.error = true;

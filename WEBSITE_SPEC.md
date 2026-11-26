@@ -145,6 +145,11 @@ for the selected ticker and frequency. Distinguish missing source observations
 from quality exclusions, sample initialization, dates outside scope, and
 market closures. Minute coverage details use archived counts with no prices.
 
+The cleaning timeline includes a 12-month overview for the selected year.
+It counts missing and excluded dates using the same status as the calendar.
+Selecting a covered month opens its date view. Outside-coverage months are
+marked distinctly from audited months with zero issues.
+
 Only portfolio entries marked `portfolio: runtian` appear on the Projects page.
 Template projects, sample publications, and sample CV data must not appear as
 Runtian Miao's work.
