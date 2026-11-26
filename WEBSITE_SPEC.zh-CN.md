@@ -27,7 +27,7 @@
 
 用户提供的 `Resume202611220310.docx` 是 Runtian Miao 的研究方向、教育经历、职业经历、技能、学术成果、同行评审、领导经历、大学服务及科研支持环境信息的来源。用户还提供了替换头像，保存在 `assets/img/runtian-miao.jpg`。
 
-- 姓名：Runtian Miao。首页主标题：Rexy (Runtian) Miao。
+- 姓名：Runtian Miao。首页主标题：Rexy (Runtian) Miao。导航栏名称：Rexy Miao。
 - 身份：宾夕法尼亚大学应用数学与计算科学博士候选人（Ph.D. Candidate, Applied Mathematics and Computational Science, University of Pennsylvania）。
 - 首页邮箱链接：`rexmiao@sas.upenn.edu` 和 `miaoruntian1997@gmail.com`。
 - Google Scholar ID：`A5aYtioAAAAJ`。
@@ -53,7 +53,7 @@
 
 ## 项目作品集
 
-项目汇总页位于 `/projects/`，各项目拥有独立详情页及返回导航：
+项目汇总页位于 `/projects/`，提供分类跳转与响应式项目卡片。卡片沿用项目名称原本的大小写，并采用站点亮色和暗色主题。各项目拥有独立详情页及返回导航。
 
 | 项目                                           | 详情页                           | 分类                  |
 | ---------------------------------------------- | -------------------------------- | --------------------- |

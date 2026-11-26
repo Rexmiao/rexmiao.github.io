@@ -53,7 +53,8 @@ profile, education, professional experience, skills, scholarly output, peer revi
 leadership, university service, and research support environment. The user also
 supplied the replacement portrait stored at `assets/img/runtian-miao.jpg`.
 
-- Name: Runtian Miao. Homepage heading: Rexy (Runtian) Miao.
+- Name: Runtian Miao. Homepage heading: Rexy (Runtian) Miao. Navigation brand:
+  Rexy Miao.
 - Position: Ph.D. Candidate, Applied Mathematics and Computational Science,
   University of Pennsylvania.
 - Homepage contact links: `rexmiao@sas.upenn.edu` and `miaoruntian1997@gmail.com`.
@@ -110,7 +111,9 @@ labels columns by release year.
 
 ## Project portfolio
 
-Projects are listed at `/projects/`, with individual pages and return navigation:
+Projects are listed at `/projects/`, with category jump links, responsive cards,
+and individual pages with return navigation. Display each card's original
+title casing and use the site theme colors for both light and dark modes.
 
 | Project                                        | Detail page                      | Category              |
 | ---------------------------------------------- | -------------------------------- | --------------------- |
