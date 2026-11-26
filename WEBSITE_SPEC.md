@@ -113,6 +113,8 @@ separate from the master's research described on the portfolio page. Its rolling
 five-return proxy, fixed training split, benchmarks, and simulation assumptions
 are documented in the lab. The lab lives under `labs/levy-volatility/` and deploys
 with the existing GitHub Pages workflow.
+The project page links directly to the [Hugging Face demo](https://rexymiao-levy-volatility-lab.static.hf.space/)
+under the Lévy Volatility Lab heading.
 
 The lab's [U.S. equity comparison](labs/levy-volatility/#equity-evaluation) adds
 bilingual ticker, variance target, and forecast-horizon controls on the same
