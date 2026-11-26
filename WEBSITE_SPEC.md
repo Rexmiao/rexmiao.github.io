@@ -139,6 +139,12 @@ quality rules, and archived bars before the selected ticker regime. Record
 initialization and model evaluation as separate stages. Keep raw market data in
 the local research project.
 
+The audit's selectable date timeline uses the exported XNYS calendar, saved
+source gaps, and minute session coverage. Show usability and a dated reason
+for the selected ticker and frequency. Distinguish missing source observations
+from quality exclusions, sample initialization, dates outside scope, and
+market closures. Minute coverage details use archived counts with no prices.
+
 Only portfolio entries marked `portfolio: runtian` appear on the Projects page.
 Template projects, sample publications, and sample CV data must not appear as
 Runtian Miao's work.

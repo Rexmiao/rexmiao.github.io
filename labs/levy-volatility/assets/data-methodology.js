@@ -9,6 +9,19 @@ const auditText = (zh, en) => (currentLanguage === "en" ? en : zh);
 const auditNumber = (value) => value.toLocaleString(currentLanguage);
 const auditPageSize = 12;
 const audit = { data: null, error: false, ticker: "AMD", frequency: "daily", stage: "all", page: 0 };
+const auditCalendar = { sessions: null, scope: null, selections: new Map() };
+const calendarStatuses = {
+  available: ["✓", "有效", "Available"],
+  missing: ["−", "缺失", "Missing"],
+  excluded: ["!", "剔除", "Excluded"],
+  warmup: ["·", "初始化", "Warm-up"],
+  closed: ["×", "休市", "Market closed"],
+  outside: ["○", "范围外", "Out of scope"],
+};
+const calendarMonth = (date) => date.slice(0, 7);
+const calendarDate = (date) => new Date(`${date}T00:00:00Z`);
+const calendarIso = (date) => date.toISOString().slice(0, 10);
+const auditMonthName = (date) => new Intl.DateTimeFormat(currentLanguage, { month: "long", timeZone: "UTC" }).format(calendarDate(date));
 
 const auditMetrics = {
   provider_rows: ["来源日线记录", "Provider daily rows"],
@@ -82,7 +95,7 @@ function auditRows(mode) {
   return [...withStage(mode.excluded_sessions, "sessions"), ...withStage(mode.pre_regime_dates, "pre-regime")];
 }
 
-function auditReason(row) {
+function auditReason(row, includeBins = true) {
   if (row.stage === "pre-regime") {
     const count = auditNumber(row.bars);
     return auditText(`早于研究起始日，未纳入该日的 ${count} 根 K 线。`, `${count} archived bars precede the study start date.`);
@@ -101,9 +114,11 @@ function auditReason(row) {
     notes.push(auditText(`缺失端点日期 ${dates}。`, `Missing endpoint dates ${dates}.`));
   }
   if (row.stage === "sessions") {
-    const observed = auditNumber(row.observed_5m_bars);
-    const expected = auditNumber(row.expected_5m_bars);
-    notes.push(auditText(`有效区间 ${observed}/${expected}。`, `${observed} of ${expected} bins available.`));
+    if (includeBins) {
+      const observed = auditNumber(row.observed_5m_bars);
+      const expected = auditNumber(row.expected_5m_bars);
+      notes.push(auditText(`有效区间 ${observed}/${expected}。`, `${observed} of ${expected} bins available.`));
+    }
     if (Number.isFinite(row.minute_minus_daily_return_bps)) {
       const gap = Math.abs(row.minute_minus_daily_return_bps).toLocaleString(currentLanguage, { maximumFractionDigits: 2 });
       notes.push(auditText(`两者相差 ${gap} 个基点。`, `The absolute gap was ${gap} basis points.`));
@@ -151,6 +166,234 @@ function renderAuditRows() {
   }
 }
 
+function auditDay(date) {
+  const { mode, records, daily } = auditCalendar.scope;
+  const entries = records.get(date) ?? [];
+  if (date < mode.start || date > mode.end) {
+    return { status: entries.some((row) => row.stage === "pre-regime") ? "excluded" : "outside", entries };
+  }
+  if (!auditCalendar.sessions.has(date)) return { status: "closed", entries };
+  if (daily) {
+    if (entries.some((row) => row.stage === "prices")) return { status: "missing", entries };
+    if (date === mode.warmup_date) return { status: "warmup", entries };
+    return { status: entries.length ? "excluded" : "available", entries };
+  }
+
+  const counts = mode.session_count_overrides[date] ?? audit.data.default_minute_session_counts;
+  let status = entries.length ? "excluded" : "available";
+  if (counts[0] === 0) status = "missing";
+  if (entries[0]?.reason === "warmup-no-prior-close") status = "warmup";
+  return { status, entries, counts };
+}
+
+function auditCalendarLabel(status) {
+  const [, zh, en] = calendarStatuses[status];
+  return auditText(zh, en);
+}
+
+function auditCalendarMarker(status) {
+  const icon = document.createElement("span");
+  icon.className = "audit-day-marker";
+  icon.setAttribute("aria-hidden", "true");
+  icon.textContent = calendarStatuses[status][0];
+  return icon;
+}
+
+function selectedAuditDate() {
+  return auditCalendar.selections.get(auditCalendar.scope.key);
+}
+
+function renderAuditDayDetail(date, day) {
+  const { daily } = auditCalendar.scope;
+  const title = auditId("auditDayTitle");
+  title.textContent = `${date} · ${auditCalendarLabel(day.status)}`;
+  title.dataset.status = day.status;
+  const reason = auditId("auditDayReason");
+  if (day.status === "closed") {
+    reason.textContent = auditText("XNYS 日历在这一天没有安排交易。", "The XNYS calendar has no trading session on this date.");
+  } else if (day.status === "outside") {
+    reason.textContent = auditText("这一天在选中数据的审计范围外。", "This date is outside the selected audit scope.");
+  } else if (day.status === "available") {
+    reason.textContent = daily
+      ? auditText("当日和上一交易日的复权收盘价齐全，日收益可用。", "Both adjusted closes are present, so the daily return is usable.")
+      : auditText(
+          "常规交易时段和隔夜数据通过清洗规则，全日方差可用。",
+          "Regular-session and overnight inputs pass the checks, so full-day variance is usable."
+        );
+  } else {
+    const missingMinutes =
+      !daily && day.status === "missing"
+        ? [auditText("当天没有常规交易时段的原始分钟 K 线。", "No raw bars are present in the regular trading session.")]
+        : [];
+    reason.textContent = [...missingMinutes, ...day.entries.map((row) => auditReason(row, false))].join(" ");
+  }
+
+  const metrics = auditId("auditDayMetrics");
+  metrics.hidden = !day.counts;
+  const keys = ["regular_bars", "valid_regular_bars", "observed_5m_bars", "expected_5m_bars"];
+  metrics.replaceChildren(...(day.counts ?? []).map((count, index) => auditMetric(keys[index], count)));
+}
+
+function auditDaysInMonth(month) {
+  const first = calendarDate(`${month}-01`);
+  const end = new Date(Date.UTC(first.getUTCFullYear(), first.getUTCMonth() + 1, 0)).getUTCDate();
+  return Array.from({ length: end }, (_, index) => `${month}-${String(index + 1).padStart(2, "0")}`);
+}
+
+function monthShift(month, amount) {
+  const date = calendarDate(`${month}-01`);
+  date.setUTCMonth(date.getUTCMonth() + amount);
+  return calendarMonth(calendarIso(date));
+}
+
+function renderAuditCalendar() {
+  const { firstMonth, lastMonth } = auditCalendar.scope;
+  const date = selectedAuditDate();
+  const month = calendarMonth(date);
+  const year = Number(month.slice(0, 4));
+  const firstYear = Number(firstMonth.slice(0, 4));
+  const lastYear = Number(lastMonth.slice(0, 4));
+  const years = Array.from({ length: lastYear - firstYear + 1 }, (_, index) => String(firstYear + index));
+  const yearSelect = auditId("auditTimelineYear");
+  yearSelect.replaceChildren(...years.map((value) => new Option(value, value)));
+  yearSelect.value = String(year);
+  const months = Array.from({ length: 12 }, (_, index) => `${year}-${String(index + 1).padStart(2, "0")}`).filter(
+    (value) => value >= firstMonth && value <= lastMonth
+  );
+  const monthSelect = auditId("auditTimelineMonth");
+  monthSelect.replaceChildren(...months.map((value) => new Option(auditMonthName(`${value}-01`), String(Number(value.slice(5))))));
+  monthSelect.value = String(Number(month.slice(5)));
+  auditId("auditTimelinePrevious").disabled = month === firstMonth;
+  auditId("auditTimelineNext").disabled = month === lastMonth;
+
+  const weekdayNames = auditText(["一", "二", "三", "四", "五", "六", "日"], ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]);
+  auditId("auditCalendarWeekdays").replaceChildren(
+    ...weekdayNames.map((name) => {
+      const label = document.createElement("span");
+      label.textContent = name;
+      return label;
+    })
+  );
+
+  const summary = { available: 0, missing: 0, excluded: 0, warmup: 0 };
+  const padding = (calendarDate(`${month}-01`).getUTCDay() + 6) % 7;
+  const cells = Array.from({ length: padding }, () => document.createElement("span"));
+  for (const cell of cells) cell.setAttribute("aria-hidden", "true");
+  for (const day of auditDaysInMonth(month)) {
+    const { status } = auditDay(day);
+    if (Object.hasOwn(summary, status)) summary[status] += 1;
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "audit-calendar-day";
+    button.dataset.date = day;
+    button.dataset.status = status;
+    button.setAttribute("aria-pressed", String(day === date));
+    button.setAttribute("aria-label", `${day} · ${auditCalendarLabel(status)}`);
+    button.title = auditCalendarLabel(status);
+    const number = document.createElement("span");
+    number.textContent = String(Number(day.slice(8)));
+    button.append(number, auditCalendarMarker(status));
+    cells.push(button);
+  }
+  auditId("auditCalendarDays").replaceChildren(...cells);
+  auditId("auditTimelineLegend").replaceChildren(
+    ...Object.keys(calendarStatuses).map((status) => {
+      const item = document.createElement("span");
+      item.dataset.status = status;
+      item.append(auditCalendarMarker(status), auditCalendarLabel(status));
+      return item;
+    })
+  );
+  const bits = Object.entries(summary).map(([status, count]) => `${auditCalendarLabel(status)} ${auditNumber(count)}`);
+  auditId("auditMonthSummary").textContent = bits.join(" · ");
+  renderAuditDayDetail(date, auditDay(date));
+}
+
+function selectCalendarDate(date, focus = false) {
+  auditCalendar.selections.set(auditCalendar.scope.key, date);
+  renderAuditCalendar();
+  if (focus) auditId("auditCalendarDays").querySelector(`[data-date="${date}"]`).focus();
+}
+
+function selectCalendarMonth(month) {
+  const { firstMonth, lastMonth } = auditCalendar.scope;
+  const clamped = month < firstMonth ? firstMonth : month > lastMonth ? lastMonth : month;
+  const days = auditDaysInMonth(clamped);
+  const recentIssue = days.findLast((date) => ["missing", "excluded"].includes(auditDay(date).status));
+  const recentSession = days.findLast((date) => ["available", "warmup"].includes(auditDay(date).status));
+  selectCalendarDate(recentIssue ?? recentSession ?? days[0]);
+}
+
+function setupAuditCalendar(mode) {
+  const status = auditId("auditTimelineStatus");
+  const body = auditId("auditTimelineBody");
+  const daily = audit.frequency === "daily";
+  const ready = auditCalendar.sessions && (daily || mode.session_count_overrides);
+  status.hidden = Boolean(ready);
+  body.hidden = !ready;
+  if (!ready) {
+    status.textContent = auditText(
+      "当前缓存缺少日历数据。刷新页面以加载逐日记录。",
+      "Calendar data is unavailable in this snapshot. Reload for the latest audit."
+    );
+    return;
+  }
+
+  const records = new Map();
+  for (const row of auditRows(mode)) {
+    if (!records.has(row.date)) records.set(row.date, []);
+    records.get(row.date).push(row);
+  }
+  const start = (!daily && mode.pre_regime_dates[0]?.date) || mode.start;
+  const key = `${audit.ticker}/${audit.frequency}`;
+  auditCalendar.scope = { mode, records, daily, key, firstMonth: calendarMonth(start), lastMonth: calendarMonth(mode.end) };
+  if (!auditCalendar.selections.has(key)) {
+    const latestIssue = [...records.keys()].sort().findLast((date) => date >= mode.start && ["missing", "excluded"].includes(auditDay(date).status));
+    auditCalendar.selections.set(key, latestIssue ?? mode.end);
+  }
+  renderAuditCalendar();
+}
+
+function connectAuditCalendar() {
+  auditId("auditTimelineYear").addEventListener("change", (event) => {
+    selectCalendarMonth(`${event.target.value}-${calendarMonth(selectedAuditDate()).slice(5)}`);
+  });
+  auditId("auditTimelineMonth").addEventListener("change", (event) => {
+    selectCalendarMonth(`${selectedAuditDate().slice(0, 4)}-${event.target.value.padStart(2, "0")}`);
+  });
+  auditId("auditTimelinePrevious").addEventListener("click", () => selectCalendarMonth(monthShift(calendarMonth(selectedAuditDate()), -1)));
+  auditId("auditTimelineNext").addEventListener("click", () => selectCalendarMonth(monthShift(calendarMonth(selectedAuditDate()), 1)));
+  const grid = auditId("auditCalendarDays");
+  grid.addEventListener("click", (event) => {
+    const button = event.target.closest("button[data-date]");
+    if (button) selectCalendarDate(button.dataset.date, true);
+  });
+  grid.addEventListener("keydown", (event) => {
+    const increments = { ArrowLeft: -1, ArrowRight: 1, ArrowUp: -7, ArrowDown: 7 };
+    const increment = increments[event.key];
+    const button = event.target.closest("button[data-date]");
+    if (!increment || !button) return;
+    event.preventDefault();
+    const day = calendarDate(button.dataset.date);
+    day.setUTCDate(day.getUTCDate() + increment);
+    const target = calendarIso(day);
+    const month = calendarMonth(target);
+    const { firstMonth, lastMonth } = auditCalendar.scope;
+    if (month >= firstMonth && month <= lastMonth) selectCalendarDate(target, true);
+  });
+}
+
+function auditMetric(metric, count) {
+  const item = document.createElement("div");
+  item.dataset.metric = metric;
+  const label = document.createElement("dt");
+  label.textContent = auditText(...auditMetrics[metric]);
+  const value = document.createElement("dd");
+  value.textContent = auditNumber(count);
+  item.append(label, value);
+  return item;
+}
+
 function renderAudit() {
   const status = auditId("auditStatus");
   if (!audit.data) {
@@ -169,16 +412,7 @@ function renderAudit() {
   const groups = auditMetricGroups[audit.frequency].map((group) => {
     const list = document.createElement("dl");
     list.className = "audit-metric-group";
-    for (const metric of group) {
-      const item = document.createElement("div");
-      item.dataset.metric = metric;
-      const label = document.createElement("dt");
-      label.textContent = auditText(...auditMetrics[metric]);
-      const value = document.createElement("dd");
-      value.textContent = auditNumber(mode[metric]);
-      item.append(label, value);
-      list.append(item);
-    }
+    list.append(...group.map((metric) => auditMetric(metric, mode[metric])));
     return list;
   });
   auditId("auditCounts").replaceChildren(...groups);
@@ -195,6 +429,7 @@ function renderAudit() {
   const select = auditId("auditStage");
   select.replaceChildren(...stages.map((stage) => new Option(auditText(...auditStageNames[stage]), stage)));
   select.value = audit.stage;
+  setupAuditCalendar(mode);
   renderAuditRows();
 }
 
@@ -244,8 +479,11 @@ async function loadAudit() {
     const data = await response.json();
     if (data.schema_version !== 1 || !data.symbols?.includes(audit.ticker) || !data.results) throw new Error("Incompatible cleaning audit");
     audit.data = data;
+    if (data.session_dates?.length && data.default_minute_session_counts?.length === 4) auditCalendar.sessions = new Set(data.session_dates);
     renderAudit();
     connectAuditControls();
+    connectAuditCalendar();
+    if (location.hash === "#cleaning-timeline") auditId("cleaning-timeline").scrollIntoView({ behavior: "instant" });
   } catch (error) {
     audit.data = null;
     audit.error = true;

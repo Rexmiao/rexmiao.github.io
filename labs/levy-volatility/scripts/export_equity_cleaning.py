@@ -16,6 +16,9 @@ import pyarrow.parquet as pq
 CALENDAR_VERSION = "4.11.1"
 NEW_YORK = "America/New_York"
 DEFAULT_OUTPUT = Path(__file__).resolve().parent.parent / "data" / "equity-cleaning.json"
+# The timeline stores exact per-session counts that differ from this common tuple.
+# Order: raw regular 1m bars, valid regular 1m bars, observed 5m bins, expected 5m bins.
+DEFAULT_MINUTE_SESSION_COUNTS = (390, 390, 78, 78)
 SKIP_REASONS = {
     "missing_5m_bins",
     "missing_opening_bar",
@@ -98,19 +101,36 @@ def intraday_summary(rows, entry, archive, pre_regime, daily_dates, calendar):
 
     first_daily_date = min(daily_dates)
     excluded_sessions = []
+    session_count_overrides = {}
+    regular_bars = valid_regular_bars = expected_bins = observed_bins = 0
     for row in rows:
+        day = row["date"]
+        raw_count = int(row["regular_source_bars"])
+        valid_count = raw_count - int(row["unusable_source_bars"])
+        observed = int(row["observed_5m_bars"])
+        expected = int(row["expected_5m_bars"])
+        if expected <= 0 or not 0 <= valid_count <= raw_count or not 0 <= observed <= min(expected, valid_count):
+            raise ValueError(f"Invalid minute-stage counts on {day}")
+        counts = (raw_count, valid_count, observed, expected)
+        if counts != DEFAULT_MINUTE_SESSION_COUNTS:
+            session_count_overrides[day] = counts
+        regular_bars += raw_count
+        valid_regular_bars += valid_count
+        expected_bins += expected
+        observed_bins += observed
+
         if row["rv_full"]:
             if row["skip_reason"] or not row["rv_intraday"]:
-                raise ValueError(f"Inconsistent complete full-day observation on {row['date']}")
+                raise ValueError(f"Inconsistent complete full-day observation on {day}")
             continue
-        day, reason = row["date"], row["skip_reason"]
+        reason = row["skip_reason"]
         if reason not in SKIP_REASONS:
             raise ValueError(f"Unexpected exclusion on {day}: {reason}")
         exclusion = {
             "date": day,
             "reason": reason,
-            "expected_5m_bars": int(row["expected_5m_bars"]),
-            "observed_5m_bars": int(row["observed_5m_bars"]),
+            "expected_5m_bars": expected,
+            "observed_5m_bars": observed,
             "intraday_available": bool(row["rv_intraday"]),
         }
         if reason == "missing_adjusted_daily_endpoints":
@@ -127,8 +147,6 @@ def intraday_summary(rows, entry, archive, pre_regime, daily_dates, calendar):
             exclusion["minute_minus_daily_return_bps"] = discrepancy
         excluded_sessions.append(exclusion)
 
-    regular_bars = sum(int(row["regular_source_bars"]) for row in rows)
-    unusable_bars = sum(int(row["unusable_source_bars"]) for row in rows)
     complete_intraday = sum(bool(row["rv_intraday"]) for row in rows)
     complete_full = len(rows) - len(excluded_sessions)
     regime_bars = archive["rows"] - sum(day["bars"] for day in pre_regime)
@@ -136,7 +154,7 @@ def intraday_summary(rows, entry, archive, pre_regime, daily_dates, calendar):
         complete_intraday != entry["complete_intraday_days"]
         or complete_full != entry["complete_full_days"]
         or regime_bars != entry["raw_bars"]
-        or not 0 <= unusable_bars <= regular_bars <= regime_bars
+        or regular_bars > regime_bars
     ):
         raise ValueError("Minute CSV counts differ from the manifests")
     return {
@@ -145,12 +163,13 @@ def intraday_summary(rows, entry, archive, pre_regime, daily_dates, calendar):
         "archive_bars": archive["rows"],
         "regime_bars": regime_bars,
         "regular_bars": regular_bars,
-        "valid_regular_bars": regular_bars - unusable_bars,
-        "expected_5m_bars": sum(int(row["expected_5m_bars"]) for row in rows),
-        "observed_5m_bars": sum(int(row["observed_5m_bars"]) for row in rows),
+        "valid_regular_bars": valid_regular_bars,
+        "expected_5m_bars": expected_bins,
+        "observed_5m_bars": observed_bins,
         "calendar_sessions": len(rows),
         "complete_intraday_days": complete_intraday,
         "complete_full_days": complete_full,
+        "session_count_overrides": session_count_overrides,
         "excluded_sessions": excluded_sessions,
         "pre_regime_dates": pre_regime,
     }
@@ -170,6 +189,7 @@ def build_export(root):
         raise ValueError("Local equity manifests must contain the same tickers")
 
     results = {}
+    covered_dates = set()
     for symbol, info in daily.items():
         daily_rows = load_csv(daily_dir / info["daily_file"], info["daily_sha256"])
         dates = session_dates(calendar, info["effective_start"], info["effective_end_inclusive"])
@@ -183,7 +203,15 @@ def build_export(root):
             "daily": daily_summary(daily_rows, info, dates),
             "intraday": intraday_summary(minute_rows, realized_info, archive_info, pre_regime, daily_dates, calendar),
         }
-    return {"schema_version": 1, "symbols": list(results), "results": results}
+        covered_dates.update(dates)
+        covered_dates.update(row["date"] for row in minute_rows)
+    return {
+        "schema_version": 1,
+        "symbols": list(results),
+        "session_dates": sorted(covered_dates),
+        "default_minute_session_counts": DEFAULT_MINUTE_SESSION_COUNTS,
+        "results": results,
+    }
 
 
 def main():

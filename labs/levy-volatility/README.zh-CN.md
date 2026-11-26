@@ -49,6 +49,8 @@ python scripts/export_equity_results.py "<path-to-equity-study>/results"
 
 [交互审计](data-methodology/#cleaning-audit)逐标的展示原始数量、有效观测、剔除日期和原因。日线以交易日统计行情覆盖与有效收益。分钟线分别统计原始 K 线、常规时段 K 线、5 分钟区间和有效方差交易日。清洗记录和用于模型评估的连续窗口分别统计。
 
+月历时间轴沿用审计的标的和频率选择。点击日期可查看可用的数据阶段、缺失或剔除原因。月历基于导出的交易日历。分钟线的审计文件记录一组常见的交易日计数，并对各项计数不同的交易日保存实际值。
+
 准备好本地美股研究数据及其依赖后，可以在当前目录重新生成[审计数据](data/equity-cleaning.json)。
 
 ```powershell
