@@ -64,6 +64,10 @@ PCR Market Watch 提供通往公开介绍页、个人源码仓库、最新 Relea
 
 实验室在同一页面提供中英文[美股波动率对照](labs/levy-volatility/#equity-evaluation)，可选择 SPY、NVDA、JPM、AMD、QQQ、AVGO、MU、SNDK 或 NBIS、方差口径以及未来 1、5 或 22 个交易日。各视图列出可用的评估样本日期、相对训练期均值基准的 QLIKE 差值，以及以年化波动率百分点计的 RMSE。日线口径使用复权收盘到收盘的收益平方。分钟线口径用一分钟行情构造常规时段已实现方差，并加上隔夜收益平方。NBIS 的日线单独评估。SNDK 的两种口径与 NBIS 的分钟线口径显示样本不足。网页发布汇总结果，原始美股行情存于本地研究目录。
 
+中英文[美股结果总结](labs/levy-volatility/#equity-findings)按数据口径和预测期限统计各标的的领先模型，并标明 Gamma–OU 同时优于 HAR 和 EWMA 的情形。汇总使用基准实验的完整精度分数，解读限于现有历史样本的点预测对照。
+
+独立的[数据来源与清洗说明](labs/levy-volatility/data-methodology/)记录采集方式、时间范围、复权、缺失处理、常规交易时段与隔夜方差构造和质量筛选，并列出公开文件与汇率及美股输入快照的对应关系。实验室和波动率项目详情页均提供入口。
+
 只有标记为 `portfolio: runtian` 的项目条目才出现在 Projects 页面。不得将模板项目、示例论文及示例 CV 数据展示为 Runtian Miao 的成果。
 
 ## 权限与维护

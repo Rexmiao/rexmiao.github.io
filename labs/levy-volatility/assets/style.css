@@ -690,8 +690,128 @@ canvas {
   justify-content: space-between;
   gap: 0.25rem 1.25rem;
 }
+.equity-links {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+}
+.equity-findings {
+  margin-top: 1.5rem;
+}
+.equity-findings h3 {
+  font-size: clamp(1.2rem, 2.4vw, 1.5rem);
+  margin-bottom: 0.35rem;
+}
+.findings-table th,
+.findings-table td {
+  text-align: left;
+  vertical-align: top;
+  overflow-wrap: anywhere;
+}
+.findings-table tbody {
+  border-bottom: 1px solid var(--rule);
+}
+.findings-counts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.4rem;
+}
+.findings-counts > span {
+  padding: 0.08rem 0.42rem;
+  color: #254c37;
+  border-radius: 0.24rem;
+  background: #edf5e9;
+  font: 0.875rem/1.55 var(--sans);
+  font-variant-numeric: tabular-nums;
+}
+.findings-notes {
+  display: grid;
+  gap: 0.6rem;
+  margin-top: 1rem;
+}
 #equity-evaluation + .method {
   border-top: 1px solid var(--rule);
+}
+
+.methodology-hero {
+  padding-block: clamp(2.5rem, 6vw, 4.75rem);
+}
+.methodology-hero h1 {
+  margin: 0 0 1rem;
+  font-size: clamp(2.4rem, 5.5vw, 4.65rem);
+}
+.methodology-hero .hero-lede {
+  max-width: 48rem;
+}
+.methodology-jump {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem 1.4rem;
+  margin-top: 1.45rem;
+  color: var(--lime);
+}
+.methodology-body {
+  max-width: 71rem;
+  padding-block: clamp(2rem, 4.5vw, 4rem);
+}
+.methodology-section + .methodology-section {
+  margin-top: clamp(2rem, 4.5vw, 4rem);
+  padding-top: clamp(1.75rem, 4vw, 3rem);
+  border-top: 1px solid var(--rule);
+}
+.methodology-section h2 {
+  font-size: clamp(1.45rem, 3.4vw, 2.45rem);
+  line-height: 1.2;
+  letter-spacing: -0.035em;
+}
+.methodology-section h3 {
+  font-size: 1.09rem;
+  margin-top: 1.3rem;
+}
+.methodology-section p,
+.methodology-section ul,
+.methodology-steps {
+  max-width: 78ch;
+  margin-top: 0.65rem;
+}
+.methodology-section ul,
+.methodology-steps {
+  padding-left: 1.3rem;
+}
+.methodology-section li + li {
+  margin-top: 0.55rem;
+}
+.methodology-section code {
+  font: 0.9em var(--mono);
+  overflow-wrap: anywhere;
+}
+.methodology-sources {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.methodology-sources article {
+  padding: clamp(0.85rem, 2.4vw, 1.4rem);
+  background: var(--white);
+  border: 1px solid var(--rule);
+  border-radius: 0.5rem;
+}
+.methodology-sources h3 {
+  margin-top: 0;
+}
+.methodology-sources .text-link {
+  display: inline-block;
+  margin-top: 0.7rem;
+}
+.methodology-section p.methodology-note {
+  margin-top: 1rem;
+  padding: 0.8rem 1rem;
+  background: #ecf1e6;
+  border-left: 0.2rem solid #729e76;
+}
+.methodology-section .source-links {
+  margin-top: 1rem;
 }
 
 .method-grid {

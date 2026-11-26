@@ -6,6 +6,7 @@ const en = {
   navEvaluation: "Evaluation",
   navEquity: "U.S. equities",
   navMethod: "Method",
+  navData: "Data",
   heroEyebrow: "Quantitative research lab",
   heroLineA: "Modeling volatility",
   heroLineB: "with Lévy jumps",
@@ -74,6 +75,19 @@ const en = {
   equityLoadError: "Equity results could not be loaded. Reload the page to try again.",
   equityTrainingMean: "Fixed training mean",
   equityBest: "lowest error",
+  equityFindingsLink: "See overall results",
+  equityFindingsTitle: "Which models led out of sample?",
+  equityFindingsCaption:
+    "At each horizon, count each model that had the lowest out-of-sample QLIKE for a ticker. Daily estimates cover eight tickers per horizon. Minute-derived estimates cover seven.",
+  equityFindingsWindow: "Data and horizon",
+  equityFindingsWins: "Lowest QLIKE counts across all models",
+  equityFindingsGamma: "Tickers where Gamma–OU beat both HAR and EWMA",
+  equityGammaFindings:
+    "Gamma–OU had the lowest daily QLIKE for JPM at 5 days and for AMD and NBIS at 22 days. GARCH led JPM at 1 day. For AMD with minute-derived data, the fixed training mean had the lowest QLIKE at all three horizons.",
+  equityRmseFindings:
+    "By volatility RMSE, Gamma–OU led on daily data for AVGO at 1 and 5 days, NBIS at 5 and 22 days, and AMD at 22 days. With minute-derived data, HAR led on 6 of 7 tickers at both 1 and 5 days and 5 of 7 at 22 days.",
+  equityFindingsNote:
+    "Daily and minute-derived estimates use separate historical holdouts. NBIS has its own shorter daily holdout. Gamma–OU point scores measure errors in the conditional mean.",
   methodEyebrow: "Model notes",
   methodTitle: "Jumps and mean reversion",
   methodIntro: "Gamma–OU uses an observed daily variance proxy as its state. Positive jumps represent shocks, followed by exponential decay.",
@@ -93,6 +107,7 @@ const en = {
   jumpSize: "Mean variance jump θ",
   jumpIntensity: "Jump intensity λk",
   dataSources: "Data and reproducibility",
+  dataMethodology: "Data sources and cleaning",
   sourceSummary:
     "USD/JPY comes from the Federal Reserve H.10 daily reference rate in yen per U.S. dollar. Annualized variance is 252 times the trailing mean of five squared changes in log rates. Its square root is the volatility proxy. One fixing per day leaves intraday moves unobserved.",
   sourceLink: "Federal Reserve H.10 data",
@@ -111,6 +126,7 @@ const zh = {
   navEvaluation: "样本外检验",
   navEquity: "美股",
   navMethod: "方法",
+  navData: "数据",
   heroEyebrow: "量化研究实验室",
   heroLineA: "用 Lévy 过程",
   heroLineB: "建模波动率",
@@ -172,6 +188,17 @@ const zh = {
   equityLoadError: "无法加载美股评估结果。请刷新页面重试。",
   equityTrainingMean: "固定训练均值",
   equityBest: "最低误差",
+  equityFindingsLink: "查看总体结果",
+  equityFindingsTitle: "哪些模型在样本外领先？",
+  equityFindingsCaption: "在每个标的与预测期限上，样本外 QLIKE 最低的模型记 1 次。日线每个期限评估 8 个标的，分钟线评估 7 个。",
+  equityFindingsWindow: "频率与期限",
+  equityFindingsWins: "全模型 QLIKE 最低次数",
+  equityFindingsGamma: "Gamma–OU 同时低于 HAR 与 EWMA 的标的",
+  equityGammaFindings:
+    "Gamma–OU 的日线 QLIKE 在 JPM（5 日）、AMD 和 NBIS（22 日）上全模型最低。JPM 日线 1 日的最低值来自 GARCH。AMD 分钟线在三个期限都由固定训练均值取得最低 QLIKE。",
+  equityRmseFindings:
+    "按波动率 RMSE 衡量，Gamma–OU 在日线 AVGO（1、5 日）、NBIS（5、22 日）和 AMD（22 日）上最低。HAR 在分钟线 1、5、22 日分别有 6/7、6/7、5/7 个标的的 RMSE 最低。",
+  equityFindingsNote: "日线和分钟线使用各自的历史检验样本。NBIS 日线采用单独的较短样本。Gamma–OU 的点预测分数反映条件均值的误差。",
   methodEyebrow: "模型说明",
   methodTitle: "跳跃与均值回归",
   methodIntro: "Gamma–OU 把每日方差代理量作为可观测状态，用正向跳跃刻画冲击，再用指数衰减刻画冲击后的回落。",
@@ -190,6 +217,7 @@ const zh = {
   jumpSize: "平均方差跳幅 θ",
   jumpIntensity: "每日跳跃强度 λk",
   dataSources: "数据与复现",
+  dataMethodology: "数据来源与清洗",
   sourceSummary:
     "美元兑日元来自美联储 H.10 日度参考汇率，单位为日元／美元。把最近五个对数汇率变化的平方取平均，乘以 252 得到年化方差代理量，再取平方根。每天只有一个定点报价，因此该代理量无法捕捉日内波动。",
   sourceLink: "美联储 H.10 原始数据",
@@ -254,6 +282,7 @@ const equity = {
 };
 const equityFrequencies = ["daily", "intraday"];
 const equityModelNames = { ewma: "EWMA", har_direct: "HAR", gamma_ou: "Gamma–OU", garch: "GARCH(1,1)" };
+const equityModelName = (model) => equityModelNames[model] ?? translate("equityTrainingMean");
 
 function translatePage() {
   document.documentElement.lang = localText("en", "zh-CN");
@@ -728,7 +757,7 @@ function equityScoreRows(scores) {
     const row = document.createElement("tr");
     const name = document.createElement("th");
     name.scope = "row";
-    name.textContent = equityModelNames[model] ?? translate("equityTrainingMean");
+    name.textContent = equityModelName(model);
     row.append(name);
     for (const [index, metric] of metrics.entries()) {
       const cell = document.createElement("td");
@@ -777,6 +806,58 @@ function renderEquity() {
   byId("equityScores").replaceChildren(...equityScoreRows(result.scores));
 }
 
+function equityFindingsRows() {
+  return equityFrequencies.flatMap((frequency) => {
+    const evaluated = Object.entries(equity.results).filter(([, modes]) => modes[frequency].status === "evaluated");
+    const frequencyName = translate(frequency === "daily" ? "equityDaily" : "equityIntraday");
+    return horizons.map((horizon) => {
+      const wins = new Map();
+      const gammaAhead = [];
+      for (const [ticker, modes] of evaluated) {
+        const { scores } = modes[frequency].horizons[horizon];
+        const minimum = Math.min(...Object.values(scores).map((score) => score.qlike));
+        for (const [model, score] of Object.entries(scores)) {
+          if (score.qlike === minimum) wins.set(model, (wins.get(model) ?? 0) + 1);
+        }
+        if (scores.gamma_ou.qlike < Math.min(scores.har_direct.qlike, scores.ewma.qlike)) gammaAhead.push(ticker);
+      }
+
+      const row = document.createElement("tr");
+      row.dataset.frequency = frequency;
+      row.dataset.horizon = String(horizon);
+      const heading = document.createElement("th");
+      heading.scope = "row";
+      heading.textContent = `${frequencyName} · ${translate(`h${horizon}`)}`;
+      const counts = document.createElement("td");
+      const chips = document.createElement("div");
+      chips.className = "findings-counts";
+      for (const [model, winsCount] of [...wins.entries()].sort((a, b) => b[1] - a[1])) {
+        const chip = document.createElement("span");
+        chip.dataset.model = model;
+        chip.textContent = `${equityModelName(model)} ${winsCount}`;
+        chips.append(chip);
+      }
+      counts.append(chips);
+      const tickers = document.createElement("td");
+      tickers.dataset.gammaAhead = "";
+      tickers.textContent = gammaAhead.join(", ") || "—";
+      row.append(heading, counts, tickers);
+      return row;
+    });
+  });
+}
+
+function renderEquityFindings() {
+  const status = byId("equityFindingsStatus");
+  status.hidden = Boolean(equity.results);
+  byId("equityFindingsContent").hidden = !equity.results;
+  if (!equity.results) {
+    status.textContent = translate(equity.error ? "equityLoadError" : "equityLoading");
+    return;
+  }
+  byId("equityFindingsRows").replaceChildren(...equityFindingsRows());
+}
+
 function connectEquityControls(symbols) {
   const select = byId("equityTicker");
   select.replaceChildren(...symbols.map((symbol) => new Option(symbol, symbol)));
@@ -819,10 +900,12 @@ async function loadEquityResults() {
     equity.results = data.results;
     connectEquityControls(data.symbols);
     renderEquity();
+    renderEquityFindings();
   } catch (error) {
     equity.results = null;
     equity.error = true;
     renderEquity();
+    renderEquityFindings();
     console.error(error);
   }
 }
@@ -837,6 +920,7 @@ byId("language").addEventListener("click", () => {
   translatePage();
   if (state.data) render();
   renderEquity();
+  renderEquityFindings();
 });
 
 translatePage();

@@ -119,6 +119,18 @@ sample is evaluated separately. Both SNDK views and the NBIS minute-derived view
 show sample insufficiency. Publish aggregate results and keep the raw U.S. equity
 data in the local research project.
 
+The bilingual [equity findings](labs/levy-volatility/#equity-findings) summarize
+the per-ticker leaders by data frequency and horizon. The summary uses the full
+benchmark scores and explains which Gamma–OU cases also beat both HAR and EWMA.
+Interpret the findings as point forecast comparisons within the historical
+evaluation samples.
+
+The standalone [data sources and cleaning page](labs/levy-volatility/data-methodology/)
+documents acquisition and coverage, price adjustments, missing observations,
+regular-session and overnight construction, and the realized variance quality
+gates. It maps the published artifacts to their FX and U.S. equity input
+snapshots. Link to it from the lab and the volatility project page.
+
 Only portfolio entries marked `portfolio: runtian` appear on the Projects page.
 Template projects, sample publications, and sample CV data must not appear as
 Runtian Miao's work.

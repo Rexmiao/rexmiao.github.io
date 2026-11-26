@@ -17,6 +17,8 @@ Open `http://127.0.0.1:8080/`. The first command rebuilds `data/results.json` fr
 
 ## Data and model
 
+The [data sources and cleaning page](data-methodology/) documents how the FX and equity snapshots were obtained, cleaned, and turned into evaluation targets.
+
 The Federal Reserve Board's H.10 series reports Japanese yen per U.S. dollar at the New York noon buying rate. Each proxy observation annualizes the mean squared log change across the most recent five observed changes by multiplying by 252. See [data and reproducibility notes](data/DATA.md).
 
 The model lets annualized variance decay at rate λ between positive exponential jumps. The jumps arrive according to a homogeneous Poisson process. The stationary variance distribution is Gamma, with shape k and scale θ. Its mean is m = kθ, and the jump rate is λk. Calibrate the stationary moments and one-step persistence on the first 80% of the sample. On the remaining observations, update the input state at each forecast origin while keeping the fitted parameters fixed.
@@ -33,13 +35,15 @@ The daily target uses squared adjusted close-to-close log returns. The minute-de
 
 QLIKE is shown as a loss difference from the fixed training mean on the same origins. A negative difference indicates lower loss. RMSE is measured in annualized volatility percentage points. Use scores to compare models for the selected target, ticker, and horizon.
 
+See the [equity findings](index.html#equity-findings) for the count of per-ticker winners by target and horizon and for the cases where Gamma–OU beats both HAR and EWMA. The ranking uses full-precision scores. A pairwise lead over both models can occur while another model scores lower. The short NBIS daily evaluation has its own forecast origins. These are point forecast scores for the historical samples.
+
 The browser reads the [aggregate results](data/equity-results.json). To rebuild them from the original benchmark outputs, run this command with the path to the local equity study results:
 
 ```powershell
 python scripts/export_equity_results.py "<path-to-equity-study>/results"
 ```
 
-The benchmark files and raw market data are retained in the local project at `D:Dropbox量化反思总结Levy波动率建模equity-study`.
+The benchmark files and raw market data are retained in the local project at `D:\Dropbox\量化反思总结\Levy波动率建模\equity-study`.
 
 ## References
 

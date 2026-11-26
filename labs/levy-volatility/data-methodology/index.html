@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Data acquisition, cleaning, evaluation samples, and reproducibility for the Lévy Volatility Lab." />
+    <meta name="theme-color" content="#142b23" />
+    <title>数据来源与清洗 · Lévy 波动率实验室</title>
+    <link rel="stylesheet" href="../assets/style.css" />
+    <script src="../assets/data-methodology.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main"><span lang="zh-CN">跳到正文</span><span lang="en" hidden>Skip to content</span></a>
+    <header class="site-header">
+      <nav class="nav wrap" aria-label="实验室 / Lab">
+        <a class="wordmark" href="../" aria-label="Lévy Volatility Lab">
+          <span class="mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+          <span>Lévy<span class="wordmark-divider">/</span>Lab</span>
+        </a>
+        <div class="nav-links">
+          <a href="../"><span lang="zh-CN">返回实验室</span><span lang="en" hidden>Back to lab</span></a>
+          <a href="../#equity-evaluation"><span lang="zh-CN">美股对比</span><span lang="en" hidden>Equity comparison</span></a>
+          <a href="../#equity-findings"><span lang="zh-CN">总体结果</span><span lang="en" hidden>Findings</span></a>
+        </div>
+        <button type="button" class="language" id="methodLanguage" aria-label="Switch to English">EN</button>
+      </nav>
+    </header>
+    <main id="main">
+      <div class="hero methodology-hero">
+        <div class="wrap">
+          <div lang="zh-CN">
+            <h1>数据来源与清洗</h1>
+            <p class="hero-lede">从下载的原始报价到模型的样本外评分，每一步都有明确的取样、复权和缺失值规则。</p>
+          </div>
+          <div lang="en" hidden>
+            <h1>Data sources and cleaning</h1>
+            <p class="hero-lede">
+              Follow the quotes from their sources through sampling, price adjustments, and quality checks into the forecast evaluation.
+            </p>
+          </div>
+          <nav class="methodology-jump" aria-label="数据页目录 / On this page">
+            <a href="#sources"><span lang="zh-CN">数据下载</span><span lang="en" hidden>Data acquisition</span></a>
+            <a href="#cleaning"><span lang="zh-CN">清洗与方差构造</span><span lang="en" hidden>Cleaning and variance</span></a>
+            <a href="#evaluation-sample"><span lang="zh-CN">评估样本</span><span lang="en" hidden>Evaluation sample</span></a>
+            <a href="#reproduce"><span lang="zh-CN">文件与复现</span><span lang="en" hidden>Files and replication</span></a>
+          </nav>
+        </div>
+      </div>
+
+      <div class="wrap methodology-body">
+        <section id="sources" class="methodology-section">
+          <div lang="zh-CN">
+            <h2>数据怎样下载</h2>
+            <div class="methodology-sources">
+              <article>
+                <h3>USD/JPY · 美联储 H.10</h3>
+                <p>Python 脚本读取美联储公布的历史汇率 HTML 表。报价是纽约中午买入价，单位为日元／美元。</p>
+                <p>快照对应 2026-11-23 发布批次。建模数据覆盖 2016-01-04 至 2026-11-20，共 2,720 条。</p>
+                <a class="text-link" href="https://www.federalreserve.gov/releases/h10/hist/dat00_ja.htm">美联储原始表</a>
+              </article>
+              <article>
+                <h3>美股日线 · Yahoo Finance</h3>
+                <p>
+                  逐标的请求 <code>query1.finance.yahoo.com/v8/finance/chart/{ticker}</code> 的 <code>interval=1d</code> JSON。保存
+                  OHLCV、复权收盘价及单独的拆股和分红事件。
+                </p>
+                <p>2026-11-25 纽约时间收盘后下载。七个长期标的各有 2,741 根日线，覆盖 2016-01-04 至 2026-11-25。</p>
+                <a class="text-link" href="https://help.yahoo.com/kb/SLN28256.html">Yahoo 复权说明</a>
+              </article>
+              <article>
+                <h3>美股分钟线 · Syncster</h3>
+                <p>
+                  从 Hugging Face 归档按标的下载 1 分钟 Parquet，并用归档记录的文件大小与 SHA-256 校验。固定修订
+                  <code>eff0dac55d843b3b83caec819efa213021a3e3e5</code>。
+                </p>
+                <p>长期标的归档覆盖 2016-01-04 至 2026-10-23。归档没有完整披露行情交易场所与复权方法。</p>
+                <a
+                  class="text-link"
+                  href="https://huggingface.co/datasets/syncster-data/historical-market-data/tree/eff0dac55d843b3b83caec819efa213021a3e3e5"
+                  >固定版本的分钟归档</a
+                >
+              </article>
+            </div>
+            <p class="methodology-note">
+              另存一份 Yahoo 近 60 天 5 分钟快照供独立核查，每个标的 4,680 根，实际覆盖 2026-09-02 至 2026-11-25。网页上的分钟线模型评分使用上面的
+              Syncster 归档和 Yahoo 日线隔夜端点。
+            </p>
+          </div>
+          <div lang="en" hidden>
+            <h2>How the data was downloaded</h2>
+            <div class="methodology-sources">
+              <article>
+                <h3>USD/JPY · Federal Reserve H.10</h3>
+                <p>
+                  A Python script reads the Board's historical exchange-rate HTML table. Quotes are New York noon buying rates in yen per U.S. dollar.
+                </p>
+                <p>The snapshot uses the 2026-11-23 release. The model uses 2,720 published observations from 2016-01-04 through 2026-11-20.</p>
+                <a class="text-link" href="https://www.federalreserve.gov/releases/h10/hist/dat00_ja.htm">Federal Reserve source table</a>
+              </article>
+              <article>
+                <h3>Equity daily bars · Yahoo Finance</h3>
+                <p>
+                  The script requests <code>interval=1d</code> JSON from <code>query1.finance.yahoo.com/v8/finance/chart/{ticker}</code> for each
+                  ticker and stores OHLCV, adjusted closes, and separate split and dividend events.
+                </p>
+                <p>
+                  The downloads were made after the New York close on 2026-11-25. Each of the seven long-history tickers has 2,741 bars from
+                  2016-01-04 through 2026-11-25.
+                </p>
+                <a class="text-link" href="https://help.yahoo.com/kb/SLN28256.html">Yahoo adjustment documentation</a>
+              </article>
+              <article>
+                <h3>Equity minute bars · Syncster</h3>
+                <p>
+                  The script downloads one-minute Parquet files per ticker from Hugging Face, verifies their sizes and SHA-256 against the archive
+                  metadata, and pins revision <code>eff0dac55d843b3b83caec819efa213021a3e3e5</code>.
+                </p>
+                <p>
+                  The archive spans 2016-01-04 through 2026-10-23 for the long-history tickers. Trading venues and adjustment methods are only
+                  partially documented.
+                </p>
+                <a
+                  class="text-link"
+                  href="https://huggingface.co/datasets/syncster-data/historical-market-data/tree/eff0dac55d843b3b83caec819efa213021a3e3e5"
+                  >Pinned minute archive</a
+                >
+              </article>
+            </div>
+            <p class="methodology-note">
+              A separate 60-day Yahoo five-minute request provided a cross-check snapshot with 4,680 bars per ticker from 2026-09-02 through
+              2026-11-25. The published minute-derived model scores use the Syncster archive above and Yahoo daily overnight endpoints.
+            </p>
+          </div>
+        </section>
+
+        <section id="cleaning" class="methodology-section">
+          <div lang="zh-CN">
+            <h2>怎样清洗并构造方差</h2>
+            <h3>外汇参考汇率</h3>
+            <p>
+              跳过原表的
+              <code>ND</code
+              >，校验日期唯一且按序、报价有限且为正。节假日和缺报价日期保持空缺，连续两次有效报价间计算对数变化，相同报价保留为零变化。用 2015 年 12
+              月的五次预热报价，计算最近五次对数变化的平方均值，再乘 252 得到年化方差代理量。每一步对应一个公布的报价，相邻方差窗口共享四个对数变化。
+            </p>
+            <h3>美股日线</h3>
+            <p>
+              核对标的、美元计价、纽约时区及日线频率。保持日期唯一有序，校验正价格、OHLC
+              高低关系和非负整数成交量。空行情行跳过，拆股和分红事件保存在单独文件。用相邻交易所交易日的复权收盘价计算对数收益，并将其平方作为日度方差代理量。任何一个收盘端点缺失，该笔收益保持缺失。
+            </p>
+            <h3>分钟线推算的全日方差</h3>
+            <ol class="methodology-steps">
+              <li>核对标的、UTC 时间戳和分钟网格，拒绝重复时间戳。按 XNYS 交易日历转为纽约时间，只取常规交易时段，并按日历处理提前收市。</li>
+              <li>
+                用开盘整分钟 K 线的开盘价作为起点。每个 5 分钟区间取最后一根开盘与收盘价格有限且为正、成交量为正的分钟 K
+                线的收盘价。每个区间都必须有价，开盘整分钟也必须有效。缺失区间保持空缺，不做前向填充或插值。
+              </li>
+              <li>
+                将相邻取样价的对数收益平方求和得到盘中已实现方差。用 Yahoo
+                日线数据构造隔夜代理，先把当日开盘价乘以当日复权收盘与收盘价之比，再计算相对上一交易日复权收盘价的对数收益平方。两项相加得到全日代理。
+              </li>
+              <li>
+                如果隔夜所需日线端点缺失，或分钟线开盘至收盘对数收益与 Yahoo 日线同一时段收益相差超过 50
+                个基点，全日方差留空。能算出的盘中方差和剔除原因仍会保留。
+              </li>
+            </ol>
+            <p class="methodology-note">
+              <strong>AMD 清洗实例。</strong> 2,718 个交易日里，8 日因缺少 5 分钟区间而无法计算盘中方差。其余 2,710 日中，28 日触发 50 基点规则，1
+              日缺少复权日线端点，最终得到 2,681 个全日方差观测。
+            </p>
+          </div>
+          <div lang="en" hidden>
+            <h2>How the data was cleaned and turned into variance</h2>
+            <h3>FX reference rates</h3>
+            <p>
+              The parser skips <code>ND</code> values, requires unique ordered dates, and validates finite positive rates. Gaps stay open. Log changes
+              use consecutive valid fixes, and unchanged fixes retain a zero change. Five December 2015 warm-up fixes seed the calculation. Annualized
+              proxy variance is 252 times the mean of the five latest squared log changes. A step is one published fix, so adjacent variance windows
+              share four changes.
+            </p>
+            <h3>Daily equity prices</h3>
+            <p>
+              The downloader checks each ticker, USD denomination, New York timezone, and daily frequency. It checks ordered unique dates, positive
+              prices, OHLC ranges, and integer volume of zero or greater. Rows with null quotes are skipped. Split and dividend events go to a
+              separate file. Squared log changes between adjusted closes of adjacent exchange sessions form the daily variance proxy. A missing close
+              leaves the associated returns missing.
+            </p>
+            <h3>Full-day variance from minute data</h3>
+            <ol class="methodology-steps">
+              <li>
+                Check the symbol, UTC timestamps, and minute alignment, and reject duplicate bar starts. Use regular New York sessions on the XNYS
+                calendar, including early closes.
+              </li>
+              <li>
+                Start at the exact opening bar's open. For each five-minute bin, use the close from the last minute bar with finite positive open and
+                close prices and positive volume. A valid opening bar and full bin coverage are required. Leave missing bins empty.
+              </li>
+              <li>
+                Sum squared adjacent log returns to get regular-session realized variance. For the overnight proxy, multiply the current Yahoo open by
+                its adjusted-close-to-close ratio, then square its log return from the prior session's adjusted close. Add the two components for the
+                full-day variance proxy.
+              </li>
+              <li>
+                Leave full-day variance missing if a required overnight endpoint is absent or if the minute and Yahoo open-to-close log returns differ
+                by more than 50 basis points. Retain intraday variance when available and record the exclusion reason.
+              </li>
+            </ol>
+            <p class="methodology-note">
+              <strong>AMD cleaning example.</strong> Of 2,718 exchange sessions, 8 had missing five-minute bins. Of the other 2,710, 28 exceeded the
+              50-basis-point threshold and 1 lacked an adjusted daily endpoint. That left 2,681 full-day variance values.
+            </p>
+          </div>
+        </section>
+
+        <section id="evaluation-sample" class="methodology-section">
+          <div lang="zh-CN">
+            <h2>哪些日期进入美股评估</h2>
+            <p>
+              在共同交易日历跨度的前 80% 拟合参数。评分要求每个预测起点及之前共 22 个交易日、以及之后 22
+              个交易日的数据在同组标的上连续可用。评估至少需要 252 个训练观测及 84
+              个样本外预测起点。各模型在同一标的组和数据口径内使用相同的预测起点。预测目标为未来 1、5 或 22 个交易日的平均日度方差乘以 252。
+            </p>
+            <ul>
+              <li>
+                <strong>七个长期标的。</strong> SPY、NVDA、JPM、AMD、QQQ、AVGO、MU 的日线有 527 个共同预测起点。分钟线的全日方差在 2,624
+                日共同可用，经过连续窗口及样本外筛选后保留 190 个预测起点。最晚起点是 2025-12-30，原始分钟档案截至 2026-10-23。
+              </li>
+              <li><strong>NBIS。</strong> 从 2024-10-21 复牌起纳入，单独评估。日线有 85 个预测起点，分钟线样本不足。</li>
+              <li>
+                <strong>SNDK。</strong> 从 2025-02-24 分拆上市起纳入，两种频率的样本跨度都不足。日线仍保留 2026-11-20 的拆股事件记录，11-20、11-23 和
+                11-24 的行情缺失按交易日历保留。
+              </li>
+            </ul>
+          </div>
+          <div lang="en" hidden>
+            <h2>Which dates enter the equity evaluation</h2>
+            <p>
+              Fit parameters on the first 80% of the common calendar span. An eligible origin requires 22 consecutive sessions through that date and
+              22 subsequent sessions, all usable across the tickers in its group. An evaluation needs at least 252 training observations and 84
+              out-of-sample origins. Models share the same origins within each ticker group and frequency. The target is 252 times the mean daily
+              variance over the next 1, 5, or 22 trading sessions.
+            </p>
+            <ul>
+              <li>
+                <strong>Seven long-history tickers.</strong> SPY, NVDA, JPM, AMD, QQQ, AVGO, and MU share 527 daily-data origins. The minute-derived
+                full-day measure is available across all seven on 2,624 sessions. The contiguous-window and holdout rules leave 190 common origins,
+                ending 2025-12-30. The raw archive ends 2026-10-23.
+              </li>
+              <li>
+                <strong>NBIS.</strong> Its separate evaluation starts from the 2024-10-21 trading resumption. The daily sample yields 85 forecast
+                origins. The minute-derived sample is too short.
+              </li>
+              <li>
+                <strong>SNDK.</strong> Its sample starts with the 2025-02-24 spin-off listing. Both frequencies have insufficient span. The daily
+                source retains the 2026-11-20 split event and leaves gaps in quotes on November 20, 23, and 24.
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="reproduce" class="methodology-section">
+          <div lang="zh-CN">
+            <h2>怎样核查和复现</h2>
+            <p>
+              公开的外汇 CSV 和来源 JSON 保留建模观测、预热报价、快照日期和观测文件的 SHA-256。可以用公开脚本从保存的 H.10 原始表重建
+              CSV，也可以用现有 CSV 直接重算模型。美联储可能修订历史报价，重新下载后可对比校验值。
+            </p>
+            <p>
+              美股行情快照和处理日志保存在本地研究目录。清单记录来源与校验值，逐日审计保留有效区间数、覆盖率、跨源偏差和剔除原因。网页公开汇总评分和从原始评估结果生成网页
+              JSON 的脚本。原始美股行情遵循各来源的再分发条款。
+            </p>
+            <div class="source-links">
+              <a href="../data/observations.csv" download>外汇观测 CSV</a>
+              <a href="../data/source.json" download>外汇来源 JSON</a>
+              <a href="../scripts/fetch_data.py">外汇清洗脚本</a>
+              <a href="../data/equity-results.json" download>美股汇总 JSON</a>
+              <a href="../scripts/export_equity_results.py">美股结果导出脚本</a>
+            </div>
+          </div>
+          <div lang="en" hidden>
+            <h2>How to verify and reproduce the results</h2>
+            <p>
+              The public FX CSV and provenance JSON provide the model observations, warm-up fixes, snapshot dates, and a SHA-256 checksum. Rebuild the
+              CSV with the public script and a saved H.10 source table or rerun the model from the included CSV. The Board can revise past rates, so
+              compare checksums after a new download.
+            </p>
+            <p>
+              Equity snapshots and processing logs live in the local research project. Manifests record sources and checksums. Daily audits retain
+              effective bin counts, coverage, cross-source discrepancies, and exclusion reasons. The site publishes aggregate scores and the script
+              that exports them from the benchmark outputs. Raw equity quotes are subject to each source's redistribution terms.
+            </p>
+            <div class="source-links">
+              <a href="../data/observations.csv" download>FX observations CSV</a>
+              <a href="../data/source.json" download>FX provenance JSON</a>
+              <a href="../scripts/fetch_data.py">FX cleaning script</a>
+              <a href="../data/equity-results.json" download>Equity scores JSON</a>
+              <a href="../scripts/export_equity_results.py">Equity score exporter</a>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+    <footer class="site-footer">
+      <div class="wrap footer-inner">
+        <a class="wordmark" href="../" aria-label="Lévy Volatility Lab">
+          <span class="mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span>Lévy<span class="wordmark-divider">/</span>Lab</span>
+        </a>
+        <a href="../#equity-evaluation"><span lang="zh-CN">查看美股模型对比</span><span lang="en" hidden>Explore the equity comparison</span></a>
+      </div>
+    </footer>
+  </body>
+</html>
