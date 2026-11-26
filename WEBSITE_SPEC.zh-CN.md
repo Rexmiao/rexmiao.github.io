@@ -64,7 +64,7 @@
 | Quick Annotator                                | `/projects/quick-annotator/`     | Research Software     |
 | HistoQC                                        | `/projects/histoqc/`             | Research Software     |
 
-Trading Reflections 是用户的个人交易复盘栏目。归档按日期倒序列出已发布的复盘，可点击标题看全文。文章页提供返回归档的链接，归档提供返回 `/projects/#trading` 的链接。用 `TRADING_REFLECTION_TEMPLATE.md` 写作，在 `_trading_reflections/` 内按 `YYYY-MM-DD-short-title.md` 保存。填写标题、日期和摘要，准备公开时设为 `published: true`。站点构建排除模板、草稿和未来日期的条目。已发布的突破交易示例使用虚构行情和模拟成交，标题与开头均标明「示例」。
+Trading Reflections 是用户的个人交易复盘栏目。归档按日期倒序列出已发布的复盘，可点击标题看全文。文章页提供返回归档的链接，归档提供返回 `/projects/#trading` 的链接。用 `TRADING_REFLECTION_TEMPLATE.md` 写作，在 `_trading_reflections/` 内按 `YYYY-MM-DD-short-title.md` 保存。填写标题、日期和摘要，准备公开时设为 `published: true`。站点构建排除模板、草稿和未来日期的条目。
 
 首篇经用户确认的个人复盘是《一笔标普 500 Put 对冲的仓位复盘》，发布日为纽约时间 2026 年 11 月 26 日，链接为 `/projects/trading-reflections/2026-11-26-sp500-put-hedge/`。
 
