@@ -4,6 +4,7 @@ const en = {
   skip: "Skip to content",
   navForecast: "Forecast",
   navEvaluation: "Evaluation",
+  navEquity: "U.S. equities",
   navMethod: "Method",
   heroEyebrow: "Quantitative research lab",
   heroLineA: "Modeling volatility",
@@ -37,7 +38,7 @@ const en = {
   fanNote:
     "A step advances one published rate. The point forecast is the square root of conditional expected variance. Paths with no jump share the same decline, so some quantiles can coincide. The bands omit parameter uncertainty.",
   evaluationEyebrow: "Historical validation",
-  evaluationTitle: "Out-of-sample performance",
+  evaluationTitle: "USD/JPY out-of-sample performance",
   evaluationIntro:
     "The training and holdout periods are fixed in chronological order. All three models are scored on the same holdout targets across the three horizons.",
   persistence: "Persistence",
@@ -48,6 +49,31 @@ const en = {
   floorShare: "Observed below no-jump floor",
   diagnosticNote:
     "When observations regularly fall below the no-jump floor, model paths cannot reproduce those fast declines. Compare observed coverage against the nominal 90%.",
+  equityTitle: "U.S. equity volatility models",
+  equityIntro:
+    "Choose a ticker, data frequency, and horizon. Models predict average daily variance over the next 1, 5, or 22 sessions, annualized using 252 trading days.",
+  equityTicker: "Ticker",
+  equityFrequency: "Data frequency",
+  equityDaily: "Daily",
+  equityIntraday: "1-minute data",
+  equityDailyBasis: "Daily variance proxy from squared adjusted close-to-close log returns.",
+  equityIntradayBasis:
+    "Full-day variance proxy from 1-minute bars sampled at five-minute intervals. It adds regular-session realized variance and the squared overnight return.",
+  equityCaption: "Lower errors are better. The lowest value in each column is highlighted.",
+  equityQlike: "QLIKE difference",
+  equityRmse: "Volatility RMSE (pp)",
+  equitySample: "Out-of-sample evaluation",
+  equityOriginCount: "Forecast origins",
+  equityOriginDates: "Forecast origin range",
+  equityTargetDates: "Target window end date range",
+  equityMetricNote:
+    "QLIKE differences are relative to the fixed training mean. Negative values beat that baseline. RMSE is in annualized volatility percentage points.",
+  equityMethodNote: "Parameters are estimated on earlier data. Each frequency uses its own evaluation sample and variance measure.",
+  equityDownload: "Download equity results",
+  equityLoading: "Loading equity results…",
+  equityLoadError: "Equity results could not be loaded. Reload the page to try again.",
+  equityTrainingMean: "Fixed training mean",
+  equityBest: "lowest error",
   methodEyebrow: "Model notes",
   methodTitle: "Jumps and mean reversion",
   methodIntro: "Gamma–OU uses an observed daily variance proxy as its state. Positive jumps represent shocks, followed by exponential decay.",
@@ -83,6 +109,7 @@ const zh = {
   skip: "跳到正文",
   navForecast: "预测",
   navEvaluation: "样本外检验",
+  navEquity: "美股",
   navMethod: "方法",
   heroEyebrow: "量化研究实验室",
   heroLineA: "用 Lévy 过程",
@@ -114,7 +141,7 @@ const zh = {
   fanNote:
     "每一步对应一个有效参考汇率。点预测取条件期望方差的平方根。无跳跃路径具有相同的衰减值，因此若干分位数可能重合。区间不包含参数估计的不确定性。",
   evaluationEyebrow: "历史验证",
-  evaluationTitle: "样本外表现",
+  evaluationTitle: "USD/JPY 样本外表现",
   evaluationIntro: "按时间顺序固定训练与检验样本。三个预测窗口使用相同的检验目标日期，并在这些日期比较模型和两个基准。",
   persistence: "持久性",
   tableCaption: "共同检验日期上的预测误差，越低越好",
@@ -123,6 +150,28 @@ const zh = {
   coverage: "90% 区间实测覆盖率",
   floorShare: "落在无跳跃下界以下的比例",
   diagnosticNote: "实际方差若常低于无跳跃下界，说明模型难以复现这些快速回落。可比较实测覆盖率与区间的名义覆盖率 90%。",
+  equityTitle: "美股波动率模型对比",
+  equityIntro: "选择标的、数据频率和预测窗口。模型预测未来 1、5 或 22 个交易日的平均日度方差，再按 252 个交易日年化。",
+  equityTicker: "标的",
+  equityFrequency: "数据频率",
+  equityDaily: "日线",
+  equityIntraday: "分钟线",
+  equityDailyBasis: "用复权收盘到收盘的对数收益平方作为日度方差代理量。",
+  equityIntradayBasis: "将 1 分钟行情按 5 分钟区间取样，计算常规交易时段的已实现方差，再加上隔夜收益平方，得到全日方差代理量。",
+  equityCaption: "两项误差指标均为越低越好，每列最低值高亮。",
+  equityQlike: "QLIKE 差值",
+  equityRmse: "波动率 RMSE（百分点）",
+  equitySample: "样本外检验",
+  equityOriginCount: "预测起点数",
+  equityOriginDates: "预测起点范围",
+  equityTargetDates: "目标窗口结束日期范围",
+  equityMetricNote: "QLIKE 差值以固定训练均值为基准。负值表示误差低于基准。RMSE 使用年化波动率的百分点。",
+  equityMethodNote: "模型参数由较早的训练样本估计。日线和分钟线各用自己的检验样本与方差口径。",
+  equityDownload: "下载美股评估结果",
+  equityLoading: "正在加载美股评估结果…",
+  equityLoadError: "无法加载美股评估结果。请刷新页面重试。",
+  equityTrainingMean: "固定训练均值",
+  equityBest: "最低误差",
   methodEyebrow: "模型说明",
   methodTitle: "跳跃与均值回归",
   methodIntro: "Gamma–OU 把每日方差代理量作为可观测状态，用正向跳跃刻画冲击，再用指数衰减刻画冲击后的回落。",
@@ -196,6 +245,15 @@ const state = {
   hover: { history: null, fan: null, evaluation: null },
   plots: {},
 };
+const equity = {
+  results: null,
+  error: false,
+  ticker: "AMD",
+  frequency: "daily",
+  horizon: 5,
+};
+const equityFrequencies = ["daily", "intraday"];
+const equityModelNames = { ewma: "EWMA", har_direct: "HAR", gamma_ou: "Gamma–OU", garch: "GARCH(1,1)" };
 
 function translatePage() {
   document.documentElement.lang = localText("en", "zh-CN");
@@ -578,12 +636,16 @@ function bindChartInteraction(key) {
 }
 
 function bindHorizon(id, onChange) {
+  bindSegments(id, (button) => onChange(Number(button.dataset.horizon)));
+}
+
+function bindSegments(id, onChange) {
   const buttons = Array.from(byId(id).querySelectorAll("button"));
   for (const button of buttons) {
     button.disabled = false;
     button.addEventListener("click", () => {
       for (const option of buttons) option.setAttribute("aria-pressed", String(option === button));
-      onChange(Number(button.dataset.horizon));
+      onChange(button);
     });
   }
 }
@@ -657,6 +719,114 @@ async function loadResults() {
   }
 }
 
+function equityScoreRows(scores) {
+  const entries = Object.entries(scores);
+  const metrics = ["qlike", "rmse"];
+  const best = metrics.map((metric) => Math.min(...entries.map(([, score]) => score[metric])));
+
+  return entries.map(([model, score]) => {
+    const row = document.createElement("tr");
+    const name = document.createElement("th");
+    name.scope = "row";
+    name.textContent = equityModelNames[model] ?? translate("equityTrainingMean");
+    row.append(name);
+    for (const [index, metric] of metrics.entries()) {
+      const cell = document.createElement("td");
+      const precision = metric === "qlike" ? 4 : 2;
+      const scoreText = fixed(score[metric], precision);
+      cell.textContent = metric === "qlike" && score[metric] > 0 ? `+${scoreText}` : scoreText;
+      if (score[metric] === best[index]) {
+        cell.className = "best";
+        cell.setAttribute("aria-label", `${cell.textContent}, ${translate("equityBest")}`);
+      }
+      row.append(cell);
+    }
+    return row;
+  });
+}
+
+function renderEquity() {
+  const status = byId("equityStatus");
+  if (!equity.results) {
+    status.classList.toggle("error", equity.error);
+    status.textContent = translate(equity.error ? "equityLoadError" : "equityLoading");
+    return;
+  }
+
+  const daily = equity.frequency === "daily";
+  const mode = equity.results[equity.ticker][equity.frequency];
+  const selection = `${equity.ticker} · ${translate(daily ? "equityDaily" : "equityIntraday")}`;
+  const evaluated = mode.status === "evaluated";
+  text("equityTarget", translate(daily ? "equityDailyBasis" : "equityIntradayBasis"));
+  byId("equityTarget").hidden = false;
+  byId("equityResults").hidden = !evaluated;
+  status.classList.toggle("equity-announcement", evaluated);
+  if (!evaluated) {
+    status.textContent = localText(
+      `${selection} has insufficient history (${mode.start} to ${mode.end}) for the fixed split and all three horizons. The evaluation needs at least ${mode.required_training} training sessions and ${mode.required_test_origins} out-of-sample forecast origins.`,
+      `${selection} 的历史区间（${mode.start} 至 ${mode.end}）不足以按固定规则划分训练与检验样本并覆盖三个预测窗口。评估至少需要 ${mode.required_training} 个训练交易日和 ${mode.required_test_origins} 个样本外预测起点。`
+    );
+    return;
+  }
+
+  const result = mode.horizons[equity.horizon];
+  status.textContent = `${selection} · ${translate(`h${equity.horizon}`)} · ${translate("equityOriginCount")} ${countText(mode.origins)}`;
+  text("equityOrigins", countText(mode.origins));
+  text("equityOriginRange", `${mode.first_origin} – ${mode.last_origin}`);
+  text("equityTargetRange", `${result.target_start} – ${result.target_end}`);
+  byId("equityScores").replaceChildren(...equityScoreRows(result.scores));
+}
+
+function connectEquityControls(symbols) {
+  const select = byId("equityTicker");
+  select.replaceChildren(...symbols.map((symbol) => new Option(symbol, symbol)));
+  equity.ticker = symbols.includes(equity.ticker) ? equity.ticker : symbols[0];
+  select.value = equity.ticker;
+  select.disabled = false;
+  select.addEventListener("change", () => {
+    equity.ticker = select.value;
+    renderEquity();
+  });
+  bindSegments("equityFrequency", (button) => {
+    equity.frequency = button.dataset.frequency;
+    renderEquity();
+  });
+  bindHorizon("equityHorizon", (horizon) => {
+    equity.horizon = horizon;
+    renderEquity();
+  });
+}
+
+function assertEquityResults(data) {
+  const allModesReady =
+    data.symbols?.length &&
+    data.symbols.every((symbol) =>
+      equityFrequencies.every((frequency) => {
+        const mode = data.results?.[symbol]?.[frequency];
+        if (mode?.status === "skipped") return mode.reason === "insufficient-span";
+        return mode?.status === "evaluated" && horizons.every((horizon) => mode.horizons?.[horizon]?.scores);
+      })
+    );
+  if (data.schema_version !== 1 || !allModesReady) throw new Error("Incomplete or incompatible equity-results.json");
+}
+
+async function loadEquityResults() {
+  try {
+    const response = await fetch("data/equity-results.json");
+    if (!response.ok) throw new Error(`Equity results request returned ${response.status}`);
+    const data = await response.json();
+    assertEquityResults(data);
+    equity.results = data.results;
+    connectEquityControls(data.symbols);
+    renderEquity();
+  } catch (error) {
+    equity.results = null;
+    equity.error = true;
+    renderEquity();
+    console.error(error);
+  }
+}
+
 byId("language").addEventListener("click", () => {
   language = language === "en" ? "zh" : "en";
   try {
@@ -666,7 +836,10 @@ byId("language").addEventListener("click", () => {
   }
   translatePage();
   if (state.data) render();
+  renderEquity();
 });
 
 translatePage();
 loadResults();
+renderEquity();
+loadEquityResults();

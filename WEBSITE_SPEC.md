@@ -107,6 +107,18 @@ five-return proxy, fixed training split, benchmarks, and simulation assumptions
 are documented in the lab. The lab lives under `labs/levy-volatility/` and deploys
 with the existing GitHub Pages workflow.
 
+The lab's [U.S. equity comparison](labs/levy-volatility/#equity-evaluation) adds
+bilingual ticker, variance target, and forecast-horizon controls on the same
+page. It covers SPY, NVDA, JPM, AMD, QQQ, AVGO, MU, SNDK, and NBIS with 1-, 5-,
+and 22-session horizons. Each view reports the available sample dates and QLIKE
+differences versus the training mean, alongside RMSE in annualized volatility
+percentage points. The daily target uses squared adjusted close-to-close
+returns. The minute-derived target combines regular-session realized variance
+computed from one-minute data with squared overnight returns. The NBIS daily
+sample is evaluated separately. Both SNDK views and the NBIS minute-derived view
+show sample insufficiency. Publish aggregate results and keep the raw U.S. equity
+data in the local research project.
+
 Only portfolio entries marked `portfolio: runtian` appear on the Projects page.
 Template projects, sample publications, and sample CV data must not appear as
 Runtian Miao's work.

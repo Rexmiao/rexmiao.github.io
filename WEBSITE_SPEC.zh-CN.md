@@ -62,6 +62,8 @@ PCR Market Watch 提供通往公开介绍页、个人源码仓库、最新 Relea
 
 波动率建模项目新增独立的 [Lévy 波动率实验室](labs/levy-volatility/)，并提供模型源码、数据说明和中英文复现指南。该网页以美联储 H.10 美元兑日元日度汇率为基础开展新的实证实验，与项目页面中的硕士研究是两项工作。五期波动率代理、训练区间、比较基准及模拟假设均见实验室说明。实验室位于 `labs/levy-volatility/`，随现有 GitHub Pages 工作流发布。
 
+实验室在同一页面提供中英文[美股波动率对照](labs/levy-volatility/#equity-evaluation)，可选择 SPY、NVDA、JPM、AMD、QQQ、AVGO、MU、SNDK 或 NBIS、方差口径以及未来 1、5 或 22 个交易日。各视图列出可用的评估样本日期、相对训练期均值基准的 QLIKE 差值，以及以年化波动率百分点计的 RMSE。日线口径使用复权收盘到收盘的收益平方。分钟线口径用一分钟行情构造常规时段已实现方差，并加上隔夜收益平方。NBIS 的日线单独评估。SNDK 的两种口径与 NBIS 的分钟线口径显示样本不足。网页发布汇总结果，原始美股行情存于本地研究目录。
+
 只有标记为 `portfolio: runtian` 的项目条目才出现在 Projects 页面。不得将模板项目、示例论文及示例 CV 数据展示为 Runtian Miao 的成果。
 
 ## 权限与维护

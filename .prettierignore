@@ -4,5 +4,6 @@ assets/css/main.scss
 assets/plotly/demo.html
 lighthouse_results/**
 _posts/2015-10-20-math.md
-# Byte-for-byte output of the lab's model.py.
+# Reproducible generated lab results.
 labs/levy-volatility/data/results.json
+labs/levy-volatility/data/equity-results.json
