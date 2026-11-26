@@ -9,8 +9,8 @@
     />
     <meta name="theme-color" content="#142b23" />
     <title>Lévy Volatility Lab</title>
-    <link rel="stylesheet" href="assets/style.css" />
-    <script src="assets/app.js" defer></script>
+    <link rel="stylesheet" href="assets/style.css?v=reading-notes" />
+    <script src="assets/app.js?v=reading-notes" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main" data-i18n="skip">跳到正文</a>
@@ -137,9 +137,25 @@
               </dl>
             </div>
           </div>
-          <p class="panel-foot" data-i18n="fanNote">
-            交易日以数据中的交易时段计。点预测取条件期望方差的平方根。区间只包含在已拟合模型下模拟的未来冲击，不包含参数估计的不确定性。
-          </p>
+          <section class="panel-foot fan-explainer" id="forecast-reading" aria-labelledby="fanExplainTitle">
+            <h3 id="fanExplainTitle" data-i18n="fanExplainTitle">怎样读这张外汇预测图</h3>
+            <p id="fanDataSummary" data-i18n="fanDataSummary">
+              数据来自美联储 H.10 的 USD/JPY 纽约中午参考报价。样本包括 2016-01-04 至 2026-11-20 的 2,720 个有效报价，模型用最早的 2,176 个观测拟合。
+            </p>
+            <p data-i18n="fanTargetNote">
+              起点用最近五次对数汇率变化的平方均值乘以 252 得出年化方差。每一步对应下一个有效报价，跳过缺报价的日期。以之后第 5
+              个有效报价为例，该期限的实测按截至目标报价的最近五次变化计算。
+            </p>
+            <p class="fan-reading" id="fanReading" hidden></p>
+            <p data-i18n="fanEstimateNote">
+              点预测先求终点方差的条件期望，再开平方。模拟中位数是终点波动率的第 50
+              百分位。正向跳跃可以抬高平均方差，无跳跃的路径都沿同一轨迹衰减，因此部分分位数会重合。
+            </p>
+            <p data-i18n="fanBandNote">
+              每个期限分别取 20,000 条路径模拟终点的第 25 至 75 百分位和第 5 至 95 百分位，得到中央 50% 和 90%
+              色带。色带反映已拟合模型下的未来冲击，拟合参数保持固定。
+            </p>
+          </section>
         </div>
       </section>
 
@@ -300,6 +316,7 @@
                   </dl>
                 </aside>
               </div>
+              <p class="equity-verdict" id="equityVerdict" aria-live="polite"></p>
               <p class="table-note" data-i18n="equityMetricNote">
                 QLIKE 差值以固定训练均值为基准。负值表示误差低于基准。RMSE 使用年化波动率的百分点。
               </p>
@@ -334,9 +351,18 @@
                 <tbody id="equityFindingsRows"></tbody>
               </table>
               <div class="findings-notes">
+                <div id="equityFindingsReading">
+                  <h4 data-i18n="equityFindingsReadingTitle">怎样理解「全模型 QLIKE 最低次数」</h4>
+                  <p data-i18n="equityFindingsReading">
+                    对固定的数据口径和期限，先逐个标的比较该行全部可用模型，含固定训练均值。QLIKE
+                    最低的模型得到一次计数，精确并列则各计一次。比如分钟线 1 日的 HAR 4，表示 7 个标的中有 4 个由 HAR 得到最低
+                    QLIKE。计数反映领先覆盖了多少标的。误差差距可在上方的逐标的结果中查看。
+                  </p>
+                </div>
                 <p id="equityGammaFindings" data-i18n="equityGammaFindings">
-                  Gamma–OU 的日线 QLIKE 在 JPM（5 日）、AMD 和 NBIS（22 日）上全模型最低。JPM 日线 1 日的最低值来自 GARCH。AMD
-                  分钟线在三个期限都由固定训练均值取得最低 QLIKE。
+                  右栏只比较 Gamma–OU、HAR 和 EWMA。以 AMD 分钟线为例，Gamma–OU 在三个期限的 QLIKE 都低于 HAR 和
+                  EWMA，同一组的固定训练均值更低。Gamma–OU 的全模型最低记录来自日线 JPM（5 日）及 AMD 和 NBIS（22 日）。 日线 JPM 的 1 日最低值来自
+                  GARCH。
                 </p>
                 <p id="equityRmseFindings" data-i18n="equityRmseFindings">
                   按波动率 RMSE 衡量，Gamma–OU 在日线 AVGO（1、5 日）、NBIS（5、22 日）和 AMD（22 日）上最低。HAR 在分钟线 1、5、22 日分别有
@@ -373,10 +399,19 @@
             <p data-i18n="calibrationCopy">
               用训练样本估计长期方差 m、持续性 φ = exp(−λ) 和 Gamma 矩参数。每个检验时点按当时已知的方差更新预测状态，模型参数保持固定。
             </p>
-            <h3 data-i18n="limitations">如何解读</h3>
+            <h3 data-i18n="limitations">怎样解读外汇结果</h3>
             <p data-i18n="limitationsCopy">
-              模型预测 h 个交易日后单日的年化波动率代理量。每日实测方差含有测量噪声。Gamma–OU
-              只允许瞬时向上跳跃，未估计杠杆效应、参数变化或实时交易表现。
+              预测目标是窗口末端由最近五次汇率变化计算的年化波动率代理量。相同参数下，Gamma–OU 的条件均值与均值回归 AR(1)
+              一致。检验跳跃分布时，可重点看预测区间覆盖率和无跳跃下界。实验没有估计杠杆效应、参数变化或交易表现。
+            </p>
+            <h3 id="equity-method" data-i18n="equityMethodTitle">怎样解读美股结果</h3>
+            <p data-i18n="equityMethodTarget">
+              日线用相邻交易日的复权收盘对数收益平方。分钟线用常规时段已实现方差加隔夜收益平方。以 5
+              日为例，目标是起点之后五个交易日的日度方差取平均，再乘以 252 年化。对应的年化波动率取这个目标的平方根。
+            </p>
+            <p data-i18n="equityMethodReading">
+              Gamma–OU 的正向跳跃指方差上升，股票上涨或下跌都可能贡献方差。Gamma–OU 的点预测对未来每一步的条件期望方差取平均，与长期均值和持续性相同的
+              AR(1) 给出相同的点预测。美股表的 QLIKE 和 RMSE 比较这些点预测的历史误差。要检验跳跃机制，需要另外比较预测区间或尾部分位数的校准。
             </p>
           </article>
           <aside class="parameter-panel">
