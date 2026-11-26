@@ -25,6 +25,7 @@
           <a href="#evaluation" data-i18n="navEvaluation">样本外检验</a>
           <a href="#equity-evaluation" data-i18n="navEquity">美股</a>
           <a href="#method" data-i18n="navMethod">方法</a>
+          <a href="data-methodology/" data-i18n="navData">数据</a>
         </div>
         <button type="button" class="language" id="language" aria-label="Switch to English">EN</button>
       </nav>
@@ -306,9 +307,48 @@
           </div>
           <p class="panel-foot equity-foot">
             <span data-i18n="equityMethodNote">模型参数由较早的训练样本估计。日线和分钟线各用自己的检验样本与方差口径。</span>
-            <a class="text-link" href="data/equity-results.json" download data-i18n="equityDownload">下载美股评估结果</a>
+            <span class="equity-links">
+              <a class="text-link" href="#equity-findings" data-i18n="equityFindingsLink">查看总体结果</a>
+              <a class="text-link" href="data-methodology/#cleaning" data-i18n="dataMethodology">数据来源与清洗</a>
+              <a class="text-link" href="data/equity-results.json" download data-i18n="equityDownload">下载美股评估结果</a>
+            </span>
           </p>
         </div>
+
+        <section class="lab-panel equity-findings" id="equity-findings" aria-labelledby="equityFindingsTitle">
+          <div class="equity-content">
+            <h3 id="equityFindingsTitle" data-i18n="equityFindingsTitle">哪些模型在样本外领先？</h3>
+            <p id="equityFindingsStatus" role="status" data-i18n="equityLoading">正在加载美股评估结果…</p>
+            <div id="equityFindingsContent" hidden>
+              <table class="metrics findings-table">
+                <caption data-i18n="equityFindingsCaption">
+                  在每个标的与预测期限上，样本外 QLIKE 最低的模型记 1 次。日线每个期限评估 8 个标的，分钟线评估 7 个。
+                </caption>
+                <thead>
+                  <tr>
+                    <th scope="col" data-i18n="equityFindingsWindow">频率与期限</th>
+                    <th scope="col" data-i18n="equityFindingsWins">全模型 QLIKE 最低次数</th>
+                    <th scope="col" data-i18n="equityFindingsGamma">Gamma–OU 同时低于 HAR 与 EWMA 的标的</th>
+                  </tr>
+                </thead>
+                <tbody id="equityFindingsRows"></tbody>
+              </table>
+              <div class="findings-notes">
+                <p id="equityGammaFindings" data-i18n="equityGammaFindings">
+                  Gamma–OU 的日线 QLIKE 在 JPM（5 日）、AMD 和 NBIS（22 日）上全模型最低。JPM 日线 1 日的最低值来自 GARCH。AMD
+                  分钟线在三个期限都由固定训练均值取得最低 QLIKE。
+                </p>
+                <p id="equityRmseFindings" data-i18n="equityRmseFindings">
+                  按波动率 RMSE 衡量，Gamma–OU 在日线 AVGO（1、5 日）、NBIS（5、22 日）和 AMD（22 日）上最低。HAR 在分钟线 1、5、22 日分别有
+                  6/7、6/7、5/7 个标的的 RMSE 最低。
+                </p>
+                <p class="small muted" data-i18n="equityFindingsNote">
+                  日线和分钟线使用各自的历史检验样本。NBIS 日线采用单独的较短样本。Gamma–OU 的点预测分数反映条件均值的误差。
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
       </section>
 
       <section class="section wrap method" id="method" aria-labelledby="methodTitle">
@@ -379,6 +419,7 @@
               得到年化方差代理量，再取平方根。因每个交易日只有一个定点报价，该代理量无法捕捉日内波动。
             </p>
             <div class="source-links">
+              <a href="data-methodology/" data-i18n="dataMethodology">数据来源与清洗</a>
               <a href="https://www.federalreserve.gov/releases/h10/hist/dat00_ja.htm" data-i18n="sourceLink">美联储 H.10 原始数据</a>
               <a href="data/observations.csv" download data-i18n="downloadCsv">下载观测 CSV</a>
               <a href="data/results.json" download data-i18n="downloadJson">下载结果 JSON</a>
