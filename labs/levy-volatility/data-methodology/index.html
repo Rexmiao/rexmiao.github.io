@@ -41,6 +41,7 @@
           <nav class="methodology-jump" aria-label="数据页目录 / On this page">
             <a href="#sources"><span lang="zh-CN">数据下载</span><span lang="en" hidden>Data acquisition</span></a>
             <a href="#cleaning"><span lang="zh-CN">清洗与方差构造</span><span lang="en" hidden>Cleaning and variance</span></a>
+            <a href="#cleaning-audit"><span lang="zh-CN">逐标的清洗审计</span><span lang="en" hidden>Cleaning audit by ticker</span></a>
             <a href="#evaluation-sample"><span lang="zh-CN">评估样本</span><span lang="en" hidden>Evaluation sample</span></a>
             <a href="#reproduce"><span lang="zh-CN">文件与复现</span><span lang="en" hidden>Files and replication</span></a>
           </nav>
@@ -209,6 +210,71 @@
               <strong>AMD cleaning example.</strong> Of 2,718 exchange sessions, 8 had missing five-minute bins. Of the other 2,710, 28 exceeded the
               50-basis-point threshold and 1 lacked an adjusted daily endpoint. That left 2,681 full-day variance values.
             </p>
+          </div>
+        </section>
+
+        <section id="cleaning-audit" class="methodology-section" aria-labelledby="auditTitle">
+          <h2 id="auditTitle"><span lang="zh-CN">逐标的清洗审计</span><span lang="en" hidden>Cleaning audit by ticker</span></h2>
+          <p>
+            <span lang="zh-CN">选择标的和数据频率，核对原始记录数、清洗后的有效样本和逐日剔除原因。</span>
+            <span lang="en" hidden>Choose a ticker and frequency to inspect input counts, usable observations, and exclusion reasons by date.</span>
+          </p>
+          <div class="lab-panel audit-panel">
+            <div class="panel-controls equity-controls">
+              <label class="select-label" for="auditTicker">
+                <span lang="zh-CN">标的</span><span lang="en" hidden>Ticker</span>
+                <select id="auditTicker" disabled></select>
+              </label>
+              <div class="horizon-control" id="auditFrequencyGroup" role="group" aria-label="数据频率">
+                <span class="control-label" lang="zh-CN">数据频率</span><span class="control-label" lang="en" hidden>Data frequency</span>
+                <div class="segments" id="auditFrequency">
+                  <button type="button" data-audit-frequency="daily" aria-pressed="true" disabled>
+                    <span lang="zh-CN">日线</span><span lang="en" hidden>Daily</span>
+                  </button>
+                  <button type="button" data-audit-frequency="intraday" aria-pressed="false" disabled>
+                    <span lang="zh-CN">分钟线</span><span lang="en" hidden>1-minute data</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <p id="auditStatus" class="audit-content" role="status">正在加载清洗审计…</p>
+            <div id="auditContent" class="audit-content" hidden>
+              <p id="auditRange" class="audit-range" aria-live="polite"></p>
+              <div id="auditCounts" class="audit-counts"></div>
+              <p id="auditCountNote" class="small muted"></p>
+              <div class="audit-exclusion-head">
+                <h3><span lang="zh-CN">未纳入的日期与原因</span><span lang="en" hidden>Excluded dates and reasons</span></h3>
+                <label class="select-label" for="auditStage">
+                  <span lang="zh-CN">筛选环节</span><span lang="en" hidden>Filter by stage</span>
+                  <select id="auditStage"></select>
+                </label>
+              </div>
+              <p id="auditEmpty" class="audit-empty" role="status" hidden></p>
+              <div id="auditTable" hidden>
+                <table class="metrics audit-table">
+                  <thead>
+                    <tr>
+                      <th scope="col"><span lang="zh-CN">日期</span><span lang="en" hidden>Date</span></th>
+                      <th scope="col"><span lang="zh-CN">环节</span><span lang="en" hidden>Stage</span></th>
+                      <th scope="col"><span lang="zh-CN">原因</span><span lang="en" hidden>Reason</span></th>
+                    </tr>
+                  </thead>
+                  <tbody id="auditExcluded"></tbody>
+                </table>
+                <div class="audit-pagination">
+                  <p id="auditPageSummary" class="small muted" role="status"></p>
+                  <div class="audit-paging-buttons">
+                    <button type="button" id="auditPrevious"><span lang="zh-CN">上一页</span><span lang="en" hidden>Previous</span></button>
+                    <button type="button" id="auditNext"><span lang="zh-CN">下一页</span><span lang="en" hidden>Next</span></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="panel-foot">
+              <a class="text-link" href="../data/equity-cleaning.json" download>
+                <span lang="zh-CN">下载完整清洗审计 JSON</span><span lang="en" hidden>Download the full cleaning audit JSON</span>
+              </a>
+            </div>
           </div>
         </section>
 
