@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="An interactive study of realized volatility using a Lévy-driven Gamma–OU process, with historical forecasts and out-of-sample evaluation."
+      content="Explore USD/JPY volatility forecasts and compare out-of-sample volatility models for U.S. equities using daily and minute-derived variance."
     />
     <meta name="theme-color" content="#142b23" />
     <title>Lévy Volatility Lab</title>
@@ -23,6 +23,7 @@
         <div class="nav-links">
           <a href="#forecast" data-i18n="navForecast">预测</a>
           <a href="#evaluation" data-i18n="navEvaluation">样本外检验</a>
+          <a href="#equity-evaluation" data-i18n="navEquity">美股</a>
           <a href="#method" data-i18n="navMethod">方法</a>
         </div>
         <button type="button" class="language" id="language" aria-label="Switch to English">EN</button>
@@ -146,7 +147,7 @@
           <div class="section-intro">
             <div>
               <p class="eyebrow dark" data-i18n="evaluationEyebrow">历史验证</p>
-              <h2 id="evaluationTitle" data-i18n="evaluationTitle">样本外表现</h2>
+              <h2 id="evaluationTitle" data-i18n="evaluationTitle">USD/JPY 样本外表现</h2>
             </div>
             <p data-i18n="evaluationIntro">先按时间顺序固定训练与检验样本，再用同一批检验日期比较模型与两个基准。</p>
           </div>
@@ -227,6 +228,86 @@
               </p>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section class="section wrap" id="equity-evaluation" aria-labelledby="equityTitle">
+        <div class="section-intro">
+          <div>
+            <p class="eyebrow dark" data-i18n="evaluationEyebrow">历史验证</p>
+            <h2 id="equityTitle" data-i18n="equityTitle">美股波动率模型对比</h2>
+          </div>
+          <p data-i18n="equityIntro">选择标的、数据频率和预测窗口。模型预测未来 1、5 或 22 个交易日的平均日度方差，再按 252 个交易日年化。</p>
+        </div>
+        <div class="lab-panel">
+          <div class="panel-controls equity-controls">
+            <label class="select-label" for="equityTicker">
+              <span data-i18n="equityTicker">标的</span>
+              <select id="equityTicker" disabled></select>
+            </label>
+            <div class="horizon-control" role="group" aria-label="数据频率" data-aria="equityFrequency">
+              <span class="control-label" data-i18n="equityFrequency">数据频率</span>
+              <div class="segments" id="equityFrequency">
+                <button type="button" data-frequency="daily" aria-pressed="true" disabled><span data-i18n="equityDaily">日线</span></button>
+                <button type="button" data-frequency="intraday" aria-pressed="false" disabled>
+                  <span data-i18n="equityIntraday">分钟线</span>
+                </button>
+              </div>
+            </div>
+            <div class="horizon-control" role="group" aria-label="检验预测窗口" data-aria="evaluationHorizon">
+              <span class="control-label" data-i18n="forecastHorizon">预测窗口</span>
+              <div class="segments" id="equityHorizon">
+                <button type="button" data-horizon="1" aria-pressed="false" disabled><span data-i18n="h1">1 日</span></button>
+                <button type="button" data-horizon="5" aria-pressed="true" disabled><span data-i18n="h5">5 日</span></button>
+                <button type="button" data-horizon="22" aria-pressed="false" disabled><span data-i18n="h22">22 日</span></button>
+              </div>
+            </div>
+          </div>
+          <div class="equity-content">
+            <p id="equityTarget" class="equity-target" hidden></p>
+            <p id="equityStatus" class="equity-status" role="status">正在加载美股评估结果…</p>
+            <div id="equityResults" hidden>
+              <div class="equity-layout">
+                <table class="metrics equity-table">
+                  <caption data-i18n="equityCaption">
+                    两项误差指标均为越低越好，每列最低值高亮。
+                  </caption>
+                  <thead>
+                    <tr>
+                      <th scope="col" data-i18n="modelLabel">模型</th>
+                      <th scope="col" data-i18n="equityQlike">QLIKE 差值</th>
+                      <th scope="col" data-i18n="equityRmse">波动率 RMSE（百分点）</th>
+                    </tr>
+                  </thead>
+                  <tbody id="equityScores"></tbody>
+                </table>
+                <aside class="equity-sample" aria-labelledby="equitySampleTitle">
+                  <h3 id="equitySampleTitle" data-i18n="equitySample">样本外检验</h3>
+                  <dl>
+                    <div>
+                      <dt data-i18n="equityOriginCount">预测起点数</dt>
+                      <dd id="equityOrigins"></dd>
+                    </div>
+                    <div>
+                      <dt data-i18n="equityOriginDates">预测起点范围</dt>
+                      <dd id="equityOriginRange"></dd>
+                    </div>
+                    <div>
+                      <dt data-i18n="equityTargetDates">目标窗口结束日期范围</dt>
+                      <dd id="equityTargetRange"></dd>
+                    </div>
+                  </dl>
+                </aside>
+              </div>
+              <p class="table-note" data-i18n="equityMetricNote">
+                QLIKE 差值以固定训练均值为基准。负值表示误差低于基准。RMSE 使用年化波动率的百分点。
+              </p>
+            </div>
+          </div>
+          <p class="panel-foot equity-foot">
+            <span data-i18n="equityMethodNote">模型参数由较早的训练样本估计。日线和分钟线各用自己的检验样本与方差口径。</span>
+            <a class="text-link" href="data/equity-results.json" download data-i18n="equityDownload">下载美股评估结果</a>
+          </p>
         </div>
       </section>
 

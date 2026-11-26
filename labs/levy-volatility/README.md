@@ -25,6 +25,22 @@ At horizon h, the conditional expected variance is m + (Vₜ − m) exp(−λh).
 
 The one-observation target shares four returns with the origin's proxy. Five- and 22-observation targets use disjoint return windows from the originating proxy, though consecutive evaluation targets still overlap. The model treats the proxy as its current variance state. Narrow intervals can miss observed moves when a large past return drops out of the five-return window. A mean-reverting AR(1) with the same mean and persistence has the same point forecast. Use the interval coverage to assess the jump distribution.
 
+## U.S. equity forecast comparison
+
+The same page has a U.S. equity section with aggregate out-of-sample results for SPY, NVDA, JPM, AMD, QQQ, AVGO, MU, SNDK, and NBIS. It compares fixed training mean, EWMA, HAR, and Gamma–OU forecasts of the annualized average daily variance over the next 1, 5, or 22 trading sessions. The daily comparison also includes GARCH.
+
+The daily target uses squared adjusted close-to-close log returns. The minute-derived target combines regular-session realized variance from five-minute samples of one-minute bars with squared adjusted overnight log returns. The seven long-history tickers share 527 eligible forecast origins for daily evaluation and 190 for minute-derived evaluation. NBIS has 85 origins in a separate daily evaluation. The other views for NBIS and SNDK report insufficient samples. Sample dates can differ by target because the minute-derived evaluation requires complete aligned windows across the seven long-history tickers.
+
+QLIKE is shown as a loss difference from the fixed training mean on the same origins. A negative difference indicates lower loss. RMSE is measured in annualized volatility percentage points. Use scores to compare models for the selected target, ticker, and horizon.
+
+The browser reads the [aggregate results](data/equity-results.json). To rebuild them from the original benchmark outputs, run this command with the path to the local equity study results:
+
+```powershell
+python scripts/export_equity_results.py "<path-to-equity-study>/results"
+```
+
+The benchmark files and raw market data are retained in the local project at `D:Dropbox量化反思总结Levy波动率建模equity-study`.
+
 ## References
 
 - Federal Reserve Board, H.10 historical USD/JPY rates. [Source series](https://www.federalreserve.gov/releases/h10/hist/dat00_ja.htm)
