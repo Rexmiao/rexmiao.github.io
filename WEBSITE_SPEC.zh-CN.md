@@ -66,6 +66,8 @@
 
 Trading Reflections 是用户的个人交易复盘栏目。归档按日期倒序列出已发布的复盘，可点击标题看全文。文章页提供返回归档的链接，归档提供返回 `/projects/#trading` 的链接。用 `TRADING_REFLECTION_TEMPLATE.md` 写作，在 `_trading_reflections/` 内按 `YYYY-MM-DD-short-title.md` 保存。填写标题、日期和摘要，准备公开时设为 `published: true`。站点构建排除模板、草稿和未来日期的条目。已发布的突破交易示例使用虚构行情和模拟成交，标题与开头均标明「示例」。
 
+首篇经用户确认的个人复盘是《一笔标普 500 Put 对冲的仓位复盘》，发布日为纽约时间 2026 年 11 月 26 日，链接为 `/projects/trading-reflections/2026-11-26-sp500-put-hedge/`。
+
 PCR Market Watch 提供通往公开介绍页、个人源码仓库、最新 Release、默认英文 README／用户指南及独立中文 README 的链接。Alpha Lab 是本机研究原型，并有独立公开的 Alpha Training Lab 教学指南；不得暗示其已公开源码或已投入生产交易。保留已经核实的项目链接与实际状态。
 
 波动率建模项目新增独立的 [Lévy 波动率实验室](labs/levy-volatility/)，并提供模型源码、数据说明和中英文复现指南。该网页以美联储 H.10 美元兑日元日度汇率为基础开展新的实证实验，与项目页面中的硕士研究是两项工作。五期波动率代理、训练区间、比较基准及模拟假设均见实验室说明。实验室位于 `labs/levy-volatility/`，随现有 GitHub Pages 工作流发布。 波动率项目详情页的 Lévy Volatility Lab 小节提供直达 [Hugging Face 演示](https://rexymiao-levy-volatility-lab.static.hf.space/) 的链接。
