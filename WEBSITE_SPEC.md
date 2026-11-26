@@ -125,9 +125,13 @@ light and dark modes.
 | Quick Annotator                                | `/projects/quick-annotator/`     | Research Software     |
 | HistoQC                                        | `/projects/histoqc/`             | Research Software     |
 
-Trading Reflections is the user's personal trading journal. It starts with an
-empty entries section, accepts entries supplied by the user, and links back to
-`/projects/#trading`.
+Trading Reflections is the user's personal trading journal. The archive lists
+published, dated entries newest first and links back to `/projects/#trading`.
+Each entry has a full article page and a return link. Write entries in
+`_trading_reflections/YYYY-MM-DD-short-title.md` using `TRADING_REFLECTION_TEMPLATE.md`.
+Fill in the title, date and summary, then set `published: true` when ready.
+The template is excluded from the site build. Drafts and future-dated entries
+stay out of the generated archive and article pages.
 
 PCR Market Watch links to its public overview, personal source repository,
 latest release, English-default README/user guide, and separate Chinese README.

@@ -1,0 +1,12 @@
+---
+layout: page
+---
+<p class="mb-3">
+  <small
+    ><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%b %d, %Y' }}</time></small
+  >
+</p>
+
+{{ content }}
+
+<p><a href="{{ '/projects/trading-reflections/' | relative_url }}">Back to Trading Reflections</a></p>

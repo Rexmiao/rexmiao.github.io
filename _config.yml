@@ -181,6 +181,9 @@ collections:
   projects:
     output: true
     permalink: /projects/:path/
+  trading_reflections:
+    output: true
+    permalink: /projects/trading-reflections/:path/
 
 announcements:
   enabled: true
@@ -249,6 +252,7 @@ exclude:
   - assets/jupyter/
   - purgecss.config.js
   - README.md
+  - TRADING_REFLECTION_TEMPLATE.md
   - WEBSITE_SPEC.md
   - WEBSITE_SPEC.zh-CN.md
   - AGENTS.md
@@ -281,6 +285,12 @@ defaults:
       path: "assets"
     values:
       sitemap: false
+  - scope:
+      path: ""
+      type: trading_reflections
+    values:
+      layout: trading-reflection
+      published: false
 
 sass:
   style: compressed
