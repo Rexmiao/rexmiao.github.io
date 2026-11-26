@@ -121,8 +121,13 @@ light and dark modes.
 | PCR Market Watch                               | `/projects/pcr-market-watch/`    | Quantitative Research |
 | Alpha Lab                                      | `/projects/alpha-lab/`           | Quantitative Research |
 | Volatility Modeling with Lévy and OU Processes | `/projects/volatility-modeling/` | Quantitative Research |
+| Trading Reflections                            | `/projects/trading-reflections/` | Trading               |
 | Quick Annotator                                | `/projects/quick-annotator/`     | Research Software     |
 | HistoQC                                        | `/projects/histoqc/`             | Research Software     |
+
+Trading Reflections is the user's personal trading journal. It starts with an
+empty entries section, accepts entries supplied by the user, and links back to
+`/projects/#trading`.
 
 PCR Market Watch links to its public overview, personal source repository,
 latest release, English-default README/user guide, and separate Chinese README.

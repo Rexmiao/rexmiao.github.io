@@ -60,8 +60,11 @@
 | PCR Market Watch                               | `/projects/pcr-market-watch/`    | Quantitative Research |
 | Alpha Lab                                      | `/projects/alpha-lab/`           | Quantitative Research |
 | Volatility Modeling with Lévy and OU Processes | `/projects/volatility-modeling/` | Quantitative Research |
+| Trading Reflections                            | `/projects/trading-reflections/` | Trading               |
 | Quick Annotator                                | `/projects/quick-annotator/`     | Research Software     |
 | HistoQC                                        | `/projects/histoqc/`             | Research Software     |
+
+Trading Reflections 是用户的个人交易复盘栏目，初始条目为空，使用用户提供的复盘内容，并链接回 `/projects/#trading`。
 
 PCR Market Watch 提供通往公开介绍页、个人源码仓库、最新 Release、默认英文 README／用户指南及独立中文 README 的链接。Alpha Lab 是本机研究原型，并有独立公开的 Alpha Training Lab 教学指南；不得暗示其已公开源码或已投入生产交易。保留已经核实的项目链接与实际状态。
 
