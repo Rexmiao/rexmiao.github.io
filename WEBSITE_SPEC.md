@@ -39,6 +39,13 @@ Retain the existing URL, hosting, and theme. Build and verify the website before
 claiming that changes are published. Verify both the deployment result and the
 live page after a source update.
 
+The lab has a separate Static HTML target on Hugging Face, `Rexymiao/levy-volatility-lab`.
+`.github/workflows/publish-huggingface.yml` stages an explicit set of the lab's
+public files and uploads to that Space. Configure a repository-scoped Trusted
+Publisher for `Rexmiao/rexmiao.github.io`, branch `master`, and workflow
+`publish-huggingface.yml`. GitHub Actions receives a short-lived credential at
+run time. The Static Space uses precomputed results.
+
 ## Content baseline
 
 The user-supplied `Resume202611220310.docx` is the source for Runtian Miao's research

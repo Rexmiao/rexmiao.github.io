@@ -1,0 +1,69 @@
+name: Publish volatility lab to Hugging Face
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [master]
+    paths:
+      - .github/workflows/publish-huggingface.yml
+
+jobs:
+  publish:
+    if: github.repository == 'Rexmiao/rexmiao.github.io' && github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    concurrency:
+      group: huggingface-levy-volatility-lab
+      cancel-in-progress: false
+    permissions:
+      contents: read
+      id-token: write
+    env:
+      SPACE_ID: Rexymiao/levy-volatility-lab
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Verify the public Static Space
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          from urllib.request import urlopen
+
+          repo_id = os.environ["SPACE_ID"]
+          with urlopen("https://huggingface.co/api/spaces/" + repo_id, timeout=20) as response:
+              space = json.load(response)
+          if space.get("id") != repo_id or space.get("sdk") != "static" or space.get("private") is not False:
+              raise SystemExit(f"Expected a public Static Space at {repo_id}.")
+          PY
+
+      - name: Stage site files
+        run: python .github/scripts/stage_huggingface_lab.py --revision "$GITHUB_SHA" "$RUNNER_TEMP/hugging-face-levy-lab"
+
+      - name: Install the Hugging Face SDK
+        run: python -m pip install "huggingface_hub==1.19.0"
+
+      - name: Upload to the Space
+        env:
+          HF_OIDC_RESOURCE: spaces/Rexymiao/levy-volatility-lab
+        run: |
+          python - <<'PY'
+          import os
+          from pathlib import Path
+
+          from huggingface_hub import HfApi, get_token
+
+          commit = HfApi(token=get_token()).upload_folder(
+              repo_id=os.environ["SPACE_ID"],
+              repo_type="space",
+              folder_path=Path(os.environ["RUNNER_TEMP"]) / "hugging-face-levy-lab",
+              commit_message="Publish volatility lab from " + os.environ["GITHUB_SHA"][:7],
+          )
+          print(commit.commit_url)
+          PY

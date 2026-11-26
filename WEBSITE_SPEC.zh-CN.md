@@ -21,6 +21,8 @@
 
 保留现有网址、托管方式及主题。网站完成构建与验证后，才能声称改动已发布。每次源码更新后，同时核查部署结果和实际线上页面。
 
+波动率实验室另有 Hugging Face Static HTML 发布目标 `Rexymiao/levy-volatility-lab`。`.github/workflows/publish-huggingface.yml` 只打包明确列出的公开文件。Trusted Publisher 在该 Space 内设定，匹配仓库 `Rexmiao/rexmiao.github.io`、分支 `master` 和工作流 `publish-huggingface.yml`。GitHub Actions 运行时获得短期上传凭据。Static Space 使用预计算结果。
+
 ## 内容基线
 
 用户提供的 `Resume202611220310.docx` 是 Runtian Miao 的研究方向、教育经历、职业经历、技能、学术成果、同行评审、领导经历、大学服务及科研支持环境信息的来源。用户还提供了替换头像，保存在 `assets/img/runtian-miao.jpg`。
