@@ -242,6 +242,47 @@
               <p id="auditRange" class="audit-range" aria-live="polite"></p>
               <div id="auditCounts" class="audit-counts"></div>
               <p id="auditCountNote" class="small muted"></p>
+              <section id="cleaning-timeline" class="audit-timeline" aria-labelledby="auditTimelineTitle">
+                <h3 id="auditTimelineTitle"><span lang="zh-CN">逐日清洗日历</span><span lang="en" hidden>Daily cleaning calendar</span></h3>
+                <p class="small muted">
+                  <span lang="zh-CN">日线按复权日收益、分钟线按全日方差的可用性标记。选择日期查看清洗记录。</span>
+                  <span lang="en" hidden
+                    >Statuses track adjusted daily returns or minute-derived full-day variance. Select a date for its cleaning record.</span
+                  >
+                </p>
+                <p id="auditTimelineStatus" role="status" hidden></p>
+                <div id="auditTimelineBody" hidden>
+                  <div class="audit-timeline-layout">
+                    <div>
+                      <div class="audit-month-controls">
+                        <label class="select-label" for="auditTimelineYear">
+                          <span lang="zh-CN">年份</span><span lang="en" hidden>Year</span>
+                          <select id="auditTimelineYear"></select>
+                        </label>
+                        <label class="select-label" for="auditTimelineMonth">
+                          <span lang="zh-CN">月份</span><span lang="en" hidden>Month</span>
+                          <select id="auditTimelineMonth"></select>
+                        </label>
+                        <div class="audit-paging-buttons">
+                          <button type="button" id="auditTimelinePrevious">
+                            <span lang="zh-CN">上月</span><span lang="en" hidden>Previous month</span>
+                          </button>
+                          <button type="button" id="auditTimelineNext"><span lang="zh-CN">下月</span><span lang="en" hidden>Next month</span></button>
+                        </div>
+                      </div>
+                      <div id="auditCalendarWeekdays" class="audit-calendar-grid audit-weekdays" aria-hidden="true"></div>
+                      <div id="auditCalendarDays" class="audit-calendar-grid" role="group" aria-labelledby="auditTimelineTitle"></div>
+                      <div id="auditTimelineLegend" class="audit-timeline-legend"></div>
+                      <p id="auditMonthSummary" class="small muted" role="status"></p>
+                    </div>
+                    <aside class="audit-day-detail" aria-labelledby="auditDayTitle" aria-live="polite">
+                      <h4 id="auditDayTitle"></h4>
+                      <p id="auditDayReason"></p>
+                      <dl id="auditDayMetrics" class="audit-metric-group audit-day-metrics" hidden></dl>
+                    </aside>
+                  </div>
+                </div>
+              </section>
               <div class="audit-exclusion-head">
                 <h3><span lang="zh-CN">未纳入的日期与原因</span><span lang="en" hidden>Excluded dates and reasons</span></h3>
                 <label class="select-label" for="auditStage">

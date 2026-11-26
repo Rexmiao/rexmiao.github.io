@@ -49,6 +49,8 @@ The benchmark files and raw market data are retained in the local project at `D:
 
 The [interactive audit](data-methodology/#cleaning-audit) reports source counts, accepted observations, and dated exclusions for each equity. Daily coverage and return counts are measured in exchange sessions. Minute counts distinguish source bars, regular-session bars, five-minute bins, and days with usable variance. The audit tracks cleaning decisions separately from the contiguous windows used in model evaluation.
 
+The calendar timeline shares the audit's ticker and frequency selectors. Select a date to see which observations were usable and the recorded cause of any missing or excluded stage. The calendar uses exported exchange sessions. For minute-derived data, the audit export stores the usual session counts once and records the exact counts for each session that differs.
+
 With the local equity-study inputs and dependencies in place, regenerate the [audit data](data/equity-cleaning.json) from this directory:
 
 ```powershell
