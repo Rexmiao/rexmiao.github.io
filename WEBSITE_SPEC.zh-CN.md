@@ -27,9 +27,9 @@
 
 用户提供的 `Resume202611220310.docx` 是 Runtian Miao 的研究方向、教育经历、职业经历、技能、学术成果、同行评审、领导经历、大学服务及科研支持环境信息的来源。用户还提供了替换头像，保存在 `assets/img/runtian-miao.jpg`。
 
-- 姓名：Runtian Miao。
+- 姓名：Runtian Miao。首页主标题：Rexy (Runtian) Miao。
 - 身份：宾夕法尼亚大学应用数学与计算科学博士候选人（Ph.D. Candidate, Applied Mathematics and Computational Science, University of Pennsylvania）。
-- 邮箱：`rexmiao@sas.upenn.edu`。
+- 首页邮箱链接：`rexmiao@sas.upenn.edu` 和 `miaoruntian1997@gmail.com`。
 - Google Scholar ID：`A5aYtioAAAAJ`。
 - ORCID：`0000-0002-2754-2630`。
 - ResearchGate 个人资料设置：`Runtian_Miao2`。
@@ -37,17 +37,19 @@
 - Hugging Face：`Rexymiao`，<https://huggingface.co/Rexymiao>，入口位于首页社交图标区。
 - X：`@Rexy69492164`，<https://x.com/Rexy69492164>，由用户提供的截图确认。
 
+首页简介提及校队田径和多次半程马拉松经历，并和其他科研软件一起突出显示 Sedeen Viewer。
+
 不得推断缺失的学位日期、毕业情况、稿件录用状态、个人科研资助归属或投资业绩。保留 2026 年 npj Dementia 稿件的审稿中状态，以及 ISFTD 2026 海报的已接受状态。Quick Annotator 的期刊文章与预印本应视为同一工作的不同版本。
 
 ## 新闻与社交动态
 
 通过 `_pages/about.md` 及 `_config.yml` 的 announcements 设置启用首页 News 栏目。导航中的 News 打开 `/news/`，该页面列出已发布的新闻集合，并链接到已确认的 X 账号。
 
-首篇当前动态为 `_news/website-update.md`，发文日期按用户的 America/New_York 时区设为 2026-11-25。文章说明实际完成的 CV、学术成果及量化项目作品集更新，并链接到对应页面。继续排除模板公告，不得编造发文日期或研究里程碑。
+首篇当前动态为 `_news/website-update.md`，发文日期按用户的 America/New_York 时区设为 2026-11-25。文章说明实际完成的 CV、学术成果及量化项目作品集更新，并链接到对应页面。继续排除模板公告，不得编造发文日期或研究里程碑。后续在 `_news/` 添加有明确日期的真实动态。首页最多展示最近五条，`/news/` 列出全部动态。
 
 ## 受邀同行评审
 
-首页突出显示各期刊名称、影响因子和 CV 记录的审稿次数，并链接到 `/cv/#peer-review`。36 次已完成审稿涉及 25 篇稿件，含修回轮次。另列为 _NeuroImage_ 完成的 1 次合作审稿及 _The Journal of Pathology: Clinical Research_ 审稿人库成员身份。保留稿件内容的保密性。所列影响因子为 2026 年发布的 Journal Citation Reports 的 2025 年数据，[公开表格](https://www.niic.nsc.ru/phocadownload/publications/2025/JCR_JournalImpactFactor_2026.pdf)按发布年份标注列名。
+首页突出显示各期刊名称、影响因子和 CV 记录的审稿次数，并链接到 `/cv/#peer-review`。36 次已完成审稿含修回轮次，稿件数量保留在 CV 中。另列为 _NeuroImage_ 完成的 1 次合作审稿及 _The Journal of Pathology: Clinical Research_ 审稿人库成员身份。保留稿件内容的保密性。所列影响因子为 2026 年发布的 Journal Citation Reports 的 2025 年数据，[公开表格](https://www.niic.nsc.ru/phocadownload/publications/2025/JCR_JournalImpactFactor_2026.pdf)按发布年份标注列名。
 
 ## 项目作品集
 
@@ -65,7 +67,7 @@ PCR Market Watch 提供通往公开介绍页、个人源码仓库、最新 Relea
 
 波动率建模项目新增独立的 [Lévy 波动率实验室](labs/levy-volatility/)，并提供模型源码、数据说明和中英文复现指南。该网页以美联储 H.10 美元兑日元日度汇率为基础开展新的实证实验，与项目页面中的硕士研究是两项工作。五期波动率代理、训练区间、比较基准及模拟假设均见实验室说明。实验室位于 `labs/levy-volatility/`，随现有 GitHub Pages 工作流发布。 波动率项目详情页的 Lévy Volatility Lab 小节提供直达 [Hugging Face 演示](https://rexymiao-levy-volatility-lab.static.hf.space/) 的链接。
 
-首页的 Quantitative research and projects 小节也提供 Hugging Face 演示入口。
+Projects 页卡片标出 Lévy Volatility Lab。首页的 Quantitative research and projects 小节将实验室与 PCR Market Watch、Alpha Lab 一同列为量化研究和交易工作流的项目实例，并提供项目详情及 Hugging Face 演示入口。
 
 波动率项目详情页的导师姓名 Prof. Wojbor A. Woyczynski 链接到他的[波兰语维基百科条目](https://pl.wikipedia.org/wiki/Wojbor_A._Woyczy%C5%84ski)。
 

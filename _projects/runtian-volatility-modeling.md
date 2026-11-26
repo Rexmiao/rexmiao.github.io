@@ -2,7 +2,7 @@
 layout: page
 title: Volatility Modeling with Lévy and OU Processes
 permalink: /projects/volatility-modeling/
-description: Research on Lévy processes and Ornstein–Uhlenbeck models, with interactive volatility comparisons for USD/JPY and U.S. equities.
+description: Master's research on Lévy and Ornstein–Uhlenbeck models for option pricing, plus the interactive Lévy Volatility Lab for USD/JPY and U.S. equities.
 category: Quantitative Research
 importance: 3
 portfolio: runtian

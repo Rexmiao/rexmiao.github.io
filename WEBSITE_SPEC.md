@@ -53,10 +53,10 @@ profile, education, professional experience, skills, scholarly output, peer revi
 leadership, university service, and research support environment. The user also
 supplied the replacement portrait stored at `assets/img/runtian-miao.jpg`.
 
-- Name: Runtian Miao.
+- Name: Runtian Miao. Homepage heading: Rexy (Runtian) Miao.
 - Position: Ph.D. Candidate, Applied Mathematics and Computational Science,
   University of Pennsylvania.
-- Email: `rexmiao@sas.upenn.edu`.
+- Homepage contact links: `rexmiao@sas.upenn.edu` and `miaoruntian1997@gmail.com`.
 - Google Scholar ID: `A5aYtioAAAAJ`.
 - ORCID: `0000-0002-2754-2630`.
 - ResearchGate profile setting: `Runtian_Miao2`.
@@ -65,6 +65,9 @@ supplied the replacement portrait stored at `assets/img/runtian-miao.jpg`.
   homepage social icons.
 - X: `@Rexy69492164`, <https://x.com/Rexy69492164>, confirmed by the user's
   supplied screenshot.
+
+The homepage bio mentions varsity track and multiple half marathons and
+emphasizes Sedeen Viewer alongside other research software.
 
 Do not infer missing degree dates, graduation, manuscript acceptance, personal
 grant ownership, or investment performance. Preserve the 2026 npj Dementia
@@ -81,13 +84,15 @@ The first current update is `_news/website-update.md`, dated 2026-11-25 in the
 user's America/New_York timezone. It reports the actual CV, publications, and
 quantitative project portfolio update, with links to the relevant pages. Keep
 template announcements excluded; do not invent publication dates or research
-milestones.
+milestones. Add new verified milestones as dated entries in `_news/`. The
+homepage shows up to five recent items and `/news/` lists all entries.
 
 ## Invited peer review
 
 The About page highlights each journal, its Journal Impact Factor (JIF), and
 the peer review counts documented in the CV. It links to `/cv/#peer-review`.
-The 36 completed reviews cover 25 manuscripts and include revision rounds.
+The 36 completed reviews include revision rounds. Manuscript counts belong in
+the CV.
 Keep the one _NeuroImage_ collaborative review and _The Journal of Pathology:
 Clinical Research_ reviewer-pool membership separate from that total.
 Keep manuscript details private. The 2025 JIFs come from the 2026 edition of
@@ -122,8 +127,10 @@ five-return proxy, fixed training split, benchmarks, and simulation assumptions
 are documented in the lab. The lab lives under `labs/levy-volatility/` and deploys
 with the existing GitHub Pages workflow.
 The project page links directly to the [Hugging Face demo](https://rexymiao-levy-volatility-lab.static.hf.space/)
-under the Lévy Volatility Lab heading. The homepage also links to the demo in
-its Quantitative research and projects section.
+under the Lévy Volatility Lab heading. The Projects card names the lab. The
+homepage groups the lab with PCR Market Watch and Alpha Lab in its Quantitative
+research and projects section, describing the trading research workflows and
+linking to the project details and Hugging Face demo.
 
 The lab's [U.S. equity comparison](labs/levy-volatility/#equity-evaluation) adds
 bilingual ticker, variance target, and forecast-horizon controls on the same
