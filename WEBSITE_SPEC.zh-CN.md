@@ -47,6 +47,8 @@
 
 首篇网站更新动态为 `_news/website-update.md`，发文日期按用户的 America/New_York 时区设为 2026-11-25。文章说明实际完成的 CV、学术成果及量化项目作品集更新，并链接到对应页面。继续排除模板公告，不得编造发文日期或研究里程碑。后续在 `_news/` 添加有明确日期的真实动态。首页最多展示最近五条，`/news/` 列出全部动态。已补入 CV 中 2018 至 2026 年的七条会议和报告记录，包括 CWRU SURES、瑞士病理学会年会、三次宾大 Pendergrass 研讨会及两次 ISFTD。2026 年 ISFTD 海报按会议议程及接收状态表述。仅核实到月份的条目使用 `date_label`，排序按月份处理。
 
+News 于 2026 年 11 月 24 日记录 American Journal of Artificial Intelligence 的审稿人任命。任期至 2029 年 11 月 24 日，并链接至出版商公开审稿人名单。
+
 ## 受邀同行评审
 
 首页突出显示各期刊名称、影响因子和 CV 记录的审稿次数，并链接到 `/cv/#peer-review`。36 次已完成审稿含修回轮次，稿件数量保留在 CV 中。另列为 _NeuroImage_ 完成的 1 次合作审稿及 _The Journal of Pathology: Clinical Research_ 审稿人库成员身份。保留稿件内容的保密性。所列影响因子为 2026 年发布的 Journal Citation Reports 的 2025 年数据，[公开表格](https://www.niic.nsc.ru/phocadownload/publications/2025/JCR_JournalImpactFactor_2026.pdf)按发布年份标注列名。

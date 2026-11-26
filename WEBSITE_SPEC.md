@@ -95,7 +95,9 @@ including the CWRU SURES presentations, Swiss Society of Pathology abstract,
 three Penn Pendergrass posters, and the 2024 and 2026 ISFTD posters. Label the
 accepted 2026 ISFTD poster by its program status. Use `date_label` for entries
 with only month-level precision. The date in their front matter sorts the
-entry by month.
+entry by month. The American Journal of Artificial Intelligence reviewer
+appointment is listed on November 24, 2026, with a term through November 24,
+2029, and a link to the publisher's public reviewer roster.
 
 ## Invited peer review
 
