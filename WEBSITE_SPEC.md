@@ -66,8 +66,8 @@ supplied the replacement portrait stored at `assets/img/runtian-miao.jpg`.
 - X: `@Rexy69492164`, <https://x.com/Rexy69492164>, confirmed by the user's
   supplied screenshot.
 
-The homepage social icons and email links appear below the subtitle and above
-the biography. The homepage bio mentions varsity track and multiple half marathons. The bold
+The homepage shows compact social icons and two email links under the portrait.
+The homepage bio mentions varsity track and multiple half marathons. The bold
 program and software names link to the [Penn AMCS program](https://amcs.upenn.edu/),
 the Quick Annotator and HistoQC portfolio pages, the [Sedeen Viewer product page](https://www.pathcore.com/products/sedeen-viewer),
 and the [WRDS homepage](https://wrds-www.wharton.upenn.edu/).

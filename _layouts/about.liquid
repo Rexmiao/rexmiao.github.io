@@ -14,15 +14,17 @@ layout: default
       {% endif %}
     </h1>
     <p class="desc">{{ page.subtitle }}</p>
-    {% if page.social %}
-      <div class="social">
-        <div class="contact-icons">{% include social.liquid %}</div>
-        <div class="contact-note">{{ site.contact_note }}</div>
-      </div>
-    {% endif %}
   </header>
 
   <article>
+    {% capture profile_contact %}
+      {% if page.social %}
+        <div class="social">
+          <div class="contact-icons">{% include social.liquid %}</div>
+          <div class="contact-note">{{ site.contact_note }}</div>
+        </div>
+      {% endif %}
+    {% endcapture %}
     {% if page.profile %}
       <div class="profile float-{% if page.profile.align == 'left' %}left{% else %}right{% endif %}">
         {% if page.profile.image %}
@@ -41,10 +43,13 @@ layout: default
             cache_bust=true
           %}
         {% endif %}
+        {{ profile_contact }}
         {% if page.profile.more_info %}
           <div class="more-info">{{ page.profile.more_info }}</div>
         {% endif %}
       </div>
+    {% else %}
+      {{ profile_contact }}
     {% endif %}
 
     <div class="clearfix">{{ content }}</div>
