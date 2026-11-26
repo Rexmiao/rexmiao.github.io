@@ -143,9 +143,12 @@ _一笔标普 500 Put 对冲的仓位复盘_, dated November 26, 2026, at
 
 PCR Market Watch links to its public overview, personal source repository,
 latest release, English-default README/user guide, and separate Chinese README.
-Alpha Lab is a local research prototype with a separate public
-Alpha Training Lab teaching guide; do not imply a public source-code release or
-production trading operation. Preserve verified project links and factual status.
+Alpha Lab is a quantitative trading system in development. The homepage links
+to its project page and describes signal capture, manual trading decisions,
+human-approved simulated execution, and fully automated simulated execution.
+The project page links to the public project repository, Alpha Training Lab
+teaching guide, and Hugging Face research demo. Describe backtest results as
+simulated and verify any claims about live executions or investment returns.
 
 The volatility modeling project links its advisor, Prof. Wojbor A. Woyczynski,
 to his [Polish Wikipedia biography](https://pl.wikipedia.org/wiki/Wojbor_A._Woyczy%C5%84ski).
