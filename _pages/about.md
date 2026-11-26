@@ -19,11 +19,11 @@ selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
 ---
 
-I am a Ph.D. candidate in **Applied Mathematics and Computational Science** at the [University of Pennsylvania](https://www.upenn.edu/). My research brings together medical imaging, computational neuroscience, statistical modeling, and biomedical artificial intelligence. Outside research, I have run varsity track and completed multiple half marathons.
+I am a Ph.D. candidate in **[Applied Mathematics and Computational Science](https://amcs.upenn.edu/)** at the [University of Pennsylvania](https://www.upenn.edu/). My research brings together medical imaging, computational neuroscience, statistical modeling, and biomedical artificial intelligence. Outside research, I have run varsity track and completed multiple half marathons.
 
 My doctoral work integrates structural and diffusion MRI, tractography, brain-network representations, and longitudinal mixed-effects models to study gray- and white-matter degeneration. I am also interested in multimodal AI and foundation models for precision medicine.
 
-I develop scientific software as part of this research. At Case Western Reserve University, I developed **Quick Annotator**, a deep-learning-assisted digital pathology annotation tool, and contributed to **HistoQC** and C++ plugins for **Sedeen Viewer**. Since fall 2026, I have contributed to agentic AI coding and application prototyping with the **Wharton Research Data Services (WRDS)** engineering team.
+I develop scientific software as part of this research. At Case Western Reserve University, I developed **[Quick Annotator]({{ '/projects/quick-annotator/' | relative_url }})**, a deep-learning-assisted digital pathology annotation tool, and contributed to **[HistoQC]({{ '/projects/histoqc/' | relative_url }})** and C++ plugins for **[Sedeen Viewer](https://www.pathcore.com/products/sedeen-viewer)**. Since fall 2026, I have contributed to agentic AI coding and application prototyping with the **[Wharton Research Data Services (WRDS)](https://wrds-www.wharton.upenn.edu/)** engineering team.
 
 ## Quantitative research and projects
 

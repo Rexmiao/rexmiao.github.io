@@ -37,7 +37,7 @@
 - Hugging Face：`Rexymiao`，<https://huggingface.co/Rexymiao>，入口位于首页社交图标区。
 - X：`@Rexy69492164`，<https://x.com/Rexy69492164>，由用户提供的截图确认。
 
-首页简介提及校队田径和多次半程马拉松经历，并和其他科研软件一起突出显示 Sedeen Viewer。
+首页简介提及校队田径和多次半程马拉松经历。粗体名称分别链接到[宾大 AMCS 项目](https://amcs.upenn.edu/)、Quick Annotator 和 HistoQC 项目详情、[Sedeen Viewer 产品页](https://www.pathcore.com/products/sedeen-viewer)以及 [WRDS 官网](https://wrds-www.wharton.upenn.edu/)。
 
 不得推断缺失的学位日期、毕业情况、稿件录用状态、个人科研资助归属或投资业绩。保留 2026 年 npj Dementia 稿件的审稿中状态，以及 ISFTD 2026 海报的已接受状态。Quick Annotator 的期刊文章与预印本应视为同一工作的不同版本。
 

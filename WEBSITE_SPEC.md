@@ -66,8 +66,10 @@ supplied the replacement portrait stored at `assets/img/runtian-miao.jpg`.
 - X: `@Rexy69492164`, <https://x.com/Rexy69492164>, confirmed by the user's
   supplied screenshot.
 
-The homepage bio mentions varsity track and multiple half marathons and
-emphasizes Sedeen Viewer alongside other research software.
+The homepage bio mentions varsity track and multiple half marathons. The bold
+program and software names link to the [Penn AMCS program](https://amcs.upenn.edu/),
+the Quick Annotator and HistoQC portfolio pages, the [Sedeen Viewer product page](https://www.pathcore.com/products/sedeen-viewer),
+and the [WRDS homepage](https://wrds-www.wharton.upenn.edu/).
 
 Do not infer missing degree dates, graduation, manuscript acceptance, personal
 grant ownership, or investment performance. Preserve the 2026 npj Dementia
