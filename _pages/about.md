@@ -39,12 +39,12 @@ My [quantitative projects]({{ '/projects/' | relative_url }}#quantitative-resear
 
 I have completed **36 peer reviews**, including revision rounds, and contributed to **one collaborative review**.
 
-- **IEEE Journal of Biomedical and Health Informatics** · JIF 7.7 · **31 reviews**
-- **Smart Health** (Elsevier) · JIF 3.4 · **4 reviews**
-- **ACM Transactions on Computing for Healthcare** · JIF 4.0 · **1 review**
-- **American Journal of Artificial Intelligence** · **Peer reviewer** · Three-year term from November 24, 2026 through November 24, 2029
-- **NeuroImage** · JIF 5.3 · **1 collaborative review**
-- **The Journal of Pathology: Clinical Research** · JIF 4.1 · **Reviewer pool member**
+- **[IEEE Journal of Biomedical and Health Informatics](https://www.embs.org/jbhi/)** · JIF 7.7 · **31 reviews**
+- **[Smart Health](https://shop.elsevier.com/journals/smart-health/2352-6483)** (Elsevier) · JIF 3.4 · **4 reviews**
+- **[ACM Transactions on Computing for Healthcare](https://www.acm.org/binaries/content/assets/press-releases/2020/march/health-launches.pdf "ACM journal introduction (PDF)")** · JIF 4.0 · **1 review**
+- **[American Journal of Artificial Intelligence](https://www.sciencepublishinggroup.com/journal/542/home)** · **Peer reviewer**
+- **[NeuroImage](https://shop.elsevier.com/journals/neuroimage/1053-8119)** · JIF 5.3 · **1 collaborative review**
+- **[The Journal of Pathology: Clinical Research](https://www.wiley.com/en-us/The+Journal+of+Pathology%3A+Clinical+Research-p-20564538)** · JIF 4.1 · **Reviewer pool member**
 
 JIF values are the 2025 Journal Impact Factors from the [2026 Journal Citation Reports](https://journalcitationreports.zendesk.com/hc/en-gb/articles/47808147130129-2026). See my [CV]({{ '/cv/' | relative_url }}#peer-review) for review roles and research areas.
 
