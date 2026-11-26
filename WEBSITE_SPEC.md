@@ -61,6 +61,8 @@ supplied the replacement portrait stored at `assets/img/runtian-miao.jpg`.
 - ORCID: `0000-0002-2754-2630`.
 - ResearchGate profile setting: `Runtian_Miao2`.
 - GitHub: `Rexmiao`.
+- Hugging Face: `Rexymiao`, <https://huggingface.co/Rexymiao>, linked in the
+  homepage social icons.
 - X: `@Rexy69492164`, <https://x.com/Rexy69492164>, confirmed by the user's
   supplied screenshot.
 
@@ -83,10 +85,14 @@ milestones.
 
 ## Invited peer review
 
-The About page summarizes the journal peer review roles documented in the CV
-and links to `/cv/#peer-review`. Retain the distinctions between direct review,
-collaborative review for _NeuroImage_, and membership in the reviewer pool for
-_The Journal of Pathology: Clinical Research_. Keep manuscript details private.
+The About page highlights each journal, its Journal Impact Factor (JIF), and
+the peer review counts documented in the CV. It links to `/cv/#peer-review`.
+The 36 completed reviews cover 25 manuscripts and include revision rounds.
+Keep the one _NeuroImage_ collaborative review and _The Journal of Pathology:
+Clinical Research_ reviewer-pool membership separate from that total.
+Keep manuscript details private. The 2025 JIFs come from the 2026 edition of
+Journal Citation Reports. Its [public table](https://www.niic.nsc.ru/phocadownload/publications/2025/JCR_JournalImpactFactor_2026.pdf)
+labels columns by release year.
 
 ## Project portfolio
 

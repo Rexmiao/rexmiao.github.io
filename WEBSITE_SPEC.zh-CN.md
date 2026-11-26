@@ -34,6 +34,7 @@
 - ORCID：`0000-0002-2754-2630`。
 - ResearchGate 个人资料设置：`Runtian_Miao2`。
 - GitHub：`Rexmiao`。
+- Hugging Face：`Rexymiao`，<https://huggingface.co/Rexymiao>，入口位于首页社交图标区。
 - X：`@Rexy69492164`，<https://x.com/Rexy69492164>，由用户提供的截图确认。
 
 不得推断缺失的学位日期、毕业情况、稿件录用状态、个人科研资助归属或投资业绩。保留 2026 年 npj Dementia 稿件的审稿中状态，以及 ISFTD 2026 海报的已接受状态。Quick Annotator 的期刊文章与预印本应视为同一工作的不同版本。
@@ -46,7 +47,7 @@
 
 ## 受邀同行评审
 
-首页概述 CV 中有记录的期刊同行评审服务，并链接到 `/cv/#peer-review`。分别说明直接审稿、为 _NeuroImage_ 合作审稿及加入 _The Journal of Pathology: Clinical Research_ 审稿人库。保留稿件内容的保密性。
+首页突出显示各期刊名称、影响因子和 CV 记录的审稿次数，并链接到 `/cv/#peer-review`。36 次已完成审稿涉及 25 篇稿件，含修回轮次。另列为 _NeuroImage_ 完成的 1 次合作审稿及 _The Journal of Pathology: Clinical Research_ 审稿人库成员身份。保留稿件内容的保密性。所列影响因子为 2026 年发布的 Journal Citation Reports 的 2025 年数据，[公开表格](https://www.niic.nsc.ru/phocadownload/publications/2025/JCR_JournalImpactFactor_2026.pdf)按发布年份标注列名。
 
 ## 项目作品集
 

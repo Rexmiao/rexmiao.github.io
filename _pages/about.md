@@ -34,9 +34,15 @@ In the [Lévy Volatility Lab]({{ '/labs/levy-volatility/' | relative_url }}), I 
 
 ## Invited peer review
 
-I review manuscripts for the _IEEE Journal of Biomedical and Health Informatics_, _Smart Health_ (Elsevier), and _ACM Transactions on Computing for Healthcare_. I have also co-reviewed for _NeuroImage_ and joined the reviewer pool for _The Journal of Pathology: Clinical Research_.
+I have completed **36 peer reviews across 25 manuscripts**, including revision rounds, and contributed to **one collaborative review**.
 
-My [CV]({{ '/cv/' | relative_url }}#peer-review) lists the roles, review counts, and research areas.
+- **IEEE Journal of Biomedical and Health Informatics** · JIF 7.7 · **31 reviews** across 22 manuscripts
+- **Smart Health** (Elsevier) · JIF 3.4 · **4 reviews** across 2 manuscripts
+- **ACM Transactions on Computing for Healthcare** · JIF 4.0 · **1 review**
+- **NeuroImage** · JIF 5.3 · **1 collaborative review**
+- **The Journal of Pathology: Clinical Research** · JIF 4.1 · **Reviewer pool member**
+
+JIF values are the 2025 Journal Impact Factors from the [2026 Journal Citation Reports](https://journalcitationreports.zendesk.com/hc/en-gb/articles/47808147130129-2026). See my [CV]({{ '/cv/' | relative_url }}#peer-review) for review roles and research areas.
 
 ## Research interests
 

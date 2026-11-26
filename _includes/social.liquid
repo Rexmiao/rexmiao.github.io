@@ -34,6 +34,11 @@
 {% if site.github_username %}
   <a href="https://github.com/{{ site.github_username }}" title="GitHub"><i class="fa-brands fa-github"></i></a>
 {% endif %}
+{% if site.huggingface_username %}
+  <a href="https://huggingface.co/{{ site.huggingface_username }}" title="Hugging Face" aria-label="Hugging Face profile">
+    <img class="social-logo" src="{{ '/assets/img/hugging-face-logo.png' | relative_url }}" alt="" width="128" height="128">
+  </a>
+{% endif %}
 {% if site.linkedin_username %}
   <a href="https://www.linkedin.com/in/{{ site.linkedin_username }}" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
 {% endif %}

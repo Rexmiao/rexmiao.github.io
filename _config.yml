@@ -73,6 +73,7 @@ og_image: # The site-wide (default for all links) Open Graph preview image
 # -----------------------------------------------------------------------------
 
 github_username: Rexmiao
+huggingface_username: Rexymiao
 gitlab_username: # your GitLab user name
 x_username: Rexy69492164
 mastodon_username: # your mastodon instance+username in the format instance.tld/@username
