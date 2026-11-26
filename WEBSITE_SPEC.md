@@ -106,7 +106,9 @@ Alpha Lab is a local research prototype with a separate public
 Alpha Training Lab teaching guide; do not imply a public source-code release or
 production trading operation. Preserve verified project links and factual status.
 
-The volatility modeling project links to the standalone [Lévy Volatility Lab](labs/levy-volatility/)
+The volatility modeling project links its advisor, Prof. Wojbor A. Woyczynski,
+to his [Polish Wikipedia biography](https://pl.wikipedia.org/wiki/Wojbor_A._Woyczy%C5%84ski).
+It also links to the standalone [Lévy Volatility Lab](labs/levy-volatility/)
 with its model, documented data, and bilingual replication instructions. The
 lab is a new empirical experiment using daily Federal Reserve H.10 USD/JPY rates,
 separate from the master's research described on the portfolio page. Its rolling

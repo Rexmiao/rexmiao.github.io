@@ -10,7 +10,7 @@ portfolio: runtian
 
 **Status:** Master's research at Case Western Reserve University.
 
-**Advisor:** Prof. Wojbor A. Woyczynski.
+**Advisor:** [Prof. Wojbor A. Woyczynski](https://pl.wikipedia.org/wiki/Wojbor_A._Woyczy%C5%84ski).
 
 Studied volatility modeling using Lévy processes and Ornstein–Uhlenbeck (OU) models in the context of option pricing. This work forms part of my background in financial mathematics, stochastic modeling, and computational research.
 
