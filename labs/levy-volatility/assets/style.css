@@ -95,6 +95,39 @@ h3 {
   background: var(--forest);
   border-bottom: 1px solid #ffffff19;
 }
+.lab-breadcrumb {
+  padding-block: 0.55rem 0.65rem;
+  border-top: 1px solid #68887566;
+  color: var(--soft-dark);
+  font-size: 0.875rem;
+}
+.lab-breadcrumb ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem 0.65rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.lab-breadcrumb li {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+.lab-breadcrumb li + li::before {
+  content: "";
+  height: 0.7em;
+  border-inline-end: 1px solid currentColor;
+  opacity: 0.7;
+  transform: skewX(-18deg);
+}
+.lab-breadcrumb a:hover {
+  color: var(--lime);
+}
+.lab-breadcrumb [aria-current="page"] {
+  color: #fff;
+  font-weight: 650;
+}
 .nav {
   min-height: 4.4rem;
   display: flex;

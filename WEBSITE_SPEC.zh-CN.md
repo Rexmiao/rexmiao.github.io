@@ -61,6 +61,8 @@ ISFTD 2024 条目记录在阿姆斯特丹参会，并注明会议议程将用户
 
 项目汇总页位于 `/projects/`，提供分类跳转与响应式项目卡片。卡片沿用项目名称原本的大小写，项目简介使用亮色和暗色主题各自的主要文字颜色。各项目拥有独立详情页及返回导航。
 
+项目卡片链接至项目概览，并按 `resources` 设置显示常用资料的直达入口。面包屑依次显示 Projects、分类、项目和当前资料或文章，分类沿用已有锚点。Jekyll 子页用 `project_parent` 指定父项目，交易复盘文章从集合设置继承。独立的 Lévy 实验室和数据方法页提供同样层级的双语导航。
+
 | 项目                                           | 详情页                           | 分类                  |
 | ---------------------------------------------- | -------------------------------- | --------------------- |
 | PCR Market Watch                               | `/projects/pcr-market-watch/`    | Quantitative Research |
@@ -76,7 +78,7 @@ Trading Reflections 是用户的个人交易复盘栏目。归档按日期倒序
 
 PCR Market Watch 提供通往公开介绍页、个人源码仓库、最新 Release、默认英文 README／用户指南及独立中文 README 的链接。Alpha Lab 是正在开发的个人量化交易系统。首页简介链接到项目页，概述信号捕捉、人工交易决策、人工确认的半自动模拟执行和全自动模拟执行。项目页链接到公开项目仓库、Alpha Training Lab 教学指南和 Hugging Face 研究演示。回测收益按模拟结果表述，实盘成交或投资业绩需核实后才能加入。
 
-首页与 Alpha Lab 项目页均链接到 Data Sources & Research Workflow（`/projects/alpha-lab/data-workflow/`）。该页说明数据来源与验证状态、覆盖范围、复权、清洗、时点可用性和样本外对照。标普 500 put 对冲案例链接到已公开的交易复盘，说明拟用历史持仓和期权报价复现情景分析。
+首页与 Alpha Lab 项目页均链接到 Data Sources & Research Workflow（`/projects/alpha-lab/data-workflow/`）。该页说明数据来源与验证状态、覆盖范围、复权、清洗、时点可用性和样本外对照。标普 500 put 对冲文章可在 Trading Reflections 查看。
 
 波动率建模项目新增独立的 [Lévy 波动率实验室](labs/levy-volatility/)，并提供模型源码、数据说明和中英文复现指南。该网页以美联储 H.10 美元兑日元日度汇率为基础开展新的实证实验，与项目页面中的硕士研究是两项工作。五期波动率代理、训练区间、比较基准及模拟假设均见实验室说明。实验室位于 `labs/levy-volatility/`，随现有 GitHub Pages 工作流发布。 波动率项目详情页的 Lévy Volatility Lab 小节提供直达 [Hugging Face 演示](https://rexymiao-levy-volatility-lab.static.hf.space/) 的链接。
 

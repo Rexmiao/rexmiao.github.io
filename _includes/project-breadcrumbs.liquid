@@ -1,0 +1,23 @@
+{% assign breadcrumb_parent = page.project_parent %}
+{% assign breadcrumb_project = page %}
+{% if breadcrumb_parent %}
+  {% assign breadcrumb_project = site.projects | where: 'url', breadcrumb_parent | first %}
+{% endif %}
+
+{% if breadcrumb_project.portfolio == 'runtian' %}
+  {% assign breadcrumb_category_id = breadcrumb_project.category | slugify %}
+  <nav class="project-breadcrumbs" aria-label="Breadcrumb">
+    <ol>
+      <li><a href="{{ '/projects/' | relative_url }}">Projects</a></li>
+      <li>
+        <a href="{{ '/projects/' | relative_url }}#{{ breadcrumb_category_id }}">{{ breadcrumb_project.category | escape }}</a>
+      </li>
+      {% if breadcrumb_parent %}
+        <li>
+          <a href="{{ breadcrumb_project.url | relative_url }}">{{ breadcrumb_project.title | escape }}</a>
+        </li>
+      {% endif %}
+      <li aria-current="page">{{ page.title | escape }}</li>
+    </ol>
+  </nav>
+{% endif %}

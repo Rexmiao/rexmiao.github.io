@@ -15,6 +15,15 @@
       <span class="project-arrow" aria-hidden="true">→</span>
     </div>
   </a>
+  {% if project.resources %}
+    <ul class="project-resources" aria-label="{{ project.title | escape }} resources">
+      {% for resource in project.resources %}
+        <li>
+          <a href="{{ resource.url | relative_url }}">{{ resource.title | escape }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
   {% if project.github %}
     <div class="github-icon mx-3 mb-3">
       <a href="{{ project.github }}" aria-label="{{ project.title | escape }} source code"><i class="fa-brands fa-github gh-icon"></i></a>

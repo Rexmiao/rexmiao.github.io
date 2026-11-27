@@ -11,7 +11,7 @@ display_categories: [Quantitative Research, Trading, Research Software]
 {% assign portfolio_projects = site.projects | where: "portfolio", "runtian" %}
 
 <div class="projects">
-  <nav class="project-navigation" aria-label="Project categories">
+  <nav class="project-navigation" aria-label="Jump to a project category">
     {% for category in page.display_categories %}
       <a href="#{{ category | slugify }}">{{ category }}</a>
     {% endfor %}

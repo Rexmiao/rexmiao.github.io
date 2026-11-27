@@ -6,6 +6,11 @@ description: Master's research on Lévy and Ornstein–Uhlenbeck models for opti
 category: Quantitative Research
 importance: 3
 portfolio: runtian
+resources:
+  - title: Interactive lab
+    url: /labs/levy-volatility/
+  - title: Data sources and cleaning
+    url: /labs/levy-volatility/data-methodology/
 ---
 
 **Status:** Master's research at Case Western Reserve University.

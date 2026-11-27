@@ -6,11 +6,14 @@ description: A quantitative trading system in development, with signal capture, 
 category: Quantitative Research
 importance: 2
 portfolio: runtian
+resources:
+  - title: Data sources and research workflow
+    url: /projects/alpha-lab/data-workflow/
 ---
 
 **In development.** Alpha Lab collects market data, records trading signals, and generates order proposals subject to risk checks. The local execution prototype is tested with historical replay and simulated orders.
 
-[Data Sources & Research Workflow]({{ '/projects/alpha-lab/data-workflow/' | relative_url }}) explains how I source, clean, and test data, with an S&P 500 put hedge case study.
+[Data Sources & Research Workflow]({{ '/projects/alpha-lab/data-workflow/' | relative_url }}) explains how I source, clean, and test market data.
 
 ## Trading workflows
 

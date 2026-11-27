@@ -291,6 +291,7 @@ defaults:
     values:
       layout: trading-reflection
       published: false
+      project_parent: /projects/trading-reflections/
 
 sass:
   style: compressed

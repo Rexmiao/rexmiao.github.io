@@ -2,16 +2,15 @@
 layout: page
 title: Data Sources & Research Workflow
 permalink: /projects/alpha-lab/data-workflow/
+project_parent: /projects/alpha-lab/
 description: How I turn a research idea into a test, document the data, and decide whether the result can inform a trading decision.
 ---
 
-[Back to Alpha Lab]({{ '/projects/alpha-lab/' | relative_url }})
-
-[Research questions](#research-questions) · [Data sources](#data-sources) · [Cleaning rules](#cleaning-rules) · [Testing usefulness](#testing-usefulness) · [S&P 500 put hedge](#sp-500-put-hedge)
+[Research questions](#research-questions) · [Data sources](#data-sources) · [Cleaning rules](#cleaning-rules) · [Testing usefulness](#testing-usefulness)
 
 ## Research questions
 
-I start with an observation from a trade review, a company filing, industry news, or a market move. Before collecting data, I write down the decision it could change, when I would need the information, and what would count as an improvement. An observation can become a hypothesis such as “Would a portfolio stress check have flagged an underhedged position before I took profit on part of my put hedge?”
+I start with an observation from a trade review, a company filing, industry news, or a market move. Before collecting data, I write down the decision it could change, when I would need the information, and what would count as an improvement. For example, I could test whether a liquidity filter reduces simulated trading costs for a daily equity signal.
 
 ## Data sources
 
@@ -25,7 +24,7 @@ I start with an observation from a trade review, a company filing, industry news
 
 - **Company disclosures.** EDGAR provides filing histories and structured financial statement data. I would match the time a filing became public to the earliest decision that could use it. [SEC Financial Statement Data Sets on Data.gov](https://catalog.data.gov/dataset/financial-statement-data-sets)
 - **Macroeconomic releases.** ALFRED preserves historical versions of economic series. I would pair the relevant vintage with the release timestamp when testing a signal that reacts within a trading day. [Federal Reserve data downloads and vintage access](https://www.federalreserve.gov/data/data-download-fred-information.htm)
-- **Historical option quotes.** Cboe's interval data include timestamped bid and ask quotes and displayed size. I would check contract coverage and data access first, then align quotes with underlying prices and the time of the hedge decision. [Cboe Option Quotes](https://datashop.cboe.com/option-quote-intervals)
+- **Historical option quotes.** Cboe's interval data include timestamped bid and ask quotes and displayed size. I would check contract coverage and data access first, then align quotes with underlying prices and the time of the decision being tested. [Cboe Option Quotes](https://datashop.cboe.com/option-quote-intervals)
 
 ## Cleaning rules
 
@@ -42,14 +41,4 @@ One daily snapshot covered 400 completed SPY sessions from April 24, 2025 to Nov
 
 Compare the rule with the new input to the same rule with its existing inputs, on the same held-out dates. Keep training, validation, and testing in time order, and remove training labels whose outcome windows cross the split. Model fills using prices that could be available after the decision and include bid–ask spreads and fees where applicable.
 
-Judge the result against the decision named in advance. A hedge check should be judged on residual portfolio loss and hedge cost, including what happens across market conditions. If it helps on the held-out sample, it can first be shown as an alert, then evaluated in the human-confirmed and automated simulation workflows.
-
-## S&P 500 put hedge {#sp-500-put-hedge}
-
-In the trade I wrote about, I sold part of an S&P 500 put hedge after it gained value while keeping the long exposure in place. The remaining puts rose further, yet the hedge gains fell short of the losses on the long positions. At the next partial exit, the question I would want the system to answer is how much portfolio loss the remaining puts could offset if the market fell another **5% or 10%**. [Read the original trading reflection (Chinese)]({{ '/projects/trading-reflections/2026-11-26-sp500-put-hedge/' | relative_url }})
-
-- **Inputs.** At each proposed sale, take a timestamped snapshot of the long positions, quantities and leverage, the underlying price, and the exact put contracts, including strikes, expirations, multipliers, and contemporaneous bid and ask quotes.
-- **Comparison.** Set a common horizon and revalue the longs and puts under both market shocks. Test a range of implied-volatility assumptions for the puts. Compare keeping the hedge, selling some puts while keeping long exposure, and selling some puts while also reducing long exposure. Use observed quotes and costs to estimate what each adjustment would require at the decision time.
-- **Decision.** Report the estimated loss on the long positions, the offset from the remaining puts, and the residual portfolio loss in each scenario. If the residual loss exceeds the chosen risk budget, flag the proposed sale for review.
-
-**Case status.** The original trade is documented in the reflection. The scenario comparison is a proposed historical replay, with results pending reconstruction of the position snapshots and option quotes.
+Judge the result against the decision named in advance. For a liquidity filter, I would compare simulated costs and the share of signals that remain eligible for execution across market conditions. If the filter helps on the held-out sample, it can first be shown as an alert, then evaluated in the human-confirmed and automated simulation workflows.

@@ -128,6 +128,14 @@ and individual pages with return navigation. Display each card's original
 title casing. Use the primary theme text color for project descriptions in
 light and dark modes.
 
+Project cards link to their overview and expose shortcuts to selected resources
+from the card's `resources` front matter. The breadcrumb shows Projects, the
+category, the project, and the current resource or article when applicable.
+Category crumbs link to the existing section anchors. Jekyll resource pages set
+`project_parent` to their overview URL. Trading Reflections entries inherit it
+from their collection. The standalone Lévy lab and methodology show the same
+hierarchy in their own bilingual navigation.
+
 | Project                                        | Detail page                      | Category              |
 | ---------------------------------------------- | -------------------------------- | --------------------- |
 | PCR Market Watch                               | `/projects/pcr-market-watch/`    | Quantitative Research |
@@ -159,8 +167,7 @@ simulated and verify any claims about live executions or investment returns.
 The homepage and Alpha Lab project page link to Data Sources & Research Workflow
 at `/projects/alpha-lab/data-workflow/`. It documents source status, coverage,
 adjustments, cleaning, point-in-time availability, and held-out comparisons.
-Its S&P 500 put hedge example links to the published reflection and describes a
-proposed scenario replay pending historical positions and option quotes.
+The published S&P 500 put article is available in Trading Reflections.
 
 The volatility modeling project links its advisor, Prof. Wojbor A. Woyczynski,
 to his [Polish Wikipedia biography](https://pl.wikipedia.org/wiki/Wojbor_A._Woyczy%C5%84ski).
