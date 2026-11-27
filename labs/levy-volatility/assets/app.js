@@ -291,11 +291,12 @@ const colors = {
   dark: { grid: "#66817060", label: "#cad6c8", cross: "#a9bea6" },
 };
 
-let language = "zh";
+let language = "en";
 try {
-  language = localStorage.getItem("levy-lab-language") === "en" ? "en" : "zh";
+  const savedLanguage = localStorage.getItem("levy-lab-language");
+  if (savedLanguage === "en" || savedLanguage === "zh") language = savedLanguage;
 } catch {
-  // Keep Chinese available when storage is disabled.
+  // Keep the English default when storage is disabled.
 }
 
 const translate = (key) => (language === "en" ? en : zh)[key];
@@ -1013,3 +1014,4 @@ translatePage();
 loadResults();
 renderEquity();
 loadEquityResults();
+

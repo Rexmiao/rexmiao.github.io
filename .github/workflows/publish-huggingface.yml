@@ -67,3 +67,5 @@ jobs:
           )
           print(commit.commit_url)
           PY
+
+# Publish the English-first locale update through the existing Space workflow.

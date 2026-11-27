@@ -3,7 +3,7 @@
 const languageKey = "levy-lab-language";
 const languageButton = document.getElementById("methodLanguage");
 const localized = document.querySelectorAll("body [lang]");
-let currentLanguage = "zh-CN";
+let currentLanguage = "en";
 const auditId = (id) => document.getElementById(id);
 const auditText = (zh, en) => (currentLanguage === "en" ? en : zh);
 const auditNumber = (value) => value.toLocaleString(currentLanguage);
@@ -69,7 +69,8 @@ const auditReasons = {
 };
 
 try {
-  if (localStorage.getItem(languageKey) === "en") currentLanguage = "en";
+  const savedLanguage = localStorage.getItem(languageKey);
+  if (savedLanguage === "en" || savedLanguage === "zh") currentLanguage = savedLanguage === "zh" ? "zh-CN" : "en";
 } catch {
   // Keep the default language when storage is unavailable.
 }
@@ -561,3 +562,4 @@ languageButton.addEventListener("click", () => {
 
 renderLanguage();
 loadAudit();
+
