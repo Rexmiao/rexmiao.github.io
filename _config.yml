@@ -111,9 +111,7 @@ discord_id: # your discord id (18-digit unique numerical identifier)
 zotero_username: # your zotero username
 wechat_qr: # filename of your wechat qr-code saved as an image (e.g., wechat-qr.png if saved to assets/img/wechat-qr.png)
 
-contact_note: >
-  <a href="mailto:rexmiao@sas.upenn.edu">rexmiao@sas.upenn.edu</a><br>
-  <a href="mailto:miaoruntian1997@gmail.com">miaoruntian1997@gmail.com</a>
+secondary_email: miaoruntian1997@gmail.com
 
 # -----------------------------------------------------------------------------
 # Analytics and search engine verification

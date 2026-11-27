@@ -1,0 +1,14 @@
+<ul class="quant-project-grid" role="list" aria-label="Featured quantitative projects">
+  {% for project in page.quantitative_projects %}
+    <li class="quant-project-card">
+      <p class="quant-project-type">{{ project.type | escape }}</p>
+      <h3>
+        <a href="{{ project.url | relative_url }}">{{ project.title | escape }}</a>
+      </h3>
+      <p>{{ project.summary | escape }}</p>
+      {% if project.resource_url %}
+        <a class="quant-project-resource" href="{{ project.resource_url | relative_url }}">{{ project.resource_title | escape }}</a>
+      {% endif %}
+    </li>
+  {% endfor %}
+</ul>

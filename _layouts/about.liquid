@@ -1,63 +1,73 @@
 ---
 layout: default
 ---
-<div class="post">
-  <header class="post-header">
-    <h1 class="post-title">
-      {% if page.display_name %}
-        {{ page.display_name | escape }}
-      {% elsif site.title == 'blank' %}
-        <span class="font-weight-bold">{{ site.first_name }}</span> {{ site.middle_name }}
-        {{ site.last_name }}
-      {% else %}
-        {{ site.title }}
+<div class="post quant-home">
+  <header class="quant-hero">
+    <div class="quant-hero-copy">
+      <h1 class="post-title">
+        {% if page.display_name %}
+          {{ page.display_name | escape }}
+        {% elsif site.title == 'blank' %}
+          <span class="font-weight-bold">{{ site.first_name }}</span> {{ site.middle_name }}
+          {{ site.last_name }}
+        {% else %}
+          {{ site.title }}
+        {% endif %}
+      </h1>
+      <p class="quant-hero-role">{{ page.subtitle }}</p>
+      {% if page.research_focus %}
+        <p class="quant-hero-focus">{{ page.research_focus | escape }}</p>
       {% endif %}
-    </h1>
-    <p class="desc">{{ page.subtitle }}</p>
-  </header>
-
-  <article>
-    {% capture profile_contact %}
-      {% if page.social %}
-        <div class="social">
-          <div class="contact-icons">{% include social.liquid %}</div>
-          <div class="contact-note">{{ site.contact_note }}</div>
-        </div>
+      {% if page.quantitative_projects %}
+        <a class="quant-hero-link" href="#quantitative-research-and-projects">Explore quantitative projects <span aria-hidden="true">↓</span></a>
       {% endif %}
-    {% endcapture %}
-    {% if page.profile %}
-      <div class="profile float-{% if page.profile.align == 'left' %}left{% else %}right{% endif %}">
+    </div>
+    {% if page.profile or page.social %}
+      <aside class="quant-profile" aria-label="Profile and contact">
         {% if page.profile.image %}
           {% assign profile_image_path = page.profile.image | prepend: 'assets/img/' %}
           {% if page.profile.image_circular %}
-            {% assign profile_image_class = 'img-fluid z-depth-1 rounded-circle' %}
+            {% assign profile_image_class = 'rounded-circle' %}
           {% else %}
-            {% assign profile_image_class = 'img-fluid z-depth-1
-      rounded' %}
+            {% assign profile_image_class = 'quant-portrait' %}
           {% endif %}
-          {% capture sizes %}(min-width: {{site.max_width}}) {{ site.max_width | minus: 30 | times: 0.3}}px, (min-width: 576px)
-      30vw, 95vw"{% endcapture %}
           {% assign profile_image_alt = page.profile.alt | default: site.title %}
           {%
-            include figure.liquid loading="eager" path=profile_image_path class=profile_image_class sizes=sizes alt=profile_image_alt
+            include figure.liquid loading="eager" path=profile_image_path class=profile_image_class sizes="(min-width: 640px) 216px, 160px" alt=profile_image_alt
             cache_bust=true
           %}
         {% endif %}
-        {{ profile_contact }}
-        {% if page.profile.more_info %}
-          <div class="more-info">{{ page.profile.more_info }}</div>
+        {% if page.social %}
+          <div class="quant-contact social">
+            <div class="contact-icons">{% include social.liquid %}</div>
+            {% assign email_addresses = site.email | append: ',' | append: site.secondary_email | split: ',' %}
+            <ul class="quant-email-list" role="list" aria-label="Email addresses">
+              {% for email_address in email_addresses %}
+                {% if email_address != blank %}
+                  <li>
+                    <a href="mailto:{{ email_address | encode_email }}">
+                      {{- email_address | replace: '@', ' AT ' | replace: '.', ' DOT ' | escape -}}
+                    </a>
+                  </li>
+                {% endif %}
+              {% endfor %}
+            </ul>
+          </div>
         {% endif %}
-      </div>
-    {% else %}
-      {{ profile_contact }}
+        {% if page.profile.more_info %}
+          <div class="quant-profile-location">{{ page.profile.more_info }}</div>
+        {% endif %}
+      </aside>
     {% endif %}
+  </header>
 
-    <div class="clearfix">{{ content }}</div>
+  <article class="quant-home-content">
+    {{ content }}
 
     <!-- News -->
     {% if page.news and site.announcements.enabled %}
       <h2>
-        <a href="{{ '/news/' | relative_url }}" style="color: inherit">news</a>
+        <a href="{{ '/news/' | relative_url }}">News</a>
       </h2>
       {% include news.liquid limit=true %}
     {% endif %}
@@ -65,7 +75,7 @@ layout: default
     <!-- Latest posts -->
     {% if site.latest_posts.enabled %}
       <h2>
-        <a href="{{ '/blog/' | relative_url }}" style="color: inherit">latest posts</a>
+        <a href="{{ '/blog/' | relative_url }}">Latest posts</a>
       </h2>
       {% include latest_posts.liquid %}
     {% endif %}
@@ -73,7 +83,7 @@ layout: default
     <!-- Selected papers -->
     {% if page.selected_papers %}
       <h2>
-        <a href="{{ '/publications/' | relative_url }}" style="color: inherit">selected publications</a>
+        <a href="{{ '/publications/' | relative_url }}">Selected publications</a>
       </h2>
       {% include selected_papers.liquid %}
     {% endif %}

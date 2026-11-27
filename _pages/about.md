@@ -4,9 +4,9 @@ title: About
 display_name: Rexy (Runtian) Miao
 permalink: /
 subtitle: Ph.D. Candidate in Applied Mathematics and Computational Science · University of Pennsylvania
+research_focus: Volatility modeling, market data, and quantitative trading research.
 
 profile:
-  align: right
   image: runtian-miao.jpg
   alt: Runtian Miao
   image_circular: false
@@ -14,26 +14,44 @@ profile:
     <p>University of Pennsylvania</p>
     <p>Philadelphia, PA, USA</p>
 
+quantitative_projects:
+  - title: PCR Market Watch
+    type: Options market data
+    url: /projects/pcr-market-watch/
+    summary: Explore U.S. options activity through put/call ratios, historical trends, and comparisons.
+  - title: Alpha Lab
+    type: Trading system in development
+    url: /projects/alpha-lab/
+    summary: Capture signals for manual trading decisions and test human-approved and fully automated execution in simulation.
+    resource_title: Data Sources & Research Workflow
+    resource_url: /projects/alpha-lab/data-workflow/
+  - title: Lévy Volatility Lab
+    type: Volatility forecasting
+    url: /projects/volatility-modeling/
+    summary: Compare USD/JPY and U.S. equity volatility forecasts using jump-driven and benchmark models.
+    resource_title: Demo on Hugging Face
+    resource_url: https://rexymiao-levy-volatility-lab.static.hf.space/
+
 news: true
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes social icons and contact links under the portrait
 ---
+
+## Quantitative research and projects
+
+My master's research studied volatility modeling with **Lévy processes and Ornstein–Uhlenbeck models** in the context of option pricing. I am interested in bringing empirical research, statistical modeling, and scientific computing to quantitative investment research.
+
+{% include quant-projects.liquid %}
+
+[Browse all quantitative projects]({{ '/projects/' | relative_url }}#quantitative-research)
+
+## Academic research and software
 
 I am a Ph.D. candidate in **[Applied Mathematics and Computational Science](https://amcs.upenn.edu/)** at the [University of Pennsylvania](https://www.upenn.edu/). My research brings together medical imaging, computational neuroscience, statistical modeling, and biomedical artificial intelligence. Outside research, I have run varsity track and completed multiple half marathons.
 
 My doctoral work integrates structural and diffusion MRI, tractography, brain-network representations, and longitudinal mixed-effects models to study gray- and white-matter degeneration. I am also interested in multimodal AI and foundation models for precision medicine.
 
 I develop scientific software as part of this research. At Case Western Reserve University, I developed **[Quick Annotator]({{ '/projects/quick-annotator/' | relative_url }})**, a deep-learning-assisted digital pathology annotation tool, and contributed to **[HistoQC]({{ '/projects/histoqc/' | relative_url }})** and C++ plugins for **[Sedeen Viewer](https://www.pathcore.com/products/sedeen-viewer)**. Since fall 2026, I have contributed to agentic AI coding and application prototyping with the **[Wharton Research Data Services (WRDS)](https://wrds-www.wharton.upenn.edu/)** engineering team.
-
-## Quantitative research and projects
-
-My master's research studied volatility modeling with **Lévy processes and Ornstein–Uhlenbeck models** in the context of option pricing. I am interested in bringing empirical research, statistical modeling, and scientific computing to quantitative investment research.
-
-My [quantitative projects]({{ '/projects/' | relative_url }}#quantitative-research) reflect my experience with quantitative research and trading workflows, from studying market activity to testing signals, simulating portfolios, and forecasting volatility.
-
-- **[PCR Market Watch]({{ '/projects/pcr-market-watch/' | relative_url }})** tracks U.S. options activity using put/call ratios and historical comparisons.
-- **[Alpha Lab]({{ '/projects/alpha-lab/' | relative_url }})** is my quantitative trading system in development. It captures signals for manual trading decisions and tests semi-automated execution with human approval and fully automated execution in simulation. [Data Sources & Research Workflow]({{ '/projects/alpha-lab/data-workflow/' | relative_url }}).
-- **[Lévy Volatility Lab]({{ '/projects/volatility-modeling/' | relative_url }})** compares volatility forecasts for USD/JPY and U.S. equities. [Open the demo on Hugging Face](https://rexymiao-levy-volatility-lab.static.hf.space/).
 
 ## Invited peer review
 
