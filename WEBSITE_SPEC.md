@@ -2,7 +2,7 @@
 
 [简体中文](WEBSITE_SPEC.zh-CN.md) | **English**
 
-Updated: 2026-11-26.
+Updated: 2026-11-27.
 
 ## Website and deployment
 
@@ -173,6 +173,14 @@ human-approved simulated execution, and fully automated simulated execution.
 The project page links to the public project repository, Alpha Training Lab
 teaching guide, and Hugging Face research demo. Describe backtest results as
 simulated and verify any claims about live executions or investment returns.
+
+The Alpha Lab card on `/projects/` exposes separate **Open app**
+(<https://rexymiao-alpha-trading-lab.hf.space/>) and **Hugging Face project**
+(<https://huggingface.co/spaces/Rexymiao/alpha-trading-lab>) shortcuts, alongside
+its data-workflow resource. The overview at `/projects/alpha-lab/` repeats both
+links and explains their roles. These are two entrypoints to the same research
+application: the standalone URL opens the interface directly, while the project
+page also provides the Space's files and deployment information.
 
 The homepage and Alpha Lab project page link to Data Sources & Research Workflow
 at `/projects/alpha-lab/data-workflow/`. It documents source status, coverage,
