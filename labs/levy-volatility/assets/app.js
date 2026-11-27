@@ -1014,4 +1014,3 @@ translatePage();
 loadResults();
 renderEquity();
 loadEquityResults();
-

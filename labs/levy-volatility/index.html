@@ -45,7 +45,10 @@
           <div class="hero-copy">
             <p class="eyebrow" data-i18n="heroEyebrow">Quantitative research lab</p>
             <h1><span data-i18n="heroLineA">Modeling volatility</span><span class="h1-accent" data-i18n="heroLineB">with Lévy jumps</span></h1>
-            <p class="hero-lede" data-i18n="heroLede">Volatility can surge after a market shock and recede gradually. Fit both of these behaviors to USD/JPY history and see how the model forecasts out of sample.</p>
+            <p class="hero-lede" data-i18n="heroLede">
+              Volatility can surge after a market shock and recede gradually. Fit both of these behaviors to USD/JPY history and see how the model
+              forecasts out of sample.
+            </p>
             <div class="hero-actions">
               <a class="button primary" href="#forecast" data-i18n="explore">Explore forecasts</a>
               <a class="hero-secondary" href="#method" data-i18n="readMethod">Read the method</a>
@@ -81,7 +84,10 @@
             <p class="eyebrow dark" data-i18n="forecastEyebrow">Forecast explorer</p>
             <h2 id="forecastTitle" data-i18n="forecastTitle">Start from an observation</h2>
           </div>
-          <p data-i18n="forecastIntro">Choose an observation date and a horizon. The shaded bands show where volatility can land after random jumps and gradual decay from the starting level.</p>
+          <p data-i18n="forecastIntro">
+            Choose an observation date and a horizon. The shaded bands show where volatility can land after random jumps and gradual decay from the
+            starting level.
+          </p>
         </div>
         <div class="lab-panel">
           <div class="panel-controls">
@@ -145,11 +151,24 @@
           </div>
           <section class="panel-foot fan-explainer" id="forecast-reading" aria-labelledby="fanExplainTitle">
             <h3 id="fanExplainTitle" data-i18n="fanExplainTitle">How to read the USD/JPY forecast</h3>
-            <p id="fanDataSummary" data-i18n="fanDataSummary">The source is the Federal Reserve H.10 New York noon USD/JPY reference rate. The sample includes 2,720 valid fixes from 2016-01-04 through 2026-11-20. The model is fitted on the first 2,176 observations.</p>
-            <p data-i18n="fanTargetNote">At the origin, annualized variance is 252 times the mean of the latest five squared log rate changes. A step advances one published fix, skipping dates without quotes. At the fifth future fix, for example, the observed target uses the five changes ending at that fix.</p>
+            <p id="fanDataSummary" data-i18n="fanDataSummary">
+              The source is the Federal Reserve H.10 New York noon USD/JPY reference rate. The sample includes 2,720 valid fixes from 2016-01-04
+              through 2026-11-20. The model is fitted on the first 2,176 observations.
+            </p>
+            <p data-i18n="fanTargetNote">
+              At the origin, annualized variance is 252 times the mean of the latest five squared log rate changes. A step advances one published fix,
+              skipping dates without quotes. At the fifth future fix, for example, the observed target uses the five changes ending at that fix.
+            </p>
             <p class="fan-reading" id="fanReading" hidden></p>
-            <p data-i18n="fanEstimateNote">The point forecast takes the square root of expected terminal variance. The simulated median is the 50th percentile of terminal volatility. Positive jumps can raise expected variance. All paths with no jumps decay to the same value, which can make quantiles coincide.</p>
-            <p data-i18n="fanBandNote">At each horizon, the central 50% and 90% bands span the 25th–75th and 5th–95th percentiles of the 20,000 simulated endpoints. These are per-horizon intervals for future shocks under fixed fitted parameters.</p>
+            <p data-i18n="fanEstimateNote">
+              The point forecast takes the square root of expected terminal variance. The simulated median is the 50th percentile of terminal
+              volatility. Positive jumps can raise expected variance. All paths with no jumps decay to the same value, which can make quantiles
+              coincide.
+            </p>
+            <p data-i18n="fanBandNote">
+              At each horizon, the central 50% and 90% bands span the 25th–75th and 5th–95th percentiles of the 20,000 simulated endpoints. These are
+              per-horizon intervals for future shocks under fixed fitted parameters.
+            </p>
           </section>
         </div>
       </section>
@@ -161,7 +180,10 @@
               <p class="eyebrow dark" data-i18n="evaluationEyebrow">Historical validation</p>
               <h2 id="evaluationTitle" data-i18n="evaluationTitle">USD/JPY out-of-sample performance</h2>
             </div>
-            <p data-i18n="evaluationIntro">The training and holdout periods are fixed in chronological order. All three models are scored on the same holdout targets across the three horizons.</p>
+            <p data-i18n="evaluationIntro">
+              The training and holdout periods are fixed in chronological order. All three models are scored on the same holdout targets across the
+              three horizons.
+            </p>
           </div>
           <div class="lab-panel evaluation-panel">
             <div class="panel-controls">
@@ -196,7 +218,9 @@
             </figure>
             <div class="metrics-wrap">
               <table class="metrics">
-                <caption data-i18n="tableCaption">Forecast errors on matched targets. Lower is better.</caption>
+                <caption data-i18n="tableCaption">
+                  Forecast errors on matched targets. Lower is better.
+                </caption>
                 <thead>
                   <tr>
                     <th scope="col" data-i18n="modelLabel">Model</th>
@@ -233,7 +257,10 @@
                 <p data-i18n="floorShare">Observed below no-jump floor</p>
                 <strong id="floorShare">—</strong>
               </div>
-              <p id="diagnosticNote" data-i18n="diagnosticNote">When observations regularly fall below the no-jump floor, model paths cannot reproduce those fast declines. Compare observed coverage against the nominal 90%.</p>
+              <p id="diagnosticNote" data-i18n="diagnosticNote">
+                When observations regularly fall below the no-jump floor, model paths cannot reproduce those fast declines. Compare observed coverage
+                against the nominal 90%.
+              </p>
             </div>
           </div>
         </div>
@@ -245,7 +272,10 @@
             <p class="eyebrow dark" data-i18n="evaluationEyebrow">Historical validation</p>
             <h2 id="equityTitle" data-i18n="equityTitle">U.S. equity volatility models</h2>
           </div>
-          <p data-i18n="equityIntro">Choose a ticker, data frequency, and horizon. Models predict average daily variance over the next 1, 5, or 22 sessions, annualized using 252 trading days.</p>
+          <p data-i18n="equityIntro">
+            Choose a ticker, data frequency, and horizon. Models predict average daily variance over the next 1, 5, or 22 sessions, annualized using
+            252 trading days.
+          </p>
         </div>
         <div class="lab-panel">
           <div class="panel-controls equity-controls">
@@ -277,7 +307,9 @@
             <div id="equityResults" hidden>
               <div class="equity-layout">
                 <table class="metrics equity-table">
-                  <caption data-i18n="equityCaption">Lower errors are better. The lowest value in each column is highlighted.</caption>
+                  <caption data-i18n="equityCaption">
+                    Lower errors are better. The lowest value in each column is highlighted.
+                  </caption>
                   <thead>
                     <tr>
                       <th scope="col" data-i18n="modelLabel">Model</th>
@@ -306,11 +338,16 @@
                 </aside>
               </div>
               <p class="equity-verdict" id="equityVerdict" aria-live="polite"></p>
-              <p class="table-note" data-i18n="equityMetricNote">QLIKE differences are relative to the fixed training mean. Negative values beat that baseline. RMSE is in annualized volatility percentage points.</p>
+              <p class="table-note" data-i18n="equityMetricNote">
+                QLIKE differences are relative to the fixed training mean. Negative values beat that baseline. RMSE is in annualized volatility
+                percentage points.
+              </p>
             </div>
           </div>
           <p class="panel-foot equity-foot">
-            <span data-i18n="equityMethodNote">Parameters are estimated on earlier data. Each frequency uses its own evaluation sample and variance measure.</span>
+            <span data-i18n="equityMethodNote"
+              >Parameters are estimated on earlier data. Each frequency uses its own evaluation sample and variance measure.</span
+            >
             <span class="equity-links">
               <a class="text-link" href="#equity-findings" data-i18n="equityFindingsLink">See overall results</a>
               <a class="text-link" href="data-methodology/#cleaning" data-i18n="dataMethodology">Data sources and cleaning</a>
@@ -325,7 +362,10 @@
             <p id="equityFindingsStatus" role="status" data-i18n="equityLoading">Loading equity results…</p>
             <div id="equityFindingsContent" hidden>
               <table class="metrics findings-table">
-                <caption data-i18n="equityFindingsCaption">At each horizon, count each model that had the lowest out-of-sample QLIKE for a ticker. Daily estimates cover eight tickers per horizon. Minute-derived estimates cover seven.</caption>
+                <caption data-i18n="equityFindingsCaption">
+                  At each horizon, count each model that had the lowest out-of-sample QLIKE for a ticker. Daily estimates cover eight tickers per
+                  horizon. Minute-derived estimates cover seven.
+                </caption>
                 <thead>
                   <tr>
                     <th scope="col" data-i18n="equityFindingsWindow">Data and horizon</th>
@@ -338,11 +378,26 @@
               <div class="findings-notes">
                 <div id="equityFindingsReading">
                   <h4 data-i18n="equityFindingsReadingTitle">How to read the all-model counts</h4>
-                  <p data-i18n="equityFindingsReading">Within each frequency and horizon, compare all available models for each ticker, including the fixed training mean. A model gets one count for the lowest QLIKE. Exact ties count for each tied model. For one-day forecasts with minute-derived data, HAR 4 means HAR had the lowest QLIKE for four of the seven tickers. The count shows how often a model led. Use the per-ticker results above to see the size of the differences.</p>
+                  <p data-i18n="equityFindingsReading">
+                    Within each frequency and horizon, compare all available models for each ticker, including the fixed training mean. A model gets
+                    one count for the lowest QLIKE. Exact ties count for each tied model. For one-day forecasts with minute-derived data, HAR 4 means
+                    HAR had the lowest QLIKE for four of the seven tickers. The count shows how often a model led. Use the per-ticker results above to
+                    see the size of the differences.
+                  </p>
                 </div>
-                <p id="equityGammaFindings" data-i18n="equityGammaFindings">The right column compares Gamma–OU with HAR and EWMA. For AMD with minute-derived data, Gamma–OU beat both at all three horizons, and the fixed training mean scored lower still. Gamma–OU led across all models on daily data for JPM at 5 days and for AMD and NBIS at 22 days. GARCH led on daily JPM at 1 day.</p>
-                <p id="equityRmseFindings" data-i18n="equityRmseFindings">By volatility RMSE, Gamma–OU led on daily data for AVGO at 1 and 5 days, NBIS at 5 and 22 days, and AMD at 22 days. With minute-derived data, HAR led on 6 of 7 tickers at both 1 and 5 days and 5 of 7 at 22 days.</p>
-                <p class="small muted" data-i18n="equityFindingsNote">Daily and minute-derived estimates use separate historical holdouts. NBIS has its own shorter daily holdout. Gamma–OU point scores measure errors in the conditional mean.</p>
+                <p id="equityGammaFindings" data-i18n="equityGammaFindings">
+                  The right column compares Gamma–OU with HAR and EWMA. For AMD with minute-derived data, Gamma–OU beat both at all three horizons,
+                  and the fixed training mean scored lower still. Gamma–OU led across all models on daily data for JPM at 5 days and for AMD and NBIS
+                  at 22 days. GARCH led on daily JPM at 1 day.
+                </p>
+                <p id="equityRmseFindings" data-i18n="equityRmseFindings">
+                  By volatility RMSE, Gamma–OU led on daily data for AVGO at 1 and 5 days, NBIS at 5 and 22 days, and AMD at 22 days. With
+                  minute-derived data, HAR led on 6 of 7 tickers at both 1 and 5 days and 5 of 7 at 22 days.
+                </p>
+                <p class="small muted" data-i18n="equityFindingsNote">
+                  Daily and minute-derived estimates use separate historical holdouts. NBIS has its own shorter daily holdout. Gamma–OU point scores
+                  measure errors in the conditional mean.
+                </p>
               </div>
             </div>
           </div>
@@ -355,23 +410,44 @@
             <p class="eyebrow dark" data-i18n="methodEyebrow">Model notes</p>
             <h2 id="methodTitle" data-i18n="methodTitle">Jumps and mean reversion</h2>
           </div>
-          <p data-i18n="methodIntro">Gamma–OU uses an observed daily variance proxy as its state. Positive jumps represent shocks, followed by exponential decay.</p>
+          <p data-i18n="methodIntro">
+            Gamma–OU uses an observed daily variance proxy as its state. Positive jumps represent shocks, followed by exponential decay.
+          </p>
         </div>
 
         <div class="method-grid">
           <article class="method-story">
             <h3 data-i18n="dynamics">Variance dynamics</h3>
             <div class="formula" aria-label="d V equals minus lambda times V d t plus d J">dV<sub>t</sub> = −λV<sub>t</sub> dt + dJ<sub>t</sub></div>
-            <p data-i18n="modelCopy">J is a compound Poisson process with intensity λk and exponential jump sizes of mean θ. Between jumps, V decays at rate λ. The stationary distribution is Gamma with shape k and scale θ.</p>
+            <p data-i18n="modelCopy">
+              J is a compound Poisson process with intensity λk and exponential jump sizes of mean θ. Between jumps, V decays at rate λ. The
+              stationary distribution is Gamma with shape k and scale θ.
+            </p>
             <div class="formula" aria-label="Conditional expected variance equals mean variance plus initial deviation times phi to the h">
               E[V<sub>t+h</sub> | V<sub>t</sub>] = m + (V<sub>t</sub> − m)φ<sup>h</sup>
             </div>
-            <p data-i18n="calibrationCopy">The training sample estimates long-run variance m, persistence φ = exp(−λ), and the Gamma parameters by moments. At each evaluation origin, the latest known variance updates the state while all fitted parameters stay fixed.</p>
+            <p data-i18n="calibrationCopy">
+              The training sample estimates long-run variance m, persistence φ = exp(−λ), and the Gamma parameters by moments. At each evaluation
+              origin, the latest known variance updates the state while all fitted parameters stay fixed.
+            </p>
             <h3 data-i18n="limitations">Reading the USD/JPY results</h3>
-            <p data-i18n="limitationsCopy">The target is the annualized five-change volatility proxy at the terminal observation. The conditional mean is the same as a mean-reverting AR(1) with the same parameters. Use interval coverage and the no-jump floor to assess what the jump distribution adds. The experiment does not estimate leverage, changing parameters, or trading performance.</p>
+            <p data-i18n="limitationsCopy">
+              The target is the annualized five-change volatility proxy at the terminal observation. The conditional mean is the same as a
+              mean-reverting AR(1) with the same parameters. Use interval coverage and the no-jump floor to assess what the jump distribution adds.
+              The experiment does not estimate leverage, changing parameters, or trading performance.
+            </p>
             <h3 id="equity-method" data-i18n="equityMethodTitle">Reading the U.S. equity results</h3>
-            <p data-i18n="equityMethodTarget">Daily data use squared adjusted close-to-close log returns. The minute-derived measure adds regular-session realized variance and the squared overnight return. A five-day target, for example, averages daily variance over the five sessions after the origin and annualizes it by multiplying by 252. The square root expresses the target as annualized volatility.</p>
-            <p data-i18n="equityMethodReading">A positive Gamma–OU jump is a rise in variance. Both stock gains and losses contribute to variance. Gamma–OU point forecasts average conditional expected variance over the future sessions. An AR(1) with the same long-run mean and persistence gives the same point forecast. Equity QLIKE and RMSE measure historical point forecast errors. Testing the jump mechanism calls for a separate check of interval or tail-quantile calibration.</p>
+            <p data-i18n="equityMethodTarget">
+              Daily data use squared adjusted close-to-close log returns. The minute-derived measure adds regular-session realized variance and the
+              squared overnight return. A five-day target, for example, averages daily variance over the five sessions after the origin and annualizes
+              it by multiplying by 252. The square root expresses the target as annualized volatility.
+            </p>
+            <p data-i18n="equityMethodReading">
+              A positive Gamma–OU jump is a rise in variance. Both stock gains and losses contribute to variance. Gamma–OU point forecasts average
+              conditional expected variance over the future sessions. An AR(1) with the same long-run mean and persistence gives the same point
+              forecast. Equity QLIKE and RMSE measure historical point forecast errors. Testing the jump mechanism calls for a separate check of
+              interval or tail-quantile calibration.
+            </p>
           </article>
           <aside class="parameter-panel">
             <h3 data-i18n="calibrated">Parameters fitted on training data</h3>
@@ -408,7 +484,10 @@
         <div class="source-panel">
           <div>
             <h3 data-i18n="dataSources">Data and reproducibility</h3>
-            <p id="sourceSummary" data-i18n="sourceSummary">USD/JPY comes from the Federal Reserve H.10 daily reference rate in yen per U.S. dollar. Annualized variance is 252 times the trailing mean of five squared changes in log rates. Its square root is the volatility proxy. One fixing per day leaves intraday moves unobserved.</p>
+            <p id="sourceSummary" data-i18n="sourceSummary">
+              USD/JPY comes from the Federal Reserve H.10 daily reference rate in yen per U.S. dollar. Annualized variance is 252 times the trailing
+              mean of five squared changes in log rates. Its square root is the volatility proxy. One fixing per day leaves intraday moves unobserved.
+            </p>
             <div class="source-links">
               <a href="data-methodology/" data-i18n="dataMethodology">Data sources and cleaning</a>
               <a href="https://www.federalreserve.gov/releases/h10/hist/dat00_ja.htm" data-i18n="sourceLink">Federal Reserve H.10 data</a>
@@ -424,7 +503,9 @@
               Barndorff-Nielsen &amp; Shephard (2001).
               <em>Non-Gaussian Ornstein–Uhlenbeck-based models and some of their uses in financial economics.</em>
             </p>
-            <a class="text-link" href="https://ora.ox.ac.uk/objects/uuid:19a83a30-f460-4c6e-8cb9-f59da3016c56" data-i18n="readPaper">Read the paper</a>
+            <a class="text-link" href="https://ora.ox.ac.uk/objects/uuid:19a83a30-f460-4c6e-8cb9-f59da3016c56" data-i18n="readPaper"
+              >Read the paper</a
+            >
           </div>
         </div>
       </section>
@@ -439,4 +520,3 @@
     </footer>
   </body>
 </html>
-
