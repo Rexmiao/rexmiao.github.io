@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -10,10 +10,10 @@
     <meta name="theme-color" content="#142b23" />
     <title>Lévy Volatility Lab</title>
     <link rel="stylesheet" href="assets/style.css?v=breadcrumbs" />
-    <script src="assets/app.js?v=breadcrumbs" defer></script>
+    <script src="assets/app.js?v=english-default" defer></script>
   </head>
   <body>
-    <a class="skip-link" href="#main" data-i18n="skip">跳到正文</a>
+    <a class="skip-link" href="#main" data-i18n="skip">Skip to content</a>
     <header class="site-header">
       <nav class="nav wrap" aria-label="Main">
         <a class="wordmark" href="#top" aria-label="Lévy Volatility Lab">
@@ -21,20 +21,20 @@
           <span>Lévy<span class="wordmark-divider">/</span>Lab</span>
         </a>
         <div class="nav-links">
-          <a href="#forecast" data-i18n="navForecast">预测</a>
-          <a href="#evaluation" data-i18n="navEvaluation">样本外检验</a>
-          <a href="#equity-evaluation" data-i18n="navEquity">美股</a>
-          <a href="#method" data-i18n="navMethod">方法</a>
-          <a href="data-methodology/" data-i18n="navData">数据</a>
+          <a href="#forecast" data-i18n="navForecast">Forecast</a>
+          <a href="#evaluation" data-i18n="navEvaluation">Evaluation</a>
+          <a href="#equity-evaluation" data-i18n="navEquity">U.S. equities</a>
+          <a href="#method" data-i18n="navMethod">Method</a>
+          <a href="data-methodology/" data-i18n="navData">Data</a>
         </div>
-        <button type="button" class="language" id="language" aria-label="Switch to English">EN</button>
+        <button type="button" class="language" id="language" aria-label="切换至中文">中文</button>
       </nav>
       <nav class="wrap lab-breadcrumb" aria-label="当前位置" data-aria="breadcrumbLabel">
         <ol role="list">
-          <li><a href="https://rexmiao.github.io/projects/" data-i18n="breadcrumbProjects">项目</a></li>
-          <li><a href="https://rexmiao.github.io/projects/#quantitative-research" data-i18n="breadcrumbQuantitative">量化研究</a></li>
-          <li><a href="https://rexmiao.github.io/projects/volatility-modeling/" data-i18n="breadcrumbVolatility">波动率建模</a></li>
-          <li><span aria-current="page" data-i18n="breadcrumbLab">Lévy 波动率实验室</span></li>
+          <li><a href="https://rexmiao.github.io/projects/" data-i18n="breadcrumbProjects">Projects</a></li>
+          <li><a href="https://rexmiao.github.io/projects/#quantitative-research" data-i18n="breadcrumbQuantitative">Quantitative Research</a></li>
+          <li><a href="https://rexmiao.github.io/projects/volatility-modeling/" data-i18n="breadcrumbVolatility">Volatility Modeling</a></li>
+          <li><span aria-current="page" data-i18n="breadcrumbLab">Lévy Volatility Lab</span></li>
         </ol>
       </nav>
     </header>
@@ -43,14 +43,12 @@
       <section id="top" class="hero">
         <div class="wrap hero-grid">
           <div class="hero-copy">
-            <p class="eyebrow" data-i18n="heroEyebrow">量化研究实验室</p>
-            <h1><span data-i18n="heroLineA">用 Lévy 过程</span><span class="h1-accent" data-i18n="heroLineB">建模波动率</span></h1>
-            <p class="hero-lede" data-i18n="heroLede">
-              波动率会在市场冲击后跳升，也会逐步回落。这个实验用真实行情拟合同时具有跳跃与均值回归的方差模型，并检验它对未来波动率的预测。
-            </p>
+            <p class="eyebrow" data-i18n="heroEyebrow">Quantitative research lab</p>
+            <h1><span data-i18n="heroLineA">Modeling volatility</span><span class="h1-accent" data-i18n="heroLineB">with Lévy jumps</span></h1>
+            <p class="hero-lede" data-i18n="heroLede">Volatility can surge after a market shock and recede gradually. Fit both of these behaviors to USD/JPY history and see how the model forecasts out of sample.</p>
             <div class="hero-actions">
-              <a class="button primary" href="#forecast" data-i18n="explore">查看预测</a>
-              <a class="hero-secondary" href="#method" data-i18n="readMethod">阅读方法</a>
+              <a class="button primary" href="#forecast" data-i18n="explore">Explore forecasts</a>
+              <a class="hero-secondary" href="#method" data-i18n="readMethod">Read the method</a>
             </div>
           </div>
 
@@ -58,7 +56,7 @@
             <figcaption class="figure-head">
               <div>
                 <p class="figure-kicker">USD/JPY · FED H.10</p>
-                <h2 data-i18n="historyTitle">历史波动率代理量</h2>
+                <h2 data-i18n="historyTitle">Historical volatility proxy</h2>
               </div>
               <span class="period" id="sampleRange" aria-live="polite">—</span>
             </figcaption>
@@ -66,103 +64,92 @@
               <canvas id="historyChart" role="img" aria-label="Historical realized volatility" tabindex="0"></canvas>
             </div>
             <div class="chart-legend history-legend" aria-hidden="true">
-              <span><i class="legend-line training"></i><span data-i18n="training">训练样本</span></span>
-              <span><i class="legend-line holdout"></i><span data-i18n="holdout">检验样本</span></span>
+              <span><i class="legend-line training"></i><span data-i18n="training">Training</span></span>
+              <span><i class="legend-line holdout"></i><span data-i18n="holdout">Holdout</span></span>
             </div>
             <p class="chart-readout history-readout" id="historyReadout" aria-live="polite"></p>
           </figure>
         </div>
       </section>
 
-      <p class="status wrap" id="status" role="status" data-i18n="loading">正在加载历史数据和模型结果…</p>
+      <p class="status wrap" id="status" role="status" data-i18n="loading">Loading the historical observations and fitted results…</p>
       <noscript><p class="status wrap">请启用 JavaScript 以查看交互图表。 Enable JavaScript to view the interactive charts.</p></noscript>
 
       <section class="section wrap" id="forecast" aria-labelledby="forecastTitle">
         <div class="section-intro">
           <div>
-            <p class="eyebrow dark" data-i18n="forecastEyebrow">交互预测</p>
-            <h2 id="forecastTitle" data-i18n="forecastTitle">从已知波动率出发</h2>
+            <p class="eyebrow dark" data-i18n="forecastEyebrow">Forecast explorer</p>
+            <h2 id="forecastTitle" data-i18n="forecastTitle">Start from an observation</h2>
           </div>
-          <p data-i18n="forecastIntro">选择一个观察日期和预测窗口。色带显示从当日方差出发，经过随机跳跃与回归后的波动率分布。</p>
+          <p data-i18n="forecastIntro">Choose an observation date and a horizon. The shaded bands show where volatility can land after random jumps and gradual decay from the starting level.</p>
         </div>
         <div class="lab-panel">
           <div class="panel-controls">
             <label class="select-label" for="originSelect"
-              ><span data-i18n="forecastOrigin">观察日期</span>
+              ><span data-i18n="forecastOrigin">Observation date</span>
               <select id="originSelect" disabled></select>
             </label>
             <div class="horizon-control" role="group" aria-label="Forecast horizon" data-aria="forecastHorizon">
-              <span class="control-label" data-i18n="forecastHorizon">预测窗口</span>
+              <span class="control-label" data-i18n="forecastHorizon">Forecast horizon</span>
               <div class="segments" id="forecastHorizon">
-                <button type="button" data-horizon="1" aria-pressed="false" disabled><span data-i18n="h1">1 日</span></button>
-                <button type="button" data-horizon="5" aria-pressed="true" disabled><span data-i18n="h5">5 日</span></button>
-                <button type="button" data-horizon="22" aria-pressed="false" disabled><span data-i18n="h22">22 日</span></button>
+                <button type="button" data-horizon="1" aria-pressed="false" disabled><span data-i18n="h1">1 day</span></button>
+                <button type="button" data-horizon="5" aria-pressed="true" disabled><span data-i18n="h5">5 days</span></button>
+                <button type="button" data-horizon="22" aria-pressed="false" disabled><span data-i18n="h22">22 days</span></button>
               </div>
             </div>
           </div>
           <div class="forecast-grid">
             <figure class="forecast-figure">
               <figcaption>
-                <span data-i18n="volAxis">年化波动率</span>
+                <span data-i18n="volAxis">Annualized volatility</span>
                 <span class="inline-note" id="fanCaption"></span>
               </figcaption>
               <div class="chart-shell forecast-shell">
                 <canvas id="fanChart" role="img" aria-label="Conditional forecast distribution" tabindex="0"></canvas>
               </div>
               <div class="chart-legend forecast-legend" aria-hidden="true">
-                <span><i class="legend-band inner"></i><span data-i18n="innerBand">中央 50%</span></span>
-                <span><i class="legend-band outer"></i><span data-i18n="outerBand">中央 90%</span></span>
-                <span><i class="legend-line model-line"></i><span data-i18n="pointForecast">点预测</span></span>
-                <span><i class="legend-line observed-line"></i><span data-i18n="observed">实测</span></span>
+                <span><i class="legend-band inner"></i><span data-i18n="innerBand">Central 50%</span></span>
+                <span><i class="legend-band outer"></i><span data-i18n="outerBand">Central 90%</span></span>
+                <span><i class="legend-line model-line"></i><span data-i18n="pointForecast">Point forecast</span></span>
+                <span><i class="legend-line observed-line"></i><span data-i18n="observed">Observed</span></span>
               </div>
               <p class="chart-readout" id="fanReadout" aria-live="polite"></p>
             </figure>
             <div class="forecast-values" aria-live="polite">
               <p class="forecast-asof" id="forecastAsOf">—</p>
-              <p class="forecast-label" data-i18n="pointForecast">点预测</p>
+              <p class="forecast-label" data-i18n="pointForecast">Point forecast</p>
               <p class="forecast-big" id="pointForecast">—</p>
               <dl>
                 <div>
-                  <dt data-i18n="initialVol">起始波动率</dt>
+                  <dt data-i18n="initialVol">Starting volatility</dt>
                   <dd id="initialVol">—</dd>
                 </div>
                 <div>
-                  <dt data-i18n="observed">实测</dt>
+                  <dt data-i18n="observed">Observed</dt>
                   <dd id="observedVol">—</dd>
                 </div>
                 <div>
-                  <dt data-i18n="simulatedMedian">模拟中位数</dt>
+                  <dt data-i18n="simulatedMedian">Simulated median</dt>
                   <dd id="fanMedian">—</dd>
                 </div>
                 <div>
-                  <dt data-i18n="innerBand">中央 50%</dt>
+                  <dt data-i18n="innerBand">Central 50%</dt>
                   <dd id="interval50">—</dd>
                 </div>
                 <div>
-                  <dt data-i18n="outerBand">中央 90%</dt>
+                  <dt data-i18n="outerBand">Central 90%</dt>
                   <dd id="interval90">—</dd>
                 </div>
               </dl>
             </div>
           </div>
           <section class="panel-foot fan-explainer" id="forecast-reading" aria-labelledby="fanExplainTitle">
-            <h3 id="fanExplainTitle" data-i18n="fanExplainTitle">怎样读这张外汇预测图</h3>
-            <p id="fanDataSummary" data-i18n="fanDataSummary">
-              数据来自美联储 H.10 的 USD/JPY 纽约中午参考报价。样本包括 2016-01-04 至 2026-11-20 的 2,720 个有效报价，模型用最早的 2,176 个观测拟合。
-            </p>
-            <p data-i18n="fanTargetNote">
-              起点用最近五次对数汇率变化的平方均值乘以 252 得出年化方差。每一步对应下一个有效报价，跳过缺报价的日期。以之后第 5
-              个有效报价为例，该期限的实测按截至目标报价的最近五次变化计算。
-            </p>
+            <h3 id="fanExplainTitle" data-i18n="fanExplainTitle">How to read the USD/JPY forecast</h3>
+            <p id="fanDataSummary" data-i18n="fanDataSummary">The source is the Federal Reserve H.10 New York noon USD/JPY reference rate. The sample includes 2,720 valid fixes from 2016-01-04 through 2026-11-20. The model is fitted on the first 2,176 observations.</p>
+            <p data-i18n="fanTargetNote">At the origin, annualized variance is 252 times the mean of the latest five squared log rate changes. A step advances one published fix, skipping dates without quotes. At the fifth future fix, for example, the observed target uses the five changes ending at that fix.</p>
             <p class="fan-reading" id="fanReading" hidden></p>
-            <p data-i18n="fanEstimateNote">
-              点预测先求终点方差的条件期望，再开平方。模拟中位数是终点波动率的第 50
-              百分位。正向跳跃可以抬高平均方差，无跳跃的路径都沿同一轨迹衰减，因此部分分位数会重合。
-            </p>
-            <p data-i18n="fanBandNote">
-              每个期限分别取 20,000 条路径模拟终点的第 25 至 75 百分位和第 5 至 95 百分位，得到中央 50% 和 90%
-              色带。色带反映已拟合模型下的未来冲击，拟合参数保持固定。
-            </p>
+            <p data-i18n="fanEstimateNote">The point forecast takes the square root of expected terminal variance. The simulated median is the 50th percentile of terminal volatility. Positive jumps can raise expected variance. All paths with no jumps decay to the same value, which can make quantiles coincide.</p>
+            <p data-i18n="fanBandNote">At each horizon, the central 50% and 90% bands span the 25th–75th and 5th–95th percentiles of the 20,000 simulated endpoints. These are per-horizon intervals for future shocks under fixed fitted parameters.</p>
           </section>
         </div>
       </section>
@@ -171,52 +158,50 @@
         <div class="wrap section">
           <div class="section-intro">
             <div>
-              <p class="eyebrow dark" data-i18n="evaluationEyebrow">历史验证</p>
-              <h2 id="evaluationTitle" data-i18n="evaluationTitle">USD/JPY 样本外表现</h2>
+              <p class="eyebrow dark" data-i18n="evaluationEyebrow">Historical validation</p>
+              <h2 id="evaluationTitle" data-i18n="evaluationTitle">USD/JPY out-of-sample performance</h2>
             </div>
-            <p data-i18n="evaluationIntro">先按时间顺序固定训练与检验样本，再用同一批检验日期比较模型与两个基准。</p>
+            <p data-i18n="evaluationIntro">The training and holdout periods are fixed in chronological order. All three models are scored on the same holdout targets across the three horizons.</p>
           </div>
           <div class="lab-panel evaluation-panel">
             <div class="panel-controls">
               <p class="holdout-period" id="holdoutPeriod">—</p>
               <div class="horizon-control" role="group" aria-label="Evaluation horizon" data-aria="evaluationHorizon">
-                <span class="control-label" data-i18n="forecastHorizon">预测窗口</span>
+                <span class="control-label" data-i18n="forecastHorizon">Forecast horizon</span>
                 <div class="segments" id="evaluationHorizon">
-                  <button type="button" data-horizon="1" aria-pressed="false" disabled><span data-i18n="h1">1 日</span></button>
-                  <button type="button" data-horizon="5" aria-pressed="true" disabled><span data-i18n="h5">5 日</span></button>
-                  <button type="button" data-horizon="22" aria-pressed="false" disabled><span data-i18n="h22">22 日</span></button>
+                  <button type="button" data-horizon="1" aria-pressed="false" disabled><span data-i18n="h1">1 day</span></button>
+                  <button type="button" data-horizon="5" aria-pressed="true" disabled><span data-i18n="h5">5 days</span></button>
+                  <button type="button" data-horizon="22" aria-pressed="false" disabled><span data-i18n="h22">22 days</span></button>
                 </div>
               </div>
             </div>
             <figure class="evaluation-figure">
               <figcaption>
-                <span data-i18n="volAxis">年化波动率</span>
+                <span data-i18n="volAxis">Annualized volatility</span>
                 <span class="inline-note" id="evaluationCount"></span>
               </figcaption>
               <div class="chart-shell evaluation-shell">
                 <canvas id="evaluationChart" role="img" aria-label="Realized and forecast volatility across the holdout" tabindex="0"></canvas>
               </div>
               <div class="chart-legend evaluation-legend">
-                <span><i class="legend-line observed-line"></i><span data-i18n="observed">实测</span></span>
+                <span><i class="legend-line observed-line"></i><span data-i18n="observed">Observed</span></span>
                 <label><input type="checkbox" value="levy" checked /><i class="legend-line model-line"></i>Gamma–OU</label>
                 <label><input type="checkbox" value="ewma" checked /><i class="legend-line ewma-line"></i>EWMA</label>
                 <label
                   ><input type="checkbox" value="persistence" /><i class="legend-line persistence-line"></i
-                  ><span data-i18n="persistence">持久性</span></label
+                  ><span data-i18n="persistence">Persistence</span></label
                 >
               </div>
               <p class="chart-readout" id="evaluationReadout" aria-live="polite"></p>
             </figure>
             <div class="metrics-wrap">
               <table class="metrics">
-                <caption data-i18n="tableCaption">
-                  同一检验样本的预测误差，越低越好
-                </caption>
+                <caption data-i18n="tableCaption">Forecast errors on matched targets. Lower is better.</caption>
                 <thead>
                   <tr>
-                    <th scope="col" data-i18n="modelLabel">模型</th>
+                    <th scope="col" data-i18n="modelLabel">Model</th>
                     <th scope="col">QLIKE</th>
-                    <th scope="col" data-i18n="rmseLabel">波动率 RMSE</th>
+                    <th scope="col" data-i18n="rmseLabel">Volatility RMSE</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -231,7 +216,7 @@
                     <td id="ewmaRmse">—</td>
                   </tr>
                   <tr>
-                    <th scope="row" data-i18n="persistence">持久性</th>
+                    <th scope="row" data-i18n="persistence">Persistence</th>
                     <td id="persistenceQlike">—</td>
                     <td id="persistenceRmse">—</td>
                   </tr>
@@ -241,16 +226,14 @@
             </div>
             <div class="diagnostics">
               <div>
-                <p data-i18n="coverage">90% 区间实测覆盖率</p>
+                <p data-i18n="coverage">Observed coverage of 90% band</p>
                 <strong id="coverage">—</strong>
               </div>
               <div>
-                <p data-i18n="floorShare">落在无跳跃下界以下的比例</p>
+                <p data-i18n="floorShare">Observed below no-jump floor</p>
                 <strong id="floorShare">—</strong>
               </div>
-              <p id="diagnosticNote" data-i18n="diagnosticNote">
-                如果实际日度方差经常低于模型下界，说明模型对快速回落的刻画不足，预测区间也可能偏窄。
-              </p>
+              <p id="diagnosticNote" data-i18n="diagnosticNote">When observations regularly fall below the no-jump floor, model paths cannot reproduce those fast declines. Compare observed coverage against the nominal 90%.</p>
             </div>
           </div>
         </div>
@@ -259,32 +242,32 @@
       <section class="section wrap" id="equity-evaluation" aria-labelledby="equityTitle">
         <div class="section-intro">
           <div>
-            <p class="eyebrow dark" data-i18n="evaluationEyebrow">历史验证</p>
-            <h2 id="equityTitle" data-i18n="equityTitle">美股波动率模型对比</h2>
+            <p class="eyebrow dark" data-i18n="evaluationEyebrow">Historical validation</p>
+            <h2 id="equityTitle" data-i18n="equityTitle">U.S. equity volatility models</h2>
           </div>
-          <p data-i18n="equityIntro">选择标的、数据频率和预测窗口。模型预测未来 1、5 或 22 个交易日的平均日度方差，再按 252 个交易日年化。</p>
+          <p data-i18n="equityIntro">Choose a ticker, data frequency, and horizon. Models predict average daily variance over the next 1, 5, or 22 sessions, annualized using 252 trading days.</p>
         </div>
         <div class="lab-panel">
           <div class="panel-controls equity-controls">
             <label class="select-label" for="equityTicker">
-              <span data-i18n="equityTicker">标的</span>
+              <span data-i18n="equityTicker">Ticker</span>
               <select id="equityTicker" disabled></select>
             </label>
             <div class="horizon-control" role="group" aria-label="数据频率" data-aria="equityFrequency">
-              <span class="control-label" data-i18n="equityFrequency">数据频率</span>
+              <span class="control-label" data-i18n="equityFrequency">Data frequency</span>
               <div class="segments" id="equityFrequency">
-                <button type="button" data-frequency="daily" aria-pressed="true" disabled><span data-i18n="equityDaily">日线</span></button>
+                <button type="button" data-frequency="daily" aria-pressed="true" disabled><span data-i18n="equityDaily">Daily</span></button>
                 <button type="button" data-frequency="intraday" aria-pressed="false" disabled>
-                  <span data-i18n="equityIntraday">分钟线</span>
+                  <span data-i18n="equityIntraday">1-minute data</span>
                 </button>
               </div>
             </div>
             <div class="horizon-control" role="group" aria-label="检验预测窗口" data-aria="evaluationHorizon">
-              <span class="control-label" data-i18n="forecastHorizon">预测窗口</span>
+              <span class="control-label" data-i18n="forecastHorizon">Forecast horizon</span>
               <div class="segments" id="equityHorizon">
-                <button type="button" data-horizon="1" aria-pressed="false" disabled><span data-i18n="h1">1 日</span></button>
-                <button type="button" data-horizon="5" aria-pressed="true" disabled><span data-i18n="h5">5 日</span></button>
-                <button type="button" data-horizon="22" aria-pressed="false" disabled><span data-i18n="h22">22 日</span></button>
+                <button type="button" data-horizon="1" aria-pressed="false" disabled><span data-i18n="h1">1 day</span></button>
+                <button type="button" data-horizon="5" aria-pressed="true" disabled><span data-i18n="h5">5 days</span></button>
+                <button type="button" data-horizon="22" aria-pressed="false" disabled><span data-i18n="h22">22 days</span></button>
               </div>
             </div>
           </div>
@@ -294,91 +277,72 @@
             <div id="equityResults" hidden>
               <div class="equity-layout">
                 <table class="metrics equity-table">
-                  <caption data-i18n="equityCaption">
-                    两项误差指标均为越低越好，每列最低值高亮。
-                  </caption>
+                  <caption data-i18n="equityCaption">Lower errors are better. The lowest value in each column is highlighted.</caption>
                   <thead>
                     <tr>
-                      <th scope="col" data-i18n="modelLabel">模型</th>
-                      <th scope="col" data-i18n="equityQlike">QLIKE 差值</th>
-                      <th scope="col" data-i18n="equityRmse">波动率 RMSE（百分点）</th>
+                      <th scope="col" data-i18n="modelLabel">Model</th>
+                      <th scope="col" data-i18n="equityQlike">QLIKE difference</th>
+                      <th scope="col" data-i18n="equityRmse">Volatility RMSE (pp)</th>
                     </tr>
                   </thead>
                   <tbody id="equityScores"></tbody>
                 </table>
                 <aside class="equity-sample" aria-labelledby="equitySampleTitle">
-                  <h3 id="equitySampleTitle" data-i18n="equitySample">样本外检验</h3>
+                  <h3 id="equitySampleTitle" data-i18n="equitySample">Out-of-sample evaluation</h3>
                   <dl>
                     <div>
-                      <dt data-i18n="equityOriginCount">预测起点数</dt>
+                      <dt data-i18n="equityOriginCount">Forecast origins</dt>
                       <dd id="equityOrigins"></dd>
                     </div>
                     <div>
-                      <dt data-i18n="equityOriginDates">预测起点范围</dt>
+                      <dt data-i18n="equityOriginDates">Forecast origin range</dt>
                       <dd id="equityOriginRange"></dd>
                     </div>
                     <div>
-                      <dt data-i18n="equityTargetDates">目标窗口结束日期范围</dt>
+                      <dt data-i18n="equityTargetDates">Target window end date range</dt>
                       <dd id="equityTargetRange"></dd>
                     </div>
                   </dl>
                 </aside>
               </div>
               <p class="equity-verdict" id="equityVerdict" aria-live="polite"></p>
-              <p class="table-note" data-i18n="equityMetricNote">
-                QLIKE 差值以固定训练均值为基准。负值表示误差低于基准。RMSE 使用年化波动率的百分点。
-              </p>
+              <p class="table-note" data-i18n="equityMetricNote">QLIKE differences are relative to the fixed training mean. Negative values beat that baseline. RMSE is in annualized volatility percentage points.</p>
             </div>
           </div>
           <p class="panel-foot equity-foot">
-            <span data-i18n="equityMethodNote">模型参数由较早的训练样本估计。日线和分钟线各用自己的检验样本与方差口径。</span>
+            <span data-i18n="equityMethodNote">Parameters are estimated on earlier data. Each frequency uses its own evaluation sample and variance measure.</span>
             <span class="equity-links">
-              <a class="text-link" href="#equity-findings" data-i18n="equityFindingsLink">查看总体结果</a>
-              <a class="text-link" href="data-methodology/#cleaning" data-i18n="dataMethodology">数据来源与清洗</a>
-              <a class="text-link" href="data/equity-results.json" download data-i18n="equityDownload">下载美股评估结果</a>
+              <a class="text-link" href="#equity-findings" data-i18n="equityFindingsLink">See overall results</a>
+              <a class="text-link" href="data-methodology/#cleaning" data-i18n="dataMethodology">Data sources and cleaning</a>
+              <a class="text-link" href="data/equity-results.json" download data-i18n="equityDownload">Download equity results</a>
             </span>
           </p>
         </div>
 
         <section class="lab-panel equity-findings" id="equity-findings" aria-labelledby="equityFindingsTitle">
           <div class="equity-content">
-            <h3 id="equityFindingsTitle" data-i18n="equityFindingsTitle">哪些模型在样本外领先？</h3>
-            <p id="equityFindingsStatus" role="status" data-i18n="equityLoading">正在加载美股评估结果…</p>
+            <h3 id="equityFindingsTitle" data-i18n="equityFindingsTitle">Which models led out of sample?</h3>
+            <p id="equityFindingsStatus" role="status" data-i18n="equityLoading">Loading equity results…</p>
             <div id="equityFindingsContent" hidden>
               <table class="metrics findings-table">
-                <caption data-i18n="equityFindingsCaption">
-                  在每个标的与预测期限上，样本外 QLIKE 最低的模型记 1 次。日线每个期限评估 8 个标的，分钟线评估 7 个。
-                </caption>
+                <caption data-i18n="equityFindingsCaption">At each horizon, count each model that had the lowest out-of-sample QLIKE for a ticker. Daily estimates cover eight tickers per horizon. Minute-derived estimates cover seven.</caption>
                 <thead>
                   <tr>
-                    <th scope="col" data-i18n="equityFindingsWindow">频率与期限</th>
-                    <th scope="col" data-i18n="equityFindingsWins">全模型 QLIKE 最低次数</th>
-                    <th scope="col" data-i18n="equityFindingsGamma">Gamma–OU 同时低于 HAR 与 EWMA 的标的</th>
+                    <th scope="col" data-i18n="equityFindingsWindow">Data and horizon</th>
+                    <th scope="col" data-i18n="equityFindingsWins">Lowest QLIKE counts across all models</th>
+                    <th scope="col" data-i18n="equityFindingsGamma">Tickers where Gamma–OU beat both HAR and EWMA</th>
                   </tr>
                 </thead>
                 <tbody id="equityFindingsRows"></tbody>
               </table>
               <div class="findings-notes">
                 <div id="equityFindingsReading">
-                  <h4 data-i18n="equityFindingsReadingTitle">怎样理解「全模型 QLIKE 最低次数」</h4>
-                  <p data-i18n="equityFindingsReading">
-                    对固定的数据口径和期限，先逐个标的比较该行全部可用模型，含固定训练均值。QLIKE
-                    最低的模型得到一次计数，精确并列则各计一次。比如分钟线 1 日的 HAR 4，表示 7 个标的中有 4 个由 HAR 得到最低
-                    QLIKE。计数反映领先覆盖了多少标的。误差差距可在上方的逐标的结果中查看。
-                  </p>
+                  <h4 data-i18n="equityFindingsReadingTitle">How to read the all-model counts</h4>
+                  <p data-i18n="equityFindingsReading">Within each frequency and horizon, compare all available models for each ticker, including the fixed training mean. A model gets one count for the lowest QLIKE. Exact ties count for each tied model. For one-day forecasts with minute-derived data, HAR 4 means HAR had the lowest QLIKE for four of the seven tickers. The count shows how often a model led. Use the per-ticker results above to see the size of the differences.</p>
                 </div>
-                <p id="equityGammaFindings" data-i18n="equityGammaFindings">
-                  右栏只比较 Gamma–OU、HAR 和 EWMA。以 AMD 分钟线为例，Gamma–OU 在三个期限的 QLIKE 都低于 HAR 和
-                  EWMA，同一组的固定训练均值更低。Gamma–OU 的全模型最低记录来自日线 JPM（5 日）及 AMD 和 NBIS（22 日）。 日线 JPM 的 1 日最低值来自
-                  GARCH。
-                </p>
-                <p id="equityRmseFindings" data-i18n="equityRmseFindings">
-                  按波动率 RMSE 衡量，Gamma–OU 在日线 AVGO（1、5 日）、NBIS（5、22 日）和 AMD（22 日）上最低。HAR 在分钟线 1、5、22 日分别有
-                  6/7、6/7、5/7 个标的的 RMSE 最低。
-                </p>
-                <p class="small muted" data-i18n="equityFindingsNote">
-                  日线和分钟线使用各自的历史检验样本。NBIS 日线采用单独的较短样本。Gamma–OU 的点预测分数反映条件均值的误差。
-                </p>
+                <p id="equityGammaFindings" data-i18n="equityGammaFindings">The right column compares Gamma–OU with HAR and EWMA. For AMD with minute-derived data, Gamma–OU beat both at all three horizons, and the fixed training mean scored lower still. Gamma–OU led across all models on daily data for JPM at 5 days and for AMD and NBIS at 22 days. GARCH led on daily JPM at 1 day.</p>
+                <p id="equityRmseFindings" data-i18n="equityRmseFindings">By volatility RMSE, Gamma–OU led on daily data for AVGO at 1 and 5 days, NBIS at 5 and 22 days, and AMD at 22 days. With minute-derived data, HAR led on 6 of 7 tickers at both 1 and 5 days and 5 of 7 at 22 days.</p>
+                <p class="small muted" data-i18n="equityFindingsNote">Daily and minute-derived estimates use separate historical holdouts. NBIS has its own shorter daily holdout. Gamma–OU point scores measure errors in the conditional mean.</p>
               </div>
             </div>
           </div>
@@ -388,66 +352,53 @@
       <section class="section wrap method" id="method" aria-labelledby="methodTitle">
         <div class="section-intro">
           <div>
-            <p class="eyebrow dark" data-i18n="methodEyebrow">模型说明</p>
-            <h2 id="methodTitle" data-i18n="methodTitle">跳跃与均值回归</h2>
+            <p class="eyebrow dark" data-i18n="methodEyebrow">Model notes</p>
+            <h2 id="methodTitle" data-i18n="methodTitle">Jumps and mean reversion</h2>
           </div>
-          <p data-i18n="methodIntro">Gamma–OU 把每日已实现方差代理量当作可观测状态，用正向跳跃刻画冲击，并用指数衰减刻画冲击后的回落。</p>
+          <p data-i18n="methodIntro">Gamma–OU uses an observed daily variance proxy as its state. Positive jumps represent shocks, followed by exponential decay.</p>
         </div>
 
         <div class="method-grid">
           <article class="method-story">
-            <h3 data-i18n="dynamics">方差动态</h3>
+            <h3 data-i18n="dynamics">Variance dynamics</h3>
             <div class="formula" aria-label="d V equals minus lambda times V d t plus d J">dV<sub>t</sub> = −λV<sub>t</sub> dt + dJ<sub>t</sub></div>
-            <p data-i18n="modelCopy">
-              J 是复合 Poisson 过程。跳跃大小服从指数分布，强度为 λk。在跳跃之间，V 以速率 λ 衰减。在平稳状态下，V 服从形状 k、尺度 θ 的 Gamma 分布。
-            </p>
+            <p data-i18n="modelCopy">J is a compound Poisson process with intensity λk and exponential jump sizes of mean θ. Between jumps, V decays at rate λ. The stationary distribution is Gamma with shape k and scale θ.</p>
             <div class="formula" aria-label="Conditional expected variance equals mean variance plus initial deviation times phi to the h">
               E[V<sub>t+h</sub> | V<sub>t</sub>] = m + (V<sub>t</sub> − m)φ<sup>h</sup>
             </div>
-            <p data-i18n="calibrationCopy">
-              用训练样本估计长期方差 m、持续性 φ = exp(−λ) 和 Gamma 矩参数。每个检验时点按当时已知的方差更新预测状态，模型参数保持固定。
-            </p>
-            <h3 data-i18n="limitations">怎样解读外汇结果</h3>
-            <p data-i18n="limitationsCopy">
-              预测目标是窗口末端由最近五次汇率变化计算的年化波动率代理量。相同参数下，Gamma–OU 的条件均值与均值回归 AR(1)
-              一致。检验跳跃分布时，可重点看预测区间覆盖率和无跳跃下界。实验没有估计杠杆效应、参数变化或交易表现。
-            </p>
-            <h3 id="equity-method" data-i18n="equityMethodTitle">怎样解读美股结果</h3>
-            <p data-i18n="equityMethodTarget">
-              日线用相邻交易日的复权收盘对数收益平方。分钟线用常规时段已实现方差加隔夜收益平方。以 5
-              日为例，目标是起点之后五个交易日的日度方差取平均，再乘以 252 年化。对应的年化波动率取这个目标的平方根。
-            </p>
-            <p data-i18n="equityMethodReading">
-              Gamma–OU 的正向跳跃指方差上升，股票上涨或下跌都可能贡献方差。Gamma–OU 的点预测对未来每一步的条件期望方差取平均，与长期均值和持续性相同的
-              AR(1) 给出相同的点预测。美股表的 QLIKE 和 RMSE 比较这些点预测的历史误差。要检验跳跃机制，需要另外比较预测区间或尾部分位数的校准。
-            </p>
+            <p data-i18n="calibrationCopy">The training sample estimates long-run variance m, persistence φ = exp(−λ), and the Gamma parameters by moments. At each evaluation origin, the latest known variance updates the state while all fitted parameters stay fixed.</p>
+            <h3 data-i18n="limitations">Reading the USD/JPY results</h3>
+            <p data-i18n="limitationsCopy">The target is the annualized five-change volatility proxy at the terminal observation. The conditional mean is the same as a mean-reverting AR(1) with the same parameters. Use interval coverage and the no-jump floor to assess what the jump distribution adds. The experiment does not estimate leverage, changing parameters, or trading performance.</p>
+            <h3 id="equity-method" data-i18n="equityMethodTitle">Reading the U.S. equity results</h3>
+            <p data-i18n="equityMethodTarget">Daily data use squared adjusted close-to-close log returns. The minute-derived measure adds regular-session realized variance and the squared overnight return. A five-day target, for example, averages daily variance over the five sessions after the origin and annualizes it by multiplying by 252. The square root expresses the target as annualized volatility.</p>
+            <p data-i18n="equityMethodReading">A positive Gamma–OU jump is a rise in variance. Both stock gains and losses contribute to variance. Gamma–OU point forecasts average conditional expected variance over the future sessions. An AR(1) with the same long-run mean and persistence gives the same point forecast. Equity QLIKE and RMSE measure historical point forecast errors. Testing the jump mechanism calls for a separate check of interval or tail-quantile calibration.</p>
           </article>
           <aside class="parameter-panel">
-            <h3 data-i18n="calibrated">训练样本参数</h3>
+            <h3 data-i18n="calibrated">Parameters fitted on training data</h3>
             <p class="small muted" id="calibrationPeriod">—</p>
             <dl class="parameters">
               <div>
-                <dt data-i18n="longRunVol">长期方差对应波动率 √m</dt>
+                <dt data-i18n="longRunVol">Long-run variance as volatility √m</dt>
                 <dd id="modelMean">—</dd>
               </div>
               <div>
-                <dt data-i18n="dailyPersistence">单日持续性 φ</dt>
+                <dt data-i18n="dailyPersistence">One-step persistence φ</dt>
                 <dd id="modelPhi">—</dd>
               </div>
               <div>
-                <dt data-i18n="halfLife">方差偏离半衰期</dt>
+                <dt data-i18n="halfLife">Variance deviation half-life</dt>
                 <dd id="modelHalfLife">—</dd>
               </div>
               <div>
-                <dt data-i18n="shape">Gamma 形状 k</dt>
+                <dt data-i18n="shape">Gamma shape k</dt>
                 <dd id="modelGamma">—</dd>
               </div>
               <div>
-                <dt data-i18n="jumpSize">平均方差跳幅 θ</dt>
+                <dt data-i18n="jumpSize">Mean variance jump θ</dt>
                 <dd id="modelScale">—</dd>
               </div>
               <div>
-                <dt data-i18n="jumpIntensity">每日跳跃强度 λk</dt>
+                <dt data-i18n="jumpIntensity">Jump intensity λk</dt>
                 <dd id="modelIntensity">—</dd>
               </div>
             </dl>
@@ -456,27 +407,24 @@
 
         <div class="source-panel">
           <div>
-            <h3 data-i18n="dataSources">数据与复现</h3>
-            <p id="sourceSummary" data-i18n="sourceSummary">
-              美元兑日元来自美联储 H.10 日度参考汇率，单位为日元／美元。把最近 5 次相邻有效报价的对数差平方取平均，乘以 252
-              得到年化方差代理量，再取平方根。因每个交易日只有一个定点报价，该代理量无法捕捉日内波动。
-            </p>
+            <h3 data-i18n="dataSources">Data and reproducibility</h3>
+            <p id="sourceSummary" data-i18n="sourceSummary">USD/JPY comes from the Federal Reserve H.10 daily reference rate in yen per U.S. dollar. Annualized variance is 252 times the trailing mean of five squared changes in log rates. Its square root is the volatility proxy. One fixing per day leaves intraday moves unobserved.</p>
             <div class="source-links">
-              <a href="data-methodology/" data-i18n="dataMethodology">数据来源与清洗</a>
-              <a href="https://www.federalreserve.gov/releases/h10/hist/dat00_ja.htm" data-i18n="sourceLink">美联储 H.10 原始数据</a>
-              <a href="data/observations.csv" download data-i18n="downloadCsv">下载观测 CSV</a>
-              <a href="data/results.json" download data-i18n="downloadJson">下载结果 JSON</a>
-              <a href="data/source.json" download data-i18n="dataNotes">下载来源记录</a>
-              <a href="https://github.com/Rexmiao/rexmiao.github.io/tree/master/labs/levy-volatility" data-i18n="sourceCode">查看项目源代码</a>
+              <a href="data-methodology/" data-i18n="dataMethodology">Data sources and cleaning</a>
+              <a href="https://www.federalreserve.gov/releases/h10/hist/dat00_ja.htm" data-i18n="sourceLink">Federal Reserve H.10 data</a>
+              <a href="data/observations.csv" download data-i18n="downloadCsv">Download observations CSV</a>
+              <a href="data/results.json" download data-i18n="downloadJson">Download results JSON</a>
+              <a href="data/source.json" download data-i18n="dataNotes">Download provenance record</a>
+              <a href="https://github.com/Rexmiao/rexmiao.github.io/tree/master/labs/levy-volatility" data-i18n="sourceCode">Project source code</a>
             </div>
           </div>
           <div>
-            <h3 data-i18n="reference">模型参考</h3>
+            <h3 data-i18n="reference">Model reference</h3>
             <p>
               Barndorff-Nielsen &amp; Shephard (2001).
               <em>Non-Gaussian Ornstein–Uhlenbeck-based models and some of their uses in financial economics.</em>
             </p>
-            <a class="text-link" href="https://ora.ox.ac.uk/objects/uuid:19a83a30-f460-4c6e-8cb9-f59da3016c56" data-i18n="readPaper">阅读论文</a>
+            <a class="text-link" href="https://ora.ox.ac.uk/objects/uuid:19a83a30-f460-4c6e-8cb9-f59da3016c56" data-i18n="readPaper">Read the paper</a>
           </div>
         </div>
       </section>
@@ -486,8 +434,9 @@
         <a class="wordmark" href="#top" aria-label="Lévy Volatility Lab"
           ><span class="mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span>Lévy<span class="wordmark-divider">/</span>Lab</span></a
         >
-        <a href="https://rexmiao.github.io/" data-i18n="portfolio">Runtian Miao 的个人网站</a>
+        <a href="https://rexmiao.github.io/" data-i18n="portfolio">Runtian Miao’s personal site</a>
       </div>
     </footer>
   </body>
 </html>
+

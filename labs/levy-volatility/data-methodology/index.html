@@ -1,16 +1,16 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="Data acquisition, cleaning, evaluation samples, and reproducibility for the Lévy Volatility Lab." />
     <meta name="theme-color" content="#142b23" />
-    <title>数据来源与清洗 · Lévy 波动率实验室</title>
+    <title>Data sources and cleaning · Lévy Volatility Lab</title>
     <link rel="stylesheet" href="../assets/style.css?v=breadcrumbs" />
-    <script src="../assets/data-methodology.js?v=year-overview" defer></script>
+    <script src="../assets/data-methodology.js?v=english-default" defer></script>
   </head>
   <body>
-    <a class="skip-link" href="#main"><span lang="zh-CN">跳到正文</span><span lang="en" hidden>Skip to content</span></a>
+    <a class="skip-link" href="#main"><span lang="zh-CN" hidden>跳到正文</span><span lang="en">Skip to content</span></a>
     <header class="site-header">
       <nav class="nav wrap" aria-label="实验室 / Lab">
         <a class="wordmark" href="../" aria-label="Lévy Volatility Lab">
@@ -18,32 +18,32 @@
           <span>Lévy<span class="wordmark-divider">/</span>Lab</span>
         </a>
         <div class="nav-links">
-          <a href="../"><span lang="zh-CN">实验室首页</span><span lang="en" hidden>Lab home</span></a>
-          <a href="../#equity-evaluation"><span lang="zh-CN">美股模型对比</span><span lang="en" hidden>Equity model comparison</span></a>
-          <a href="../#equity-findings"><span lang="zh-CN">总体结果</span><span lang="en" hidden>Findings</span></a>
+          <a href="../"><span lang="zh-CN" hidden>实验室首页</span><span lang="en">Lab home</span></a>
+          <a href="../#equity-evaluation"><span lang="zh-CN" hidden>美股模型对比</span><span lang="en">Equity model comparison</span></a>
+          <a href="../#equity-findings"><span lang="zh-CN" hidden>总体结果</span><span lang="en">Findings</span></a>
         </div>
-        <button type="button" class="language" id="methodLanguage" aria-label="Switch to English">EN</button>
+        <button type="button" class="language" id="methodLanguage" aria-label="切换至中文">中文</button>
       </nav>
       <nav class="wrap lab-breadcrumb" aria-label="当前位置 / Breadcrumb">
         <ol role="list">
           <li>
-            <a href="https://rexmiao.github.io/projects/"><span lang="zh-CN">项目</span><span lang="en" hidden>Projects</span></a>
+            <a href="https://rexmiao.github.io/projects/"><span lang="zh-CN" hidden>项目</span><span lang="en">Projects</span></a>
           </li>
           <li>
             <a href="https://rexmiao.github.io/projects/#quantitative-research"
-              ><span lang="zh-CN">量化研究</span><span lang="en" hidden>Quantitative Research</span></a
+              ><span lang="zh-CN" hidden>量化研究</span><span lang="en">Quantitative Research</span></a
             >
           </li>
           <li>
             <a href="https://rexmiao.github.io/projects/volatility-modeling/"
-              ><span lang="zh-CN">波动率建模</span><span lang="en" hidden>Volatility Modeling</span></a
+              ><span lang="zh-CN" hidden>波动率建模</span><span lang="en">Volatility Modeling</span></a
             >
           </li>
           <li>
-            <a href="../"><span lang="zh-CN">Lévy 波动率实验室</span><span lang="en" hidden>Lévy Volatility Lab</span></a>
+            <a href="../"><span lang="zh-CN" hidden>Lévy 波动率实验室</span><span lang="en">Lévy Volatility Lab</span></a>
           </li>
           <li>
-            <span aria-current="page"><span lang="zh-CN">数据来源与清洗</span><span lang="en" hidden>Data Sources and Cleaning</span></span>
+            <span aria-current="page"><span lang="zh-CN" hidden>数据来源与清洗</span><span lang="en">Data Sources and Cleaning</span></span>
           </li>
         </ol>
       </nav>
@@ -51,29 +51,29 @@
     <main id="main">
       <div class="hero methodology-hero">
         <div class="wrap">
-          <div lang="zh-CN">
+          <div lang="zh-CN" hidden>
             <h1>数据来源与清洗</h1>
             <p class="hero-lede">从下载的原始报价到模型的样本外评分，每一步都有明确的取样、复权和缺失值规则。</p>
           </div>
-          <div lang="en" hidden>
+          <div lang="en">
             <h1>Data sources and cleaning</h1>
             <p class="hero-lede">
               Follow the quotes from their sources through sampling, price adjustments, and quality checks into the forecast evaluation.
             </p>
           </div>
           <nav class="methodology-jump" aria-label="数据页目录 / On this page">
-            <a href="#sources"><span lang="zh-CN">数据下载</span><span lang="en" hidden>Data acquisition</span></a>
-            <a href="#cleaning"><span lang="zh-CN">清洗与方差构造</span><span lang="en" hidden>Cleaning and variance</span></a>
-            <a href="#cleaning-audit"><span lang="zh-CN">逐标的清洗审计</span><span lang="en" hidden>Cleaning audit by ticker</span></a>
-            <a href="#evaluation-sample"><span lang="zh-CN">评估样本</span><span lang="en" hidden>Evaluation sample</span></a>
-            <a href="#reproduce"><span lang="zh-CN">文件与复现</span><span lang="en" hidden>Files and replication</span></a>
+            <a href="#sources"><span lang="zh-CN" hidden>数据下载</span><span lang="en">Data acquisition</span></a>
+            <a href="#cleaning"><span lang="zh-CN" hidden>清洗与方差构造</span><span lang="en">Cleaning and variance</span></a>
+            <a href="#cleaning-audit"><span lang="zh-CN" hidden>逐标的清洗审计</span><span lang="en">Cleaning audit by ticker</span></a>
+            <a href="#evaluation-sample"><span lang="zh-CN" hidden>评估样本</span><span lang="en">Evaluation sample</span></a>
+            <a href="#reproduce"><span lang="zh-CN" hidden>文件与复现</span><span lang="en">Files and replication</span></a>
           </nav>
         </div>
       </div>
 
       <div class="wrap methodology-body">
         <section id="sources" class="methodology-section">
-          <div lang="zh-CN">
+          <div lang="zh-CN" hidden>
             <h2>数据怎样下载</h2>
             <div class="methodology-sources">
               <article>
@@ -115,7 +115,7 @@
               Syncster 归档和 Yahoo 日线隔夜端点。
             </p>
           </div>
-          <div lang="en" hidden>
+          <div lang="en">
             <h2>How the data was downloaded</h2>
             <div class="methodology-sources">
               <article>
@@ -168,7 +168,7 @@
         </section>
 
         <section id="cleaning" class="methodology-section">
-          <div lang="zh-CN">
+          <div lang="zh-CN" hidden>
             <h2>怎样清洗并构造方差</h2>
             <h3>为什么在拟合前清洗</h3>
             <p>
@@ -213,7 +213,7 @@
               个预热日缺少上一交易日的复权收盘价，最终得到 2,681 个全日方差观测。
             </p>
           </div>
-          <div lang="en" hidden>
+          <div lang="en">
             <h2>How the data was cleaned and turned into variance</h2>
             <h3>Why clean the data before fitting?</h3>
             <p>
@@ -269,25 +269,25 @@
         </section>
 
         <section id="cleaning-audit" class="methodology-section" aria-labelledby="auditTitle">
-          <h2 id="auditTitle"><span lang="zh-CN">逐标的清洗审计</span><span lang="en" hidden>Cleaning audit by ticker</span></h2>
+          <h2 id="auditTitle"><span lang="zh-CN" hidden>逐标的清洗审计</span><span lang="en">Cleaning audit by ticker</span></h2>
           <p>
-            <span lang="zh-CN">选择标的和数据频率，核对原始记录数、清洗后的有效样本和逐日剔除原因。</span>
-            <span lang="en" hidden>Choose a ticker and frequency to inspect input counts, usable observations, and exclusion reasons by date.</span>
+            <span lang="zh-CN" hidden>选择标的和数据频率，核对原始记录数、清洗后的有效样本和逐日剔除原因。</span>
+            <span lang="en">Choose a ticker and frequency to inspect input counts, usable observations, and exclusion reasons by date.</span>
           </p>
           <div class="lab-panel audit-panel">
             <div class="panel-controls equity-controls">
               <label class="select-label" for="auditTicker">
-                <span lang="zh-CN">标的</span><span lang="en" hidden>Ticker</span>
+                <span lang="zh-CN" hidden>标的</span><span lang="en">Ticker</span>
                 <select id="auditTicker" disabled></select>
               </label>
               <div class="horizon-control" id="auditFrequencyGroup" role="group" aria-label="数据频率">
-                <span class="control-label" lang="zh-CN">数据频率</span><span class="control-label" lang="en" hidden>Data frequency</span>
+                <span class="control-label" lang="zh-CN" hidden>数据频率</span><span class="control-label" lang="en">Data frequency</span>
                 <div class="segments" id="auditFrequency">
                   <button type="button" data-audit-frequency="daily" aria-pressed="true" disabled>
-                    <span lang="zh-CN">日线</span><span lang="en" hidden>Daily</span>
+                    <span lang="zh-CN" hidden>日线</span><span lang="en">Daily</span>
                   </button>
                   <button type="button" data-audit-frequency="intraday" aria-pressed="false" disabled>
-                    <span lang="zh-CN">分钟线</span><span lang="en" hidden>1-minute data</span>
+                    <span lang="zh-CN" hidden>分钟线</span><span lang="en">1-minute data</span>
                   </button>
                 </div>
               </div>
@@ -298,10 +298,10 @@
               <div id="auditCounts" class="audit-counts"></div>
               <p id="auditCountNote" class="small muted"></p>
               <section id="cleaning-timeline" class="audit-timeline" aria-labelledby="auditTimelineTitle">
-                <h3 id="auditTimelineTitle"><span lang="zh-CN">逐日清洗日历</span><span lang="en" hidden>Daily cleaning calendar</span></h3>
+                <h3 id="auditTimelineTitle"><span lang="zh-CN" hidden>逐日清洗日历</span><span lang="en">Daily cleaning calendar</span></h3>
                 <p class="small muted">
-                  <span lang="zh-CN">日线按复权日收益、分钟线按全日方差的可用性标记。选择日期查看清洗记录。</span>
-                  <span lang="en" hidden
+                  <span lang="zh-CN" hidden>日线按复权日收益、分钟线按全日方差的可用性标记。选择日期查看清洗记录。</span>
+                  <span lang="en"
                     >Statuses track adjusted daily returns or minute-derived full-day variance. Select a date for its cleaning record.</span
                   >
                 </p>
@@ -309,9 +309,9 @@
                 <div id="auditTimelineBody" hidden>
                   <section id="cleaning-year" class="audit-year-overview" aria-labelledby="auditYearTitle">
                     <div class="audit-year-heading">
-                      <h4 id="auditYearTitle"><span lang="zh-CN">年度概览</span><span lang="en" hidden>Year overview</span></h4>
+                      <h4 id="auditYearTitle"><span lang="zh-CN" hidden>年度概览</span><span lang="en">Year overview</span></h4>
                       <label class="select-label" for="auditTimelineYear">
-                        <span lang="zh-CN">年份</span><span lang="en" hidden>Year</span>
+                        <span lang="zh-CN" hidden>年份</span><span lang="en">Year</span>
                         <select id="auditTimelineYear"></select>
                       </label>
                     </div>
@@ -321,14 +321,14 @@
                     <div>
                       <div class="audit-month-controls">
                         <label class="select-label" for="auditTimelineMonth">
-                          <span lang="zh-CN">月份</span><span lang="en" hidden>Month</span>
+                          <span lang="zh-CN" hidden>月份</span><span lang="en">Month</span>
                           <select id="auditTimelineMonth"></select>
                         </label>
                         <div class="audit-paging-buttons">
                           <button type="button" id="auditTimelinePrevious">
-                            <span lang="zh-CN">上月</span><span lang="en" hidden>Previous month</span>
+                            <span lang="zh-CN" hidden>上月</span><span lang="en">Previous month</span>
                           </button>
-                          <button type="button" id="auditTimelineNext"><span lang="zh-CN">下月</span><span lang="en" hidden>Next month</span></button>
+                          <button type="button" id="auditTimelineNext"><span lang="zh-CN" hidden>下月</span><span lang="en">Next month</span></button>
                         </div>
                       </div>
                       <div id="auditCalendarWeekdays" class="audit-calendar-grid audit-weekdays" aria-hidden="true"></div>
@@ -345,9 +345,9 @@
                 </div>
               </section>
               <div class="audit-exclusion-head">
-                <h3><span lang="zh-CN">未纳入的日期与原因</span><span lang="en" hidden>Excluded dates and reasons</span></h3>
+                <h3><span lang="zh-CN" hidden>未纳入的日期与原因</span><span lang="en">Excluded dates and reasons</span></h3>
                 <label class="select-label" for="auditStage">
-                  <span lang="zh-CN">筛选环节</span><span lang="en" hidden>Filter by stage</span>
+                  <span lang="zh-CN" hidden>筛选环节</span><span lang="en">Filter by stage</span>
                   <select id="auditStage"></select>
                 </label>
               </div>
@@ -356,9 +356,9 @@
                 <table class="metrics audit-table">
                   <thead>
                     <tr>
-                      <th scope="col"><span lang="zh-CN">日期</span><span lang="en" hidden>Date</span></th>
-                      <th scope="col"><span lang="zh-CN">环节</span><span lang="en" hidden>Stage</span></th>
-                      <th scope="col"><span lang="zh-CN">原因</span><span lang="en" hidden>Reason</span></th>
+                      <th scope="col"><span lang="zh-CN" hidden>日期</span><span lang="en">Date</span></th>
+                      <th scope="col"><span lang="zh-CN" hidden>环节</span><span lang="en">Stage</span></th>
+                      <th scope="col"><span lang="zh-CN" hidden>原因</span><span lang="en">Reason</span></th>
                     </tr>
                   </thead>
                   <tbody id="auditExcluded"></tbody>
@@ -366,22 +366,22 @@
                 <div class="audit-pagination">
                   <p id="auditPageSummary" class="small muted" role="status"></p>
                   <div class="audit-paging-buttons">
-                    <button type="button" id="auditPrevious"><span lang="zh-CN">上一页</span><span lang="en" hidden>Previous</span></button>
-                    <button type="button" id="auditNext"><span lang="zh-CN">下一页</span><span lang="en" hidden>Next</span></button>
+                    <button type="button" id="auditPrevious"><span lang="zh-CN" hidden>上一页</span><span lang="en">Previous</span></button>
+                    <button type="button" id="auditNext"><span lang="zh-CN" hidden>下一页</span><span lang="en">Next</span></button>
                   </div>
                 </div>
               </div>
             </div>
             <div class="panel-foot">
               <a class="text-link" href="../data/equity-cleaning.json" download>
-                <span lang="zh-CN">下载完整清洗审计 JSON</span><span lang="en" hidden>Download the full cleaning audit JSON</span>
+                <span lang="zh-CN" hidden>下载完整清洗审计 JSON</span><span lang="en">Download the full cleaning audit JSON</span>
               </a>
             </div>
           </div>
         </section>
 
         <section id="evaluation-sample" class="methodology-section">
-          <div lang="zh-CN">
+          <div lang="zh-CN" hidden>
             <h2>哪些日期进入美股评估</h2>
             <p>
               在共同交易日历跨度的前 80% 拟合参数。评分要求每个预测起点及之前共 22 个交易日、以及之后 22
@@ -400,7 +400,7 @@
               </li>
             </ul>
           </div>
-          <div lang="en" hidden>
+          <div lang="en">
             <h2>Which dates enter the equity evaluation</h2>
             <p>
               Fit parameters on the first 80% of the common calendar span. An eligible origin requires 22 consecutive sessions through that date and
@@ -427,7 +427,7 @@
         </section>
 
         <section id="reproduce" class="methodology-section">
-          <div lang="zh-CN">
+          <div lang="zh-CN" hidden>
             <h2>怎样核查和复现</h2>
             <p>
               公开的外汇 CSV 和来源 JSON 保留建模观测、预热报价、快照日期和观测文件的
@@ -446,7 +446,7 @@
               <a href="../scripts/export_equity_results.py">美股结果导出脚本</a>
             </div>
           </div>
-          <div lang="en" hidden>
+          <div lang="en">
             <h2>How to verify and reproduce the results</h2>
             <p>
               The public FX CSV and provenance JSON provide the model observations, warm-up fixes, snapshot dates, and a
@@ -475,8 +475,9 @@
         <a class="wordmark" href="../" aria-label="Lévy Volatility Lab">
           <span class="mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span>Lévy<span class="wordmark-divider">/</span>Lab</span>
         </a>
-        <a href="../#equity-evaluation"><span lang="zh-CN">查看美股模型对比</span><span lang="en" hidden>Explore the equity comparison</span></a>
+        <a href="../#equity-evaluation"><span lang="zh-CN" hidden>查看美股模型对比</span><span lang="en">Explore the equity comparison</span></a>
       </div>
     </footer>
   </body>
 </html>
+
