@@ -92,12 +92,18 @@ milestones. Add new verified milestones as dated entries in `_news/`. The
 homepage shows up to five recent items and `/news/` lists all entries. The
 archive covers the CV's seven conference and symposium records from 2018 to 2026,
 including the CWRU SURES presentations, Swiss Society of Pathology abstract,
-three Penn Pendergrass posters, and the 2024 and 2026 ISFTD posters. Label the
-accepted 2026 ISFTD poster by its program status. Use `date_label` for entries
+three Penn Pendergrass posters, and the 2024 and 2026 ISFTD posters. The 2024
+entry records attendance in Amsterdam and the program's listing of the user as
+presenting author of Poster P159. Label the accepted 2026 ISFTD poster by its
+program status. Use `date_label` for entries
 with only month-level precision. The date in their front matter sorts the
 entry by month. The American Journal of Artificial Intelligence reviewer
 appointment is listed on November 24, 2026, with a term through November 24,
 2029, and a link to the publisher's public reviewer roster.
+
+The 2026-11-27 quantitative project update covers the verified daily market-news
+email test, the local options-positioning prototype and research plan, and Alpha
+Lab's beta comparison, local five-minute backtest, and data-workflow page.
 
 ## Invited peer review
 
@@ -149,6 +155,12 @@ human-approved simulated execution, and fully automated simulated execution.
 The project page links to the public project repository, Alpha Training Lab
 teaching guide, and Hugging Face research demo. Describe backtest results as
 simulated and verify any claims about live executions or investment returns.
+
+The homepage and Alpha Lab project page link to Data Sources & Research Workflow
+at `/projects/alpha-lab/data-workflow/`. It documents source status, coverage,
+adjustments, cleaning, point-in-time availability, and held-out comparisons.
+Its S&P 500 put hedge example links to the published reflection and describes a
+proposed scenario replay pending historical positions and option quotes.
 
 The volatility modeling project links its advisor, Prof. Wojbor A. Woyczynski,
 to his [Polish Wikipedia biography](https://pl.wikipedia.org/wiki/Wojbor_A._Woyczy%C5%84ski).

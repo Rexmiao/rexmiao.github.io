@@ -10,6 +10,8 @@ portfolio: runtian
 
 **In development.** Alpha Lab collects market data, records trading signals, and generates order proposals subject to risk checks. The local execution prototype is tested with historical replay and simulated orders.
 
+[Data Sources & Research Workflow]({{ '/projects/alpha-lab/data-workflow/' | relative_url }}) explains how I source, clean, and test data, with an S&P 500 put hedge case study.
+
 ## Trading workflows
 
 - **Manual trading.** Review signal alerts and decide whether to act.

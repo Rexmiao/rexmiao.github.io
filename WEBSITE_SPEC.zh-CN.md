@@ -49,6 +49,8 @@
 
 News 于 2026 年 11 月 24 日记录 American Journal of Artificial Intelligence 的审稿人任命。任期至 2029 年 11 月 24 日，并链接至出版商公开审稿人名单。
 
+ISFTD 2024 条目记录在阿姆斯特丹参会，并注明会议议程将用户列为 P159 海报报告人。2026 年 11 月 27 日的量化项目动态概述已验证的每日市场新闻邮件流程、期权持仓研究计划与本地原型，以及 Alpha Lab 的 beta 对照、本地五分钟回测和数据工作流页面。
+
 ## 受邀同行评审
 
 首页突出显示各期刊名称、影响因子和 CV 记录的审稿次数，并链接到 `/cv/#peer-review`。36 次已完成审稿含修回轮次，稿件数量保留在 CV 中。另列为 _NeuroImage_ 完成的 1 次合作审稿及 _The Journal of Pathology: Clinical Research_ 审稿人库成员身份。保留稿件内容的保密性。所列影响因子为 2026 年发布的 Journal Citation Reports 的 2025 年数据，[公开表格](https://www.niic.nsc.ru/phocadownload/publications/2025/JCR_JournalImpactFactor_2026.pdf)按发布年份标注列名。
@@ -73,6 +75,8 @@ Trading Reflections 是用户的个人交易复盘栏目。归档按日期倒序
 首篇经用户确认的个人复盘是《一笔标普 500 Put 对冲的仓位复盘》，发布日为纽约时间 2026 年 11 月 26 日，链接为 `/projects/trading-reflections/2026-11-26-sp500-put-hedge/`。
 
 PCR Market Watch 提供通往公开介绍页、个人源码仓库、最新 Release、默认英文 README／用户指南及独立中文 README 的链接。Alpha Lab 是正在开发的个人量化交易系统。首页简介链接到项目页，概述信号捕捉、人工交易决策、人工确认的半自动模拟执行和全自动模拟执行。项目页链接到公开项目仓库、Alpha Training Lab 教学指南和 Hugging Face 研究演示。回测收益按模拟结果表述，实盘成交或投资业绩需核实后才能加入。
+
+首页与 Alpha Lab 项目页均链接到 Data Sources & Research Workflow（`/projects/alpha-lab/data-workflow/`）。该页说明数据来源与验证状态、覆盖范围、复权、清洗、时点可用性和样本外对照。标普 500 put 对冲案例链接到已公开的交易复盘，说明拟用历史持仓和期权报价复现情景分析。
 
 波动率建模项目新增独立的 [Lévy 波动率实验室](labs/levy-volatility/)，并提供模型源码、数据说明和中英文复现指南。该网页以美联储 H.10 美元兑日元日度汇率为基础开展新的实证实验，与项目页面中的硕士研究是两项工作。五期波动率代理、训练区间、比较基准及模拟假设均见实验室说明。实验室位于 `labs/levy-volatility/`，随现有 GitHub Pages 工作流发布。 波动率项目详情页的 Lévy Volatility Lab 小节提供直达 [Hugging Face 演示](https://rexymiao-levy-volatility-lab.static.hf.space/) 的链接。
 

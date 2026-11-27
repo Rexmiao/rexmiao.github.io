@@ -32,7 +32,7 @@ My master's research studied volatility modeling with **Lévy processes and Orns
 My [quantitative projects]({{ '/projects/' | relative_url }}#quantitative-research) reflect my experience with quantitative research and trading workflows, from studying market activity to testing signals, simulating portfolios, and forecasting volatility.
 
 - **[PCR Market Watch]({{ '/projects/pcr-market-watch/' | relative_url }})** tracks U.S. options activity using put/call ratios and historical comparisons.
-- **[Alpha Lab]({{ '/projects/alpha-lab/' | relative_url }})** is my quantitative trading system in development. It captures signals for manual trading decisions and tests semi-automated execution with human approval and fully automated execution in simulation.
+- **[Alpha Lab]({{ '/projects/alpha-lab/' | relative_url }})** is my quantitative trading system in development. It captures signals for manual trading decisions and tests semi-automated execution with human approval and fully automated execution in simulation. [Data Sources & Research Workflow]({{ '/projects/alpha-lab/data-workflow/' | relative_url }}).
 - **[Lévy Volatility Lab]({{ '/projects/volatility-modeling/' | relative_url }})** compares volatility forecasts for USD/JPY and U.S. equities. [Open the demo on Hugging Face](https://rexymiao-levy-volatility-lab.static.hf.space/).
 
 ## Invited peer review
