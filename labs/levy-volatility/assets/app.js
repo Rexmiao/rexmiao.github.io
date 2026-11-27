@@ -278,18 +278,24 @@ const percentage = (value, digits = 2) => (Number.isFinite(value) ? `${(100 * va
 const fixed = (value, digits) => (Number.isFinite(value) ? value.toFixed(digits) : "—");
 const clamp = (value, minimum, maximum) => Math.min(maximum, Math.max(minimum, value));
 
-const colors = {
-  actual: "#263731",
-  levy: "#287850",
-  ewma: "#a35332",
-  persistence: "#5c6688",
-  history: "#a8bd9c",
-  holdout: "#c5e87e",
-  innerBand: "#a8d2b2",
-  outerBand: "#dfeedd",
-  light: { grid: "#e0e7dc", label: "#52665a", cross: "#759181" },
-  dark: { grid: "#66817060", label: "#cad6c8", cross: "#a9bea6" },
-};
+function chartColors() {
+  const styles = getComputedStyle(document.documentElement);
+  const color = (name) => styles.getPropertyValue(name).trim();
+  return {
+    actual: color("--observed"),
+    levy: color("--forecast-line"),
+    ewma: color("--ewma"),
+    persistence: color("--persistence"),
+    history: color("--history-line"),
+    holdout: color("--accent"),
+    holdoutFill: color("--chart-holdout-fill"),
+    innerBand: color("--fan-inner"),
+    outerBand: color("--fan-outer"),
+    palette: { grid: color("--chart-grid"), label: color("--muted"), cross: color("--chart-crosshair") },
+  };
+}
+
+let colors = chartColors();
 
 let language = "en";
 try {
@@ -603,15 +609,15 @@ function crosshair(plot, index) {
 function drawHistory() {
   const { history, data } = state.data;
   const highest = Math.max(...history.map((point) => point.volatility));
-  const plot = setupPlot(byId("historyChart"), highest, history.length, colors.dark);
+  const plot = setupPlot(byId("historyChart"), highest, history.length, colors.palette);
   if (!plot) return;
   setPlot("history", plot, history.length);
   const { ctx, box, x } = plot;
   const split = data.train_count;
   const splitX = x(split - 0.5);
-  ctx.fillStyle = "#c5e87e0e";
+  ctx.fillStyle = colors.holdoutFill;
   ctx.fillRect(splitX, box.top, box.right - splitX, box.bottom - box.top);
-  line(plot, splitX, box.top, splitX, box.bottom, "#a8bd9c88", [3, 5]);
+  line(plot, splitX, box.top, splitX, box.bottom, colors.palette.cross, [3, 5]);
   seriesLine(plot, history.slice(0, split), "volatility", colors.history, { width: 1.15 });
   seriesLine(plot, history.slice(split - 1), "volatility", colors.holdout, { offset: split - 1, width: 1.45 });
   axisLabels(plot, evenDateLabels(history, plot, true));
@@ -636,7 +642,7 @@ function drawFan() {
   const fan = currentFan();
   const series = fan.series.map((point) => ({ ...point, observed: targetObserved(point) }));
   const highest = Math.max(...series.flatMap((point) => [point.q95, point.observed ?? 0, point.mean]));
-  const plot = setupPlot(byId("fanChart"), highest, series.length, colors.light);
+  const plot = setupPlot(byId("fanChart"), highest, series.length, colors.palette);
   if (!plot) return;
   setPlot("fan", plot, series.length);
   fillBand(plot, series, "q05", "q95", colors.outerBand);
@@ -664,7 +670,7 @@ function drawEvaluation() {
   const { series } = currentEvaluation();
   const visible = ["actual", ...state.visible];
   const highest = Math.max(...series.flatMap((item) => visible.map((key) => item[key])));
-  const plot = setupPlot(byId("evaluationChart"), highest, series.length, colors.light);
+  const plot = setupPlot(byId("evaluationChart"), highest, series.length, colors.palette);
   if (!plot) return;
   setPlot("evaluation", plot, series.length);
   seriesLine(plot, series, "actual", colors.actual, { width: 1.1 });
@@ -1008,6 +1014,11 @@ byId("language").addEventListener("click", () => {
   if (state.data) render();
   renderEquity();
   renderEquityFindings();
+});
+
+document.documentElement.addEventListener("lab-theme-change", () => {
+  colors = chartColors();
+  if (state.data) for (const paint of Object.values(painters)) paint();
 });
 
 translatePage();

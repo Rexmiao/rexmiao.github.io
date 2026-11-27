@@ -7,10 +7,11 @@
       name="description"
       content="Explore USD/JPY volatility forecasts and compare out-of-sample volatility models for U.S. equities using daily and minute-derived variance."
     />
-    <meta name="theme-color" content="#142b23" />
+    <meta name="theme-color" content="#101d2a" />
     <title>Lévy Volatility Lab</title>
-    <link rel="stylesheet" href="assets/style.css?v=breadcrumbs" />
-    <script src="assets/app.js?v=english-default" defer></script>
+    <script src="assets/lab-theme.js?v=quant-theme"></script>
+    <link rel="stylesheet" href="assets/style.css?v=quant-theme" />
+    <script src="assets/app.js?v=quant-theme" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main" data-i18n="skip">Skip to content</a>
@@ -27,7 +28,10 @@
           <a href="#method" data-i18n="navMethod">Method</a>
           <a href="data-methodology/" data-i18n="navData">Data</a>
         </div>
-        <button type="button" class="language" id="language" aria-label="切换至中文">中文</button>
+        <div class="nav-preferences">
+          <button type="button" class="theme-button" data-lab-theme aria-label="Switch to light theme">Light</button>
+          <button type="button" class="language" id="language" aria-label="切换至中文">中文</button>
+        </div>
       </nav>
       <nav class="wrap lab-breadcrumb" aria-label="当前位置" data-aria="breadcrumbLabel">
         <ol role="list">

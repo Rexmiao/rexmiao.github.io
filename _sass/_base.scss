@@ -48,11 +48,35 @@ table.table a {
   }
 }
 
+.table,
 .table-dark {
+  color: var(--global-text-color);
   background-color: transparent;
-  &.table-bordered {
-    border: 1px solid var(--global-divider-color) !important;
+
+  th,
+  td,
+  thead th,
+  tbody + tbody {
+    border-color: var(--global-divider-color);
   }
+}
+
+.news .table {
+  tbody tr + tr {
+    border-top: 1px solid var(--global-divider-color);
+  }
+
+  th[scope="row"] {
+    color: var(--global-text-color-light);
+    font-family: var(--global-mono-font);
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--global-theme-color);
+  outline-offset: 3px;
 }
 
 figure,
@@ -163,6 +187,7 @@ ul.task-list input[type="checkbox"] {
 
 .card {
   background-color: var(--global-card-bg-color);
+  border-color: var(--global-divider-color);
 
   img {
     width: 100%;
@@ -246,8 +271,7 @@ ul.task-list input[type="checkbox"] {
 .navbar {
   box-shadow: none;
   border-bottom: 1px solid var(--global-divider-color);
-  background-color: var(--global-bg-color);
-  opacity: 0.95;
+  background-color: var(--global-nav-bg-color);
 }
 
 .navbar .dropdown-menu {
@@ -285,6 +309,7 @@ ul.task-list input[type="checkbox"] {
 
   .navbar-brand {
     color: var(--global-text-color);
+    font-weight: 650;
   }
 
   .navbar-nav .nav-item .nav-link {
@@ -366,10 +391,13 @@ ul.task-list input[type="checkbox"] {
 }
 
 #light-toggle {
-  padding: 0;
-  border: 0;
+  min-width: 2.25rem;
+  min-height: 2.25rem;
+  padding: 0.3rem;
+  border: 1px solid var(--global-divider-color);
+  border-radius: 0.35rem;
   background-color: inherit;
-  color: var(--global-text-color);
+  color: var(--global-theme-color);
 
   &:hover {
     color: var(--global-hover-color);
@@ -490,11 +518,13 @@ footer.fixed-bottom {
 
 footer.sticky-bottom {
   border-top: 1px solid var(--global-divider-color);
+  background-color: var(--global-footer-bg-color);
   padding-top: 40px;
   padding-bottom: 40px;
   font-size: 0.9rem;
 
   .container {
+    color: var(--global-footer-text-color);
     text-align: center;
   }
 }
@@ -507,13 +537,15 @@ footer.sticky-bottom {
   .card {
     background-color: var(--global-card-bg-color);
     border: 1px solid var(--global-divider-color);
+    border-radius: 0.65rem;
+    box-shadow: none;
 
     .list-group-item {
       background-color: inherit;
       border-color: var(--global-divider-color);
 
       .badge {
-        color: var(--global-card-bg-color) !important;
+        color: var(--global-hover-text-color) !important;
         background-color: var(--global-theme-color) !important;
       }
     }
@@ -618,12 +650,12 @@ footer.sticky-bottom {
       color: var(--global-text-color);
 
       &:hover {
-        color: $black-color;
+        color: var(--global-theme-color);
       }
     }
 
     &.active .page-link {
-      color: $white-color;
+      color: var(--global-hover-text-color);
       background-color: var(--global-theme-color);
 
       &:hover {
@@ -837,11 +869,13 @@ footer.sticky-bottom {
         abbr {
           display: inline-block;
           background-color: var(--global-theme-color);
+          color: var(--global-hover-text-color) !important;
+          font-family: var(--global-mono-font);
           padding-left: 1rem;
           padding-right: 1rem;
 
           a {
-            color: white;
+            color: inherit !important;
 
             &:hover {
               text-decoration: none;
@@ -907,7 +941,7 @@ footer.sticky-bottom {
         padding-bottom: 0.5rem;
         span {
           display: inline-block;
-          color: $black-color;
+          color: var(--global-text-color);
           height: 100%;
           padding-right: 0.5rem;
           vertical-align: middle;

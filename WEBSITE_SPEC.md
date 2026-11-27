@@ -76,6 +76,13 @@ program and software names link to the [Penn AMCS program](https://amcs.upenn.ed
 the Quick Annotator and HistoQC portfolio pages, the [Sedeen Viewer product page](https://www.pathcore.com/products/sedeen-viewer),
 and the [WRDS homepage](https://wrds-www.wharton.upenn.edu/).
 
+The navy and mint quantitative theme uses the shared Jekyll palette, grid,
+header, navigation, and card styles across the personal site. The two standalone
+Lévy pages use the matching palette and chart colors. Dark is the default and
+the theme control cycles dark, light, and system. The Jekyll and Lévy pages on
+this origin store explicit choices under `quant-theme`. Preserve explicit older
+light and dark settings. The CV uses light paper colors in print.
+
 Do not infer missing degree dates, graduation, manuscript acceptance, personal
 grant ownership, or investment performance. Preserve the 2026 npj Dementia
 manuscript's under-review status and the ISFTD 2026 poster's accepted status.

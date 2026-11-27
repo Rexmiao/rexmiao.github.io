@@ -16,6 +16,7 @@ PUBLIC_FILES = (
     "index.html",
     "assets/app.js",
     "assets/data-methodology.js",
+    "assets/lab-theme.js",
     "assets/style.css",
     "data/DATA.md",
     "data/equity-cleaning.json",

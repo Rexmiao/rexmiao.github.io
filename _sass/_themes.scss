@@ -1,121 +1,136 @@
-/*******************************************************************************
- * Themes
- ******************************************************************************/
+@mixin quant-light-palette {
+  color-scheme: light;
+  --global-bg-color: #f4f8fa;
+  --global-nav-bg-color: #eaf2f5;
+  --global-card-bg-color: #fff;
+  --global-code-bg-color: #eaf2f5;
+  --global-text-color: #14283a;
+  --global-text-color-light: #3b5668;
+  --global-theme-color: #006b67;
+  --global-hover-color: #005451;
+  --global-hover-text-color: #fff;
+  --global-divider-color: #c2d4de;
+  --global-grid-line: rgba(0, 107, 103, 0.045);
+  --global-panel-grid-line: rgba(0, 107, 103, 0.065);
+  --global-panel-glow: rgba(114, 184, 190, 0.16);
+  --global-tip-block: #24815d;
+  --global-tip-block-bg: #e2f5ec;
+  --global-tip-block-text: #215d42;
+  --global-tip-block-title: #215d42;
+  --global-warning-block: #9b7600;
+  --global-warning-block-bg: #fff6da;
+  --global-warning-block-text: #654c00;
+  --global-warning-block-title: #654c00;
+  --global-danger-block: #b72142;
+  --global-danger-block-bg: #ffe9ed;
+  --global-danger-block-text: #85223b;
+  --global-danger-block-title: #85223b;
+}
 
 :root {
-  --global-bg-color: #{$white-color};
-  --global-code-bg-color: #{$code-bg-color-light};
-  --global-text-color: #{$black-color};
-  --global-text-color-light: #{$grey-color};
-  --global-theme-color: #{$purple-color};
-  --global-hover-color: #{$purple-color};
-  --global-hover-text-color: #{$white-color};
-  --global-footer-bg-color: #{$grey-color-dark};
-  --global-footer-text-color: #{$grey-color-light};
-  --global-footer-link-color: #{$white-color};
-  --global-distill-app-color: #{$grey-color};
-  --global-divider-color: rgba(0, 0, 0, 0.1);
-  --global-card-bg-color: #{$white-color};
+  color-scheme: dark;
+  --global-bg-color: #0b1420;
+  --global-nav-bg-color: #101d2a;
+  --global-card-bg-color: #132231;
+  --global-code-bg-color: #132231;
+  --global-text-color: #e3edf4;
+  --global-text-color-light: #adbdca;
+  --global-theme-color: #9cf0df;
+  --global-hover-color: #c2fff1;
+  --global-hover-text-color: #102530;
+  --global-divider-color: #2e4356;
+  --global-grid-line: rgba(156, 240, 223, 0.033);
+  --global-panel-grid-line: rgba(165, 213, 228, 0.075);
+  --global-panel-glow: rgba(70, 149, 164, 0.13);
+  --global-footer-bg-color: var(--global-nav-bg-color);
+  --global-footer-text-color: var(--global-text-color-light);
+  --global-footer-link-color: var(--global-theme-color);
+  --global-distill-app-color: var(--global-text-color-light);
+  --global-mono-font: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  --global-tip-block: #6cd4a9;
+  --global-tip-block-bg: #16352e;
+  --global-tip-block-text: #daf6eb;
+  --global-tip-block-title: #a1ead0;
+  --global-warning-block: #e8c974;
+  --global-warning-block-bg: #3a2e17;
+  --global-warning-block-text: #fff0cd;
+  --global-warning-block-title: #ffe197;
+  --global-danger-block: #f591a3;
+  --global-danger-block-bg: #3a2536;
+  --global-danger-block-text: #ffdae3;
+  --global-danger-block-title: #ffc3d1;
 
-  --global-tip-block: #42b983;
-  --global-tip-block-bg: #e2f5ec;
-  --global-tip-block-text: #215d42;
-  --global-tip-block-title: #359469;
-  --global-warning-block: #e7c000;
-  --global-warning-block-bg: #fff8d8;
-  --global-warning-block-text: #6b5900;
-  --global-warning-block-title: #b29400;
-  --global-danger-block: #c00;
-  --global-danger-block-bg: #ffe0e0;
-  --global-danger-block-text: #600;
-  --global-danger-block-title: #c00;
+  .repo-img-light {
+    display: none;
+  }
 
-  #light-toggle-system {
-    padding-left: 10px;
-    padding-top: 12px;
+  .repo-img-dark {
     display: block;
   }
 
-  #light-toggle-dark {
+  #light-toggle-light,
+  #light-toggle-system {
     display: none;
   }
+}
 
-  #light-toggle-light {
-    display: none;
-  }
+html[data-theme="light"] {
+  @include quant-light-palette;
 
   .repo-img-light {
     display: block;
   }
+
   .repo-img-dark {
     display: none;
   }
 }
 
-html[data-theme="dark"] {
-  --global-bg-color: #{$grey-color-dark};
-  --global-code-bg-color: #{$code-bg-color-dark};
-  --global-text-color: #{$grey-color-light};
-  --global-text-color-light: #{$grey-color-light};
-  --global-theme-color: #{$cyan-color};
-  --global-hover-color: #{$cyan-color};
-  --global-hover-text-color: #{$white-color};
-  --global-footer-bg-color: #{$grey-color-light};
-  --global-footer-text-color: #{$grey-color-dark};
-  --global-footer-link-color: #{$black-color};
-  --global-distill-app-color: #{$grey-color-light};
-  --global-divider-color: #424246;
-  --global-card-bg-color: #{$grey-900};
-
-  --global-tip-block: #42b983;
-  --global-tip-block-bg: #e2f5ec;
-  --global-tip-block-text: #215d42;
-  --global-tip-block-title: #359469;
-  --global-warning-block: #e7c000;
-  --global-warning-block-bg: #fff8d8;
-  --global-warning-block-text: #6b5900;
-  --global-warning-block-title: #b29400;
-  --global-danger-block: #c00;
-  --global-danger-block-bg: #ffe0e0;
-  --global-danger-block-text: #600;
-  --global-danger-block-title: #c00;
-
-  .repo-img-light {
-    display: none;
-  }
-  .repo-img-dark {
-    display: block;
-  }
-}
-
-html[data-theme-setting="dark"] {
-  #light-toggle-system {
-    display: none;
-  }
-
+html[data-theme-setting="light"],
+html[data-theme-setting="system"] {
   #light-toggle-dark {
-    padding-left: 10px;
-    padding-top: 12px;
-    display: block;
-  }
-
-  #light-toggle-light {
     display: none;
   }
 }
 
-html[data-theme-setting="light"] {
-  #light-toggle-system {
-    display: none;
+html[data-theme-setting="light"] #light-toggle-light,
+html[data-theme-setting="system"] #light-toggle-system {
+  display: inline-block;
+}
+
+@media print {
+  :root,
+  html[data-theme="light"] {
+    @include quant-light-palette;
+    --global-bg-color: #fff;
   }
 
-  #light-toggle-dark {
-    display: none;
+  body {
+    background: white !important;
   }
 
-  #light-toggle-light {
-    padding-left: 10px;
-    padding-top: 12px;
-    display: block;
+  .post-header,
+  .quant-hero {
+    background: white !important;
+  }
+
+  .cv .card .badge,
+  html .cv .card .list-group-item .badge,
+  .cv .badge-toc,
+  .publications ol.bibliography li .abbr .badge {
+    color: var(--global-text-color) !important;
+    background: transparent !important;
+    border: 1px solid var(--global-divider-color);
+    box-shadow: none;
+  }
+
+  .navbar,
+  #progress,
+  footer {
+    display: none !important;
+  }
+
+  body.fixed-top-nav {
+    padding-top: 0;
   }
 }

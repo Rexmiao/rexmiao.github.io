@@ -6,6 +6,9 @@ body {
   padding-bottom: 70px;
   color: var(--global-text-color);
   background-color: var(--global-bg-color);
+  background-image: linear-gradient(var(--global-grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--global-grid-line) 1px, transparent 1px);
+  background-size: 24px 24px;
 
   h1,
   h2,
@@ -29,6 +32,41 @@ body.sticky-bottom-footer {
 
 .container {
   max-width: $max-content-width;
+}
+
+.post-header,
+.quant-hero {
+  margin-bottom: 2rem;
+  padding: clamp(1.25rem, 4vw, 2.25rem);
+  background-color: var(--global-card-bg-color);
+  background-image: radial-gradient(ellipse at 82% 0%, var(--global-panel-glow), transparent 70%),
+    linear-gradient(var(--global-panel-grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--global-panel-grid-line) 1px, transparent 1px);
+  background-size:
+    auto,
+    24px 24px,
+    24px 24px;
+  border: 1px solid var(--global-divider-color);
+  border-radius: 0.75rem;
+}
+
+.post-header {
+  .post-title {
+    margin: 0;
+    font-size: clamp(2rem, 5vw, 2.85rem);
+    font-weight: 650;
+    line-height: 1.12;
+    letter-spacing: -0.035em;
+  }
+
+  .post-description {
+    margin: 0.65rem 0 0;
+    color: var(--global-text-color-light);
+    font-size: 0.95rem;
+
+    &:empty {
+      display: none;
+    }
+  }
 }
 
 // Profile

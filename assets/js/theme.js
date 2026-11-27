@@ -1,29 +1,27 @@
-// Has to be in the head tag, otherwise a flicker effect will occur.
+// Load in the head so the saved theme applies before the page is painted.
+const themePreferenceKey = "quant-theme";
+let selectedThemeSetting;
 
-// Toggle through light, dark, and system theme settings.
 let toggleThemeSetting = () => {
-  let themeSetting = determineThemeSetting();
-  if (themeSetting == "system") {
-    setThemeSetting("light");
-  } else if (themeSetting == "light") {
-    setThemeSetting("dark");
-  } else {
-    setThemeSetting("system");
-  }
+  const next = { dark: "light", light: "system", system: "dark" };
+  setThemeSetting(next[determineThemeSetting()]);
 };
 
-// Change the theme setting and apply the theme.
-let setThemeSetting = (themeSetting) => {
-  localStorage.setItem("theme", themeSetting);
-
-  document.documentElement.setAttribute("data-theme-setting", themeSetting);
-
+let setThemeSetting = (setting) => {
+  selectedThemeSetting = setting;
+  try {
+    localStorage.setItem(themePreferenceKey, setting);
+  } catch {
+    // The current page can still switch themes when storage is blocked.
+  }
   applyTheme();
 };
 
 // Apply the computed dark or light theme to the website.
 let applyTheme = () => {
-  let theme = determineComputedTheme();
+  const theme = determineComputedTheme();
+  document.documentElement.setAttribute("data-theme", theme);
+  document.documentElement.setAttribute("data-theme-setting", determineThemeSetting());
 
   transTheme();
   setHighlight(theme);
@@ -48,8 +46,6 @@ let applyTheme = () => {
   if (typeof vegaEmbed !== "undefined") {
     setVegaLiteTheme(theme);
   }
-
-  document.documentElement.setAttribute("data-theme", theme);
 
   // Add class to tables.
   let tables = document.getElementsByTagName("table");
@@ -193,48 +189,41 @@ let transTheme = () => {
   }, 500);
 };
 
-// Determine the expected state of the theme toggle, which can be "dark", "light", or
-// "system". Default is "system".
+// The previous theme wrote "system" on first visit. Import explicit legacy choices.
 let determineThemeSetting = () => {
-  let themeSetting = localStorage.getItem("theme");
-  if (themeSetting != "dark" && themeSetting != "light" && themeSetting != "system") {
-    themeSetting = "system";
+  if (selectedThemeSetting) return selectedThemeSetting;
+  try {
+    const saved = localStorage.getItem(themePreferenceKey);
+    if (saved === "dark" || saved === "light" || saved === "system") return saved;
+    const legacy = localStorage.getItem("theme");
+    if (legacy === "light" || legacy === "dark") return legacy;
+  } catch {
+    // Use the dark default when storage is blocked.
   }
-  return themeSetting;
+  return "dark";
 };
 
-// Determine the computed theme, which can be "dark" or "light". If the theme setting is
-// "system", the computed theme is determined based on the user's system preference.
 let determineComputedTheme = () => {
-  let themeSetting = determineThemeSetting();
-  if (themeSetting == "system") {
-    const userPref = window.matchMedia;
-    if (userPref && userPref("(prefers-color-scheme: dark)").matches) {
-      return "dark";
-    } else {
-      return "light";
-    }
-  } else {
-    return themeSetting;
-  }
+  const setting = determineThemeSetting();
+  if (setting !== "system") return setting;
+  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 };
 
 let initTheme = () => {
-  let themeSetting = determineThemeSetting();
+  applyTheme();
 
-  setThemeSetting(themeSetting);
-
-  // Add event listener to the theme toggle button.
-  document.addEventListener("DOMContentLoaded", function () {
-    const mode_toggle = document.getElementById("light-toggle");
-
-    mode_toggle.addEventListener("click", function () {
-      toggleThemeSetting();
-    });
+  document.addEventListener("DOMContentLoaded", () => {
+    const button = document.getElementById("light-toggle");
+    if (button) button.addEventListener("click", toggleThemeSetting);
   });
 
-  // Add event listener to the system theme preference change.
-  window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", ({ matches }) => {
+  window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => {
+    if (determineThemeSetting() === "system") applyTheme();
+  });
+
+  window.addEventListener("storage", (event) => {
+    if (event.key !== themePreferenceKey) return;
+    selectedThemeSetting = undefined;
     applyTheme();
   });
 };

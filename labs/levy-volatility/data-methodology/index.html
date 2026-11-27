@@ -4,9 +4,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="Data acquisition, cleaning, evaluation samples, and reproducibility for the Lévy Volatility Lab." />
-    <meta name="theme-color" content="#142b23" />
+    <meta name="theme-color" content="#101d2a" />
     <title>Data sources and cleaning · Lévy Volatility Lab</title>
-    <link rel="stylesheet" href="../assets/style.css?v=breadcrumbs" />
+    <script src="../assets/lab-theme.js?v=quant-theme"></script>
+    <link rel="stylesheet" href="../assets/style.css?v=quant-theme" />
     <script src="../assets/data-methodology.js?v=english-default" defer></script>
   </head>
   <body>
@@ -22,7 +23,10 @@
           <a href="../#equity-evaluation"><span lang="zh-CN" hidden>美股模型对比</span><span lang="en">Equity model comparison</span></a>
           <a href="../#equity-findings"><span lang="zh-CN" hidden>总体结果</span><span lang="en">Findings</span></a>
         </div>
-        <button type="button" class="language" id="methodLanguage" aria-label="切换至中文">中文</button>
+        <div class="nav-preferences">
+          <button type="button" class="theme-button" data-lab-theme aria-label="Switch to light theme">Light</button>
+          <button type="button" class="language" id="methodLanguage" aria-label="切换至中文">中文</button>
+        </div>
       </nav>
       <nav class="wrap lab-breadcrumb" aria-label="当前位置 / Breadcrumb">
         <ol role="list">
