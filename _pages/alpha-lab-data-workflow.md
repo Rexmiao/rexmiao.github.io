@@ -24,7 +24,7 @@ I start with an observation from a trade review, a company filing, industry news
 ### Under evaluation
 
 - **Company disclosures.** EDGAR provides filing histories and structured financial statement data. I would match the time a filing became public to the earliest decision that could use it. [SEC Financial Statement Data Sets on Data.gov](https://catalog.data.gov/dataset/financial-statement-data-sets)
-- **Macroeconomic releases.** ALFRED preserves historical versions of economic series. I would pair the relevant vintage with the release timestamp when testing a signal that reacts within a trading day. [St. Louis Fed guide to ALFRED](https://www.stlouisfed.org/open-vault/2021/august/using-the-alfred-database)
+- **Macroeconomic releases.** ALFRED preserves historical versions of economic series. I would pair the relevant vintage with the release timestamp when testing a signal that reacts within a trading day. [Federal Reserve data downloads and vintage access](https://www.federalreserve.gov/data/data-download-fred-information.htm)
 - **Historical option quotes.** Cboe's interval data include timestamped bid and ask quotes and displayed size. I would check contract coverage and data access first, then align quotes with underlying prices and the time of the hedge decision. [Cboe Option Quotes](https://datashop.cboe.com/option-quote-intervals)
 
 ## Cleaning rules
