@@ -404,8 +404,14 @@ stock trading back end on a moomoo paper account with alert-only,
 confirm-before-send, and automatic modes, user-set limits, synthetic stops, and
 broker reconciliation. Keep its status line verbatim: "Paper trading only. Live
 trading is not implemented. Early stage: most behavior is verified by offline tests,
-not yet on the real service." Link only to GitHub (no demo site exists); never claim
-returns, live, production-ready, or hosted status, and add no CI badge. The
+not yet on the real service." The primary link is the order desk demo at
+<https://trading.levyquant.ai/> (static Space `Rexymiao/levyquant-trading`, owned by
+the trading session), with GitHub and both READMEs as secondary links. Describe
+the demo as running the system's own order rules in the browser with made-up
+prices, not a trading record, with no broker, account, or market data; show its
+screenshot (`assets/img/projects/levyquant-trading-order-desk.webp`) linked to it.
+Never claim returns, live, production-ready, or hosted trading, and add no CI
+badge. The homepage card's resource is the demo. The
 homepage shows it as a fourth card beside Alpha Lab; with four cards the grid
 switches to 2 × 2 (`_sass/_quant-home.scss`). The project page is kept short. Its
 launch panel links the English README and setup (`#set-up`) and the Chinese README.

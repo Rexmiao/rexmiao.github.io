@@ -732,6 +732,39 @@ html[data-theme="light"] .reflection-intuition {
   gap: 0.2rem 1rem;
 }
 
+// Linked screenshot of a project's live demo (Trading System page)
+
+.demo-shot {
+  max-width: 44rem;
+  margin: 1rem 0 1.6rem;
+
+  a {
+    display: block;
+    overflow: hidden;
+    border: 1px solid var(--global-divider-color);
+    border-radius: 0.5rem;
+    transition: border-color 0.15s ease;
+
+    &:hover,
+    &:focus-visible {
+      border-color: var(--global-theme-color);
+    }
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  figcaption {
+    margin-top: 0.45rem;
+    color: var(--global-text-color-light);
+    font-family: var(--global-mono-font);
+    font-size: 0.72rem;
+  }
+}
+
 // Terminal window showing real command output (Trading System page)
 
 .terminal-shot {

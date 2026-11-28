@@ -8,6 +8,9 @@ importance: 0
 portfolio: runtian
 status: New · Paper trading
 resources:
+  - title: Order Desk Demo
+    kind: demo
+    url: https://trading.levyquant.ai/
   - title: Source Code
     kind: code
     url: https://github.com/Rexmiao/levyquant-trading
@@ -16,10 +19,11 @@ resources:
 **Status:** Paper trading only. Live trading is not implemented. Early stage: most behavior is verified by offline tests, not yet on the real service.
 
 <div class="project-launch">
-  <a class="project-launch-primary" href="https://github.com/Rexmiao/levyquant-trading">View the Trading System on GitHub <span aria-hidden="true">↗</span></a>
+  <a class="project-launch-primary" href="https://trading.levyquant.ai/">Try the Order Desk Demo <span aria-hidden="true">↗</span></a>
   <div class="project-launch-meta">
-    <span class="project-launch-url">github.com/Rexmiao/levyquant-trading</span>
+    <span class="project-launch-url">trading.levyquant.ai</span>
     <span class="project-launch-links">
+      <a class="project-launch-secondary" href="https://github.com/Rexmiao/levyquant-trading">Source on GitHub</a>
       <a class="project-launch-secondary" href="https://github.com/Rexmiao/levyquant-trading#set-up">English README &amp; setup</a>
       <a class="project-launch-secondary" href="https://github.com/Rexmiao/levyquant-trading/blob/main/README.zh-CN.md">简体中文说明</a>
     </span>
@@ -30,7 +34,16 @@ A local trading back end for U.S. stocks that runs on your own computer against 
 
 ### What It Looks Like
 
-The system runs in a terminal; there is no graphical interface. This is the included offline demo, which runs the full order loop against a fake broker with generated market data:
+**Order desk demo.** Write an order ticket and see exactly what the system would do with it. The demo runs the system's own order rules in your browser with made-up prices; it is not a trading record, and no broker, account, or market data is involved.
+
+<figure class="demo-shot">
+  <a href="https://trading.levyquant.ai/" aria-label="Open the order desk demo">
+    <img src="{{ '/assets/img/projects/levyquant-trading-order-desk.webp' | relative_url }}" width="784" height="560" loading="lazy" alt="Order desk demo: a limit buy ticket on the left and, on the right, the exact order text the system generates and how it would handle it.">
+  </a>
+  <figcaption>Order desk demo at trading.levyquant.ai (synthetic prices, no broker).</figcaption>
+</figure>
+
+**In the terminal.** The system itself runs in a terminal. This is the included offline demo, which runs the full order loop against a fake broker with generated market data:
 
 <figure class="terminal-shot">
   <div class="terminal-bar" aria-hidden="true"><span></span><span></span><span></span><b>PowerShell</b></div>

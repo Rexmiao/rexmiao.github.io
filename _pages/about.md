@@ -28,9 +28,9 @@ quantitative_projects:
     status: New · Paper trading
     url: /projects/levyquant-trading/
     summary: Run a local U.S. stock trading back end against a moomoo paper account, with your own limits and order reconciliation.
-    resource_title: Source Code on GitHub
-    resource_kind: code
-    resource_url: https://github.com/Rexmiao/levyquant-trading
+    resource_title: Order Desk Demo
+    resource_kind: demo
+    resource_url: https://trading.levyquant.ai/
   - title: PCR Market Watch
     type: Options market data
     status: Released
