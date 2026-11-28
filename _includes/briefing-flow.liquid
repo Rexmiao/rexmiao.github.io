@@ -1,0 +1,168 @@
+{% comment %}
+  Animated pipeline diagram for the LévyQuant Daily Briefing page.
+  Sources -> AI editing and translation -> English and Chinese editions -> email.
+  SVG/SMIL only; the small script pauses it off-screen, in hidden tabs, and
+  under prefers-reduced-motion (where it shows a still frame).
+{% endcomment %}
+<figure class="briefing-flow">
+  <svg
+    id="briefing-flow-svg"
+    viewBox="20 36 690 228"
+    role="img"
+    aria-labelledby="briefing-flow-title"
+    aria-describedby="briefing-flow-caption"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+  >
+    <title id="briefing-flow-title">LévyQuant Daily pipeline diagram</title>
+    <defs>
+      <path id="bf-p1" d="M74 70 C160 70 190 150 258 150" />
+      <path id="bf-p2" d="M74 150 L258 150" />
+      <path id="bf-p3" d="M74 230 C160 230 190 150 258 150" />
+      <path id="bf-q1" d="M342 150 C390 150 400 97 440 97" />
+      <path id="bf-q2" d="M342 150 C390 150 400 203 440 203" />
+      <path id="bf-r1" d="M504 97 C535 97 540 150 560 150" />
+      <path id="bf-r2" d="M504 203 C535 203 540 150 560 150" />
+      <path id="bf-f1" d="M590 150 C630 150 640 60 666 60" />
+      <path id="bf-f2" d="M590 150 C630 150 640 105 666 105" />
+      <path id="bf-f3" d="M590 150 L666 150" />
+      <path id="bf-f4" d="M590 150 C630 150 640 195 666 195" />
+      <path id="bf-f5" d="M590 150 C630 150 640 240 666 240" />
+    </defs>
+
+    <g class="bf-edges">
+      <use href="#bf-p1" xlink:href="#bf-p1" />
+      <use href="#bf-p2" xlink:href="#bf-p2" />
+      <use href="#bf-p3" xlink:href="#bf-p3" />
+      <use href="#bf-q1" xlink:href="#bf-q1" />
+      <use href="#bf-q2" xlink:href="#bf-q2" />
+      <use href="#bf-r1" xlink:href="#bf-r1" />
+      <use href="#bf-r2" xlink:href="#bf-r2" />
+      <use href="#bf-f1" xlink:href="#bf-f1" />
+      <use href="#bf-f2" xlink:href="#bf-f2" />
+      <use href="#bf-f3" xlink:href="#bf-f3" />
+      <use href="#bf-f4" xlink:href="#bf-f4" />
+      <use href="#bf-f5" xlink:href="#bf-f5" />
+    </g>
+
+    <g class="bf-sources">
+      <circle cx="60" cy="70" r="14" />
+      <circle cx="60" cy="150" r="14" />
+      <circle cx="60" cy="230" r="14" />
+      <circle class="bf-core" cx="60" cy="70" r="4" />
+      <circle class="bf-core" cx="60" cy="150" r="4" />
+      <circle class="bf-core" cx="60" cy="230" r="4" />
+    </g>
+
+    <g class="bf-hub">
+      <circle class="bf-orbit" cx="300" cy="150" r="60">
+        <animateTransform attributeName="transform" type="rotate" from="0 300 150" to="360 300 150" dur="28s" repeatCount="indefinite" />
+      </circle>
+      <circle class="bf-pulse" cx="300" cy="150" r="44">
+        <animate attributeName="r" values="44;70" dur="2.4s" repeatCount="indefinite" />
+        <animate attributeName="opacity" values="0.5;0" dur="2.4s" repeatCount="indefinite" />
+      </circle>
+      <polygon class="bf-hex" points="342,150 321,186.4 279,186.4 258,150 279,113.6 321,113.6" />
+      <text class="bf-hub-label" x="300" y="158" text-anchor="middle">AI</text>
+    </g>
+
+    <g class="bf-sheet">
+      <rect x="440" y="58" width="64" height="78" rx="6" />
+      <text x="452" y="80">EN</text>
+      <rect class="bf-line" x="452" y="90" width="40" height="3">
+        <animate attributeName="width" values="0;40;40;0" keyTimes="0;0.3;0.85;1" dur="4.8s" begin="0s" repeatCount="indefinite" />
+      </rect>
+      <rect class="bf-line" x="452" y="100" width="32" height="3">
+        <animate attributeName="width" values="0;32;32;0" keyTimes="0;0.3;0.85;1" dur="4.8s" begin="0.4s" repeatCount="indefinite" />
+      </rect>
+      <rect class="bf-line" x="452" y="110" width="40" height="3">
+        <animate attributeName="width" values="0;40;40;0" keyTimes="0;0.3;0.85;1" dur="4.8s" begin="0.8s" repeatCount="indefinite" />
+      </rect>
+      <rect class="bf-line" x="452" y="120" width="24" height="3">
+        <animate attributeName="width" values="0;24;24;0" keyTimes="0;0.3;0.85;1" dur="4.8s" begin="1.2s" repeatCount="indefinite" />
+      </rect>
+    </g>
+    <g class="bf-sheet">
+      <rect x="440" y="164" width="64" height="78" rx="6" />
+      <text x="452" y="186">中文</text>
+      <rect class="bf-line" x="452" y="196" width="40" height="3">
+        <animate attributeName="width" values="0;40;40;0" keyTimes="0;0.3;0.85;1" dur="4.8s" begin="0.2s" repeatCount="indefinite" />
+      </rect>
+      <rect class="bf-line" x="452" y="206" width="28" height="3">
+        <animate attributeName="width" values="0;28;28;0" keyTimes="0;0.3;0.85;1" dur="4.8s" begin="0.6s" repeatCount="indefinite" />
+      </rect>
+      <rect class="bf-line" x="452" y="216" width="40" height="3">
+        <animate attributeName="width" values="0;40;40;0" keyTimes="0;0.3;0.85;1" dur="4.8s" begin="1s" repeatCount="indefinite" />
+      </rect>
+      <rect class="bf-line" x="452" y="226" width="20" height="3">
+        <animate attributeName="width" values="0;20;20;0" keyTimes="0;0.3;0.85;1" dur="4.8s" begin="1.4s" repeatCount="indefinite" />
+      </rect>
+    </g>
+
+    <polygon class="bf-merge" points="575,135 590,150 575,165 560,150" />
+
+    <g class="bf-inbox">
+      <rect x="668" y="53" width="22" height="14" rx="2" /><polyline points="668,53 679,61 690,53" />
+      <rect x="668" y="98" width="22" height="14" rx="2" /><polyline points="668,98 679,106 690,98" />
+      <rect x="668" y="143" width="22" height="14" rx="2" /><polyline points="668,143 679,151 690,143" />
+      <rect x="668" y="188" width="22" height="14" rx="2" /><polyline points="668,188 679,196 690,188" />
+      <rect x="668" y="233" width="22" height="14" rx="2" /><polyline points="668,233 679,241 690,233" />
+    </g>
+
+    <g class="bf-data">
+      <circle r="4"><animateMotion dur="2.4s" begin="0s" repeatCount="indefinite"><mpath href="#bf-p1" xlink:href="#bf-p1" /></animateMotion></circle>
+      <circle r="4"><animateMotion dur="2.4s" begin="-1.2s" repeatCount="indefinite"><mpath href="#bf-p1" xlink:href="#bf-p1" /></animateMotion></circle>
+      <circle r="4"><animateMotion dur="2.4s" begin="-2s" repeatCount="indefinite"><mpath href="#bf-p2" xlink:href="#bf-p2" /></animateMotion></circle>
+      <circle r="4"><animateMotion dur="2.4s" begin="-0.8s" repeatCount="indefinite"><mpath href="#bf-p2" xlink:href="#bf-p2" /></animateMotion></circle>
+      <circle r="4"><animateMotion dur="2.4s" begin="-1.6s" repeatCount="indefinite"><mpath href="#bf-p3" xlink:href="#bf-p3" /></animateMotion></circle>
+      <circle r="4"><animateMotion dur="2.4s" begin="-0.4s" repeatCount="indefinite"><mpath href="#bf-p3" xlink:href="#bf-p3" /></animateMotion></circle>
+      <circle r="3.5"><animateMotion dur="1.6s" begin="-1s" repeatCount="indefinite"><mpath href="#bf-q1" xlink:href="#bf-q1" /></animateMotion></circle>
+      <circle r="3.5"><animateMotion dur="1.6s" begin="-0.2s" repeatCount="indefinite"><mpath href="#bf-q2" xlink:href="#bf-q2" /></animateMotion></circle>
+      <circle r="3"><animateMotion dur="1.2s" begin="-0.9s" repeatCount="indefinite"><mpath href="#bf-r1" xlink:href="#bf-r1" /></animateMotion></circle>
+      <circle r="3"><animateMotion dur="1.2s" begin="-0.3s" repeatCount="indefinite"><mpath href="#bf-r2" xlink:href="#bf-r2" /></animateMotion></circle>
+    </g>
+
+    <g class="bf-spark">
+      <circle r="3.5"><animateMotion dur="1.8s" begin="0s" repeatCount="indefinite"><mpath href="#bf-f1" xlink:href="#bf-f1" /></animateMotion></circle>
+      <circle r="3.5"><animateMotion dur="1.8s" begin="-1.44s" repeatCount="indefinite"><mpath href="#bf-f2" xlink:href="#bf-f2" /></animateMotion></circle>
+      <circle r="3.5"><animateMotion dur="1.8s" begin="-1.08s" repeatCount="indefinite"><mpath href="#bf-f3" xlink:href="#bf-f3" /></animateMotion></circle>
+      <circle r="3.5"><animateMotion dur="1.8s" begin="-0.72s" repeatCount="indefinite"><mpath href="#bf-f4" xlink:href="#bf-f4" /></animateMotion></circle>
+      <circle r="3.5"><animateMotion dur="1.8s" begin="-0.36s" repeatCount="indefinite"><mpath href="#bf-f5" xlink:href="#bf-f5" /></animateMotion></circle>
+    </g>
+  </svg>
+  <figcaption id="briefing-flow-caption">
+    <span>Public sources <i aria-hidden="true">→</i></span>
+    <span>AI editing &amp; translation <i aria-hidden="true">→</i></span>
+    <span>English + 中文 editions <i aria-hidden="true">→</i></span>
+    <span>Email at 07:00 New York time</span>
+  </figcaption>
+</figure>
+<script>
+  (function () {
+    var svg = document.getElementById('briefing-flow-svg');
+    if (!svg || typeof svg.pauseAnimations !== 'function') return;
+    var reduce = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
+    var onScreen = true;
+    function apply() {
+      if ((reduce && reduce.matches) || !onScreen || document.hidden) {
+        svg.pauseAnimations();
+      } else {
+        svg.unpauseAnimations();
+      }
+    }
+    if (reduce && reduce.matches) {
+      svg.setCurrentTime(1.1);
+    }
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) {
+        onScreen = entries[0].isIntersecting;
+        apply();
+      }).observe(svg);
+    }
+    document.addEventListener('visibilitychange', apply);
+    if (reduce && reduce.addEventListener) {
+      reduce.addEventListener('change', apply);
+    }
+    apply();
+  })();
+</script>

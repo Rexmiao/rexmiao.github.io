@@ -32,6 +32,8 @@ LévyQuant Daily is a morning briefing on U.S. macro and policy, U.S. companies 
 
 ### How Each Edition Is Made
 
+{% include briefing-flow.liquid %}
+
 - **Collection:** Every morning at 07:00 New York time, the pipeline gathers items from a curated set of public news, market, and research sources.
 - **Editing and translation:** An AI model selects and summarizes the items. Each edition has a full English version followed by a matching Simplified Chinese version. Claims without supporting evidence are left out.
 - **Delivery:** The finished edition is emailed to subscribers automatically, once a day. Published editions are kept in the archive and are not rewritten.

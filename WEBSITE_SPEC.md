@@ -350,6 +350,12 @@ Below the status line, a `.project-launch` panel (styled in `_sass/_quant-site.s
 gives a large **Read the LévyQuant Daily Briefing** button to the briefing site, the
 domain in mono, and a **Browse past editions** link. Reuse that panel for any project
 page whose main destination is its own external site.
+Under **How Each Edition Is Made**, `{% include briefing-flow.liquid %}` draws an animated
+SVG/SMIL pipeline (sources → AI hub → EN/中文 sheets → email fan-out) with mint data
+particles and warm delivery sparks. Every `animateMotion` uses a `begin` ≤ 0 so no
+particle waits at the SVG origin, the SVG clips to its box, and the inline script
+pauses it off-screen, in hidden tabs, and under reduced motion (still frame at 1.1 s).
+The SVG `title` is a short label; the figcaption is its description.
 
 PCR Market Watch links to its public overview, personal source repository,
 latest release, English-default README/user guide, and separate Chinese README.

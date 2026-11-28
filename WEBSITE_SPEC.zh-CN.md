@@ -119,7 +119,7 @@ Trading Reflections 是用户的个人交易复盘栏目。归档按日期倒序
 
 私有状态和简洁报告支持中断续跑，避免重复提交和推送。只有工作流、HTTP／图片哈希和浏览器检查全部通过，才报告发布完成。通用浏览器脚本支持任意文章批次、无公式笔记、双语记忆、懒加载图片、明暗主题和手机溢出检查。复用已有工具及成功步骤，日常只读当前计划和必要失败详情；哈希仅标识内容，不能代替用户批准。
 
-LévyQuant Daily Briefing（`/projects/levyquant-daily/`，状态 Pilot，归入 Quantitative Research，importance 4）链接到 <https://daily.levyquant.ai/> 和公开仓库 `Rexmiao/levyquant-digest`。页面须明确写出日报不是原创研究：内容由公开来源自动采集，经 AI 编辑和翻译。每日刊物自动生成并自动发送邮件；用户审核的是采集来源和编辑方法，因此不得写成每期发送前都经人工审核，来源与方法也不必写得太细。目的写作帮助读者了解前沿量化研究和影响市场的宏观新闻，以便做出更有依据的交易决策，并保留“不构成投资建议”的说明。不写订阅人数或业绩类说法。首期公开日报发布前不放入首页项目卡片。状态行下方有 `.project-launch` 面板（样式在 `_sass/_quant-site.scss`），提供直达日报网站的大按钮 **Read the LévyQuant Daily Briefing**、等宽字体显示的域名和 **Browse past editions** 链接。项目主要入口是其独立网站时，复用这个面板。
+LévyQuant Daily Briefing（`/projects/levyquant-daily/`，状态 Pilot，归入 Quantitative Research，importance 4）链接到 <https://daily.levyquant.ai/> 和公开仓库 `Rexmiao/levyquant-digest`。页面须明确写出日报不是原创研究：内容由公开来源自动采集，经 AI 编辑和翻译。每日刊物自动生成并自动发送邮件；用户审核的是采集来源和编辑方法，因此不得写成每期发送前都经人工审核，来源与方法也不必写得太细。目的写作帮助读者了解前沿量化研究和影响市场的宏观新闻，以便做出更有依据的交易决策，并保留“不构成投资建议”的说明。不写订阅人数或业绩类说法。首期公开日报发布前不放入首页项目卡片。状态行下方有 `.project-launch` 面板（样式在 `_sass/_quant-site.scss`），提供直达日报网站的大按钮 **Read the LévyQuant Daily Briefing**、等宽字体显示的域名和 **Browse past editions** 链接。项目主要入口是其独立网站时，复用这个面板。**How Each Edition Is Made** 下用 `{% include briefing-flow.liquid %}` 显示 SVG/SMIL 流程动画（来源 → AI 节点 → EN／中文报纸 → 邮件扇出），数据粒子用薄荷色，投递火花用暖色。所有 `animateMotion` 的 `begin` 均 ≤ 0，避免粒子停在 SVG 原点；SVG 裁剪在自身范围内；内联脚本在离开屏幕、标签页隐藏或减少动态效果时暂停（减少动态效果时显示 1.1 秒处的静止画面）。SVG 的 `title` 为简短标签，图注作为描述。
 
 PCR Market Watch 提供通往公开介绍页、个人源码仓库、最新 Release、默认英文 README／用户指南及独立中文 README 的链接。Alpha Lab 是正在开发的个人量化交易系统。首页简介链接到项目页，概述信号捕捉、人工交易决策、人工确认的半自动模拟执行和全自动模拟执行。项目页链接到公开项目仓库、Alpha Training Lab 教学指南和 Hugging Face 研究演示。回测收益按模拟结果表述，实盘成交或投资业绩需核实后才能加入。
 

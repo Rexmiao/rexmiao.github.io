@@ -683,6 +683,115 @@ html[data-theme="light"] .reflection-intuition {
   }
 }
 
+// Animated pipeline diagram (LévyQuant Daily page, _includes/briefing-flow.liquid)
+
+.briefing-flow {
+  max-width: 44rem;
+  margin: 1.2rem 0 1.6rem;
+  padding: 1rem 1rem 0.85rem;
+  background-color: var(--global-card-bg-color);
+  border: 1px solid var(--global-divider-color);
+  border-radius: 0.5rem;
+
+  svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+  }
+
+  .bf-edges use {
+    fill: none;
+    stroke: var(--global-divider-color);
+    stroke-width: 1.5;
+  }
+
+  .bf-sources circle,
+  .bf-sheet > rect:first-child,
+  .bf-inbox rect,
+  .bf-inbox polyline,
+  .bf-merge {
+    fill: var(--global-bg-color);
+    stroke: var(--global-text-color-light);
+    stroke-width: 1.5;
+  }
+
+  .bf-inbox polyline {
+    fill: none;
+  }
+
+  .bf-sources .bf-core,
+  .bf-data circle {
+    fill: var(--global-theme-color);
+    stroke: none;
+  }
+
+  .bf-hex {
+    fill: var(--global-bg-color);
+    stroke: var(--global-text-color);
+    stroke-width: 1.75;
+  }
+
+  .bf-orbit {
+    fill: none;
+    stroke: var(--global-text-color-light);
+    stroke-width: 1;
+    stroke-dasharray: 2 9;
+  }
+
+  .bf-pulse {
+    fill: none;
+    stroke: var(--global-theme-color);
+    stroke-width: 1.25;
+  }
+
+  .bf-hub-label {
+    fill: var(--global-text-color);
+    font-family: var(--global-mono-font);
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+  }
+
+  .bf-sheet text {
+    fill: var(--global-text-color);
+    font-family: var(--global-mono-font);
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .bf-line {
+    fill: var(--global-text-color-light);
+  }
+
+  .bf-spark circle {
+    fill: var(--global-spark-color);
+  }
+
+  figcaption {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.25rem 0.5rem;
+    margin-top: 0.6rem;
+    color: var(--global-text-color-light);
+    font-family: var(--global-mono-font);
+    font-size: 0.74rem;
+    letter-spacing: 0.02em;
+    text-align: center;
+
+    span {
+      white-space: nowrap;
+    }
+
+    i {
+      font-style: normal;
+      color: var(--global-text-color-light);
+      opacity: 0.7;
+    }
+  }
+}
+
 @media print {
   .project-launch {
     border-left-width: 1px;
