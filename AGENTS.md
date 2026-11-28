@@ -1,6 +1,6 @@
 # Personal website maintenance
 
-- Trading Reflections has a dedicated chat and reusable local workflow: read `bin/TRADING_REFLECTIONS.md`, reuse `TRADING_REFLECTION_TEMPLATE.md`, and run `ruby bin/trading_reflections.rb new|check|prepare`. Unapproved drafts belong outside this checkout in `../.work/trading-reflections/`. Prepare only the specific user-approved version; scripts never commit or deploy. Keep routine drafting focused on the current notes instead of unrelated site history.
+- Trading Reflections has a dedicated chat and reusable workflow: use `bin/TRADING_REFLECTIONS.md` for drafting and `bin/TRADING_RELEASE_QUICKSTART.md` for approved publication. Unapproved drafts belong outside this checkout in `../.work/trading-reflections/`. Draft/preview helpers never publish; `python bin/trading_release.py plan|publish|resume|verify` handles approved batches. Reuse the user's confirmation for that exact version, avoid repeated permission questions, and inspect detailed logs only when necessary.
 - For local bilingual previews use `ruby bin/review_trading_reflections.rb draft.md [draft.md ...]`. Keep assets private until approval, use their final publication URLs in drafts, and follow the workflow's asset mapping when preparing an approved release.
 
 - Work only in the selected personal `Rexmiao/rexmiao.github.io` repository through the existing GitHub App/native connection. Do not request organization access or restart a broad CLI/OAuth login.

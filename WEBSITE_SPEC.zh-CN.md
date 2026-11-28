@@ -113,6 +113,12 @@ Trading Reflections 是用户的个人交易复盘栏目。归档按日期倒序
 
 手机线上核验发现长 MathJax 公式可能撑宽整页，交易复盘的显示公式现限制在自身 `mjx-container` 内横向滚动。由于 MathJax 元素在页面加载后才生成，使用仅包围该条样式且在压缩后保留的 PurgeCSS 注释，防止静态扫描删除必要规则。
 
+### 可复用的批准后发布程序
+
+日常发布入口为 `bin/TRADING_RELEASE_QUICKSTART.md`。在源码目录运行 `python bin/trading_release.py plan|publish|resume|verify`，自动识别草稿引用的精选图片、冻结经审阅内容的哈希、准备 UTF-8/LF 文章和原样二进制图片，只提交指定文件，核对 `master` 并等待准确源提交及生成提交对应的五项必要工作流。先用原生连接核验个人安装权限，再复用已配置、仅限该仓库的 CLI 凭据；不重新登录、不扩大授权、不强制推送、不修改全局 Git 设置。
+
+私有状态和简洁报告支持中断续跑，避免重复提交和推送。只有工作流、HTTP／图片哈希和浏览器检查全部通过，才报告发布完成。通用浏览器脚本支持任意文章批次、无公式笔记、双语记忆、懒加载图片、明暗主题和手机溢出检查。复用已有工具及成功步骤，日常只读当前计划和必要失败详情；哈希仅标识内容，不能代替用户批准。
+
 PCR Market Watch 提供通往公开介绍页、个人源码仓库、最新 Release、默认英文 README／用户指南及独立中文 README 的链接。Alpha Lab 是正在开发的个人量化交易系统。首页简介链接到项目页，概述信号捕捉、人工交易决策、人工确认的半自动模拟执行和全自动模拟执行。项目页链接到公开项目仓库、Alpha Training Lab 教学指南和 Hugging Face 研究演示。回测收益按模拟结果表述，实盘成交或投资业绩需核实后才能加入。
 
 `/projects/` 的 Alpha Lab 卡片保留数据工作流资料入口，并分别提供 **Launch Research Lab／进入研究平台**（<https://alphalab.levyquant.ai/>）和 **Hugging Face Project／Hugging Face 项目页**（<https://huggingface.co/spaces/Rexymiao/alpha-trading-lab>）两个直达链接。`/projects/alpha-lab/` 详情页同步提供并说明区别：独立网址直接打开研究界面，HF 项目页还提供 Space 文件与部署信息；它们指向同一套研究应用。

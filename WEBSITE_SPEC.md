@@ -313,6 +313,23 @@ page. Reflection display formulas now scroll inside their own bounded
 `mjx-container`. A narrowly scoped, preserved PurgeCSS comment retains that
 rule because MathJax creates its elements after static content scanning.
 
+### Reusable approved-publication worker
+
+`bin/TRADING_RELEASE_QUICKSTART.md` is the routine publishing entry point.
+`python bin/trading_release.py plan|publish|resume|verify` generalizes the release:
+discover selected images, freeze approved content hashes, prepare UTF-8/LF
+articles and binary assets, commit only selected files, guard `master`, and wait
+for the exact source and generated commits' five required workflows. The native
+connector verifies installation access before the existing narrow CLI transport
+is used. There is no new login, broad token, force-push or global Git setting.
+
+Private state and compact reports allow resuming interrupted releases without
+duplicate commits/pushes. All workflow, HTTP/hash and browser checks must pass
+before publication is reported. The browser worker supports arbitrary batches,
+zero-math notes, bilingual persistence, lazy images, themes and mobile overflow.
+Reuse installed tools and successful steps; only inspect detailed failures when
+necessary. A stored hash is content identity, not independent permission.
+
 PCR Market Watch links to its public overview, personal source repository,
 latest release, English-default README/user guide, and separate Chinese README.
 Alpha Lab is a quantitative trading system in development. The homepage links

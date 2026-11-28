@@ -2,12 +2,14 @@
 
 This chat is dedicated to the user's Trading Reflections. Keep routine work focused on the new notes, the current draft, and this workflow.
 
+For an approved release, follow [TRADING_RELEASE_QUICKSTART.md](TRADING_RELEASE_QUICKSTART.md) and the `trading_release.py` worker. It replaces the one-off publication and live-check scripts; use concise plan/state output and inspect detailed logs only as needed.
+
 1. Accept informal Chinese notes, trade records, and screenshots. Preserve the user's voice. Distinguish information available at the time from hindsight. Never invent prices, dates, returns, or motives. The article date does not establish the trading date.
 2. Use `TRADING_REFLECTION_TEMPLATE.md`. Reuse its five sections as appropriate; short reflections can have fewer sections. Prepare English and Chinese versions for review using the existing language switch.
 3. Keep raw notes and unapproved drafts **outside the source checkout** in `../.work/trading-reflections/`. `published: false` does not hide a file in a public GitHub repository.
 4. Share the draft with the user, including both languages. Run `check` and retain its SHA-256. User approval applies to that specific version; substantive later edits need review again. A hash records content identity and does not itself constitute user approval.
 5. Only after explicit approval, run `prepare` with the reviewed hash. It creates a new article with `published: true` and refuses to overwrite any existing file. It never commits, pushes, or deploys.
-6. Format the prepared file with the lockfile's Prettier. Review the diff, then use the established repository connection and deployment workflow. Wait for successful required workflows, verify the live archive and article, and check the portrait plus its three responsive WebP assets before reporting publication. Keep both tracked specifications and the workspace specification current.
+6. Prefer the release worker to validate and prepare the approved batch, format with the lockfile's Prettier, commit selected files, push through the existing repository connection, wait for all required workflows, and run live HTTP/browser verification. The earlier `prepare` command remains a local drafting helper; do not use it before `publish`, which prepares its own transaction. Keep both tracked specifications and the workspace specification current.
 
 Run from the source checkout (Ruby and its standard library only; no installation, API calls, or background service):
 
