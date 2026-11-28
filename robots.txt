@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://rexmiao.github.io/sitemap.xml
+Sitemap: https://rexy.levyquant.ai/sitemap.xml
