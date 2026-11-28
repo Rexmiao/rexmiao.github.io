@@ -39,7 +39,7 @@
 - Hugging Face：`Rexymiao`，<https://huggingface.co/Rexymiao>，入口位于首页社交图标区。
 - X：`@Rexy69492164`，<https://x.com/Rexy69492164>，由用户提供的截图确认。
 
-首页采用量化研究作品集风格，深色网格首屏和 PCR Market Watch、Alpha Lab、Lévy Volatility Lab 三张项目卡片排在学术简介之前。头像下方保留小尺寸社交图标和两个可点击的邮箱链接，邮箱文本用大写 `AT` 和 `DOT` 显示分隔符。简介提及校队田径和多次半程马拉松经历。粗体名称分别链接到[宾大 AMCS 项目](https://amcs.upenn.edu/)、Quick Annotator 和 HistoQC 项目详情、[Sedeen Viewer 产品页](https://www.pathcore.com/products/sedeen-viewer)以及 [WRDS 官方介绍页](https://wrds-www.wharton.upenn.edu/pages/about/what-wrds/)。
+首页采用量化研究作品集风格，深色网格首屏和 PCR Market Watch、Alpha Lab、Lévy Volatility Lab 三张项目卡片排在学术简介之前。头像下方保留小尺寸社交图标和两个可点击的邮箱链接，邮箱文本用大写 `AT` 和 `DOT` 显示分隔符。简介提及校队田径和多次半程马拉松经历。粗体名称分别链接到[宾大 AMCS 项目](https://amcs.upenn.edu/)、Quick Annotator 和 HistoQC 项目详情、[Sedeen Viewer 产品页](https://www.pathcore.com/products/sedeen-viewer)以及 [WRDS 官方介绍页](https://research-it.wharton.upenn.edu/data/wrds/)。
 
 个人站通过共享 Jekyll 主题统一深蓝和薄荷青配色、网格、页头、导航及卡片。独立 Lévy 实验室及数据方法页使用对应的界面和图表配色。默认深色，主题按钮依次切换深色、浅色和跟随系统。本域名下的 Jekyll 和实验室页面用 `quant-theme` 共用用户主动选择的主题，继承旧版明确选择的浅色或深色。CV 打印采用浅色纸面配色。
 
@@ -107,7 +107,7 @@ Trading Reflections 是用户的个人交易复盘栏目。归档按日期倒序
 
 配图按二进制原样保存在 `assets/img/trading-reflections/2026-11-27/`。英文图注明为标签本地化示意，中文原图作为数值依据；按批准保留合约张数，不发布聊天、原始 Excel、弃用图像版本和私有审计／运行库。方法稿每种语言各有四个公式直观解释块，执行稿每种语言各有一个。归档和项目卡片继续从原集合自动生成入口。发布沿用 `master` 至 `gh-pages` 的现有工作流，上线后核验公式、图片、语言切换、导航与头像资源。
 
-发布外链检查中，原有首页 WRDS 根网址连续超时，现改用已核验可达的 WRDS 官方介绍页 `https://wrds-www.wharton.upenn.edu/pages/about/what-wrds/`，检查规则不变。
+发布外链检查中，原有首页 WRDS 根网址连续超时，现改用已核验可达的 WRDS 官方介绍页 `https://research-it.wharton.upenn.edu/data/wrds/`，检查规则不变。
 
 手机线上核验发现长 MathJax 公式可能撑宽整页，交易复盘的显示公式现限制在自身 `mjx-container` 内横向滚动。由于 MathJax 元素在页面加载后才生成，使用仅包围该条样式且在压缩后保留的 PurgeCSS 注释，防止静态扫描删除必要规则。
 

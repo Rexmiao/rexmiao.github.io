@@ -80,7 +80,7 @@ email links displayed with uppercase `AT` and `DOT` separators. The homepage bio
 mentions varsity track and multiple half marathons. The bold
 program and software names link to the [Penn AMCS program](https://amcs.upenn.edu/),
 the Quick Annotator and HistoQC portfolio pages, the [Sedeen Viewer product page](https://www.pathcore.com/products/sedeen-viewer),
-and the [WRDS introduction](https://wrds-www.wharton.upenn.edu/pages/about/what-wrds/).
+and the [WRDS introduction](https://research-it.wharton.upenn.edu/data/wrds/).
 
 The navy and mint quantitative theme uses the shared Jekyll palette, grid,
 header, navigation, and card styles across the personal site. The two standalone
@@ -296,8 +296,8 @@ Publication follows the existing `master` to `gh-pages` workflow and must be
 verified live for math, images, language controls, navigation, and portraits.
 
 The existing homepage WRDS root link repeatedly timed out during the release
-link check. It now uses WRDS's verified official introduction page at
-`https://wrds-www.wharton.upenn.edu/pages/about/what-wrds/`; the check rules remain unchanged.
+link check. It now uses Wharton Research-IT's verified WRDS introduction page at
+`https://research-it.wharton.upenn.edu/data/wrds/`; the check rules remain unchanged.
 
 Mobile live verification found that a wide MathJax formula could expand the
 page. Reflection display formulas now scroll inside their own bounded
