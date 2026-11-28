@@ -11,7 +11,6 @@ email: rexmiao@sas.upenn.edu
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
   Runtian Miao is a Ph.D. candidate at the University of Pennsylvania working in applied mathematics, medical imaging, statistical modeling, biomedical AI, and quantitative research.
 footer_text: >
-  © Runtian Miao.
   Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
   Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
 keywords: Runtian Miao, applied mathematics, medical imaging, computational neuroscience, quantitative research, biomedical AI

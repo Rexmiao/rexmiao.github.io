@@ -50,6 +50,8 @@ Updated: 2026-11-28.
   once turned the footer's `©` into `漏` and garbled an emoji in `_config.yml`
   (introduced in c096af6, fixed 2026-11-28). After any scripted edit, scan for
   text whose GBK misreading of UTF-8 appears in the file.
+- The footer template already prints "© Copyright YEAR Runtian Miao.", so
+  `footer_text` starts at "Powered by …" and does not repeat the name.
 
 Retain the existing URL, hosting, and theme. Build and verify the website before
 claiming that changes are published. Verify both the deployment result and the
