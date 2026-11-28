@@ -7,8 +7,6 @@ category: Quantitative Research
 importance: 2
 portfolio: runtian
 status: In development
-launch_url: https://alphalab.levyquant.ai/
-launch_label: Launch Research Lab
 resources:
   - title: Launch Research Lab
     kind: demo
@@ -22,6 +20,17 @@ resources:
 ---
 
 **In development.** Alpha Lab collects market data, records trading signals, and generates order proposals subject to risk checks. The local execution prototype is tested with historical replay and simulated orders.
+
+<div class="project-launch">
+  <a class="project-launch-primary" href="https://alphalab.levyquant.ai/">Launch Research Lab <span aria-hidden="true">↗</span></a>
+  <div class="project-launch-meta">
+    <span class="project-launch-url">alphalab.levyquant.ai</span>
+    <span class="project-launch-links">
+      <a class="project-launch-secondary" href="https://huggingface.co/spaces/Rexymiao/alpha-trading-lab">Hugging Face project</a>
+      <a class="project-launch-secondary" href="https://github.com/Rexmiao/alpha-trading-lab">Source code</a>
+    </span>
+  </div>
+</div>
 
 [Data Sources & Research Workflow]({{ '/projects/alpha-lab/data-workflow/' | relative_url }}) explains how I source, clean, and test market data.
 

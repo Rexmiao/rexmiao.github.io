@@ -7,10 +7,8 @@ category: Trading
 importance: 0
 portfolio: runtian
 status: New · Paper trading
-launch_url: https://trading.levyquant.ai/
-launch_label: Try the Order Desk Demo
 resources:
-  - title: Order Desk Demo
+  - title: Order Desk and Terminal Demo
     kind: demo
     url: https://trading.levyquant.ai/
   - title: Source Code
@@ -20,7 +18,17 @@ resources:
 
 **Status:** Paper trading only. Live trading is not implemented. Early stage: most behavior is verified by offline tests, not yet on the real service.
 
-[Source on GitHub](https://github.com/Rexmiao/levyquant-trading) · [English README & setup](https://github.com/Rexmiao/levyquant-trading#set-up) · [简体中文说明](https://github.com/Rexmiao/levyquant-trading/blob/main/README.zh-CN.md)
+<div class="project-launch">
+  <a class="project-launch-primary" href="https://trading.levyquant.ai/">Open the Order Desk and Terminal Demo <span aria-hidden="true">↗</span></a>
+  <div class="project-launch-meta">
+    <span class="project-launch-url">trading.levyquant.ai</span>
+    <span class="project-launch-links">
+      <a class="project-launch-secondary" href="https://github.com/Rexmiao/levyquant-trading">Source on GitHub</a>
+      <a class="project-launch-secondary" href="https://github.com/Rexmiao/levyquant-trading#set-up">English README &amp; setup</a>
+      <a class="project-launch-secondary" href="https://github.com/Rexmiao/levyquant-trading/blob/main/README.zh-CN.md">简体中文说明</a>
+    </span>
+  </div>
+</div>
 
 A local trading back end for U.S. stocks that runs on your own computer against a moomoo paper account. It captures 5-minute bars, produces signals, applies limits you set, sends orders, and reconciles each one with the broker. Accounts, ledgers, and credentials stay on your machine.
 

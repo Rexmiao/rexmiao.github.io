@@ -53,13 +53,14 @@ Updated: 2026-11-28.
 - The footer template already prints "© Copyright YEAR Runtian Miao.", so
   `footer_text` does not repeat the name. It starts with "Part of Lévy Quant."
   (linked to <https://levyquant.ai/>), then "Powered by …".
-- A project whose product has its own live address sets `launch_url` and
-  `launch_label` in front matter. `_layouts/page.liquid` then turns the big header
-  title into a link and adds a launch button with the host name in the header card.
-  Current values: Alpha Lab "Launch Research Lab" (alphalab), PCR "Open the Live
-  Dashboard" (option-chain-watcher), Trading System "Try the Order Desk Demo"
-  (trading), Volatility Modeling "Open the Lévy Volatility Lab" (volatility), and
-  Daily Briefing "Read the Briefing" (daily), all on `levyquant.ai`. Lower links stay.
+- Every project with a live product uses the same `.project-launch` panel directly
+  below its status line: a mint primary button, the host name in mono, and small
+  secondary links. Header titles stay plain text. Current panels: Alpha Lab "Launch
+  Research Lab" (alphalab), PCR "Open the Live Dashboard" (option-chain-watcher),
+  Trading System "Open the Order Desk and Terminal Demo" (trading), Volatility
+  Modeling "Open the Interactive Lab" (volatility), and Daily Briefing "Read the Lévy
+  Quant Daily Briefing" (daily), all on `levyquant.ai`. Projects without a live
+  product (Trading Reflections, Quick Annotator, HistoQC) have no panel.
 - Every page links back to the Lévy Quant main site, <https://levyquant.ai/>. The
   header shows an outlined "Lévy Quant ↗" pill (`.nav-hub` in `_includes/header.liquid`)
   after the five primary entries; it is an external link, not a sixth page, and on
@@ -420,9 +421,8 @@ screenshot (`assets/img/projects/levyquant-trading-order-desk.webp`) linked to i
 Never claim returns, live, production-ready, or hosted trading, and add no CI
 badge. The homepage card's resource is the demo. The
 homepage shows it as a fourth card beside Alpha Lab; with four cards the grid
-switches to 2 × 2 (`_sass/_quant-home.scss`). The project page is kept short. Below
-the status line, one line links GitHub, the English README and setup (`#set-up`),
-and the Chinese README.
+switches to 2 × 2 (`_sass/_quant-home.scss`). The project page is kept short. Its
+launch panel links the English README and setup (`#set-up`) and the Chinese README.
 Because the system has no graphical interface, a `.terminal-shot` block shows the
 real, trimmed output of `python -m trading_system.demo` (fake broker, generated
 data), labeled as such. Reproduce it from a fresh clone outside Dropbox if the demo
@@ -440,10 +440,10 @@ and method details brief. State its purpose as helping readers follow recent qua
 market-moving macro news for better-informed trading decisions, and keep the
 "not investment advice" note. Do not add subscriber counts or performance claims.
 Keep it off the homepage cards until the first public edition is published.
-The header's launch button (**Read the Briefing**) opens the briefing site, and a
-**Browse past editions** link sits below the status line. The `.project-launch`
-panel style remains in `_sass/_quant-site.scss` but is no longer used where the
-header already carries the launch button.
+Below the status line, a `.project-launch` panel (styled in `_sass/_quant-site.scss`)
+gives a large **Read the Lévy Quant Daily Briefing** button to the briefing site, the
+domain in mono, and a **Browse past editions** link. Reuse that panel for any project
+page whose main destination is its own external site.
 Under **How Each Edition Is Made**, `{% include briefing-flow.liquid %}` draws an animated
 SVG/SMIL pipeline (selected sources → LLM hub → EN/中文 sheets → email fan-out) with mint data
 particles and warm delivery sparks. Every `animateMotion` uses a `begin` ≤ 0 so no
@@ -455,8 +455,8 @@ PCR Market Watch's primary link is the live dashboard at
 <https://option-chain-watcher.levyquant.ai/> (Space `Rexymiao/pcr-market-watch`, domain
 READY since 2026-11-28; keep the hostname exactly `option-chain-watcher`). The
 homepage card, Projects card (kind `demo`, first resource), and the project page's
-header launch button point there, with GitHub source and the latest release as
-secondary links. PCR Market Watch also links to its public overview, personal source repository,
+launch panel point there, with GitHub source and the latest release as secondary
+links. PCR Market Watch also links to its public overview, personal source repository,
 latest release, English-default README/user guide, and separate Chinese README.
 Alpha Lab is a quantitative trading system in development. The homepage links
 to its project page and describes signal capture, manual trading decisions,

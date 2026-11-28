@@ -21,23 +21,8 @@ layout: default
     {% if page_layer %}
       <p class="post-layer">{{ page_layer | escape }}</p>
     {% endif %}
-    {% if page.launch_url %}
-      <h1 class="post-title">
-        <a class="post-title-link" href="{{ page.launch_url }}">{{ page.title }}</a>
-      </h1>
-    {% else %}
-      <h1 class="post-title">{{ page.title }}</h1>
-    {% endif %}
+    <h1 class="post-title">{{ page.title }}</h1>
     <p class="post-description">{{ page.description }}</p>
-    {% if page.launch_url %}
-      <p class="post-launch">
-        <a class="post-launch-button" href="{{ page.launch_url }}">
-          {{- page.launch_label | default: 'Open' }}
-          <span aria-hidden="true">→</span></a
-        >
-        <span class="post-launch-url">{{ page.launch_url | remove: 'https://' | remove: 'http://' | remove: 'www.' | split: '/' | first }}</span>
-      </p>
-    {% endif %}
   </header>
 
   <article>

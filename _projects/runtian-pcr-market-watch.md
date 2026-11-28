@@ -7,8 +7,6 @@ category: Quantitative Research
 importance: 1
 portfolio: runtian
 status: Released
-launch_url: https://option-chain-watcher.levyquant.ai/
-launch_label: Open the Live Dashboard
 resources:
   - title: Live Dashboard
     kind: demo
@@ -23,7 +21,16 @@ resources:
 
 **Status:** Open-source release with a live dashboard, a public project page, and a Windows download.
 
-[Source code](https://github.com/Rexmiao/pcr-market-watch) · [Latest release](https://github.com/Rexmiao/pcr-market-watch/releases/latest)
+<div class="project-launch">
+  <a class="project-launch-primary" href="https://option-chain-watcher.levyquant.ai/">Open the Live Dashboard <span aria-hidden="true">↗</span></a>
+  <div class="project-launch-meta">
+    <span class="project-launch-url">option-chain-watcher.levyquant.ai</span>
+    <span class="project-launch-links">
+      <a class="project-launch-secondary" href="https://github.com/Rexmiao/pcr-market-watch">Source code</a>
+      <a class="project-launch-secondary" href="https://github.com/Rexmiao/pcr-market-watch/releases/latest">Latest release</a>
+    </span>
+  </div>
+</div>
 
 PCR Market Watch (PCR 观察台) helps users explore U.S. options activity across market categories and individual stocks or ETFs. The Chinese and English interface combines daily put/call ratios with longer trends, historical percentiles, and comparisons with the same period in earlier years.
 

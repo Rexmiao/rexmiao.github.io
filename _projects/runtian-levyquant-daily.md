@@ -7,8 +7,6 @@ category: Quantitative Research
 importance: 4
 portfolio: runtian
 status: Pilot
-launch_url: https://daily.levyquant.ai/
-launch_label: Read the Briefing
 resources:
   - title: Briefing Site
     kind: site
@@ -20,7 +18,13 @@ resources:
 
 **Status:** Pilot. The briefing site, archive, and email subscription are online.
 
-[Browse past editions](https://daily.levyquant.ai/archive)
+<div class="project-launch">
+  <a class="project-launch-primary" href="https://daily.levyquant.ai/">Read the Lévy Quant Daily Briefing <span aria-hidden="true">↗</span></a>
+  <div class="project-launch-meta">
+    <span class="project-launch-url">daily.levyquant.ai</span>
+    <a class="project-launch-secondary" href="https://daily.levyquant.ai/archive">Browse past editions</a>
+  </div>
+</div>
 
 Lévy Quant Daily is a morning briefing on U.S. macro and policy, U.S. companies and sectors, and new quantitative research. Its goal is to help readers keep up with recent quantitative ideas and the macro news that moves markets, so they can make better-informed trading decisions.
 

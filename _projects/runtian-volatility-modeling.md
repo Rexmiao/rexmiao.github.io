@@ -7,8 +7,6 @@ category: Quantitative Research
 importance: 3
 portfolio: runtian
 status: Master's research · Interactive lab
-launch_url: https://volatility.levyquant.ai/
-launch_label: Open the Lévy Volatility Lab
 resources:
   - title: Interactive Lab
     kind: demo
@@ -19,6 +17,17 @@ resources:
 ---
 
 **Status:** Master's research at Case Western Reserve University.
+
+<div class="project-launch">
+  <a class="project-launch-primary" href="https://volatility.levyquant.ai/">Open the Interactive Lab <span aria-hidden="true">↗</span></a>
+  <div class="project-launch-meta">
+    <span class="project-launch-url">volatility.levyquant.ai</span>
+    <span class="project-launch-links">
+      <a class="project-launch-secondary" href="{{ '/labs/levy-volatility/' | relative_url }}">Lab on this site</a>
+      <a class="project-launch-secondary" href="{{ '/labs/levy-volatility/data-methodology/' | relative_url }}">Data methodology</a>
+    </span>
+  </div>
+</div>
 
 **Advisor:** [Prof. Wojbor A. Woyczynski](https://pl.wikipedia.org/wiki/Wojbor_A._Woyczy%C5%84ski).
 
