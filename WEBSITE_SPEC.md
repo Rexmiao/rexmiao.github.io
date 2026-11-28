@@ -34,6 +34,12 @@ Updated: 2026-11-27.
   using `_site/` as the explicit base directory. Source checks validate external
   URLs; compiled-site checks resolve local links against the built website.
 - Primary navigation: About, News, Publications, Projects, CV.
+- `deploy.yml` runs only when `assets/**`, HTML, JS, Liquid, Markdown, or YAML
+  files change. A commit that touches only `_sass/` does not deploy; include a
+  triggering file (for example, this specification) in the same push.
+- Production Sass output is compressed and removes the spaces around `+` and
+  `-` inside `calc()`, which browsers then reject. Use plain lengths or
+  `clamp()`/`max()` without arithmetic in `_sass/` rules.
 
 Retain the existing URL, hosting, and theme. Build and verify the website before
 claiming that changes are published. Verify both the deployment result and the
