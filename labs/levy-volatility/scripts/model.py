@@ -331,7 +331,7 @@ def main() -> None:
     print(f"{summary['count']} observations: {summary['start']} to {summary['end']}")
     print(f"Train ends {summary['train_end']}. Matched holdout targets begin {summary['evaluation_start']}.")
     print(f"Gamma-OU persistence: {results['model']['phi']:.4f}")
-    print("Horizon  Pairs    QLIKE: Levy / EWMA / Persistence    Levy 90% interval coverage")
+    print("Horizon  Pairs    QLIKE: Lévy / EWMA / Persistence    Lévy 90% interval coverage")
     for result in results["evaluation"]:
         losses = " / ".join(f"{result['metrics'][method]['qlike']:.6f}" for method in METHODS)
         print(f"{result['horizon']:>7}  {result['count']:>5}    {losses}    {result['coverage_90']:.1%}")
