@@ -15,11 +15,6 @@ profile:
     <p>Philadelphia, PA, USA</p>
 
 quantitative_projects:
-  - title: PCR Market Watch
-    type: Options market data
-    status: Released
-    url: /projects/pcr-market-watch/
-    summary: Explore U.S. options activity through put/call ratios, historical trends, and comparisons.
   - title: Alpha Lab
     type: Trading system
     status: In development
@@ -28,6 +23,19 @@ quantitative_projects:
     resource_title: Data Sources & Research Workflow
     resource_kind: data
     resource_url: /projects/alpha-lab/data-workflow/
+  - title: LévyQuant Trading System
+    type: Open-source trading back end
+    status: New · Paper trading
+    url: /projects/levyquant-trading/
+    summary: Run a local U.S. stock trading back end against a moomoo paper account, with your own limits and order reconciliation.
+    resource_title: Source Code on GitHub
+    resource_kind: code
+    resource_url: https://github.com/Rexmiao/levyquant-trading
+  - title: PCR Market Watch
+    type: Options market data
+    status: Released
+    url: /projects/pcr-market-watch/
+    summary: Explore U.S. options activity through put/call ratios, historical trends, and comparisons.
   - title: Lévy Volatility Lab
     type: Volatility forecasting
     status: Interactive

@@ -335,6 +335,18 @@ zero-math notes, bilingual persistence, lazy images, themes and mobile overflow.
 Reuse installed tools and successful steps; only inspect detailed failures when
 necessary. A stored hash is content identity, not independent permission.
 
+LévyQuant Trading System (`/projects/levyquant-trading/`, category Trading,
+importance 0, status "New · Paper trading") describes the open-source
+`Rexmiao/levyquant-trading` repository (MIT, public since 2026-11-28): a local U.S.
+stock trading back end on a moomoo paper account with alert-only,
+confirm-before-send, and automatic modes, user-set limits, synthetic stops, and
+broker reconciliation. Keep its status line verbatim: "Paper trading only. Live
+trading is not implemented. Early stage: most behavior is verified by offline tests,
+not yet on the real service." Link only to GitHub (no demo site exists); never claim
+returns, live, production-ready, or hosted status, and add no CI badge. The
+homepage shows it as a fourth card beside Alpha Lab; with four cards the grid
+switches to 2 × 2 (`_sass/_quant-home.scss`).
+
 LévyQuant Daily Briefing (`/projects/levyquant-daily/`, status Pilot, Quantitative
 Research, importance 4) links to <https://daily.levyquant.ai/> and the public
 `Rexmiao/levyquant-digest` repository. It must say plainly that the briefing is
