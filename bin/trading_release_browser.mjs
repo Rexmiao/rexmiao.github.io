@@ -265,11 +265,38 @@ async function ready(page, article, language) {
   }
 }
 
+async function waitForNavbarSettled(page, expanded = null) {
+  try {
+    await page.waitForFunction((expected) => {
+      const navbar = document.querySelector("#navbarNav");
+      const button = document.querySelector(".navbar-toggler");
+      if (!navbar || !button || navbar.classList.contains("collapsing")) return false;
+      const shown = navbar.classList.contains("show");
+      return button.getAttribute("aria-expanded") === String(shown) && (expected === null || shown === expected);
+    }, expanded);
+  } catch (error) {
+    const navbar = await page.evaluate(() => ({
+      classes: document.querySelector("#navbarNav")?.className,
+      expanded: document.querySelector(".navbar-toggler")?.getAttribute("aria-expanded"),
+    }));
+    throw new CheckError("Navigation collapse did not settle", { expectedExpanded: expanded, ...navbar, cause: error.message });
+  }
+}
+
+async function setNavbarExpanded(page, expanded) {
+  await waitForNavbarSettled(page);
+  if ((await page.locator(".navbar-toggler").getAttribute("aria-expanded")) !== String(expanded)) {
+    await page.locator(".navbar-toggler").click();
+  }
+  await waitForNavbarSettled(page, expanded);
+}
+
 async function setTheme(page, desired) {
   const toggle = page.locator("#light-toggle");
   let opened = false;
+  await waitForNavbarSettled(page);
   if (!(await toggle.isVisible())) {
-    await page.locator(".navbar-toggler").click();
+    await setNavbarExpanded(page, true);
     await toggle.waitFor({ state: "visible" });
     opened = true;
   }
@@ -280,12 +307,7 @@ async function setTheme(page, desired) {
   }
   await page.waitForFunction((target) => document.documentElement.dataset.theme === target, desired);
   if (opened) {
-    await page.locator(".navbar-toggler").click();
-    await page.waitForFunction(
-      () =>
-        document.querySelector(".navbar-toggler").getAttribute("aria-expanded") === "false" &&
-        !document.querySelector("#navbarNav").classList.contains("collapsing")
-    );
+    await setNavbarExpanded(page, false);
   }
   await page.waitForFunction(() => !document.documentElement.classList.contains("transition"));
   await page.evaluate(async () => {

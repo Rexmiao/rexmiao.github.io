@@ -74,6 +74,8 @@ X failures are separate from a verified website release. Exit code `2` means X n
 - Live articles, archive, Projects and four portrait resources; image bytes must match the approved hashes.
 - Each article's English/Chinese titles, descriptions, bodies and persistence; LaTeX counts and errors; images including lazy loading; desktop/mobile, light/dark, explanation readability, navigation and page width. Long formulas may scroll inside their own container.
 
+Mobile theme checks wait for Bootstrap navigation transitions to finish and for the menu's visibility and expanded state to agree before and after opening or closing it.
+
 Progress output is compact and appears when state changes. Polling defaults to 20 seconds with a bounded wait; screenshots default to two representative views or a failure view. `--screenshots` saves all browser states. Reports and state stay beside the private plan: `http-checks.json`, `browser-checks.json`, and its `.state.json`. Successful HTTP checks and completed steps are reused on resume. Resuming an already completed state returns `previously_verified`, a stored receipt; use `verify` for a fresh check.
 
 ## Recovery and dependencies
