@@ -18,6 +18,14 @@ resources:
 
 **Status:** Pilot. The briefing site, archive, and email subscription are online.
 
+<div class="project-launch">
+  <a class="project-launch-primary" href="https://daily.levyquant.ai/">Read the LévyQuant Daily Briefing <span aria-hidden="true">↗</span></a>
+  <div class="project-launch-meta">
+    <span class="project-launch-url">daily.levyquant.ai</span>
+    <a class="project-launch-secondary" href="https://daily.levyquant.ai/archive">Browse past editions</a>
+  </div>
+</div>
+
 LévyQuant Daily is a morning briefing on U.S. macro and policy, U.S. companies and sectors, and new quantitative research. Its goal is to help readers keep up with recent quantitative ideas and the macro news that moves markets, so they can make better-informed trading decisions.
 
 **This is not original research.** Each edition is collected automatically from public sources, edited and translated with AI, and reviewed by me before it is published. Every item links to its original source. The briefing is for information only and is not investment advice.

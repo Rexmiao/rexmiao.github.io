@@ -344,6 +344,10 @@ site. State its purpose as helping readers follow recent quantitative research a
 market-moving macro news for better-informed trading decisions, and keep the
 "not investment advice" note. Do not add subscriber counts or performance claims.
 Keep it off the homepage cards until the first public edition is published.
+Below the status line, a `.project-launch` panel (styled in `_sass/_quant-site.scss`)
+gives a large **Read the LévyQuant Daily Briefing** button to the briefing site, the
+domain in mono, and a **Browse past editions** link. Reuse that panel for any project
+page whose main destination is its own external site.
 
 PCR Market Watch links to its public overview, personal source repository,
 latest release, English-default README/user guide, and separate Chinese README.
