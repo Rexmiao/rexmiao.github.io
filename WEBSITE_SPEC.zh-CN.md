@@ -119,6 +119,8 @@ Trading Reflections 是用户的个人交易复盘栏目。归档按日期倒序
 
 私有状态和简洁报告支持中断续跑，避免重复提交和推送。只有工作流、HTTP／图片哈希和浏览器检查全部通过，才报告发布完成。通用浏览器脚本支持任意文章批次、无公式笔记、双语记忆、懒加载图片、明暗主题和手机溢出检查。复用已有工具及成功步骤，日常只读当前计划和必要失败详情；哈希仅标识内容，不能代替用户批准。
 
+LévyQuant Daily Briefing（`/projects/levyquant-daily/`，状态 Pilot，归入 Quantitative Research，importance 4）链接到 <https://daily.levyquant.ai/> 和公开仓库 `Rexmiao/levyquant-digest`。页面须明确写出日报不是原创研究：内容由公开来源自动采集，经 AI 编辑和翻译，由用户审核后发布到网站。目的写作帮助读者了解前沿量化研究和影响市场的宏观新闻，以便做出更有依据的交易决策，并保留“不构成投资建议”的说明。不写订阅人数或业绩类说法。首期公开日报发布前不放入首页项目卡片。
+
 PCR Market Watch 提供通往公开介绍页、个人源码仓库、最新 Release、默认英文 README／用户指南及独立中文 README 的链接。Alpha Lab 是正在开发的个人量化交易系统。首页简介链接到项目页，概述信号捕捉、人工交易决策、人工确认的半自动模拟执行和全自动模拟执行。项目页链接到公开项目仓库、Alpha Training Lab 教学指南和 Hugging Face 研究演示。回测收益按模拟结果表述，实盘成交或投资业绩需核实后才能加入。
 
 `/projects/` 的 Alpha Lab 卡片保留数据工作流资料入口，并分别提供 **Launch Research Lab／进入研究平台**（<https://alphalab.levyquant.ai/>）和 **Hugging Face Project／Hugging Face 项目页**（<https://huggingface.co/spaces/Rexymiao/alpha-trading-lab>）两个直达链接。`/projects/alpha-lab/` 详情页同步提供并说明区别：独立网址直接打开研究界面，HF 项目页还提供 Space 文件与部署信息；它们指向同一套研究应用。

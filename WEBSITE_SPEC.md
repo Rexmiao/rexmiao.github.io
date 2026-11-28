@@ -335,6 +335,16 @@ zero-math notes, bilingual persistence, lazy images, themes and mobile overflow.
 Reuse installed tools and successful steps; only inspect detailed failures when
 necessary. A stored hash is content identity, not independent permission.
 
+LévyQuant Daily Briefing (`/projects/levyquant-daily/`, status Pilot, Quantitative
+Research, importance 4) links to <https://daily.levyquant.ai/> and the public
+`Rexmiao/levyquant-digest` repository. It must say plainly that the briefing is
+not original research: content is collected automatically from public sources,
+edited and translated with AI, and reviewed by the user before publication to the
+site. State its purpose as helping readers follow recent quantitative research and
+market-moving macro news for better-informed trading decisions, and keep the
+"not investment advice" note. Do not add subscriber counts or performance claims.
+Keep it off the homepage cards until the first public edition is published.
+
 PCR Market Watch links to its public overview, personal source repository,
 latest release, English-default README/user guide, and separate Chinese README.
 Alpha Lab is a quantitative trading system in development. The homepage links
