@@ -80,7 +80,7 @@ email links displayed with uppercase `AT` and `DOT` separators. The homepage bio
 mentions varsity track and multiple half marathons. The bold
 program and software names link to the [Penn AMCS program](https://amcs.upenn.edu/),
 the Quick Annotator and HistoQC portfolio pages, the [Sedeen Viewer product page](https://www.pathcore.com/products/sedeen-viewer),
-and the [WRDS homepage](https://wrds-www.wharton.upenn.edu/).
+and the [WRDS introduction](https://wrds-www.wharton.upenn.edu/pages/about/what-wrds/).
 
 The navy and mint quantitative theme uses the shared Jekyll palette, grid,
 header, navigation, and card styles across the personal site. The two standalone
@@ -294,6 +294,15 @@ formula explanations in the framework note and one in the execution note.
 The archive and project card derive their entries from the existing collection.
 Publication follows the existing `master` to `gh-pages` workflow and must be
 verified live for math, images, language controls, navigation, and portraits.
+
+The existing homepage WRDS root link repeatedly timed out during the release
+link check. It now uses WRDS's verified official introduction page at
+`https://wrds-www.wharton.upenn.edu/pages/about/what-wrds/`; the check rules remain unchanged.
+
+Mobile live verification found that a wide MathJax formula could expand the
+page. Reflection display formulas now scroll inside their own bounded
+`mjx-container`. A narrowly scoped, preserved PurgeCSS comment retains that
+rule because MathJax creates its elements after static content scanning.
 
 PCR Market Watch links to its public overview, personal source repository,
 latest release, English-default README/user guide, and separate Chinese README.

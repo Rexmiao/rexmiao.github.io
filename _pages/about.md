@@ -56,7 +56,7 @@ I am a Ph.D. candidate in **[Applied Mathematics and Computational Science](http
 
 My doctoral work integrates structural and diffusion MRI, tractography, brain-network representations, and longitudinal mixed-effects models to study gray- and white-matter degeneration. I am also interested in multimodal AI and foundation models for precision medicine.
 
-I develop scientific software as part of this research. At Case Western Reserve University, I developed **[Quick Annotator]({{ '/projects/quick-annotator/' | relative_url }})**, a deep-learning-assisted digital pathology annotation tool, and contributed to **[HistoQC]({{ '/projects/histoqc/' | relative_url }})** and C++ plugins for **[Sedeen Viewer](https://www.pathcore.com/products/sedeen-viewer)**. Since fall 2026, I have contributed to agentic AI coding and application prototyping with the **[Wharton Research Data Services (WRDS)](https://wrds-www.wharton.upenn.edu/)** engineering team.
+I develop scientific software as part of this research. At Case Western Reserve University, I developed **[Quick Annotator]({{ '/projects/quick-annotator/' | relative_url }})**, a deep-learning-assisted digital pathology annotation tool, and contributed to **[HistoQC]({{ '/projects/histoqc/' | relative_url }})** and C++ plugins for **[Sedeen Viewer](https://www.pathcore.com/products/sedeen-viewer)**. Since fall 2026, I have contributed to agentic AI coding and application prototyping with the **[Wharton Research Data Services (WRDS)](https://wrds-www.wharton.upenn.edu/pages/about/what-wrds/)** engineering team.
 
 ## Invited Peer Review
 

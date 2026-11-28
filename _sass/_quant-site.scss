@@ -332,6 +332,22 @@ h3 {
   line-height: 1.85;
 }
 
+.reflection-body {
+  min-width: 0;
+  max-width: 100%;
+}
+
+// MathJax creates this element after page load, so retain this targeted rule.
+/*! purgecss start ignore */
+.reflection-body mjx-container[display="true"] {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.5rem 0;
+}
+/*! purgecss end ignore */
+
 .reflection-intuition {
   --intuition-input: #91c8ff;
   --intuition-effect: #80e1c5;
