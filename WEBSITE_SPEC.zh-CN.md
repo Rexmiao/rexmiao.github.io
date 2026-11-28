@@ -2,7 +2,7 @@
 
 **简体中文** | [English](WEBSITE_SPEC.md)
 
-更新日期：2026-11-27。
+更新日期：2026-11-28。
 
 ## 网站与部署
 
@@ -84,11 +84,28 @@ ISFTD 2024 条目记录在阿姆斯特丹参会，并注明会议议程将用户
 | Quick Annotator                                | `/projects/quick-annotator/`     | Research Software     |
 | HistoQC                                        | `/projects/histoqc/`             | Research Software     |
 
-Trading Reflections 是用户的个人交易复盘栏目。归档按日期倒序列出已发布的复盘，可点击标题看全文。文章页提供返回归档的链接，归档提供返回 `/projects/#trading` 的链接。用 `TRADING_REFLECTION_TEMPLATE.md` 写作，在 `_trading_reflections/` 内按 `YYYY-MM-DD-short-title.md` 保存。填写标题、日期和摘要，准备公开时设为 `published: true`。站点构建排除模板、草稿和未来日期的条目。
+Trading Reflections 是用户的个人交易复盘栏目。归档按日期倒序列出已发布的复盘，可点击标题看全文。文章页提供返回归档的链接，归档提供返回 `/projects/#trading` 的链接。用 `TRADING_REFLECTION_TEMPLATE.md` 写作，未确认草稿在仓库外的 `../.work/trading-reflections/` 内按 `YYYY-MM-DD-short-title.md` 保存。用户确认具体版本后，才在 `_trading_reflections/` 内准备 `published: true` 的文章文件。原始笔记与未确认稿不进入公开仓库；`published: false` 只能阻止网页展示，不能隐藏 GitHub 原文。站点构建排除模板、草稿和未来日期的条目。
 
 首篇经用户确认的个人复盘是《一笔标普 500 Put 对冲的仓位复盘》，发布日为纽约时间 2026 年 11 月 26 日，链接为 `/projects/trading-reflections/2026-11-26-sp500-put-hedge/`。
 
 交易复盘以英文为主。双语文章的 `title` 和 `description` 写英文，另加 `title_zh` 和 `description_zh`；正文分别放进 `<div class="reflection-body" data-lang="en|zh" markdown="1">`，中文块设为 `hidden`。页面在日期旁显示 **English / 中文** 切换，同时切换正文、标题、摘要和标签页标题，并用 `reflection-lang` 记住选择。首篇文章现以英文标题 _Position Review of an S&P 500 Put Hedge_ 为主，保留用户原始中文全文。用户已于 2026-11-27 确认英文译文，按原样使用。以后的双语文章同样需要用户审阅英文后再发布。
+
+本聊天专门维护 Trading Reflections，固定流程见 `bin/TRADING_REFLECTIONS.md`。在源码目录运行 `ruby bin/trading_reflections.rb new|check|prepare`，仅用 Ruby 标准库复用双语模板，不安装依赖、不调用 API。脚本以 UTF-8/LF 建稿，检查元数据、文件名与日期、占位符及双语容器，简洁输出文章链接与 SHA-256。用户明确确认后，`prepare` 用已审阅版本的哈希准备本地发布文件，拒绝覆盖；哈希只标识内容版本，不能替代用户批准。脚本不提交、不推送、不部署。日常建稿采用定向读取与轻量检查；真正发布时仍执行规定的格式、构建、链接、部署、线上归档与全文、头像及三种响应式资源检查。2026-11-28 的流程配置仅在本地完成，没有发布新文章。
+
+`ruby bin/review_trading_reflections.rb draft.md [draft.md ...]` 使用已有 Kramdown 依赖生成离线双语图文预览。草稿图片保留未来发布时的 `/assets/img/trading-reflections/YYYY-MM-DD/` 路径，预览映射到草稿旁的私有 `YYYY-MM-DD-materials/assets/` 文件。批准后只复制经审阅的图片；原始工作簿、聊天截图、弃用版本和私有审计文件不进入发布内容。
+
+交易复盘的公式用 LaTeX 排版：段内使用 Kramdown 的 `$$...$$`，显示公式的起止 `$$` 各占一行。本地预览使用私有 `.work/trading-reflections/.review-runtime/` 中校验哈希的 MathJax 3.2.0 SVG 缓存，按网站已有版本下载一次后离线加载。该私有运行库不进入发布素材；正式网页继续使用已有 MathJax 配置。公式、表格和图注须分别标明观察时间与合约到期日。
+
+每个显示公式下补充双语直观解释，使用 `aside.reflection-intuition`。输入、影响和假设／限制分别用蓝、薄荷绿、琥珀色文字强调，并保留文字标签，避免只靠颜色理解。算例明确为假设，不能当作实际交易记录。共享组件样式与离线预览均提供解释块样式，并兼顾浅色和打印；发布批准的文章时同步发布其已批准样式依赖。
+
+### 2026 年 11 月 28 日批准的复盘发布
+
+用户已批准两篇标注 11 月 27 日的中英文笔记及其 17 张精选配图：
+
+- `/projects/trading-reflections/2026-11-27-gex-max-pain-framework/`：多指数、多到期日和多观察时点框架，含有符号 GEX 与 Max Pain 公式、直观算例、GOOG 图表口径比较及已核验研究链接。
+- `/projects/trading-reflections/2026-11-27-qqq-spy-0dte-execution/`：11 月 26 日晚计划与 11 月 27 日 QQQ／SPY 零日期权执行复盘，保留成交价格、下单时间、分批平仓及未扣费用的权利金收益。
+
+配图按二进制原样保存在 `assets/img/trading-reflections/2026-11-27/`。英文图注明为标签本地化示意，中文原图作为数值依据；按批准保留合约张数，不发布聊天、原始 Excel、弃用图像版本和私有审计／运行库。方法稿每种语言各有四个公式直观解释块，执行稿每种语言各有一个。归档和项目卡片继续从原集合自动生成入口。发布沿用 `master` 至 `gh-pages` 的现有工作流，上线后核验公式、图片、语言切换、导航与头像资源。
 
 PCR Market Watch 提供通往公开介绍页、个人源码仓库、最新 Release、默认英文 README／用户指南及独立中文 README 的链接。Alpha Lab 是正在开发的个人量化交易系统。首页简介链接到项目页，概述信号捕捉、人工交易决策、人工确认的半自动模拟执行和全自动模拟执行。项目页链接到公开项目仓库、Alpha Training Lab 教学指南和 Hugging Face 研究演示。回测收益按模拟结果表述，实盘成交或投资业绩需核实后才能加入。
 

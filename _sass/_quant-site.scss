@@ -332,6 +332,53 @@ h3 {
   line-height: 1.85;
 }
 
+.reflection-intuition {
+  --intuition-input: #91c8ff;
+  --intuition-effect: #80e1c5;
+  --intuition-limit: #f5cc8e;
+  margin: 1.25rem 0 1.5rem;
+  padding: 1rem 1.25rem;
+  color: var(--global-text-color);
+  background: var(--global-code-bg-color);
+  border: 1px solid var(--global-divider-color);
+  border-left: 3px solid var(--global-theme-color);
+  border-radius: 0.5rem;
+  line-height: 1.8;
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+
+  .intuition-input {
+    color: var(--intuition-input);
+    font-weight: 600;
+  }
+
+  .intuition-effect {
+    color: var(--intuition-effect);
+    font-weight: 600;
+  }
+
+  .intuition-limit {
+    color: var(--intuition-limit);
+    font-weight: 600;
+  }
+}
+
+html[data-theme="light"] .reflection-intuition {
+  --intuition-input: #226292;
+  --intuition-effect: #166951;
+  --intuition-limit: #885513;
+}
+
+@media print {
+  .reflection-intuition {
+    --intuition-input: #226292;
+    --intuition-effect: #166951;
+    --intuition-limit: #885513;
+  }
+}
+
 // Page layer label above the title
 
 .post-header .post-layer {

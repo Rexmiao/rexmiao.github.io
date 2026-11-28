@@ -2,7 +2,7 @@
 
 [简体中文](WEBSITE_SPEC.zh-CN.md) | **English**
 
-Updated: 2026-11-27.
+Updated: 2026-11-28.
 
 ## Website and deployment
 
@@ -219,9 +219,12 @@ hierarchy in their own bilingual navigation.
 
 Trading Reflections is the user's personal trading journal. The archive lists
 published, dated entries newest first and links back to `/projects/#trading`.
-Each entry has a full article page and a return link. Write entries in
-`_trading_reflections/YYYY-MM-DD-short-title.md` using `TRADING_REFLECTION_TEMPLATE.md`.
-Fill in the title, date and summary, then set `published: true` when ready.
+Each entry has a full article page and a return link. Draft outside the checkout
+in `../.work/trading-reflections/YYYY-MM-DD-short-title.md`, using
+`TRADING_REFLECTION_TEMPLATE.md`. Only after user approval, prepare the specific
+version in `_trading_reflections/` with `published: true`. Private notes and
+unapproved drafts must stay outside the public repository; `published: false`
+only prevents site output, not GitHub source disclosure.
 The template is excluded from the site build. Drafts and future-dated entries
 stay out of the generated archive and article pages. The user's first approved personal entry is
 _一笔标普 500 Put 对冲的仓位复盘_, dated November 26, 2026, at
@@ -237,6 +240,60 @@ _Position Review of an S&P 500 Put Hedge_ over the user's original Chinese
 text. The user approved the English translation as written on 2026-11-27.
 Future bilingual entries need the same review of the English before
 publication.
+
+The dedicated Trading Reflections chat follows `bin/TRADING_REFLECTIONS.md`.
+`ruby bin/trading_reflections.rb new|check|prepare` reuses the bilingual template
+with Ruby's standard library and no API calls. It creates UTF-8/LF drafts,
+checks metadata, date/filename consistency, placeholders and language containers,
+and returns a compact report with the article URL and SHA-256. `prepare` requires
+the reviewed hash after explicit user approval, refuses overwrites, and creates
+a local publication file; it never commits, pushes, or deploys. Hash equality
+identifies the draft version and does not authorize publication. Routine drafts
+need only targeted reads and lightweight checks. Actual publication retains the
+required formatter, build, link, deployment, live archive/article, and portrait
+checks. The November 28 workflow setup is local only; no article was published.
+
+`ruby bin/review_trading_reflections.rb draft.md [draft.md ...]` renders offline
+bilingual review HTML using the existing Kramdown dependency. Drafts retain
+final publication image URLs under `/assets/img/trading-reflections/YYYY-MM-DD/`,
+which the preview maps to private `YYYY-MM-DD-materials/assets/` files beside the
+drafts. Copy only reviewed assets after approval; exclude raw workbooks, chat
+screenshots, rejected variants, and private audit files from publication.
+
+Use LaTeX for journal equations: Kramdown inline `$$...$$` and separate-line
+display delimiters. Offline review renders them with a checksum-pinned MathJax
+3.2.0 SVG runtime in private `.work/trading-reflections/.review-runtime/`, cached
+once from the same version the website uses. Do not publish that private runtime;
+published articles use the existing MathJax configuration. Label observation
+times and contract expirations separately.
+
+Each displayed journal equation is followed by a bilingual intuitive explanation
+in `aside.reflection-intuition`. Input, effect, and limitation labels use blue,
+mint, and amber accents with accompanying text. Hypothetical examples never
+become trade facts. The shared component stylesheet and offline preview both
+style these blocks; light/print colors remain legible. Publish the approved
+style dependency with the approved articles.
+
+### Approved journal release on November 28, 2026
+
+The user approved both bilingual November 27 notes and their 17 selected images:
+
+- `/projects/trading-reflections/2026-11-27-gex-max-pain-framework/`: cross-index,
+  cross-expiration and repeated-observation framework; signed GEX and Max Pain
+  formulas, intuitive examples, GOOG scope comparisons, and verified research links.
+- `/projects/trading-reflections/2026-11-27-qqq-spy-0dte-execution/`: the November 26
+  evening plan and November 27 same-day-expiry QQQ/SPY execution review, including
+  filled prices, order-submission times, partial exits, and gross premium returns.
+
+Assets are binary PNGs under `assets/img/trading-reflections/2026-11-27/`.
+English chart images are explicitly localized illustrations; original Chinese
+screenshots remain the numeric evidence. Include only the reviewed images,
+retain contract quantities as approved, and exclude chats, raw Excel, rejected
+variants and private audit/runtime files. Each language has four intuitive
+formula explanations in the framework note and one in the execution note.
+The archive and project card derive their entries from the existing collection.
+Publication follows the existing `master` to `gh-pages` workflow and must be
+verified live for math, images, language controls, navigation, and portraits.
 
 PCR Market Watch links to its public overview, personal source repository,
 latest release, English-default README/user guide, and separate Chinese README.
