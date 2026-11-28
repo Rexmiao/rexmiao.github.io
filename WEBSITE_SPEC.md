@@ -430,7 +430,12 @@ particle waits at the SVG origin, the SVG clips to its box, and the inline scrip
 pauses it off-screen, in hidden tabs, and under reduced motion (still frame at 1.1 s).
 The SVG `title` is a short label; the figcaption is its description.
 
-PCR Market Watch links to its public overview, personal source repository,
+PCR Market Watch's primary link is the live dashboard at
+<https://option-chain-watcher.levyquant.ai/> (Space `Rexymiao/pcr-market-watch`, domain
+READY since 2026-11-28; keep the hostname exactly `option-chain-watcher`). The
+homepage card, Projects card (kind `demo`, first resource), and the project page's
+launch panel point there, with GitHub source and the latest release as secondary
+links. PCR Market Watch also links to its public overview, personal source repository,
 latest release, English-default README/user guide, and separate Chinese README.
 Alpha Lab is a quantitative trading system in development. The homepage links
 to its project page and describes signal capture, manual trading decisions,

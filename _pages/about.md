@@ -36,6 +36,9 @@ quantitative_projects:
     status: Released
     url: /projects/pcr-market-watch/
     summary: Explore U.S. options activity through put/call ratios, historical trends, and comparisons.
+    resource_title: Live Dashboard
+    resource_kind: demo
+    resource_url: https://option-chain-watcher.levyquant.ai/
   - title: Lévy Volatility Lab
     type: Volatility forecasting
     status: Interactive

@@ -8,6 +8,9 @@ importance: 1
 portfolio: runtian
 status: Released
 resources:
+  - title: Live Dashboard
+    kind: demo
+    url: https://option-chain-watcher.levyquant.ai/
   - title: Project Site
     kind: site
     url: https://rexy.levyquant.ai/pcr-market-watch/
@@ -16,7 +19,18 @@ resources:
     url: https://github.com/Rexmiao/pcr-market-watch
 ---
 
-**Status:** Open-source release with a public project page and a Windows download.
+**Status:** Open-source release with a live dashboard, a public project page, and a Windows download.
+
+<div class="project-launch">
+  <a class="project-launch-primary" href="https://option-chain-watcher.levyquant.ai/">Open the Live Dashboard <span aria-hidden="true">↗</span></a>
+  <div class="project-launch-meta">
+    <span class="project-launch-url">option-chain-watcher.levyquant.ai</span>
+    <span class="project-launch-links">
+      <a class="project-launch-secondary" href="https://github.com/Rexmiao/pcr-market-watch">Source code</a>
+      <a class="project-launch-secondary" href="https://github.com/Rexmiao/pcr-market-watch/releases/latest">Latest release</a>
+    </span>
+  </div>
+</div>
 
 PCR Market Watch (PCR 观察台) helps users explore U.S. options activity across market categories and individual stocks or ETFs. The Chinese and English interface combines daily put/call ratios with longer trends, historical percentiles, and comparisons with the same period in earlier years.
 
@@ -27,7 +41,7 @@ PCR Market Watch (PCR 观察台) helps users explore U.S. options activity acros
 - Separate source coverage and activity dates for Cboe market categories and OCC symbol reports.
 - Editable market references and a separate personal watchlist, supported by local SQLite storage in the downloadable application.
 
-The project page includes interface demonstrations, data definitions, and installation instructions. Its GitHub Pages website presents the project; the full application runs locally with Node.js and Python.
+The live dashboard runs on Hugging Face at [option-chain-watcher.levyquant.ai](https://option-chain-watcher.levyquant.ai/). The project page includes interface demonstrations, data definitions, and installation instructions, and the downloadable application runs locally with Node.js and Python.
 
 [Project overview](https://rexy.levyquant.ai/pcr-market-watch/) · [Source code](https://github.com/Rexmiao/pcr-market-watch) · [Download the latest release](https://github.com/Rexmiao/pcr-market-watch/releases/latest)
 
