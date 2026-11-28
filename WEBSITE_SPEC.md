@@ -339,7 +339,7 @@ LévyQuant Daily Briefing (`/projects/levyquant-daily/`, status Pilot, Quantitat
 Research, importance 4) links to <https://daily.levyquant.ai/> and the public
 `Rexmiao/levyquant-digest` repository. It must say plainly that the briefing is
 not original research: content is collected automatically from public sources,
-and edited and translated with AI. Daily editions are produced and emailed
+and edited and translated with a large language model (LLM). Daily editions are produced and emailed
 automatically; what the user reviews is the choice of sources and the editing
 method, so do not claim each edition is reviewed before sending, and keep source
 and method details brief. State its purpose as helping readers follow recent quantitative research and
@@ -351,7 +351,7 @@ gives a large **Read the LévyQuant Daily Briefing** button to the briefing site
 domain in mono, and a **Browse past editions** link. Reuse that panel for any project
 page whose main destination is its own external site.
 Under **How Each Edition Is Made**, `{% include briefing-flow.liquid %}` draws an animated
-SVG/SMIL pipeline (sources → AI hub → EN/中文 sheets → email fan-out) with mint data
+SVG/SMIL pipeline (selected sources → LLM hub → EN/中文 sheets → email fan-out) with mint data
 particles and warm delivery sparks. Every `animateMotion` uses a `begin` ≤ 0 so no
 particle waits at the SVG origin, the SVG clips to its box, and the inline script
 pauses it off-screen, in hidden tabs, and under reduced motion (still frame at 1.1 s).

@@ -2,7 +2,7 @@
 layout: page
 title: LévyQuant Daily Briefing
 permalink: /projects/levyquant-daily/
-description: An automated, bilingual morning briefing on U.S. macro, equities, and quantitative research, assembled automatically from curated public sources.
+description: An automated, bilingual morning briefing on U.S. macro, equities, and quantitative research, assembled automatically from selected public sources.
 category: Quantitative Research
 importance: 4
 portfolio: runtian
@@ -28,14 +28,14 @@ resources:
 
 LévyQuant Daily is a morning briefing on U.S. macro and policy, U.S. companies and sectors, and new quantitative research. Its goal is to help readers keep up with recent quantitative ideas and the macro news that moves markets, so they can make better-informed trading decisions.
 
-**This is not original research.** Each edition is collected automatically from public sources, then edited and translated with AI. We review and choose the sources and the editing method; the daily editions themselves are produced and sent automatically. Every item links to its original source. The briefing is for information only and is not investment advice.
+**This is not original research.** Each edition is collected automatically from selected public sources, then edited and translated with a large language model (LLM). We review and choose the sources and the editing method; the daily editions themselves are produced and sent automatically. Every item links to its original source. The briefing is for information only and is not investment advice.
 
 ### How Each Edition Is Made
 
 {% include briefing-flow.liquid %}
 
-- **Collection:** Every morning at 07:00 New York time, the pipeline gathers items from a curated set of public news, market, and research sources.
-- **Editing and translation:** An AI model selects and summarizes the items. Each edition has a full English version followed by a matching Simplified Chinese version. Claims without supporting evidence are left out.
+- **Collection:** Every morning at 07:00 New York time, the pipeline gathers items from a selected set of public news, market, and research sources.
+- **Editing and translation:** An LLM selects and summarizes the items. Each edition has a full English version followed by a matching Simplified Chinese version. Claims without supporting evidence are left out.
 - **Delivery:** The finished edition is emailed to subscribers automatically, once a day. Published editions are kept in the archive and are not rewritten.
 
 ### Subscription and Privacy

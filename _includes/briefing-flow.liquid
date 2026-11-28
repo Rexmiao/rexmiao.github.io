@@ -1,6 +1,6 @@
 {% comment %}
   Animated pipeline diagram for the LévyQuant Daily Briefing page.
-  Sources -> AI editing and translation -> English and Chinese editions -> email.
+  Selected sources -> LLM editing and translation -> English and Chinese editions -> email.
   SVG/SMIL only; the small script pauses it off-screen, in hidden tabs, and
   under prefers-reduced-motion (where it shows a still frame).
 {% endcomment %}
@@ -63,7 +63,7 @@
         <animate attributeName="opacity" values="0.5;0" dur="2.4s" repeatCount="indefinite" />
       </circle>
       <polygon class="bf-hex" points="342,150 321,186.4 279,186.4 258,150 279,113.6 321,113.6" />
-      <text class="bf-hub-label" x="300" y="158" text-anchor="middle">AI</text>
+      <text class="bf-hub-label" x="300" y="158" text-anchor="middle">LLM</text>
     </g>
 
     <g class="bf-sheet">
@@ -131,8 +131,8 @@
     </g>
   </svg>
   <figcaption id="briefing-flow-caption">
-    <span>Public sources <i aria-hidden="true">→</i></span>
-    <span>AI editing &amp; translation <i aria-hidden="true">→</i></span>
+    <span>Selected public sources <i aria-hidden="true">→</i></span>
+    <span>LLM editing &amp; translation <i aria-hidden="true">→</i></span>
     <span>English + 中文 editions <i aria-hidden="true">→</i></span>
     <span>Email at 07:00 New York time</span>
   </figcaption>
