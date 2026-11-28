@@ -7,6 +7,8 @@ category: Quantitative Research
 importance: 3
 portfolio: runtian
 status: Master's research · Interactive lab
+launch_url: https://volatility.levyquant.ai/
+launch_label: Open the Lévy Volatility Lab
 resources:
   - title: Interactive Lab
     kind: demo

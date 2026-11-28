@@ -7,6 +7,8 @@ category: Quantitative Research
 importance: 2
 portfolio: runtian
 status: In development
+launch_url: https://alphalab.levyquant.ai/
+launch_label: Launch Research Lab
 resources:
   - title: Launch Research Lab
     kind: demo
