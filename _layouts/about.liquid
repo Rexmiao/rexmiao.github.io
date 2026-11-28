@@ -19,7 +19,10 @@ layout: default
         <p class="quant-hero-focus">{{ page.research_focus | escape }}</p>
       {% endif %}
       {% if page.quantitative_projects %}
-        <a class="quant-hero-link" href="#quantitative-research-and-projects">Explore quantitative projects <span aria-hidden="true">↓</span></a>
+        <div class="quant-hero-actions">
+          <a class="quant-hero-link" href="#quantitative-research-and-projects">Explore Quantitative Projects <span aria-hidden="true">↓</span></a>
+          <a class="quant-hero-secondary" href="{{ '/cv/' | relative_url }}">View CV</a>
+        </div>
       {% endif %}
     </div>
     {% if page.profile or page.social %}
@@ -44,9 +47,13 @@ layout: default
             <ul class="quant-email-list" role="list" aria-label="Email addresses">
               {% for email_address in email_addresses %}
                 {% if email_address != blank %}
+                  {% assign email_parts = email_address | split: '@' %}
                   <li>
                     <a href="mailto:{{ email_address | encode_email }}">
-                      {{- email_address | replace: '@', ' AT ' | replace: '.', ' DOT ' | escape -}}
+                      {{- '' -}}
+                      <span class="email-part">{{ email_parts[0] | replace: '.', ' DOT ' | escape }}</span>
+                      <span class="email-part">AT {{ email_parts[1] | replace: '.', ' DOT ' | escape }}</span>
+                      {{- '' -}}
                     </a>
                   </li>
                 {% endif %}
@@ -75,7 +82,7 @@ layout: default
     <!-- Latest posts -->
     {% if site.latest_posts.enabled %}
       <h2>
-        <a href="{{ '/blog/' | relative_url }}">Latest posts</a>
+        <a href="{{ '/blog/' | relative_url }}">Latest Posts</a>
       </h2>
       {% include latest_posts.liquid %}
     {% endif %}
@@ -83,7 +90,7 @@ layout: default
     <!-- Selected papers -->
     {% if page.selected_papers %}
       <h2>
-        <a href="{{ '/publications/' | relative_url }}">Selected publications</a>
+        <a href="{{ '/publications/' | relative_url }}">Selected Publications</a>
       </h2>
       {% include selected_papers.liquid %}
     {% endif %}

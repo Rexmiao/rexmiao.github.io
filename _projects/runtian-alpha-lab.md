@@ -6,12 +6,16 @@ description: A quantitative trading system in development, with signal capture, 
 category: Quantitative Research
 importance: 2
 portfolio: runtian
+status: In development
 resources:
   - title: Launch Research Lab
+    kind: demo
     url: https://rexymiao-alpha-trading-lab.hf.space/
-  - title: Hugging Face project
+  - title: Hugging Face Project
+    kind: site
     url: https://huggingface.co/spaces/Rexymiao/alpha-trading-lab
-  - title: Data sources and research workflow
+  - title: Data Sources and Research Workflow
+    kind: data
     url: /projects/alpha-lab/data-workflow/
 ---
 
@@ -19,13 +23,13 @@ resources:
 
 [Data Sources & Research Workflow]({{ '/projects/alpha-lab/data-workflow/' | relative_url }}) explains how I source, clean, and test market data.
 
-## Trading workflows
+## Trading Workflows
 
 - **Manual trading.** Review signal alerts and decide whether to act.
 - **Semi-automated execution.** Review and approve proposed orders before simulated submission.
 - **Fully automated execution.** Process eligible proposals through simulated submission and reconciliation without approval for each order.
 
-## Research methods
+## Research Methods
 
 Alpha Lab investigates a daily U.S. equity research workflow: historical market data, factor prediction, portfolio risk constraints, and simulated order drafts. It compares Ridge regression and multilayer perceptrons with resampling and conditional DDPM data augmentation. A separate experiment studies an ADNN-inspired smooth information-coefficient objective.
 

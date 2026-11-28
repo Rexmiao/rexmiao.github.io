@@ -1,14 +1,33 @@
 <ul class="quant-project-grid" role="list" aria-label="Featured quantitative projects">
   {% for project in page.quantitative_projects %}
     <li class="quant-project-card">
-      <p class="quant-project-type">{{ project.type | escape }}</p>
+      <div class="quant-project-meta">
+        <span class="quant-project-type">{{ project.type | escape }}</span>
+        {% if project.status %}
+          <span class="quant-status">{{ project.status | escape }}</span>
+        {% endif %}
+      </div>
       <h3>
         <a href="{{ project.url | relative_url }}">{{ project.title | escape }}</a>
       </h3>
       <p>{{ project.summary | escape }}</p>
-      {% if project.resource_url %}
-        <a class="quant-project-resource" href="{{ project.resource_url | relative_url }}">{{ project.resource_title | escape }}</a>
-      {% endif %}
+      <ul class="quant-card-actions" role="list" aria-label="{{ project.title | escape }} links">
+        <li>
+          <a href="{{ project.url | relative_url }}"
+            ><span class="kind-tag kind-overview">Overview</span> <span class="quant-action-title">Project Details</span
+            ><span class="sr-only">: {{ project.title | escape }}</span></a
+          >
+        </li>
+        {% if project.resource_url %}
+          {% include resource-kind.liquid kind=project.resource_kind %}
+          <li>
+            <a href="{{ project.resource_url | relative_url }}"
+              ><span class="kind-tag kind-{{ project.resource_kind | default: 'link' }}">{{ resource_kind_label }}</span>
+              <span class="quant-action-title">{{ project.resource_title | escape }}</span></a
+            >
+          </li>
+        {% endif %}
+      </ul>
     </li>
   {% endfor %}
 </ul>

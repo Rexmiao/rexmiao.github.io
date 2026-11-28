@@ -1,12 +1,79 @@
 ---
 layout: page
 ---
-<p class="mb-3">
+<div class="reflection-meta">
   <small
     ><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%b %d, %Y' }}</time></small
   >
-</p>
+  {% if page.title_zh %}
+    <div
+      class="lang-switch"
+      role="group"
+      aria-label="Article language / 文章语言"
+      data-title-en="{{ page.title | escape }}"
+      data-title-zh="{{ page.title_zh | escape }}"
+      data-description-en="{{ page.description | escape }}"
+      data-description-zh="{{ page.description_zh | default: page.description | escape }}"
+      hidden
+    >
+      <button type="button" data-set-lang="en" aria-pressed="true" lang="en">English</button>
+      <button type="button" data-set-lang="zh" aria-pressed="false" lang="zh-CN">中文</button>
+    </div>
+  {% endif %}
+</div>
 
 {{ content }}
 
 <p><a href="{{ '/projects/trading-reflections/' | relative_url }}">Back to Trading Reflections</a></p>
+
+{% if page.title_zh %}
+  <script>
+    (function () {
+      var group = document.querySelector('.lang-switch');
+      var bodies = document.querySelectorAll('.reflection-body[data-lang]');
+      if (!group || !bodies.length) return;
+      var title = document.querySelector('.post-header .post-title');
+      var description = document.querySelector('.post-header .post-description');
+      var buttons = group.querySelectorAll('[data-set-lang]');
+      var siteSuffix = document.title.indexOf(' | ') >= 0 ? document.title.slice(document.title.indexOf(' | ')) : '';
+      var key = 'reflection-lang';
+
+      function apply(lang) {
+        if (lang !== 'zh') lang = 'en';
+        for (var i = 0; i < bodies.length; i++) {
+          bodies[i].hidden = bodies[i].getAttribute('data-lang') !== lang;
+        }
+        for (var j = 0; j < buttons.length; j++) {
+          buttons[j].setAttribute('aria-pressed', String(buttons[j].getAttribute('data-set-lang') === lang));
+        }
+        var heading = group.getAttribute('data-title-' + lang);
+        if (title) {
+          title.textContent = heading;
+          title.setAttribute('lang', lang === 'zh' ? 'zh-CN' : 'en');
+        }
+        if (description) {
+          description.textContent = group.getAttribute('data-description-' + lang);
+          description.setAttribute('lang', lang === 'zh' ? 'zh-CN' : 'en');
+        }
+        document.title = heading + siteSuffix;
+      }
+
+      var saved = 'en';
+      try {
+        saved = localStorage.getItem(key) || 'en';
+      } catch (error) {}
+      group.hidden = false;
+      apply(saved);
+
+      group.addEventListener('click', function (event) {
+        var button = event.target.closest('[data-set-lang]');
+        if (!button) return;
+        var lang = button.getAttribute('data-set-lang');
+        try {
+          localStorage.setItem(key, lang);
+        } catch (error) {}
+        apply(lang);
+      });
+    })();
+  </script>
+{% endif %}

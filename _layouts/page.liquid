@@ -1,9 +1,26 @@
 ---
 layout: default
 ---
+{% comment %}
+  Page layer label: tells visitors arriving from an external link which
+  level of the site they are on. Front matter `layer` overrides the default.
+{% endcomment %}
+{% assign page_layer = page.layer %}
+{% unless page_layer %}
+  {% if page.collection == 'trading_reflections' %}
+    {% assign page_layer = 'Trading reflection · Article' %}
+  {% elsif page.project_parent %}
+    {% assign page_layer = 'Project resource' %}
+  {% elsif page.portfolio == 'runtian' %}
+    {% assign page_layer = 'Project overview · ' | append: page.category %}
+  {% endif %}
+{% endunless %}
 <div class="post">
   {% include project-breadcrumbs.liquid %}
-  <header class="post-header">
+  <header class="post-header" data-backdrop="{% if page_layer %}path{% else %}torus{% endif %}">
+    {% if page_layer %}
+      <p class="post-layer">{{ page_layer | escape }}</p>
+    {% endif %}
     <h1 class="post-title">{{ page.title }}</h1>
     <p class="post-description">{{ page.description }}</p>
   </header>

@@ -6,10 +6,13 @@ description: Master's research on Lévy and Ornstein–Uhlenbeck models for opti
 category: Quantitative Research
 importance: 3
 portfolio: runtian
+status: Master's research · Interactive lab
 resources:
-  - title: Interactive lab
+  - title: Interactive Lab
+    kind: demo
     url: /labs/levy-volatility/
-  - title: Data sources and cleaning
+  - title: Data Sources and Cleaning
+    kind: data
     url: /labs/levy-volatility/data-methodology/
 ---
 

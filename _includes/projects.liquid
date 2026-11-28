@@ -10,16 +10,42 @@
       %}
     {% endif %}
     <div class="card-body">
+      {% if project.status %}
+        <span class="quant-status">{{ project.status | escape }}</span>
+      {% endif %}
       <h3 class="card-title">{{ project.title }}</h3>
       <p class="card-text">{{ project.description }}</p>
-      <span class="project-arrow" aria-hidden="true">→</span>
+      <span class="project-cta">
+        <span><span class="kind-tag kind-overview">Overview</span> <span class="project-cta-text">Project Details</span></span>
+        <span class="project-arrow" aria-hidden="true">→</span>
+      </span>
     </div>
   </a>
-  {% if project.resources %}
+  {% assign latest_entry = null %}
+  {% if project.latest_entries_from %}
+    {% assign latest_entry = site[project.latest_entries_from]
+      | where: 'published', true
+      | where_exp: 'entry', 'entry.date <= site.time'
+      | sort: 'date'
+      | last
+    %}
+  {% endif %}
+  {% if project.resources or latest_entry %}
     <ul class="project-resources" aria-label="{{ project.title | escape }} resources">
-      {% for resource in project.resources %}
+      {% if latest_entry %}
         <li>
-          <a href="{{ resource.url | relative_url }}">{{ resource.title | escape }}</a>
+          <a href="{{ latest_entry.url | relative_url }}"
+            ><span class="kind-tag kind-article">Latest</span> <span class="resource-title">{{ latest_entry.title | escape }}</span></a
+          >
+        </li>
+      {% endif %}
+      {% for resource in project.resources %}
+        {% include resource-kind.liquid kind=resource.kind %}
+        <li>
+          <a href="{{ resource.url | relative_url }}"
+            ><span class="kind-tag kind-{{ resource.kind | default: 'link' }}">{{ resource_kind_label }}</span>
+            <span class="resource-title">{{ resource.title | escape }}</span></a
+          >
         </li>
       {% endfor %}
     </ul>

@@ -41,6 +41,14 @@
 
 个人站通过共享 Jekyll 主题统一深蓝和薄荷青配色、网格、页头、导航及卡片。独立 Lévy 实验室及数据方法页使用对应的界面和图表配色。默认深色，主题按钮依次切换深色、浅色和跟随系统。本域名下的 Jekyll 和实验室页面用 `quant-theme` 共用用户主动选择的主题，继承旧版明确选择的浅色或深色。CV 打印采用浅色纸面配色。
 
+字体使用 IBM Plex Sans（正文）与 IBM Plex Mono（标签、日期、类型标记），在 `_includes/head.liquid` 中从 Google Fonts 加载，通过 `--global-sans-font` 和 `--global-mono-font` 设置；中文回退到系统中文字体。两个 Lévy 页面加载同一套字体。内容区宽度为 1080 像素（`_config.yml` 的 `max_width`），Projects 网格在该宽度下为三列。
+
+标题、短副标题、按钮文字和卡片链接标题使用英文标题式大写（例如 Quantitative Research and Projects），较长的描述性句子保持句首大写。薄荷青只用于可点击元素和数据：首页身份行、页头层级标签和标语竖线改用浅色文字色，卡片顶边平时为中性色，悬停时才变青。
+
+共享界面组件位于 `_sass/_quant-site.scss`。页头标题上方可显示等宽字体的层级标签：项目概览显示 `Project overview · <分类>`，资料页显示 `Project resource` 或其 `layer` 设置，交易复盘文章显示 `Trading reflection · Article`。项目卡片显示 front matter 中的 `status` 状态标签和 **Overview** 入口；资料链接按 `resources[].kind`（`demo`、`data`、`article`、`code`、`site`）显示 Demo、Data & method、Article、Code、Project page 类型标签。Trading Reflections 卡片通过 `latest_entries_from: trading_reflections` 自动链接最新一篇已发布复盘。Projects 页提供标签图例，手机端隐藏。首页卡片通过 `_pages/about.md` 的 `status` 和 `resource_kind` 使用同一套标签。首页邮箱只在用户名与 `AT …` 域名之间换行；手机端头像与联系方式并排，使项目卡片进入首屏。
+
+`assets/js/quant-hero.js` 在 `.quant-hero` 和 `.post-header` 背后绘制装饰性画布。首页首屏下方的预留条带绘制固定随机种子的均值回复带跳跃模拟路径（标注 **Simulated Lévy–OU path**），底层是一组漂移点构成的 Vietoris–Rips 复形，距离阈值像过滤（filtration）一样周期变化。页头通过 `_layouts/page.liquid` 的 `data-backdrop` 选择图形：列表页（News、Publications、Projects、CV）显示旋转的线框环面，并高亮经线与纬线两条生成元；项目、资料与复盘页显示波动路径。脚本测量页头文字的右边界，只在其右侧绘制；副标题过长时，路径改为页头底边的细线。路径上的跳跃和单点尖峰会触发短暂的火花迸发、竖直闪光与扩散圆环，尖峰顶端带小光点；Rips 复形的顶点会闪烁，环面两条生成元上各有一个带拖尾的光点循环移动。暖色辅助色 `--global-spark-color` 只用于这些动画：多数跳跃火花、跳跃闪光、一条生成元上的光点和部分闪烁；路径周围还有随机闪烁的光点。首页标注带小块实底，路径不会遮挡文字。宽度低于 600 像素时页头不绘制。News、Projects、Publications 的页头副标题使用英文标题式大写。画布设为 `aria-hidden`，跟随主题切换，离屏或标签页隐藏时暂停，`prefers-reduced-motion` 时只绘制静态帧，打印时隐藏。卡片与首屏内容有简短的进场和悬停动效，减少动态效果时同样关闭。所有 Jekyll 页面提供 **Skip to content** 跳转链接，当前导航项带下划线标记，文章正文链接带下划线，两种主题的文字对比度均达到 WCAG AA。独立 Lévy 页面的面包屑以链接首页的 **Rexy Miao** 开头。
+
 不得推断缺失的学位日期、毕业情况、稿件录用状态、个人科研资助归属或投资业绩。保留 2026 年 npj Dementia 稿件的审稿中状态，以及 ISFTD 2026 海报的已接受状态。Quick Annotator 的期刊文章与预印本应视为同一工作的不同版本。
 
 ## 新闻与社交动态
@@ -78,15 +86,17 @@ Trading Reflections 是用户的个人交易复盘栏目。归档按日期倒序
 
 首篇经用户确认的个人复盘是《一笔标普 500 Put 对冲的仓位复盘》，发布日为纽约时间 2026 年 11 月 26 日，链接为 `/projects/trading-reflections/2026-11-26-sp500-put-hedge/`。
 
+交易复盘以英文为主。双语文章的 `title` 和 `description` 写英文，另加 `title_zh` 和 `description_zh`；正文分别放进 `<div class="reflection-body" data-lang="en|zh" markdown="1">`，中文块设为 `hidden`。页面在日期旁显示 **English / 中文** 切换，同时切换正文、标题、摘要和标签页标题，并用 `reflection-lang` 记住选择。首篇文章现以英文标题 _Position Review of an S&P 500 Put Hedge_ 为主，保留用户原始中文全文。用户已于 2026-11-27 确认英文译文，按原样使用。以后的双语文章同样需要用户审阅英文后再发布。
+
 PCR Market Watch 提供通往公开介绍页、个人源码仓库、最新 Release、默认英文 README／用户指南及独立中文 README 的链接。Alpha Lab 是正在开发的个人量化交易系统。首页简介链接到项目页，概述信号捕捉、人工交易决策、人工确认的半自动模拟执行和全自动模拟执行。项目页链接到公开项目仓库、Alpha Training Lab 教学指南和 Hugging Face 研究演示。回测收益按模拟结果表述，实盘成交或投资业绩需核实后才能加入。
 
-`/projects/` 的 Alpha Lab 卡片保留数据工作流资料入口，并分别提供 **Launch Research Lab／进入研究平台**（<https://rexymiao-alpha-trading-lab.hf.space/>）和 **Hugging Face project／Hugging Face 项目页**（<https://huggingface.co/spaces/Rexymiao/alpha-trading-lab>）两个直达链接。`/projects/alpha-lab/` 详情页同步提供并说明区别：独立网址直接打开研究界面，HF 项目页还提供 Space 文件与部署信息；它们指向同一套研究应用。
+`/projects/` 的 Alpha Lab 卡片保留数据工作流资料入口，并分别提供 **Launch Research Lab／进入研究平台**（<https://rexymiao-alpha-trading-lab.hf.space/>）和 **Hugging Face Project／Hugging Face 项目页**（<https://huggingface.co/spaces/Rexymiao/alpha-trading-lab>）两个直达链接。`/projects/alpha-lab/` 详情页同步提供并说明区别：独立网址直接打开研究界面，HF 项目页还提供 Space 文件与部署信息；它们指向同一套研究应用。
 
 首页与 Alpha Lab 项目页均链接到 Data Sources & Research Workflow（`/projects/alpha-lab/data-workflow/`）。该页说明数据来源与验证状态、覆盖范围、复权、清洗、时点可用性和样本外对照。标普 500 put 对冲文章可在 Trading Reflections 查看。
 
 波动率建模项目新增独立的 [Lévy 波动率实验室](labs/levy-volatility/)，并提供模型源码、数据说明和中英文复现指南。该网页以美联储 H.10 美元兑日元日度汇率为基础开展新的实证实验，与项目页面中的硕士研究是两项工作。五期波动率代理、训练区间、比较基准及模拟假设均见实验室说明。实验室位于 `labs/levy-volatility/`，随现有 GitHub Pages 工作流发布。 波动率项目详情页的 Lévy Volatility Lab 小节提供直达 [Hugging Face 演示](https://rexymiao-levy-volatility-lab.static.hf.space/) 的链接。
 
-Projects 页卡片标出 Lévy Volatility Lab。首页的 Quantitative research and projects 小节将实验室与 PCR Market Watch、Alpha Lab 一同列为量化研究和交易工作流的项目实例，并提供项目详情及 Hugging Face 演示入口。
+Projects 页卡片标出 Lévy Volatility Lab。首页的 Quantitative Research and Projects 小节将实验室与 PCR Market Watch、Alpha Lab 一同列为量化研究和交易工作流的项目实例，并提供项目详情及 Hugging Face 演示入口。
 
 波动率项目详情页的导师姓名 Prof. Wojbor A. Woyczynski 链接到他的[波兰语维基百科条目](https://pl.wikipedia.org/wiki/Wojbor_A._Woyczy%C5%84ski)。
 

@@ -6,6 +6,8 @@ description: Notes on my own trades, covering decisions, execution, and risk man
 category: Trading
 importance: 1
 portfolio: runtian
+status: Journal
+latest_entries_from: trading_reflections
 ---
 
 I use this journal to reflect on what I saw before a trade, how I planned and managed risk, what happened during execution, and what I would do differently next time.

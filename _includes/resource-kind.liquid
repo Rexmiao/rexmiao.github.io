@@ -1,0 +1,18 @@
+{% comment %}
+  Sets resource_kind_label for a project resource kind.
+  Kinds: demo, data, article, code, site, link (default).
+{% endcomment %}
+{% case include.kind %}
+  {% when 'demo' %}
+    {% assign resource_kind_label = 'Demo' %}
+  {% when 'data' %}
+    {% assign resource_kind_label = 'Data & method' %}
+  {% when 'article' %}
+    {% assign resource_kind_label = 'Article' %}
+  {% when 'code' %}
+    {% assign resource_kind_label = 'Code' %}
+  {% when 'site' %}
+    {% assign resource_kind_label = 'Project page' %}
+  {% else %}
+    {% assign resource_kind_label = 'Link' %}
+{% endcase %}

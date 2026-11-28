@@ -6,13 +6,21 @@ description: A released, bilingual options dashboard for daily put/call ratios, 
 category: Quantitative Research
 importance: 1
 portfolio: runtian
+status: Released
+resources:
+  - title: Project Site
+    kind: site
+    url: https://rexmiao.github.io/pcr-market-watch/
+  - title: Source Code
+    kind: code
+    url: https://github.com/Rexmiao/pcr-market-watch
 ---
 
 **Status:** Open-source release with a public project page and a Windows download.
 
 PCR Market Watch (PCR 观察台) helps users explore U.S. options activity across market categories and individual stocks or ETFs. The Chinese and English interface combines daily put/call ratios with longer trends, historical percentiles, and comparisons with the same period in earlier years.
 
-### Methods and features
+### Methods and Features
 
 - Daily, 20-session, and 60-session volume PCR. Rolling ratios divide total put volume by total call volume over the window.
 - Historical percentiles calculated from prior observations, with the available sample size shown explicitly.

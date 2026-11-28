@@ -9,6 +9,13 @@ published: false
 在本地将此模板复制到 _trading_reflections/YYYY-MM-DD-short-title.md。
 填写标题、复盘日期（YYYY-MM-DD）和摘要，再用正文替换下面的问题。
 准备好公开发布时，将 published 改为 true。
+
+双语文章（英文为主，可切换中文）：title 和 description 写英文，
+另加 title_zh 和 description_zh；正文分别放进
+<div class="reflection-body" data-lang="en" lang="en" markdown="1"> … </div> 和
+<div class="reflection-body" data-lang="zh" lang="zh-CN" markdown="1" hidden> … </div>。
+页面会自动显示 English / 中文 切换按钮。参考
+_trading_reflections/2026-11-26-sp500-put-hedge.md。
 -->
 
 ## 交易背景与计划

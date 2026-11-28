@@ -13,6 +13,7 @@
   --global-grid-line: rgba(0, 107, 103, 0.045);
   --global-panel-grid-line: rgba(0, 107, 103, 0.065);
   --global-panel-glow: rgba(114, 184, 190, 0.16);
+  --global-spark-color: #b5541c;
   --global-tip-block: #24815d;
   --global-tip-block-bg: #e2f5ec;
   --global-tip-block-text: #215d42;
@@ -42,11 +43,14 @@
   --global-grid-line: rgba(156, 240, 223, 0.033);
   --global-panel-grid-line: rgba(165, 213, 228, 0.075);
   --global-panel-glow: rgba(70, 149, 164, 0.13);
+  // Warm secondary accent used only for animation sparks (jumps, glints).
+  --global-spark-color: #ffb27a;
   --global-footer-bg-color: var(--global-nav-bg-color);
   --global-footer-text-color: var(--global-text-color-light);
   --global-footer-link-color: var(--global-theme-color);
   --global-distill-app-color: var(--global-text-color-light);
-  --global-mono-font: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  --global-sans-font: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --global-mono-font: "IBM Plex Mono", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
   --global-tip-block: #6cd4a9;
   --global-tip-block-bg: #16352e;
   --global-tip-block-text: #daf6eb;

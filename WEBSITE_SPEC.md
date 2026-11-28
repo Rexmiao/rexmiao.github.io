@@ -83,6 +83,62 @@ the theme control cycles dark, light, and system. The Jekyll and Lévy pages on
 this origin store explicit choices under `quant-theme`. Preserve explicit older
 light and dark settings. The CV uses light paper colors in print.
 
+Typography uses IBM Plex Sans for text and IBM Plex Mono for labels, dates,
+and tags. They are loaded from Google Fonts in `_includes/head.liquid` and set
+through `--global-sans-font` and `--global-mono-font`. Chinese text falls back
+to the system Chinese face. The two Lévy pages load the same pair. The content
+column is 1080 pixels wide (`max_width` in `_config.yml`), and the Projects
+grid uses three columns at that width.
+
+Headings, short subtitles, button labels, and card link titles use Title
+Case (for example, Quantitative Research and Projects). Longer descriptive
+sentences keep sentence case. Mint is reserved for clickable elements and
+data: the homepage identity line, page layer labels, and the tagline bar use
+the light text color, and card top edges stay neutral until hover.
+
+Shared UI components live in `_sass/_quant-site.scss`. Page headers can show
+a mono layer label above the title. Project overviews show `Project overview ·
+<category>`, resource pages show `Project resource` or their `layer` front
+matter, and Trading Reflections entries show `Trading reflection · Article`.
+Project cards show a `status` chip from front matter and an **Overview** row.
+Resource links carry a kind tag from `resources[].kind`: `demo`, `data`,
+`article`, `code`, or `site` (rendered as Demo, Data & method, Article, Code,
+and Project page). The Trading Reflections card links its latest published
+entry automatically through `latest_entries_from: trading_reflections`. The
+Projects page explains the tags in a legend that is hidden on phones. The
+homepage cards use the same tags through `status` and `resource_kind` in
+`_pages/about.md`. Homepage email addresses break only between the mailbox
+and the `AT …` domain part. On phones the portrait sits beside the contact
+details so the project cards begin within the first screen.
+
+`assets/js/quant-hero.js` draws a decorative canvas behind `.quant-hero` and
+`.post-header`. The homepage hero reserves a strip below its content for a
+seeded, simulated mean-reverting path with jumps, labeled **Simulated Lévy–OU
+path**, over a Vietoris–Rips complex of drifting points whose distance
+threshold breathes like a filtration. Page headers set `data-backdrop` in
+`_layouts/page.liquid`. Listing pages (News, Publications, Projects, CV) show a
+rotating wireframe torus with its meridian and longitude generators
+highlighted. Project, resource, and reflection pages show the path. The script
+measures where header text ends and draws only to its right. When a long
+subtitle leaves no room, the path becomes a thin trace along the header's
+bottom edge. Jumps and one-sample spikes on the path fire short spark bursts
+with a vertical flash and an expanding ring, and spike tips carry a small
+glint. Rips vertices twinkle, and a spark with a fading tail travels along each
+torus generator. A warm secondary color, `--global-spark-color`, is used
+only in these animations: most jump sparks, the jump flash, one generator
+spark, and some twinkles. Ambient glints also twinkle around the path. The
+homepage label sits on a small solid backing so the path never obscures it.
+Header drawings are omitted below 600 pixels. Header subtitles on
+News, Projects, and Publications use Title Case.
+The canvas is `aria-hidden`, follows the theme switch, pauses when off-screen
+or in a hidden tab, renders a static frame for `prefers-reduced-motion`, and is
+hidden in print. Cards and hero content use short entrance and hover motion,
+also disabled for reduced motion. Every Jekyll page has a **Skip to content**
+link. The active navigation item has an underline marker, and body links in
+articles are underlined. Text contrast meets WCAG AA in both themes. The
+standalone Lévy pages begin their breadcrumb with **Rexy Miao**, which links to
+the homepage.
+
 Do not infer missing degree dates, graduation, manuscript acceptance, personal
 grant ownership, or investment performance. Preserve the 2026 npj Dementia
 manuscript's under-review status and the ISFTD 2026 poster's accepted status.
@@ -165,6 +221,17 @@ stay out of the generated archive and article pages. The user's first approved p
 _一笔标普 500 Put 对冲的仓位复盘_, dated November 26, 2026, at
 `/projects/trading-reflections/2026-11-26-sp500-put-hedge/`.
 
+Trading Reflections are English-first. A bilingual entry sets English `title`
+and `description` plus `title_zh` and `description_zh`, and wraps each body in
+`<div class="reflection-body" data-lang="en|zh" markdown="1">` with the Chinese
+block `hidden`. The layout then shows an **English / 中文** switch beside the
+date. It swaps the body, title, summary, and tab title, and remembers the
+choice under `reflection-lang`. The first entry now has the English title
+_Position Review of an S&P 500 Put Hedge_ over the user's original Chinese
+text. The user approved the English translation as written on 2026-11-27.
+Future bilingual entries need the same review of the English before
+publication.
+
 PCR Market Watch links to its public overview, personal source repository,
 latest release, English-default README/user guide, and separate Chinese README.
 Alpha Lab is a quantitative trading system in development. The homepage links
@@ -175,7 +242,7 @@ teaching guide, and Hugging Face research demo. Describe backtest results as
 simulated and verify any claims about live executions or investment returns.
 
 The Alpha Lab card on `/projects/` exposes separate **Launch Research Lab**
-(<https://rexymiao-alpha-trading-lab.hf.space/>) and **Hugging Face project**
+(<https://rexymiao-alpha-trading-lab.hf.space/>) and **Hugging Face Project**
 (<https://huggingface.co/spaces/Rexymiao/alpha-trading-lab>) shortcuts, alongside
 its data-workflow resource. The overview at `/projects/alpha-lab/` repeats both
 links and explains their roles. These are two entrypoints to the same research

@@ -2,7 +2,7 @@
 layout: page
 title: News
 permalink: /news/
-description: Research, software, and quantitative project updates.
+description: Research, Software, and Quantitative Project Updates
 nav: true
 nav_order: 1
 ---
