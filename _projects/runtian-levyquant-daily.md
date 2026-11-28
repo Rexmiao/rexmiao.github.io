@@ -2,7 +2,7 @@
 layout: page
 title: LévyQuant Daily Briefing
 permalink: /projects/levyquant-daily/
-description: An automated, bilingual morning briefing on U.S. macro, equities, and quantitative research, assembled from public sources and reviewed before publication.
+description: An automated, bilingual morning briefing on U.S. macro, equities, and quantitative research, assembled automatically from curated public sources.
 category: Quantitative Research
 importance: 4
 portfolio: runtian
@@ -28,14 +28,13 @@ resources:
 
 LévyQuant Daily is a morning briefing on U.S. macro and policy, U.S. companies and sectors, and new quantitative research. Its goal is to help readers keep up with recent quantitative ideas and the macro news that moves markets, so they can make better-informed trading decisions.
 
-**This is not original research.** Each edition is collected automatically from public sources, edited and translated with AI, and reviewed by me before it is published. Every item links to its original source. The briefing is for information only and is not investment advice.
+**This is not original research.** Each edition is collected automatically from public sources, then edited and translated with AI. We review and choose the sources and the editing method; the daily editions themselves are produced and sent automatically. Every item links to its original source. The briefing is for information only and is not investment advice.
 
 ### How Each Edition Is Made
 
-- **Collection:** GitHub Actions starts the pipeline every morning at 07:00 New York time. It gathers headlines from public news feeds, Moomoo's public news search, media and podcast summaries, and research abstracts.
-- **Editing and translation:** An AI model selects and summarizes the items. Each edition has a full English version followed by a matching Simplified Chinese version, with the same items, sources, and times. Numbers, exact dates, and market calls without supporting evidence are left out.
-- **Review and publication:** I check each edition in a private preview before publishing it to the site. Published editions are frozen and are not rewritten.
-- **Delivery:** Subscribers receive one email per day. Times are shown in New York time.
+- **Collection:** Every morning at 07:00 New York time, the pipeline gathers items from a curated set of public news, market, and research sources.
+- **Editing and translation:** An AI model selects and summarizes the items. Each edition has a full English version followed by a matching Simplified Chinese version. Claims without supporting evidence are left out.
+- **Delivery:** The finished edition is emailed to subscribers automatically, once a day. Published editions are kept in the archive and are not rewritten.
 
 ### Subscription and Privacy
 

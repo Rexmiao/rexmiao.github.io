@@ -339,8 +339,10 @@ LévyQuant Daily Briefing (`/projects/levyquant-daily/`, status Pilot, Quantitat
 Research, importance 4) links to <https://daily.levyquant.ai/> and the public
 `Rexmiao/levyquant-digest` repository. It must say plainly that the briefing is
 not original research: content is collected automatically from public sources,
-edited and translated with AI, and reviewed by the user before publication to the
-site. State its purpose as helping readers follow recent quantitative research and
+and edited and translated with AI. Daily editions are produced and emailed
+automatically; what the user reviews is the choice of sources and the editing
+method, so do not claim each edition is reviewed before sending, and keep source
+and method details brief. State its purpose as helping readers follow recent quantitative research and
 market-moving macro news for better-informed trading decisions, and keep the
 "not investment advice" note. Do not add subscriber counts or performance claims.
 Keep it off the homepage cards until the first public edition is published.
