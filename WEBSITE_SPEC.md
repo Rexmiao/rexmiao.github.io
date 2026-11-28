@@ -340,6 +340,49 @@ zero-math notes, bilingual persistence, lazy images, themes and mobile overflow.
 Reuse installed tools and successful steps; only inspect detailed failures when
 necessary. A stored hash is content identity, not independent permission.
 
+### X announcements (English default; connected locally)
+
+On November 28, 2026, the user confirmed `@Rexy69492164` and one English summary
+plus the canonical `https://rexy.levyquant.ai/` article link for each future
+article. Approval of that future draft
+covers website and X publication together, without another confirmation for the
+same version. OAuth connection succeeded on November 28, 2026, followed by
+successful independent identity and local vault checks. No posts have been sent;
+existing notes are not changed or posted retroactively. GitHub tracks the X
+tooling; OAuth and preferences remain machine-local. Synchronization and release
+evidence stay in private receipts. A later reconnect uses
+`bin/trading_x_client.py connect
+--client-id PUBLIC_ID --account Rexy69492164 --redirect-uri
+http://127.0.0.1:8766/callback`: a public Native App with OAuth 2.0 PKCE and scopes
+`tweet.read tweet.write users.read offline.access`. Tokens live only in Windows
+Credential Manager. `status` reads local metadata; `check` verifies GET identity;
+`disconnect` removes local credentials, with app revocation done in official X
+settings. See [official OAuth documentation](https://docs.x.com/fundamentals/authentication/oauth-2-0/authorization-code).
+
+The general callback default stays `http://127.0.0.1:8765/callback`. An unrelated
+Python HTTP server on that port was preserved. The completed connection used
+`http://127.0.0.1:8766/callback`, matching the App setting and selected
+`--redirect-uri` exactly; retain that match for a later reconnect and do not stop
+other programs to reclaim the default port. The vault is machine-local.
+
+`plan` automatically reads nonsecret local defaults from
+`../.work/trading-reflections/x-preferences.json`: enabled, account
+`Rexy69492164`, language `en`. This preference does not imply a connection.
+`--no-x` omits X for one batch; existing frozen plans are never retrofitted.
+Custom copy uses `--x-debrief` with private reviewed JSON. Exact account and text join the plan
+hash; one review confirmation covers those posts and the articles. Optional
+`bin/trading_x.py draft` generates description-plus-link copy. POST follows
+verified website publication only; `verify` never posts. Resume skips successful
+posts; uncertain sending requires `reconcile` to check owner and exact text,
+without a blind retry. X attention returns exit code 2 separately from website
+success. Full commands and the truthful, copyable App use case are in
+`bin/TRADING_RELEASE_QUICKSTART.md`: approved summaries/links of the user's own
+articles, identity verification and own-post reconciliation only; no replies,
+DMs, use of others' posts, or X data resale.
+[Pricing consulted on November 28, 2026](https://docs.x.com/x-api/getting-started/pricing)
+lists $0.20 per URL-containing post; the user controls credits and limits, and
+the worker does not buy credits or enable automatic recharge.
+
 Lévy Quant Trading System (`/projects/levyquant-trading/`, category Trading,
 importance 0, status "New · Paper trading") describes the open-source
 `Rexmiao/levyquant-trading` repository (MIT, public since 2026-11-28): a local U.S.

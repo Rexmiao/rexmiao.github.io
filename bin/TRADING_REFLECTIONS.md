@@ -4,6 +4,8 @@ This chat is dedicated to the user's Trading Reflections. Keep routine work focu
 
 For an approved release, follow [TRADING_RELEASE_QUICKSTART.md](TRADING_RELEASE_QUICKSTART.md) and the `trading_release.py` worker. It replaces the one-off publication and live-check scripts; use concise plan/state output and inspect detailed logs only as needed.
 
+Future articles default to one English summary plus their canonical `https://rexy.levyquant.ai/projects/trading-reflections/.../` link on `@Rexy69492164`. `plan` reads the local preference automatically and freezes the exact account/copy alongside the bilingual draft and selected images; that version needs one user confirmation. Reuse the approved description or a reviewed summary; use `--x-debrief` only for custom copy and `--no-x` to omit one batch. Website approval of an earlier plan does not authorize retroactive X copy. The X worker runs only after website verification; its code is tracked by GitHub while OAuth remains machine-local.
+
 1. Accept informal Chinese notes, trade records, and screenshots. Preserve the user's voice. Distinguish information available at the time from hindsight. Never invent prices, dates, returns, or motives. The article date does not establish the trading date.
 2. Use `TRADING_REFLECTION_TEMPLATE.md`. Reuse its five sections as appropriate; short reflections can have fewer sections. Prepare English and Chinese versions for review using the existing language switch.
 3. Keep raw notes and unapproved drafts **outside the source checkout** in `../.work/trading-reflections/`. `published: false` does not hide a file in a public GitHub repository.

@@ -24,6 +24,7 @@ import trading_release as release
 
 
 REAL_VERIFY_HTTP = release.verify_http
+REAL_VERIFY_BROWSER = release.verify_browser
 WORKFLOWS = ["Deploy site", "Prettier code formatter", "Check for broken links",
              "Check for broken links on site", "pages build and deployment"]
 
@@ -253,6 +254,37 @@ class ReleaseBoundaryTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             release.load_plan(path, repo=self.repo)
 
+    def test_canonical_origin_and_old_frozen_plans_require_fresh_review_without_mutation(self):
+        plan = self.plan()
+        self.assertEqual(plan["site_url"], "https://rexy.levyquant.ai")
+        self.assertEqual(self.local_git("remote", "get-url", "origin").strip(),
+                         "https://github.com/Rexmiao/rexmiao.github.io.git")
+        legacy = copy.deepcopy(plan)
+        legacy["site_url"] = "https://rexmiao.github.io"
+        legacy["sha256"] = release.payload_hash(legacy)
+        path = self.private / "historical-frozen-plan.json"
+        release.save_json(path, legacy)
+        original_bytes, original_plan = path.read_bytes(), copy.deepcopy(legacy)
+        with mock.patch.object(release.urllib.request, "urlopen") as network, \
+                mock.patch("trading_x.publish") as social:
+            actions = [lambda: release.load_plan(path, repo=self.repo),
+                       lambda: release.prepare(legacy, repo=self.repo),
+                       lambda: REAL_VERIFY_HTTP(legacy, self.private / "old-http"),
+                       lambda: REAL_VERIFY_BROWSER(legacy, self.private / "old-browser", repo=self.repo),
+                       lambda: self.continue_state(self.state(legacy)),
+                       lambda: self.continue_state(self.state(legacy, "verified"))]
+            for action in actions:
+                with self.assertRaisesRegex(ValueError, "review a fresh plan for https://rexy.levyquant.ai"):
+                    action()
+            network.assert_not_called()
+            social.assert_not_called()
+        self.assertEqual(path.read_bytes(), original_bytes)
+        self.assertEqual(legacy, original_plan)
+        self.assertFalse((self.repo / "_trading_reflections").exists())
+        self.assertEqual(self.local_git("rev-parse", "HEAD").strip(), self.base)
+        self.http.assert_not_called()
+        self.browser.assert_not_called()
+
     def test_new_or_existing_public_target_changed_after_plan_is_not_overwritten(self):
         for existing in [False, True]:
             with self.subTest(existing=existing):
@@ -419,6 +451,78 @@ class ReleaseBoundaryTests(unittest.TestCase):
         self.assertEqual(self.local_git("rev-parse", "HEAD").strip(), head)
         self.assertEqual(remote.pushes, [self.base])
 
+    def x_plan(self):
+        self.write_manifest()
+        return release.create_plan(self.manifest_path, repo=self.repo, x_language="en")
+
+    def test_x_intent_is_optional_frozen_and_never_added_to_old_receipts(self):
+        plan = self.plan()
+        state = self.state(plan, "verified")
+        state.update(source_sha=self.base, http={"success": True}, browser={"success": True})
+        with mock.patch("trading_x.publish") as social:
+            self.assertEqual(self.continue_state(state)["x_debrief"]["status"], "disabled")
+            social.assert_not_called()
+        new = self.x_plan()
+        self.assertEqual(len(new["x_debrief"]["posts"]), 2)
+        new["x_debrief"]["account"] = "changed"
+        with self.assertRaises(ValueError):
+            self.continue_state(self.state(new))
+
+    def test_x_hook_runs_only_after_durable_successful_live_verification(self):
+        state = self.state(self.x_plan(), "deployed")
+        state["source_sha"] = self.base
+        def hook(value, path, save, client=None):
+            self.assertEqual(value["phase"], "verified")
+            self.assertEqual(json.loads(path.read_text(encoding="utf-8"))["phase"], "verified")
+            self.http.assert_called_once()
+            self.browser.assert_called_once()
+            return {"status": "needs_connection"}
+        with mock.patch("trading_x.publish", side_effect=hook) as social:
+            result = self.continue_state(state)
+            social.assert_called_once()
+        self.assertEqual(result["status"], "published_and_verified")
+        self.assertEqual(result["x_debrief"]["status"], "needs_connection")
+        self.assertEqual(state["phase"], "verified")
+
+    def test_x_never_runs_after_failed_verification_or_remote_advance(self):
+        for stage in ["http", "browser", "remote"]:
+            with self.subTest(stage=stage):
+                state = self.state(self.x_plan(), "deployed" if stage != "remote" else "verified")
+                state.update(source_sha=self.base, http={"success": True} if stage == "remote" else {})
+                state["browser"] = {"success": True}
+                remote = OfflineRemote(self)
+                self.http.reset_mock(side_effect=True)
+                self.browser.reset_mock(side_effect=True)
+                if stage == "http":
+                    self.http.side_effect = RuntimeError("HTTP failed")
+                elif stage == "browser":
+                    self.browser.side_effect = RuntimeError("Browser failed")
+                else:
+                    remote.remote_sha = "e" * 40
+                with mock.patch("trading_x.publish") as social:
+                    if stage != "remote":
+                        with self.assertRaises(RuntimeError):
+                            self.continue_state(state, remote)
+                    else:
+                        self.assertEqual(self.continue_state(state, remote)["x_debrief"]["status"], "needs_review")
+                    social.assert_not_called()
+
+    def test_unexpected_x_or_preflight_errors_preserve_verified_website_result(self):
+        state = self.state(self.x_plan(), "verified")
+        state.update(source_sha=self.base, http={"success": True}, browser={"success": True})
+        remote = OfflineRemote(self)
+        with mock.patch.object(remote, "head", side_effect=OSError("PRIVATE_SECRET")), mock.patch("trading_x.publish") as social:
+            result = self.continue_state(state, remote)
+            self.assertEqual(result["status"], "previously_verified")
+            self.assertEqual(result["x_debrief"]["status"], "needs_attention")
+            self.assertEqual(len(result["urls"]), 2)
+            self.assertNotIn("PRIVATE_SECRET", json.dumps(result))
+            social.assert_not_called()
+        with mock.patch("trading_x.publish", side_effect=OSError("PRIVATE_SECRET")):
+            result = self.continue_state(state, remote)
+            self.assertEqual(result["x_debrief"]["status"], "needs_attention")
+            self.assertEqual(state["phase"], "verified")
+
     def test_failed_workflow_http_or_browser_never_claims_verified(self):
         for stage in ["workflow", "http", "browser"]:
             with self.subTest(stage=stage):
@@ -544,6 +648,7 @@ class ReleaseBoundaryTests(unittest.TestCase):
         response_bytes = {item["public_path"]: Path(item["local_path"]).read_bytes() for item in plan["assets"]}
 
         def response(request, timeout=None):
+            self.assertTrue(request.full_url.startswith("https://rexy.levyquant.ai/"))
             path = request.full_url.removeprefix(release.SITE)
             item = mock.MagicMock()
             item.__enter__.return_value = item
@@ -566,6 +671,15 @@ class ReleaseBoundaryTests(unittest.TestCase):
                 mock.patch.object(release, "cpu_load", return_value=75), self.assertRaises(RuntimeError):
             REAL_VERIFY_HTTP(plan, rejected_output)
         self.assertFalse((rejected_output / "http-checks.json").exists())
+
+        browser_output = self.private / "canonical-browser-spec"
+        browser_output.mkdir()
+        release.save_json(browser_output / "browser-checks.json", {"success": True})
+        with mock.patch.object(release, "run", return_value='{"success":true}\n'), \
+                mock.patch.object(release, "cpu_load", return_value=25):
+            self.assertTrue(REAL_VERIFY_BROWSER(plan, browser_output, repo=self.repo)["success"])
+        specification = json.loads((browser_output / "browser-spec.json").read_text(encoding="utf-8"))
+        self.assertEqual(specification["site_url"], "https://rexy.levyquant.ai")
 
 
 if __name__ == "__main__":

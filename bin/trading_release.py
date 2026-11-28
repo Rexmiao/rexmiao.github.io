@@ -27,7 +27,7 @@ from trading_release_remote import GitHubRemote
 
 REPO = Path(__file__).resolve().parent.parent
 REPOSITORY = "Rexmiao/rexmiao.github.io"
-SITE = "https://rexmiao.github.io"
+SITE = "https://rexy.levyquant.ai"
 ARTICLE_NAME = re.compile(r"\d{4}-\d{2}-\d{2}-[a-z0-9]+(?:-[a-z0-9]+)*\.md\Z")
 ASSET_ROUTE = re.compile(r"/assets/img/trading-reflections/\d{4}-\d{2}-\d{2}/[a-zA-Z0-9][a-zA-Z0-9._-]*\.(?i:png|jpe?g|webp|gif|svg)\Z")
 RUBY_ARTICLE = r'''
@@ -152,7 +152,7 @@ def manifest_from_drafts(paths, repo=REPO):
     return manifest
 
 
-def create_plan(manifest_path, support_files=(), repo=REPO):
+def create_plan(manifest_path, support_files=(), repo=REPO, x_debrief=None, x_language=None, x_account="Rexy69492164"):
     if isinstance(manifest_path, dict):
         manifest = manifest_path
     else:
@@ -223,20 +223,48 @@ def create_plan(manifest_path, support_files=(), repo=REPO):
             raise ValueError("Every article image must be in the selected asset manifest")
     for key in ["articles", "assets", "support_files"]:
         plan[key].sort(key=lambda item: item["target"])
+    if x_debrief is not None or x_language is not None:
+        from trading_x import draft, validate
+        if x_debrief is not None and x_language is not None:
+            raise ValueError("Choose reviewed X copy or generated X copy")
+        plan["x_debrief"] = validate(x_debrief, plan["articles"]) if x_debrief is not None else draft(plan["articles"], x_language, x_account)
     plan["sha256"] = payload_hash(plan)
     return plan
 
 
 def load_plan(path, repo=REPO):
     value = json.loads(private_path(path, repo).read_text(encoding="utf-8"))
-    if value.get("schema_version") != 1 or value.get("repository") != REPOSITORY or value.get("site_url") != SITE or value.get("branch") != "master":
+    if value.get("schema_version") != 1 or value.get("repository") != REPOSITORY or value.get("branch") != "master":
         raise ValueError("Unexpected release destination or plan version")
+    require_current_site(value)
     if value.get("sha256") != payload_hash(value):
         raise ValueError("Release plan changed; prepare and review a fresh plan")
     return value
 
 
+def require_current_site(plan):
+    if plan.get("site_url") != SITE:
+        raise ValueError("The frozen release plan uses another website origin. Create and review a fresh plan for "
+                         + SITE + "; the existing plan has not been migrated")
+
+
+def x_preferences(repo=None):
+    """Nonsecret, explicitly chosen local defaults; never implies account access."""
+    repo = repo or REPO
+    path = private_path(repo.parent / ".work/trading-reflections/x-preferences.json", repo=repo, exists=False)
+    if not path.exists():
+        return {}
+    value = json.loads(path.read_text(encoding="utf-8"))
+    if (not isinstance(value, dict) or set(value) != {"schema_version", "enabled", "account", "language"}
+            or value["schema_version"] != 1 or not isinstance(value["enabled"], bool)
+            or not isinstance(value["account"], str) or not re.fullmatch(r"[A-Za-z0-9_]{1,15}", value["account"])
+            or value["language"] not in {"en", "zh", "both"}):
+        raise ValueError("Invalid local X preferences; review the nonsecret settings")
+    return value if value["enabled"] else {}
+
+
 def prepare(plan, repo=REPO):
+    require_current_site(plan)
     # Complete all validation and formatting before writing any public files.
     writes = []
     fmt = formatter(repo)
@@ -333,6 +361,7 @@ def require_deployment_success(report, source_sha):
 
 
 def verify_http(plan, output_dir):
+    require_current_site(plan)
     targets = [{"path": item["public_path"], "sha256": item["sha256"]} for item in plan["assets"]]
     targets += [{"path": item["route"]} for item in plan["articles"]]
     targets += [{"path": path} for path in ["/", "/projects/", "/projects/trading-reflections/", "/assets/img/runtian-miao.jpg",
@@ -340,7 +369,7 @@ def verify_http(plan, output_dir):
     def fetch(item):
         for attempt in range(3):
             try:
-                request = urllib.request.Request(SITE + item["path"], headers={"User-Agent": "Codex-journal-release-verification"})
+                request = urllib.request.Request(plan["site_url"] + item["path"], headers={"User-Agent": "Codex-journal-release-verification"})
                 with urllib.request.urlopen(request, timeout=30) as response:
                     data = response.read()
                     if response.status != 200 or not data:
@@ -362,6 +391,7 @@ def verify_http(plan, output_dir):
 
 
 def verify_browser(plan, output_dir, repo=REPO, screenshots=False):
+    require_current_site(plan)
     for attempt in range(6):
         load = cpu_load()
         if load is None or load < 85:
@@ -370,7 +400,7 @@ def verify_browser(plan, output_dir, repo=REPO, screenshots=False):
         if attempt == 5:
             raise RuntimeError("CPU remains above the user's preference; resume browser verification when load falls")
         time.sleep(20)
-    spec = {"schema_version": 1, "site_url": SITE, "articles": plan["articles"], "assets": plan["assets"],
+    spec = {"schema_version": 1, "site_url": plan["site_url"], "articles": plan["articles"], "assets": plan["assets"],
             "archive_route": "/projects/trading-reflections/", "projects_route": "/projects/", "screenshots": screenshots}
     spec_path = Path(output_dir) / "browser-spec.json"
     save_json(spec_path, spec)
@@ -401,9 +431,10 @@ def release_lock(state_path, repo=REPO):
             lock.unlink()
 
 
-def continue_release(state, state_path, repo=REPO, remote=None, timeout=1200, poll=20, screenshots=False):
+def continue_release(state, state_path, repo=REPO, remote=None, timeout=1200, poll=20, screenshots=False, x_client=None):
     plan = state["plan"]
-    if (plan.get("schema_version") != 1 or plan.get("repository") != REPOSITORY or plan.get("site_url") != SITE
+    require_current_site(plan)
+    if (plan.get("schema_version") != 1 or plan.get("repository") != REPOSITORY
             or plan.get("branch") != "master" or payload_hash(plan) != state["approved_sha256"]):
         raise ValueError("State does not identify the approved plan")
     previous_receipt = state["phase"] == "verified"
@@ -487,9 +518,23 @@ def continue_release(state, state_path, repo=REPO, remote=None, timeout=1200, po
         save_json(state_path, state)
     if state["phase"] != "verified":
         raise ValueError("Unknown release state")
+    social = {"status": "disabled"}
+    if plan.get("x_debrief") is not None:
+        try:
+            from trading_x import publish as publish_x
+            require_deployment_success(state["deployment"], state["source_sha"])
+            if (remote.head("master") != state["source_sha"]
+                    or remote.head("gh-pages") != state["deployment"]["generated_sha"]):
+                social = {"status": "needs_review", "reason": "Website changed before X publication"}
+            else:
+                social = publish_x(state, state_path, save_json, client=x_client)
+        except Exception:
+            # Preserve the website receipt and never blindly repeat a POST after
+            # an unexpected network/storage failure in the independent X step.
+            social = {"status": "needs_attention", "reason": "X synchronization stopped; inspect its saved receipt before retrying"}
     return {"status": "previously_verified" if previous_receipt else "published_and_verified", "source_sha": state["source_sha"],
             "urls": [SITE + article["route"] for article in plan["articles"]],
-            "images": len(plan["assets"]), "state": str(state_path)}
+            "images": len(plan["assets"]), "state": str(state_path), "x_debrief": social}
 
 
 def main(argv=None):
@@ -501,6 +546,11 @@ def main(argv=None):
     inputs.add_argument("--draft", action="append", help="Repeat for each draft; images are discovered from its canonical links")
     plan_cmd.add_argument("--out")
     plan_cmd.add_argument("--support-file", action="append", default=[])
+    x_options = plan_cmd.add_mutually_exclusive_group()
+    x_options.add_argument("--x-debrief", help="Private JSON with the reviewed X account and exact posts")
+    x_options.add_argument("--x-language", choices=["en", "zh", "both"], help="Generate X copy from article descriptions for review")
+    x_options.add_argument("--no-x", action="store_true", help="Explicitly omit X from this plan despite local defaults")
+    plan_cmd.add_argument("--x-account", help="Override the locally confirmed X account")
     publish = commands.add_parser("publish", help="Only after user approval: prepare, commit, push, wait, and verify")
     publish.add_argument("--plan", required=True)
     publish.add_argument("--approved-sha256", required=True)
@@ -519,14 +569,19 @@ def main(argv=None):
     try:
         if args.command == "plan":
             source = args.manifest if args.manifest else manifest_from_drafts(args.draft)
-            plan = create_plan(source, args.support_file)
+            social = json.loads(private_path(args.x_debrief).read_text(encoding="utf-8")) if args.x_debrief else None
+            preferences = {} if args.no_x else x_preferences()
+            language = None if args.x_debrief else args.x_language or preferences.get("language")
+            plan = create_plan(source, args.support_file, x_debrief=social, x_language=language,
+                               x_account=args.x_account or preferences.get("account", "Rexy69492164"))
             folder = (Path(args.manifest).parent if args.manifest else
                       REPO.parent / ".work/trading-reflections" / (Path(args.draft[0]).name[:10] + "-materials"))
             output = private_path(args.out or folder / "release-plan.json", exists=False)
             if output.exists() and json.loads(output.read_text(encoding="utf-8")).get("sha256") != plan["sha256"]:
                 raise ValueError("Plan already exists for a different version; choose a new output name")
             save_json(output, plan)
-            emit("plan_ready", plan=str(output), sha256=plan["sha256"], articles=len(plan["articles"]), images=len(plan["assets"]))
+            emit("plan_ready", plan=str(output), sha256=plan["sha256"], articles=len(plan["articles"]), images=len(plan["assets"]),
+                 x_debrief=plan.get("x_debrief"))
             return 0
         if args.command == "verify":
             plan = load_plan(args.plan)
@@ -562,7 +617,7 @@ def main(argv=None):
                 save_json(state_path, state)
             result = continue_release(state, state_path, timeout=args.timeout, poll=args.poll, screenshots=args.screenshots)
         emit("complete", **result)
-        return 0
+        return 0 if result["x_debrief"]["status"] in {"disabled", "posted"} else 2
     except Exception as error:
         report = {"type": type(error).__name__, "message": str(error)}
         if hasattr(error, "report"):
