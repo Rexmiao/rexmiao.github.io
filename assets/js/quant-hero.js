@@ -149,6 +149,13 @@
     var ctx = this.ctx;
     var h = this.height;
     var i;
+    // On the homepage, keep every spark inside the chart strip.
+    ctx.save();
+    if (!this.compact) {
+      ctx.beginPath();
+      ctx.rect(0, h - 104, this.width, 104);
+      ctx.clip();
+    }
     for (i = 0; i < this.flashes.length; i++) {
       var f = this.flashes[i];
       var k = 1 - f.age / f.max;
@@ -186,6 +193,7 @@
       ctx.lineWidth = 1.1;
       ctx.stroke();
     }
+    ctx.restore();
   };
 
   // Four-point glint used for twinkles and travelling sparks.
@@ -264,6 +272,10 @@
     for (var i = 0; i < n; i++) {
       xs[i] = i * spacing - shift;
       ys[i] = mid - this.points[i].y * amp;
+      // Keep spikes inside the reserved strip so they never touch the text.
+      if (!this.compact) {
+        ys[i] = Math.max(h - 92, Math.min(h - 10, ys[i]));
+      }
     }
     var head = n - 3;
     var headX = xs[head];
