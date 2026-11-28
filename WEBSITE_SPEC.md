@@ -174,7 +174,7 @@ The project page links to the public project repository, Alpha Training Lab
 teaching guide, and Hugging Face research demo. Describe backtest results as
 simulated and verify any claims about live executions or investment returns.
 
-The Alpha Lab card on `/projects/` exposes separate **Open app**
+The Alpha Lab card on `/projects/` exposes separate **Launch Research Lab**
 (<https://rexymiao-alpha-trading-lab.hf.space/>) and **Hugging Face project**
 (<https://huggingface.co/spaces/Rexymiao/alpha-trading-lab>) shortcuts, alongside
 its data-workflow resource. The overview at `/projects/alpha-lab/` repeats both

@@ -80,7 +80,7 @@ Trading Reflections 是用户的个人交易复盘栏目。归档按日期倒序
 
 PCR Market Watch 提供通往公开介绍页、个人源码仓库、最新 Release、默认英文 README／用户指南及独立中文 README 的链接。Alpha Lab 是正在开发的个人量化交易系统。首页简介链接到项目页，概述信号捕捉、人工交易决策、人工确认的半自动模拟执行和全自动模拟执行。项目页链接到公开项目仓库、Alpha Training Lab 教学指南和 Hugging Face 研究演示。回测收益按模拟结果表述，实盘成交或投资业绩需核实后才能加入。
 
-`/projects/` 的 Alpha Lab 卡片保留数据工作流资料入口，并分别提供 **Open app／打开应用**（<https://rexymiao-alpha-trading-lab.hf.space/>）和 **Hugging Face project／Hugging Face 项目页**（<https://huggingface.co/spaces/Rexymiao/alpha-trading-lab>）两个直达链接。`/projects/alpha-lab/` 详情页同步提供并说明区别：独立网址直接打开研究界面，HF 项目页还提供 Space 文件与部署信息；它们指向同一套研究应用。
+`/projects/` 的 Alpha Lab 卡片保留数据工作流资料入口，并分别提供 **Launch Research Lab／进入研究平台**（<https://rexymiao-alpha-trading-lab.hf.space/>）和 **Hugging Face project／Hugging Face 项目页**（<https://huggingface.co/spaces/Rexymiao/alpha-trading-lab>）两个直达链接。`/projects/alpha-lab/` 详情页同步提供并说明区别：独立网址直接打开研究界面，HF 项目页还提供 Space 文件与部署信息；它们指向同一套研究应用。
 
 首页与 Alpha Lab 项目页均链接到 Data Sources & Research Workflow（`/projects/alpha-lab/data-workflow/`）。该页说明数据来源与验证状态、覆盖范围、复权、清洗、时点可用性和样本外对照。标普 500 put 对冲文章可在 Trading Reflections 查看。
 

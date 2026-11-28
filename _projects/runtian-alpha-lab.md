@@ -7,7 +7,7 @@ category: Quantitative Research
 importance: 2
 portfolio: runtian
 resources:
-  - title: Open app
+  - title: Launch Research Lab
     url: https://rexymiao-alpha-trading-lab.hf.space/
   - title: Hugging Face project
     url: https://huggingface.co/spaces/Rexymiao/alpha-trading-lab
@@ -40,8 +40,8 @@ I use these experiments to study how signals and portfolio decisions perform aft
 
 The companion Chinese and English teaching website explains the workflow through an animated training sequence, interactive EWMA and allocation examples, and mathematical notes. Its examples use illustrative values and run independently of the local research application.
 
-[Open the public training guide](https://alpha-training-lab-guide.totalbluebell3.chatgpt.site) · [Open app](https://rexymiao-alpha-trading-lab.hf.space/) · [Hugging Face project](https://huggingface.co/spaces/Rexymiao/alpha-trading-lab) · [Browse the public project repository](https://github.com/Rexmiao/alpha-trading-lab)
+[Open the public training guide](https://alpha-training-lab-guide.totalbluebell3.chatgpt.site) · [Launch Research Lab](https://rexymiao-alpha-trading-lab.hf.space/) · [Hugging Face project](https://huggingface.co/spaces/Rexymiao/alpha-trading-lab) · [Browse the public project repository](https://github.com/Rexmiao/alpha-trading-lab)
 
-Open app launches the research interface directly. The Hugging Face project page also provides the app, source files, and deployment information.
+Launch Research Lab opens the research interface directly. The Hugging Face project page also provides the app, source files, and deployment information.
 
 [All projects]({{ '/projects/' | relative_url }})
