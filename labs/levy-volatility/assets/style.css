@@ -200,6 +200,7 @@ h3 {
   color: var(--accent);
   text-decoration-color: currentColor;
 }
+.lab-breadcrumb .crumb-hub,
 .lab-breadcrumb .crumb-home {
   color: var(--text);
   font-weight: 650;

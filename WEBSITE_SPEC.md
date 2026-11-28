@@ -51,7 +51,14 @@ Updated: 2026-11-28.
   (introduced in c096af6, fixed 2026-11-28). After any scripted edit, scan for
   text whose GBK misreading of UTF-8 appears in the file.
 - The footer template already prints "© Copyright YEAR Runtian Miao.", so
-  `footer_text` starts at "Powered by …" and does not repeat the name.
+  `footer_text` does not repeat the name. It starts with "Part of Lévy Quant."
+  (linked to <https://levyquant.ai/>), then "Powered by …".
+- Every page links back to the Lévy Quant main site, <https://levyquant.ai/>. The
+  header shows an outlined "Lévy Quant ↗" pill (`.nav-hub` in `_includes/header.liquid`)
+  after the five primary entries; it is an external link, not a sixth page, and on
+  phones it sits under a divider in the collapsed menu. The standalone Lévy lab
+  pages start their breadcrumb with "Lévy Quant" (`.crumb-hub`) and link it in the
+  footer; republish the Hugging Face Space after changing them.
 
 Retain the existing URL, hosting, and theme. Build and verify the website before
 claiming that changes are published. Verify both the deployment result and the

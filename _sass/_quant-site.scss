@@ -98,6 +98,49 @@ h3 {
     outline: 2px solid var(--global-theme-color);
     outline-offset: 1px;
   }
+
+  // Link back to the Lévy Quant main site: an outlined pill, set apart from
+  // the five primary page entries.
+  .navbar-nav .nav-item.nav-hub {
+    display: flex;
+    align-items: center;
+    margin-left: 0.6rem;
+
+    > .nav-link {
+      padding: 0.18rem 0.7rem;
+      color: var(--global-text-color);
+      border: 1px solid var(--global-divider-color);
+      border-radius: 999px;
+      font-family: var(--global-mono-font);
+      font-size: 0.8rem;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+
+      span {
+        color: var(--global-text-color-light);
+      }
+
+      &:hover,
+      &:focus-visible {
+        color: var(--global-theme-color);
+        border-color: var(--global-theme-color);
+      }
+    }
+  }
+}
+
+// In the collapsed phone menu the pill sits on its own row under a divider.
+@media (max-width: 575.98px) {
+  .navbar.navbar-light .navbar-nav .nav-item.nav-hub {
+    justify-content: flex-end;
+    margin: 0.4rem 0 0.2rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--global-divider-color);
+
+    > .nav-link {
+      display: inline-block;
+    }
+  }
 }
 
 @media (max-width: 575.98px) {
