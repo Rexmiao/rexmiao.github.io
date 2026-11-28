@@ -45,6 +45,11 @@ Updated: 2026-11-28.
 - Production Sass output is compressed and removes the spaces around `+` and
   `-` inside `calc()`, which browsers then reject. Use plain lengths or
   `clamp()`/`max()` without arithmetic in `_sass/` rules.
+- Edit repository text only with explicit UTF-8 I/O. Windows PowerShell 5.1
+  `Get-Content`/`Set-Content` default to the system code page (GBK here), which
+  once turned the footer's `©` into `漏` and garbled an emoji in `_config.yml`
+  (introduced in c096af6, fixed 2026-11-28). After any scripted edit, scan for
+  text whose GBK misreading of UTF-8 appears in the file.
 
 Retain the existing URL, hosting, and theme. Build and verify the website before
 claiming that changes are published. Verify both the deployment result and the

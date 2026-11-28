@@ -20,6 +20,7 @@
 - 主导航：About、News、Publications、Projects、CV。
 - `deploy.yml` 只在 `assets/**`、HTML、JS、Liquid、Markdown 或 YAML 文件变化时运行。只改 `_sass/` 的提交不会触发部署，需要在同一次推送中包含会触发部署的文件（例如本规格）。
 - 生产环境的 Sass 输出经过压缩，会删除 `calc()` 中 `+`、`-` 两侧的空格，导致浏览器丢弃该声明。`_sass/` 规则中使用固定长度，或不含加减运算的 `clamp()`／`max()`。
+- 修改仓库文本只用显式 UTF-8 读写。Windows PowerShell 5.1 的 `Get-Content`／`Set-Content` 默认使用系统代码页（本机为 GBK），曾把页脚的 `©` 变成 `漏`，并弄乱 `_config.yml` 中的一个表情符号（由 c096af6 引入，2026-11-28 修复）。脚本修改后，检查文件中是否出现 UTF-8 文本被按 GBK 误读后的乱码。
 
 保留现有网址、托管方式及主题。网站完成构建与验证后，才能声称改动已发布。每次源码更新后，同时核查部署结果和实际线上页面。
 
