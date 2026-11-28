@@ -30,7 +30,7 @@ The lab is a new experiment on USD/JPY exchange-rate volatility using daily Fede
 
 The lab also compares U.S. equity volatility forecasts across nine tickers. Readers can switch between daily and minute-derived variance targets and inspect model scores at 1-, 5-, and 22-session horizons when the evaluation sample is sufficient.
 
-[Open the interactive lab]({{ '/labs/levy-volatility/' | relative_url }}) · [Open the Hugging Face demo](https://rexymiao-levy-volatility-lab.static.hf.space/)
+[Open the interactive lab]({{ '/labs/levy-volatility/' | relative_url }}) · [Open the Hugging Face demo](https://volatility.levyquant.ai/)
 
 [Compare U.S. equities]({{ '/labs/levy-volatility/#equity-evaluation' | relative_url }}) · [Data sources and cleaning]({{ '/labs/levy-volatility/data-methodology/' | relative_url }}) · [Browse the lab source on GitHub](https://github.com/Rexmiao/rexmiao.github.io/tree/master/labs/levy-volatility)
 

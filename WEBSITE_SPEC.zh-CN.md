@@ -25,6 +25,8 @@
 
 波动率实验室另有 Hugging Face Static HTML 发布目标 `Rexymiao/levy-volatility-lab`。`.github/workflows/publish-huggingface.yml` 只打包明确列出的公开文件。Trusted Publisher 在该 Space 内设定，匹配仓库 `Rexmiao/rexmiao.github.io`、分支 `master` 和工作流 `publish-huggingface.yml`。GitHub Actions 运行时获得短期上传凭据。Static Space 使用预计算结果。
 
+公开演示链接使用 Hugging Face 上绑定到 Space 的 `levyquant.ai` 自定义域名：`Rexymiao/levy-volatility-lab` 对应 <https://volatility.levyquant.ai/>，`Rexymiao/alpha-trading-lab` 对应 <https://alphalab.levyquant.ai/>。用 `hf spaces list --author Rexymiao --expand runtime --format json` 确认每个域名均为 `"stage": "READY"` 后再在网站上引用。Hugging Face 项目页（`huggingface.co/spaces/...`）保持不变。显示文字一律写作“Lévy”；只有网址、路径、ID 和代码保留 ASCII `levy`。
+
 ## 内容基线
 
 用户提供的 `Resume202611220310.docx` 是 Runtian Miao 的研究方向、教育经历、职业经历、技能、学术成果、同行评审、领导经历、大学服务及科研支持环境信息的来源。用户还提供了替换头像，保存在 `assets/img/runtian-miao.jpg`。
@@ -113,11 +115,11 @@ Trading Reflections 是用户的个人交易复盘栏目。归档按日期倒序
 
 PCR Market Watch 提供通往公开介绍页、个人源码仓库、最新 Release、默认英文 README／用户指南及独立中文 README 的链接。Alpha Lab 是正在开发的个人量化交易系统。首页简介链接到项目页，概述信号捕捉、人工交易决策、人工确认的半自动模拟执行和全自动模拟执行。项目页链接到公开项目仓库、Alpha Training Lab 教学指南和 Hugging Face 研究演示。回测收益按模拟结果表述，实盘成交或投资业绩需核实后才能加入。
 
-`/projects/` 的 Alpha Lab 卡片保留数据工作流资料入口，并分别提供 **Launch Research Lab／进入研究平台**（<https://rexymiao-alpha-trading-lab.hf.space/>）和 **Hugging Face Project／Hugging Face 项目页**（<https://huggingface.co/spaces/Rexymiao/alpha-trading-lab>）两个直达链接。`/projects/alpha-lab/` 详情页同步提供并说明区别：独立网址直接打开研究界面，HF 项目页还提供 Space 文件与部署信息；它们指向同一套研究应用。
+`/projects/` 的 Alpha Lab 卡片保留数据工作流资料入口，并分别提供 **Launch Research Lab／进入研究平台**（<https://alphalab.levyquant.ai/>）和 **Hugging Face Project／Hugging Face 项目页**（<https://huggingface.co/spaces/Rexymiao/alpha-trading-lab>）两个直达链接。`/projects/alpha-lab/` 详情页同步提供并说明区别：独立网址直接打开研究界面，HF 项目页还提供 Space 文件与部署信息；它们指向同一套研究应用。
 
 首页与 Alpha Lab 项目页均链接到 Data Sources & Research Workflow（`/projects/alpha-lab/data-workflow/`）。该页说明数据来源与验证状态、覆盖范围、复权、清洗、时点可用性和样本外对照。标普 500 put 对冲文章可在 Trading Reflections 查看。
 
-波动率建模项目新增独立的 [Lévy 波动率实验室](labs/levy-volatility/)，并提供模型源码、数据说明和中英文复现指南。该网页以美联储 H.10 美元兑日元日度汇率为基础开展新的实证实验，与项目页面中的硕士研究是两项工作。五期波动率代理、训练区间、比较基准及模拟假设均见实验室说明。实验室位于 `labs/levy-volatility/`，随现有 GitHub Pages 工作流发布。 波动率项目详情页的 Lévy Volatility Lab 小节提供直达 [Hugging Face 演示](https://rexymiao-levy-volatility-lab.static.hf.space/) 的链接。
+波动率建模项目新增独立的 [Lévy 波动率实验室](labs/levy-volatility/)，并提供模型源码、数据说明和中英文复现指南。该网页以美联储 H.10 美元兑日元日度汇率为基础开展新的实证实验，与项目页面中的硕士研究是两项工作。五期波动率代理、训练区间、比较基准及模拟假设均见实验室说明。实验室位于 `labs/levy-volatility/`，随现有 GitHub Pages 工作流发布。 波动率项目详情页的 Lévy Volatility Lab 小节提供直达 [Hugging Face 演示](https://volatility.levyquant.ai/) 的链接。
 
 Projects 页卡片标出 Lévy Volatility Lab。首页的 Quantitative Research and Projects 小节将实验室与 PCR Market Watch、Alpha Lab 一同列为量化研究和交易工作流的项目实例，并提供项目详情及 Hugging Face 演示入口。
 

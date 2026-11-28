@@ -35,7 +35,7 @@ quantitative_projects:
     summary: Compare USD/JPY and U.S. equity volatility forecasts using jump-driven and benchmark models.
     resource_title: Demo on Hugging Face
     resource_kind: demo
-    resource_url: https://rexymiao-levy-volatility-lab.static.hf.space/
+    resource_url: https://volatility.levyquant.ai/
 
 news: true
 selected_papers: true # includes a list of papers marked as "selected={true}"

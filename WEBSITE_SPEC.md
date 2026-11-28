@@ -52,6 +52,15 @@ Publisher for `Rexmiao/rexmiao.github.io`, branch `master`, and workflow
 `publish-huggingface.yml`. GitHub Actions receives a short-lived credential at
 run time. The Static Space uses precomputed results.
 
+Public demo links use the custom `levyquant.ai` domains that are attached to the
+Spaces on Hugging Face: <https://volatility.levyquant.ai/> for
+`Rexymiao/levy-volatility-lab` and <https://alphalab.levyquant.ai/> for
+`Rexymiao/alpha-trading-lab`. Confirm them with
+`hf spaces list --author Rexymiao --expand runtime --format json`; each domain
+must show `"stage": "READY"` before the site links to it. Hugging Face project
+pages (`huggingface.co/spaces/...`) stay as they are. Display text writes the
+name as "Lévy"; ASCII `levy` stays only in URLs, paths, ids and code.
+
 ## Content baseline
 
 The user-supplied `Resume202611220310.docx` is the source for Runtian Miao's research
@@ -314,7 +323,7 @@ teaching guide, and Hugging Face research demo. Describe backtest results as
 simulated and verify any claims about live executions or investment returns.
 
 The Alpha Lab card on `/projects/` exposes separate **Launch Research Lab**
-(<https://rexymiao-alpha-trading-lab.hf.space/>) and **Hugging Face Project**
+(<https://alphalab.levyquant.ai/>) and **Hugging Face Project**
 (<https://huggingface.co/spaces/Rexymiao/alpha-trading-lab>) shortcuts, alongside
 its data-workflow resource. The overview at `/projects/alpha-lab/` repeats both
 links and explains their roles. These are two entrypoints to the same research
@@ -335,7 +344,7 @@ separate from the master's research described on the portfolio page. Its rolling
 five-return proxy, fixed training split, benchmarks, and simulation assumptions
 are documented in the lab. The lab lives under `labs/levy-volatility/` and deploys
 with the existing GitHub Pages workflow.
-The project page links directly to the [Hugging Face demo](https://rexymiao-levy-volatility-lab.static.hf.space/)
+The project page links directly to the [Hugging Face demo](https://volatility.levyquant.ai/)
 under the Lévy Volatility Lab heading. The Projects card names the lab. The
 homepage groups the lab with PCR Market Watch and Alpha Lab in its Quantitative
 research and projects section, describing the trading research workflows and
