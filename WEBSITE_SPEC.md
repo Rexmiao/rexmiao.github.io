@@ -461,8 +461,11 @@ latest release, English-default README/user guide, and separate Chinese README.
 Alpha Lab is a quantitative trading system in development. The homepage links
 to its project page and describes signal capture, manual trading decisions,
 human-approved simulated execution, and fully automated simulated execution.
-The project page links to the public project repository, Alpha Training Lab
-teaching guide, and Hugging Face research demo. Describe backtest results as
+The project page links to the public project repository, the Hugging Face
+research demo, and the Training Guide. Present the guide as part of Launch
+Research Lab at <https://alphalab.levyquant.ai/?view=guide> (Alpha Lab 0.12.9): a
+secondary link in the launch panel and in the "Training Guide" section. The former
+separate guide site is no longer linked. Describe backtest results as
 simulated and verify any claims about live executions or investment returns.
 
 The Alpha Lab card on `/projects/` exposes separate **Launch Research Lab**

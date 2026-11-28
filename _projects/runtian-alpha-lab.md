@@ -26,6 +26,7 @@ resources:
   <div class="project-launch-meta">
     <span class="project-launch-url">alphalab.levyquant.ai</span>
     <span class="project-launch-links">
+      <a class="project-launch-secondary" href="https://alphalab.levyquant.ai/?view=guide">Training Guide</a>
       <a class="project-launch-secondary" href="https://huggingface.co/spaces/Rexymiao/alpha-trading-lab">Hugging Face project</a>
       <a class="project-launch-secondary" href="https://github.com/Rexmiao/alpha-trading-lab">Source code</a>
     </span>
@@ -51,11 +52,11 @@ Alpha Lab investigates a daily U.S. equity research workflow: historical market 
 
 I use these experiments to study how signals and portfolio decisions perform after simulated trading costs.
 
-## Alpha Training Lab
+## Training Guide
 
-The companion Chinese and English teaching website explains the workflow through an animated training sequence, interactive EWMA and allocation examples, and mathematical notes. Its examples use illustrative values and run independently of the local research application.
+The Training Guide is part of the Research Lab. It explains the workflow through an animated training sequence, interactive EWMA and allocation examples, and mathematical notes, in English with a Chinese switch. Its examples use illustrative values. Open it from the lab's top bar or directly.
 
-[Open the public training guide](https://alpha-training-lab-guide.totalbluebell3.chatgpt.site) · [Launch Research Lab](https://alphalab.levyquant.ai/) · [Hugging Face project](https://huggingface.co/spaces/Rexymiao/alpha-trading-lab) · [Browse the public project repository](https://github.com/Rexmiao/alpha-trading-lab)
+[Open the Training Guide](https://alphalab.levyquant.ai/?view=guide) · [Launch Research Lab](https://alphalab.levyquant.ai/) · [Hugging Face project](https://huggingface.co/spaces/Rexymiao/alpha-trading-lab) · [Browse the public project repository](https://github.com/Rexmiao/alpha-trading-lab)
 
 Launch Research Lab opens the research interface directly. The Hugging Face project page also provides the app, source files, and deployment information.
 
