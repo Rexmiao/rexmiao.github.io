@@ -175,8 +175,12 @@ user's America/New_York timezone. It reports the actual CV, publications, and
 quantitative project portfolio update, with links to the relevant pages. Keep
 template announcements excluded; do not invent publication dates or research
 milestones. Add new verified milestones as dated entries in `_news/`. The
-homepage shows up to five recent items and `/news/` lists all entries. The
-archive covers the CV's seven conference and symposium records from 2018 to 2026,
+homepage shows up to five recent items and `/news/` lists all entries. A
+multi-project progress report uses `inline: false`, so the list shows its title
+and links to its own page at `/news/<name>/`; the first is
+`_news/project-progress-2026-11-28.md`. Each line in a progress report must be
+backed by a commit or release made that day, and the Trading System's status line is
+kept verbatim there too. The archive covers the CV's seven conference and symposium records from 2018 to 2026,
 including the CWRU SURES presentations, Swiss Society of Pathology abstract,
 three Penn Pendergrass posters, and the 2024 and 2026 ISFTD posters. The 2024
 entry records attendance in Amsterdam and the program's listing of the user as

@@ -807,7 +807,8 @@ html[data-theme="light"] .reflection-intuition {
 // Article body typography shared by News, Publications, CV and project pages
 
 .post > article,
-.post > article > .reflection-body {
+.post > article > .reflection-body,
+.post > article.post-content > #markdown-content {
   > h2 {
     margin: 2.25rem 0 0.85rem;
     padding-top: 1.1rem;
