@@ -6,7 +6,12 @@ Updated: 2026-11-28.
 
 ## Website and deployment
 
-- URL: <https://rexmiao.github.io/>.
+- URL: <https://rexy.levyquant.ai/>. The custom domain is set in the repository's
+  Pages settings and in the root `CNAME` file; Cloudflare DNS for `levyquant.ai`
+  has a DNS-only CNAME `rexy` → `rexmiao.github.io`. GitHub redirects the old
+  <https://rexmiao.github.io/> address, including project pages such as
+  `/pcr-market-watch/`. Keep `CNAME`, `url` in `_config.yml`, and `keep_files`
+  in sync, or a deployment can clear the custom domain.
 - Repository: `Rexmiao/rexmiao.github.io`.
 - Framework/theme: existing al-folio/Jekyll.
 - Source branch: `master`; generated publication branch: `gh-pages`.

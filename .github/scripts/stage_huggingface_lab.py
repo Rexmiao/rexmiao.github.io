@@ -52,7 +52,7 @@ The browser loads the published research snapshots bundled here. The USD/JPY sna
 
 The application and public snapshots come from the [canonical source revision](https://github.com/Rexmiao/rexmiao.github.io/tree/{revision}/labs/levy-volatility). The source repository’s MIT notice is included. [Official H.10 USD/JPY source](https://www.federalreserve.gov/releases/h10/hist/dat00_ja.htm)
 
-[Canonical personal-site lab](https://rexmiao.github.io/labs/levy-volatility/) · [Volatility research project](https://rexmiao.github.io/projects/volatility-modeling/) · [Data sources and methodology](https://rexmiao.github.io/labs/levy-volatility/data-methodology/)
+[Canonical personal-site lab](https://rexy.levyquant.ai/labs/levy-volatility/) · [Volatility research project](https://rexy.levyquant.ai/projects/volatility-modeling/) · [Data sources and methodology](https://rexy.levyquant.ai/labs/levy-volatility/data-methodology/)
 """
 
 

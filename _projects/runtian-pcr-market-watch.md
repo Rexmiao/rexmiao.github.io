@@ -10,7 +10,7 @@ status: Released
 resources:
   - title: Project Site
     kind: site
-    url: https://rexmiao.github.io/pcr-market-watch/
+    url: https://rexy.levyquant.ai/pcr-market-watch/
   - title: Source Code
     kind: code
     url: https://github.com/Rexmiao/pcr-market-watch
@@ -29,7 +29,7 @@ PCR Market Watch (PCR 观察台) helps users explore U.S. options activity acros
 
 The project page includes interface demonstrations, data definitions, and installation instructions. Its GitHub Pages website presents the project; the full application runs locally with Node.js and Python.
 
-[Project overview](https://rexmiao.github.io/pcr-market-watch/) · [Source code](https://github.com/Rexmiao/pcr-market-watch) · [Download the latest release](https://github.com/Rexmiao/pcr-market-watch/releases/latest)
+[Project overview](https://rexy.levyquant.ai/pcr-market-watch/) · [Source code](https://github.com/Rexmiao/pcr-market-watch) · [Download the latest release](https://github.com/Rexmiao/pcr-market-watch/releases/latest)
 
 [README / User guide](https://github.com/Rexmiao/pcr-market-watch#readme) · [简体中文说明](https://github.com/Rexmiao/pcr-market-watch/blob/refs/heads/main/README.zh-CN.md)
 

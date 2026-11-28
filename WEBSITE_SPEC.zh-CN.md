@@ -6,7 +6,7 @@
 
 ## 网站与部署
 
-- 网址：<https://rexmiao.github.io/>。
+- 网址：<https://rexy.levyquant.ai/>。自定义域名在仓库 Pages 设置和根目录 `CNAME` 文件中设定；Cloudflare 上 `levyquant.ai` 有一条仅 DNS（不走代理）的 CNAME 记录 `rexy` → `rexmiao.github.io`。GitHub 会把旧地址 <https://rexmiao.github.io/>（包括 `/pcr-market-watch/` 等项目页）重定向到新域名。`CNAME`、`_config.yml` 的 `url` 和 `keep_files` 须保持一致，否则部署可能清除自定义域名。
 - 仓库：`Rexmiao/rexmiao.github.io`。
 - 框架／主题：沿用现有 al-folio／Jekyll。
 - 源码分支：`master`；生成的发布分支：`gh-pages`。
