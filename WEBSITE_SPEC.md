@@ -175,12 +175,13 @@ user's America/New_York timezone. It reports the actual CV, publications, and
 quantitative project portfolio update, with links to the relevant pages. Keep
 template announcements excluded; do not invent publication dates or research
 milestones. Add new verified milestones as dated entries in `_news/`. The
-homepage shows up to five recent items and `/news/` lists all entries. A
-multi-project progress report uses `inline: false`, so the list shows its title
-and links to its own page at `/news/<name>/`; the first is
-`_news/project-progress-2026-11-28.md`. Each line in a progress report must be
-backed by a commit or release made that day, and the Trading System's status line is
-kept verbatim there too. The archive covers the CV's seven conference and symposium records from 2018 to 2026,
+homepage shows up to five recent items and `/news/` lists all entries. News items
+are short `inline: true` paragraphs with links, not separate pages. When one day
+has several updates, split them into several entries with the same date and
+different times (later time sorts first); 2026-11-28 has four: the Trading System
+release (status line verbatim), the new domains, the Daily Briefing project, and
+reflections and app updates. Every claim must be backed by a commit or release
+made that day. The archive covers the CV's seven conference and symposium records from 2018 to 2026,
 including the CWRU SURES presentations, Swiss Society of Pathology abstract,
 three Penn Pendergrass posters, and the 2024 and 2026 ISFTD posters. The 2024
 entry records attendance in Amsterdam and the program's listing of the user as
@@ -339,7 +340,7 @@ zero-math notes, bilingual persistence, lazy images, themes and mobile overflow.
 Reuse installed tools and successful steps; only inspect detailed failures when
 necessary. A stored hash is content identity, not independent permission.
 
-LévyQuant Trading System (`/projects/levyquant-trading/`, category Trading,
+Lévy Quant Trading System (`/projects/levyquant-trading/`, category Trading,
 importance 0, status "New · Paper trading") describes the open-source
 `Rexmiao/levyquant-trading` repository (MIT, public since 2026-11-28): a local U.S.
 stock trading back end on a moomoo paper account with alert-only,
@@ -349,9 +350,15 @@ trading is not implemented. Early stage: most behavior is verified by offline te
 not yet on the real service." Link only to GitHub (no demo site exists); never claim
 returns, live, production-ready, or hosted status, and add no CI badge. The
 homepage shows it as a fourth card beside Alpha Lab; with four cards the grid
-switches to 2 × 2 (`_sass/_quant-home.scss`).
+switches to 2 × 2 (`_sass/_quant-home.scss`). The project page is kept short. Its
+launch panel links the English README and setup (`#set-up`) and the Chinese README.
+Because the system has no graphical interface, a `.terminal-shot` block shows the
+real, trimmed output of `python -m trading_system.demo` (fake broker, generated
+data), labeled as such. Reproduce it from a fresh clone outside Dropbox if the demo
+changes. On this site the brand is written **Lévy Quant**, as two words, in display
+text; URLs, domains, and repository names keep ASCII `levyquant`.
 
-LévyQuant Daily Briefing (`/projects/levyquant-daily/`, status Pilot, Quantitative
+Lévy Quant Daily Briefing (`/projects/levyquant-daily/`, status Pilot, Quantitative
 Research, importance 4) links to <https://daily.levyquant.ai/> and the public
 `Rexmiao/levyquant-digest` repository. It must say plainly that the briefing is
 not original research: content is collected automatically from public sources,
@@ -363,7 +370,7 @@ market-moving macro news for better-informed trading decisions, and keep the
 "not investment advice" note. Do not add subscriber counts or performance claims.
 Keep it off the homepage cards until the first public edition is published.
 Below the status line, a `.project-launch` panel (styled in `_sass/_quant-site.scss`)
-gives a large **Read the LévyQuant Daily Briefing** button to the briefing site, the
+gives a large **Read the Lévy Quant Daily Briefing** button to the briefing site, the
 domain in mono, and a **Browse past editions** link. Reuse that panel for any project
 page whose main destination is its own external site.
 Under **How Each Edition Is Made**, `{% include briefing-flow.liquid %}` draws an animated

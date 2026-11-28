@@ -23,7 +23,7 @@ quantitative_projects:
     resource_title: Data Sources & Research Workflow
     resource_kind: data
     resource_url: /projects/alpha-lab/data-workflow/
-  - title: LévyQuant Trading System
+  - title: Lévy Quant Trading System
     type: Open-source trading back end
     status: New · Paper trading
     url: /projects/levyquant-trading/

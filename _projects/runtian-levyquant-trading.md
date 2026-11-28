@@ -1,6 +1,6 @@
 ---
 layout: page
-title: LévyQuant Trading System
+title: Lévy Quant Trading System
 permalink: /projects/levyquant-trading/
 description: An open-source, local trading back end for U.S. stocks that runs on your own computer against a moomoo paper account.
 category: Trading
@@ -19,28 +19,49 @@ resources:
   <a class="project-launch-primary" href="https://github.com/Rexmiao/levyquant-trading">View the Trading System on GitHub <span aria-hidden="true">↗</span></a>
   <div class="project-launch-meta">
     <span class="project-launch-url">github.com/Rexmiao/levyquant-trading</span>
-    <a class="project-launch-secondary" href="https://github.com/Rexmiao/levyquant-trading/blob/main/README.zh-CN.md">简体中文说明</a>
+    <span class="project-launch-links">
+      <a class="project-launch-secondary" href="https://github.com/Rexmiao/levyquant-trading#set-up">English README &amp; setup</a>
+      <a class="project-launch-secondary" href="https://github.com/Rexmiao/levyquant-trading/blob/main/README.zh-CN.md">简体中文说明</a>
+    </span>
   </div>
 </div>
 
-The LévyQuant Trading System is a local trading back end for U.S. stocks. It runs on your own computer and connects to a moomoo paper (simulated) account. It captures 5-minute bars, produces signals, applies limits you set yourself, sends orders, and reconciles every order with the broker. The code, specification, and validation record are public, so anyone can set up the same system with their own paper account. Accounts, ledgers, market data, and credentials stay on the user's machine.
+A local trading back end for U.S. stocks that runs on your own computer against a moomoo paper account. It captures 5-minute bars, produces signals, applies limits you set, sends orders, and reconciles each one with the broker. Accounts, ledgers, and credentials stay on your machine.
 
-### What It Does
+### What It Looks Like
 
-- **Three ways to run:** alert only, confirm before send, or fully automatic, all on the same strategy engine.
-- **Order tickets:** limit, stop, stop-limit, and trailing stops for orders you decide yourself.
-- **Your limits:** shares per order, dollars per buy order, and the number of working orders come from a file you write. Strategy orders also keep position size and cash within fixed shares of account equity.
-- **Journal first:** each order is written to a local ledger before it is sent, nothing is sent twice, and an order with an unknown outcome blocks further sending until it is reconciled.
-- **End of day:** while it is running, it cancels its own unfilled orders shortly before the close and writes a daily report.
+The system runs in a terminal; there is no graphical interface. This is the included offline demo, which runs the full order loop against a fake broker with generated market data:
 
-### Current Limits
+<figure class="terminal-shot">
+  <div class="terminal-bar" aria-hidden="true"><span></span><span></span><span></span><b>PowerShell</b></div>
+<pre><code><span class="t-prompt">PS&gt;</span> python -m trading_system.demo
+{
+  "scenario": "OFFLINE_FAKE_BROKER",
+  "status": "PASS_OFFLINE",
+  "real_broker_requests": 0,
+  "framework": "VeighNa MainEngine + OmsEngine + BaseGateway",
+  "counts": { "signals": 3, "order_routes": 2, "cancel_routes": 1,
+              "stale_quote_rejections": 1, "restart_new_posts": 0 },
+  "checks": {
+    "signal_routes_through_mainengine": <span class="t-ok">true</span>,
+    "same_bar_is_idempotent": <span class="t-ok">true</span>,
+    "cancel_terminal_reconciled": <span class="t-ok">true</span>,
+    "cumulative_fill_reconciled": <span class="t-ok">true</span>,
+    "stale_quote_rejected_before_order": <span class="t-ok">true</span>,
+    "restart_reconciliation_does_not_resubmit": <span class="t-ok">true</span>,
+    "submit_and_cancel_durable_before_rpc": <span class="t-ok">true</span>,
+    <span class="t-dim">… 7 more checks, all true</span>
+  }
+}</code></pre>
+  <figcaption>Offline demo output (trimmed). Fake broker and generated data; no real orders.</figcaption>
+</figure>
 
-- Stops and trailing stops are synthetic: the program watches quotes and sends a limit order when a trigger fires, so they offer no protection while it is not running.
-- Signals come from completed 5-minute bars, so it suits minute-level and slower strategies.
-- One strategy is included, a 5-minute intraday momentum rule. Options, short selling, and bracket orders are not available yet.
+### Highlights
 
-Open source under the MIT license. Not affiliated with or endorsed by moomoo, Futu, or the VeighNa project. This is software for learning and research, and nothing here is investment advice.
+- **Three modes:** alert only, confirm before send, or fully automatic.
+- **Order tickets:** limit, stop, stop-limit, and trailing stops. Stops are synthetic, so they work only while the program runs.
+- **Safety first:** your own limits, a local journal written before each order, and no order sent twice.
 
-[Source code and setup guide](https://github.com/Rexmiao/levyquant-trading) · [简体中文说明](https://github.com/Rexmiao/levyquant-trading/blob/main/README.zh-CN.md)
+Open source under the MIT license. Not affiliated with moomoo, Futu, or VeighNa. For learning and research only; not investment advice.
 
 [All projects]({{ '/projects/' | relative_url }})
